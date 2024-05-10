@@ -1,0 +1,66 @@
+-------------------------------------------
+To install Beta version alongside PROD:
+-------------------------------------------
+
+Move "Catalogue" folder from "C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets" to "C:\temp" (create C:\temp if it doesn't exist)
+
+Copy "FSX Play" folder in "C:\Program Files (x86)" folder and paste back into "C:\Program Files (x86)"
+
+Rename "FSX Play - Copy" to "FSX Play - PROD"
+
+Install the Beta version - uncheck "Create a desktop shortcut" on the "Select Additional Tasks" screen (last screen before "Install")
+
+Run "Command Prompt" as administrator and then run the following commands after "CMD: "
+
+CMD: CD "C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets"
+CMD: mklink /D Catalogue C:\temp\Catalogue
+CMD: CD "C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets"
+CMD: mklink /D Catalogue C:\temp\Catalogue
+
+In File Explorer, go into the "FSX Play - PROD" folder, right click on "FSX Play.exe" and "Send To -> Desktop" to create a shortcut.
+
+On the desktop, rename the "FSX Play.exe - Shortcut" shortcut to "FSX Play PROD"
+
+On the desktop, rename the "FSX Play" icon to "FSX Play RC", then right-click on it, click Properties and under the Compatibility tab, check the "Run this program as an Administrator" box and click "OK"
+
+-------------------------------------------
+To Update BETA to an updated BETA version:
+-------------------------------------------
+
+Install the newer Beta version - uncheck "Create a desktop shortcut"
+
+Run the new Beta version from its labeled desktop shortcut
+
+-------------------------------------------
+To Update PROD to new version:
+-------------------------------------------
+
+Install the new PROD version as normal
+
+Run the new PROD version once and exit out
+
+Delete old "FSX Play - PROD" folder in "C:\Program Files (x86)" that is now outdated - OPTIONAL - If you want to keep it, just rename it from "FSX Play - PROD" to "FSX Play - x_x_x_x" (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later
+
+Copy "FSX Play" folder in "C:\Program Files (x86)" folder and paste back into "C:\Program Files (x86)"
+
+Rename "FSX Play - Copy" to "FSX Play - PROD"
+
+In File Explorer, go into the new "FSX Play - PROD" folder, right click on "FSX Play.exe" and "Send To -> Desktop" to create a shortcut.
+
+On the desktop, rename each shortcut to label the version (example: "1.11.0.17 PROD" or "1.11.0.16 RC" so you can see the complete data, too long will be truncated visually...)
+
+OPTIONAL - If you want to keep using a Beta version, just re-install the same Beta version you were using under the steps in "To Update BETA to an updated BETA version"
+
+-------------------------------------------
+NOTES
+-------------------------------------------
+
+You can always see which version of FSX Play you are running by clicking on the Foresights Sports logo at the top of the Main Menu
+
+If you start play without using the shortcuts on the desktop (like from start menu) you will load the RC version...
+
+Beta is updated frequently, so a new build can be installed easily and you only have to update the shortcut link (if you put the version in there)
+
+Prod will be the "side" installed version so it will be out of harms way when Beta is updated - Run which ever you want. (Warning: Since the share the same data in the %appdata% folder, you might need to double check your settings [or accept T&C each time] if you bounce back and forth frequently)
+
+Both will now point to the same course catalogue, so you can install/update courses as normal (if the Download Manager has errors with courses in the Prod version, manage the course in the Beta version [since the Beta version is "sitting" in the normally installed file location])
