@@ -32,7 +32,18 @@
     <![endif]-->
     <!--
         dir -Filter *.html | select name | % {"<a href=`"fsx_play_courses/" + $_.Name+ "`" class=`"btn btn-default btn-block`" target=`"_blank`">" + $_.Name.Replace(".html","</a>")} | out-file course_list.txt
+
+        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename + "</button>"} | out-file course_list.txt
     -->
+
+    <style>
+        div.sticky {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 10px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,74 +58,84 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">FSX Play Scorecards</h1>
-                    <p>Click on a course to load it's scorecard in a new tab</p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-4">
-                    <a href="fsx_play_courses/Abu Dhabi Golf Club (National).html" class="btn btn-default btn-block" target="_blank">Abu Dhabi Golf Club (National)</a>
-                    <a href="fsx_play_courses/Airport National Golf Course.html" class="btn btn-default btn-block" target="_blank">Airport National Golf Course</a>
-                    <a href="fsx_play_courses/Akron Country Club.html" class="btn btn-default btn-block" target="_blank">Akron Country Club</a>
-                    <a href="fsx_play_courses/Apple Valley Golf Course.html" class="btn btn-default btn-block" target="_blank">Apple Valley Golf Course</a>
-                    <a href="fsx_play_courses/Arcadia Ranch.html" class="btn btn-default btn-block" target="_blank">Arcadia Ranch</a>
-                    <a href="fsx_play_courses/Aronimink Golf Club.html" class="btn btn-default btn-block" target="_blank">Aronimink Golf Club</a>
-                    <a href="fsx_play_courses/Audubon CC.html" class="btn btn-default btn-block" target="_blank">Audubon CC</a>
-                    <a href="fsx_play_courses/Aurora Country Club.html" class="btn btn-default btn-block" target="_blank">Aurora Country Club</a>
-                    <a href="fsx_play_courses/Awbrey Glen Golf Course.html" class="btn btn-default btn-block" target="_blank">Awbrey Glen Golf Course</a>
-                    <a href="fsx_play_courses/Azalea National Executive.html" class="btn btn-default btn-block" target="_blank">Azalea National Executive</a>
-                    <a href="fsx_play_courses/Barren Boulders Executive.html" class="btn btn-default btn-block" target="_blank">Barren Boulders Executive</a>
-                    <a href="fsx_play_courses/Beaver Hills Country Club.html" class="btn btn-default btn-block" target="_blank">Beaver Hills Country Club</a>
-                    <a href="fsx_play_courses/Big Sur.html" class="btn btn-default btn-block" target="_blank">Big Sur</a>
-                    <a href="fsx_play_courses/Black Rock Golf Course.html" class="btn btn-default btn-block" target="_blank">Black Rock Golf Course</a>
-                    <a href="fsx_play_courses/Blue Bayou.html" class="btn btn-default btn-block" target="_blank">Blue Bayou</a>
-                    <a href="fsx_play_courses/Broken Tree Golf Course.html" class="btn btn-default btn-block" target="_blank">Broken Tree Golf Course</a>
-                    <a href="fsx_play_courses/Butterfield Country Club Blue Red.html" class="btn btn-default btn-block" target="_blank">Butterfield Country Club Blue Red</a>
-                    <a href="fsx_play_courses/Champions Run.html" class="btn btn-default btn-block" target="_blank">Champions Run</a>
-                    <a href="fsx_play_courses/Coeur d'Alene Golf Resort.html" class="btn btn-default btn-block" target="_blank">Coeur d'Alene Golf Resort</a>
-                    <a href="fsx_play_courses/Colonial Country Club.html" class="btn btn-default btn-block" target="_blank">Colonial Country Club</a>
-                    <a href="fsx_play_courses/Crosswater Golf Course.html" class="btn btn-default btn-block" target="_blank">Crosswater Golf Course</a>
-                    <a href="fsx_play_courses/Detroit Country Club (Pine to Palm).html" class="btn btn-default btn-block" target="_blank">Detroit Country Club (Pine to Palm)</a>
-                    <a href="fsx_play_courses/Doral - Blue Monster.html" class="btn btn-default btn-block" target="_blank">Doral - Blue Monster</a>
-                    <a href="fsx_play_courses/Egypt Valley.html" class="btn btn-default btn-block" target="_blank">Egypt Valley</a>
-                    <a href="fsx_play_courses/Emirates Golf Club Majlis.html" class="btn btn-default btn-block" target="_blank">Emirates Golf Club Majlis</a>
-                    <a href="fsx_play_courses/Foresight Sports Practice Facility.html" class="btn btn-default btn-block" target="_blank">Foresight Sports Practice Facility</a>
-                    <a href="fsx_play_courses/Glen Flora Country Club.html" class="btn btn-default btn-block" target="_blank">Glen Flora Country Club</a>
-                    <a href="fsx_play_courses/Glorietta Golf Club.html" class="btn btn-default btn-block" target="_blank">Glorietta Golf Club</a>
-                    <a href="fsx_play_courses/Greencastle Golf Club.html" class="btn btn-default btn-block" target="_blank">Greencastle Golf Club</a>
-                    <a href="fsx_play_courses/Hidden Shoals.html" class="btn btn-default btn-block" target="_blank">Hidden Shoals</a>
-                    <a href="fsx_play_courses/Kinsale Golf & Fitness Club.html" class="btn btn-default btn-block" target="_blank">Kinsale Golf & Fitness Club</a>
-                    <a href="fsx_play_courses/La Jolla Pines.html" class="btn btn-default btn-block" target="_blank">La Jolla Pines</a>
-                    <a href="fsx_play_courses/Linfield National Golf Club.html" class="btn btn-default btn-block" target="_blank">Linfield National Golf Club</a>
-                    <a href="fsx_play_courses/Lone Wolf Golf Club.html" class="btn btn-default btn-block" target="_blank">Lone Wolf Golf Club</a>
-                    <a href="fsx_play_courses/Magnolia National Golf Club.html" class="btn btn-default btn-block" target="_blank">Magnolia National Golf Club</a>
-                    <a href="fsx_play_courses/Meadowbrook Country Club.html" class="btn btn-default btn-block" target="_blank">Meadowbrook Country Club</a>
-                    <a href="fsx_play_courses/Mill Creek.html" class="btn btn-default btn-block" target="_blank">Mill Creek</a>
-                    <a href="fsx_play_courses/Paris.html" class="btn btn-default btn-block" target="_blank">Paris</a>
-                    <a href="fsx_play_courses/Pebble Beach Golf Links.html" class="btn btn-default btn-block" target="_blank">Pebble Beach Golf Links</a>
-                    <a href="fsx_play_courses/Pelican Hill Golf Club - South Course.html" class="btn btn-default btn-block" target="_blank">Pelican Hill Golf Club - South Course</a>
-                    <a href="fsx_play_courses/Potter's Park Golf Course.html" class="btn btn-default btn-block" target="_blank">Potter's Park Golf Course</a>
-                    <a href="fsx_play_courses/Prairie Bluff Golf Club.html" class="btn btn-default btn-block" target="_blank">Prairie Bluff Golf Club</a>
-                    <a href="fsx_play_courses/Saxe Gotha.html" class="btn btn-default btn-block" target="_blank">Saxe Gotha</a>
-                    <a href="fsx_play_courses/SentryWorld Golf Course.html" class="btn btn-default btn-block" target="_blank">SentryWorld Golf Course</a>
-                    <a href="fsx_play_courses/Spyglass Hill.html" class="btn btn-default btn-block" target="_blank">Spyglass Hill</a>
-                    <a href="fsx_play_courses/Sunnyside Golf & Country Club.html" class="btn btn-default btn-block" target="_blank">Sunnyside Golf & Country Club</a>
-                    <a href="fsx_play_courses/Tall Pines Golf Club.html" class="btn btn-default btn-block" target="_blank">Tall Pines Golf Club</a>
-                    <a href="fsx_play_courses/Tanah Merah.html" class="btn btn-default btn-block" target="_blank">Tanah Merah</a>
-                    <a href="fsx_play_courses/Teton Pines Country Club.html" class="btn btn-default btn-block" target="_blank">Teton Pines Country Club</a>
-                    <a href="fsx_play_courses/The Bedens Brook Club.html" class="btn btn-default btn-block" target="_blank">The Bedens Brook Club</a>
-                    <a href="fsx_play_courses/The Crossing Golf Course.html" class="btn btn-default btn-block" target="_blank">The Crossing Golf Course</a>
-                    <a href="fsx_play_courses/The Farms Golf Club.html" class="btn btn-default btn-block" target="_blank">The Farms Golf Club</a>
-                    <a href="fsx_play_courses/The Heretic Golf Course.html" class="btn btn-default btn-block" target="_blank">The Heretic Golf Course</a>
-                    <a href="fsx_play_courses/The Links at Spanish Bay.html" class="btn btn-default btn-block" target="_blank">The Links at Spanish Bay</a>
-                    <a href="fsx_play_courses/Tropical Paradise Executive.html" class="btn btn-default btn-block" target="_blank">Tropical Paradise Executive</a>
-                    <a href="fsx_play_courses/Twin Run Golf Course.html" class="btn btn-default btn-block" target="_blank">Twin Run Golf Course</a>
-                    <a href="fsx_play_courses/Wellington National Golf Club.html" class="btn btn-default btn-block" target="_blank">Wellington National Golf Club</a>
-                    <a href="fsx_play_courses/Willow Crest Golf Club.html" class="btn btn-default btn-block" target="_blank">Willow Crest Golf Club</a>
-
+                    <button onclick="loadScoreCard('Abu Dhabi Golf Club (National)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Abu Dhabi Golf Club (National)</button>
+                    <button onclick="loadScoreCard('Airport National Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Airport National Golf Course</button>
+                    <button onclick="loadScoreCard('Akron Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Akron Country Club</button>
+                    <button onclick="loadScoreCard('Apple Valley Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Apple Valley Golf Course</button>
+                    <button onclick="loadScoreCard('Arcadia Ranch')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Arcadia Ranch</button>
+                    <button onclick="loadScoreCard('Aronimink Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Aronimink Golf Club</button>
+                    <button onclick="loadScoreCard('Audubon CC')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Audubon CC</button>
+                    <button onclick="loadScoreCard('Aurora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Aurora Country Club</button>
+                    <button onclick="loadScoreCard('Awbrey Glen Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Awbrey Glen Golf Course</button>
+                    <button onclick="loadScoreCard('Azalea National Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Azalea National Executive</button>
+                    <button onclick="loadScoreCard('Barren Boulders Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Barren Boulders Executive</button>
+                    <button onclick="loadScoreCard('Beaver Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Beaver Hills Country Club</button>
+                    <button onclick="loadScoreCard('Big Sur')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Big Sur</button>
+                    <button onclick="loadScoreCard('Black Rock Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Black Rock Golf Course</button>
+                    <button onclick="loadScoreCard('Blue Bayou')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Bayou</button>
+                    <button onclick="loadScoreCard('Broken Tree Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Broken Tree Golf Course</button>
+                    <button onclick="loadScoreCard('Butterfield Country Club Blue Red')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Butterfield Country Club Blue Red</button>
+                    <button onclick="loadScoreCard('Champions Run')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Champions Run</button>
+                    <button onclick="loadScoreCard('Coeur d'Alene Golf Resort')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Coeur d'Alene Golf Resort</button>
+                    <button onclick="loadScoreCard('Colonial Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Colonial Country Club</button>
+                    <button onclick="loadScoreCard('Crosswater Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Crosswater Golf Course</button>
+                    <button onclick="loadScoreCard('Detroit Country Club (Pine to Palm)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Detroit Country Club (Pine to Palm)</button>
+                    <button onclick="loadScoreCard('Doral - Blue Monster')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Doral - Blue Monster</button>
+                    <button onclick="loadScoreCard('Egypt Valley')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Egypt Valley</button>
+                    <button onclick="loadScoreCard('Emirates Golf Club Majlis')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Emirates Golf Club Majlis</button>
+                    <button onclick="loadScoreCard('Foresight Sports Practice Facility')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Foresight Sports Practice Facility</button>
+                    <button onclick="loadScoreCard('Glen Flora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Glen Flora Country Club</button>
+                    <button onclick="loadScoreCard('Glorietta Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Glorietta Golf Club</button>
+                    <button onclick="loadScoreCard('Greencastle Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Greencastle Golf Club</button>
+                    <button onclick="loadScoreCard('Hidden Shoals')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Hidden Shoals</button>
+                    <button onclick="loadScoreCard('Kinsale Golf & Fitness Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Kinsale Golf & Fitness Club</button>
+                    <button onclick="loadScoreCard('La Jolla Pines')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">La Jolla Pines</button>
+                    <button onclick="loadScoreCard('Linfield National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Linfield National Golf Club</button>
+                    <button onclick="loadScoreCard('Lone Wolf Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Lone Wolf Golf Club</button>
+                    <button onclick="loadScoreCard('Magnolia National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Magnolia National Golf Club</button>
+                    <button onclick="loadScoreCard('Meadowbrook Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Meadowbrook Country Club</button>
+                    <button onclick="loadScoreCard('Mill Creek')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Mill Creek</button>
+                    <button onclick="loadScoreCard('Paris')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Paris</button>
+                    <button onclick="loadScoreCard('Pebble Beach Golf Links')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Pebble Beach Golf Links</button>
+                    <button onclick="loadScoreCard('Pelican Hill Golf Club - South Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Pelican Hill Golf Club - South Course</button>
+                    <button onclick="loadScoreCard('Potter's Park Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Potter's Park Golf Course</button>
+                    <button onclick="loadScoreCard('Prairie Bluff Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Prairie Bluff Golf Club</button>
+                    <button onclick="loadScoreCard('Saxe Gotha')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Saxe Gotha</button>
+                    <button onclick="loadScoreCard('SentryWorld Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">SentryWorld Golf Course</button>
+                    <button onclick="loadScoreCard('Spyglass Hill')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Spyglass Hill</button>
+                    <button onclick="loadScoreCard('Sunnyside Golf & Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Sunnyside Golf & Country Club</button>
+                    <button onclick="loadScoreCard('Tall Pines Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tall Pines Golf Club</button>
+                    <button onclick="loadScoreCard('Tanah Merah')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tanah Merah</button>
+                    <button onclick="loadScoreCard('Teton Pines Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Teton Pines Country Club</button>
+                    <button onclick="loadScoreCard('The Bedens Brook Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Bedens Brook Club</button>
+                    <button onclick="loadScoreCard('The Crossing Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Crossing Golf Course</button>
+                    <button onclick="loadScoreCard('The Farms Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Farms Golf Club</button>
+                    <button onclick="loadScoreCard('The Heretic Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Heretic Golf Course</button>
+                    <button onclick="loadScoreCard('The Links at Spanish Bay')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Links at Spanish Bay</button>
+                    <button onclick="loadScoreCard('Tropical Paradise Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tropical Paradise Executive</button>
+                    <button onclick="loadScoreCard('Twin Run Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Twin Run Golf Course</button>
+                    <button onclick="loadScoreCard('Wellington National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Wellington National Golf Club</button>
+                    <button onclick="loadScoreCard('Willow Crest Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Willow Crest Golf Club</button>
                 </div>
-                <!-- /.col-lg-12 -->
+                <div class="col-lg-8 sticky">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Click on a course to load it's scorecard here
+                        </div>
+                        <div class="panel-body" id="course-placeholder">
+                            <!-- Leave blank so course content loads -->
+                        </div>
+                        <div class="panel-footer" style="display:none">
+                            Panel Footer
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -138,6 +159,12 @@
         $(function () {
             $("#nav-placeholder").load("/nav.html");
         });
+
+        function loadScoreCard(course) {
+            file = "fsx_play_courses/" + course + ".html"
+
+            $("#course-placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
+        }
     </script>
 
 </body>
