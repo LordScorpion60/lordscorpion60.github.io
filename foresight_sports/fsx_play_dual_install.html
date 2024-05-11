@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <div id="nav-placeholder">
+            <!-- Leave blank so page content loads too -->
+        </div>
+        <!-- end of Navigation -->
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">FSX Play Dual Install Setup</h1>
+
+                    <p>These instructions are used to install a parallel version of FSX Play to test different builds as needed while preserving (and sharing) the entire course catalogue</p>
+
+                    <hr />
+                    <h3>To install Beta version alongside PROD:</h3>
+                    <hr />
+
+                    <p>Move &quot;Catalogue&quot; folder from &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot; to &quot;C:\temp&quot; (create C:\temp if it doesn't exist)</p>
+
+                    <p>Copy &quot;FSX Play&quot; folder in &quot;C:\Program Files (x86)&quot; folder and paste back into &quot;C:\Program Files (x86)&quot;</p>
+
+                    <p>Rename &quot;FSX Play - Copy&quot; to &quot;FSX Play - PROD&quot;</p>
+
+                    <p>Install the Beta version - uncheck &quot;Create a desktop shortcut&quot; on the &quot;Select Additional Tasks&quot; screen (last screen before &quot;Install&quot;)</p>
+
+                    <p>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;</p>
+
+                    <ul>
+                        <li>CMD: CD &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot;</li>
+                        <li>CMD: mklink /D Catalogue C:\temp\Catalogue</li>
+                        <li>CMD: CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</li>
+                        <li>CMD: mklink /D Catalogue C:\temp\Catalogue</li>
+                    </ul>
+
+                    <p>In File Explorer, go into the &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut.</p>
+
+                    <p>On the desktop, rename the &quot;FSX Play.exe - Shortcut&quot; shortcut to &quot;FSX Play PROD&quot;</p>
+
+                    <p>On the desktop, rename the &quot;FSX Play&quot; icon to &quot;FSX Play RC&quot;, then right-click on it, click Properties and under the Compatibility tab, check the &quot;Run this program as an Administrator&quot; box and click &quot;OK&quot;</p>
+
+                    <hr />
+                    <h3>To Update BETA to an updated BETA version:</h3>
+                    <hr />
+                    <p>Install the newer Beta version - uncheck &quot;Create a desktop shortcut&quot;</p>
+
+                    <p>Run the new Beta version from its labeled desktop shortcut</p>
+
+                    <hr />
+                    <h3>To Update PROD to new version:</h3>
+                    <hr />
+                    <p>Install the new PROD version as normal</p>
+
+                    <p>Run the new PROD version once and exit out</p>
+
+                    <p>Delete old &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is now outdated - OPTIONAL - If you want to keep it, just rename it from &quot;FSX Play - PROD&quot; to &quot;FSX Play - x_x_x_x&quot; (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later</p>
+
+                    <p>Copy &quot;FSX Play&quot; folder in &quot;C:\Program Files (x86)&quot; folder and paste back into &quot;C:\Program Files (x86)&quot;</p>
+
+                    <p>Rename &quot;FSX Play - Copy&quot; to &quot;FSX Play - PROD&quot;</p>
+
+                    <p>In File Explorer, go into the new &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut.</p>
+
+                    <p>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;</p>
+
+                    <ul>
+                        <li>CMD: CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</li>
+                        <li>CMD: rmdir Catalogue</li>
+                        <li>CMD: mklink /D Catalogue C:\temp\Catalogue</li>
+                    </ul>
+
+                    <p>On the desktop, rename each shortcut to label the version (example: &quot;1.11.0.17 PROD&quot; or &quot;1.11.0.16 RC&quot; so you can see the complete data, too long will be truncated visually...)</p>
+
+                    <p>OPTIONAL - If you want to keep using a Beta version, just re-install the same Beta version you were using under the steps in &quot;To Update BETA to an updated BETA version&quot;</p>
+
+                    <br />
+                    <hr />
+                    <h3>NOTES:</h3>
+                    <hr />
+
+                    <ul>
+                        <li>You can always see which version of FSX Play you are running by clicking on the Foresights Sports logo at the top of the Main Menu</li>
+                        <li>If you start play without using the desktop shortcuts (like from the start menu), you will load the RC version</li>
+                        <li>Beta is updated frequently, so a new build can be installed as use the existing desktop shortcut</li>
+                        <li>
+                            Prod will be the &quot;side&quot; installed version so it will be out of harms way when Beta is updated - Run which ever you want.
+                            <ul>
+                                <li>Warning: Since the share the same data in the %appdata% folder, you might need to double check your settings [or accept T&amp;C each time] if you bounce back and forth frequently</li>
+                            </ul>
+                        <li>
+                            Both installs will now point to the same course catalogue, so you can install/update courses as normal from either
+                            <ul>
+                                <li>Note: If the Download Manager has errors with courses in the Prod version, manage the course(s) in the Beta version (since the Beta version is using the expected installed file location &quot;C:\Program Files (x86)\FSX Play&quot;)</li>
+                        </li>
+                    </ul>
+                    </ul>
+
+                    <hr />
+                    <em>Last Updated: 5/10/24 @ 5:00PM MST</em>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/sb-admin-2.js"></script>
+
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/nav.html");
+        });
+    </script>
+
+</body>
+
+</html>
