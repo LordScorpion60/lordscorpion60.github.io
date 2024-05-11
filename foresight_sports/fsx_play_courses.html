@@ -30,10 +30,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!--
-        dir -Filter *.html | select name | % {"<a href=`"fsx_play_courses/" + $_.Name+ "`" class=`"btn btn-default btn-block`" target=`"_blank`">" + $_.Name.Replace(".html","</a>")} | out-file course_list.txt
 
-        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename + "</button>"} | out-file course_list.txt
+    <!--
+        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename.replace("'","\'") + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename.replace("'","\'") + "</button>"} | out-file course_list.txt
     -->
 
     <style>
