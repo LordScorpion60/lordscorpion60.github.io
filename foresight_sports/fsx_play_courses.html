@@ -32,7 +32,7 @@
     <![endif]-->
 
     <!--
-        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename.replace("'","\'") + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename.replace("'","\'") + "</button>"} | out-file course_list.txt
+        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename.replace("'","\'") + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename + "</button>"} | out-file course_list.txt
     -->
 
     <style>
@@ -73,13 +73,28 @@
                     <button onclick="loadScoreCard('Aurora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Aurora Country Club</button>
                     <button onclick="loadScoreCard('Awbrey Glen Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Awbrey Glen Golf Course</button>
                     <button onclick="loadScoreCard('Azalea National Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Azalea National Executive</button>
+                    <button onclick="loadScoreCard('Bala Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bala Golf Club</button>
+                    <button onclick="loadScoreCard('Ballyowen Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Ballyowen Golf Club</button>
                     <button onclick="loadScoreCard('Barren Boulders Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Barren Boulders Executive</button>
+                    <button onclick="loadScoreCard('Bear Claw Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bear Claw Golf Club</button>
                     <button onclick="loadScoreCard('Beaver Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Beaver Hills Country Club</button>
                     <button onclick="loadScoreCard('Big Sur')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Big Sur</button>
+                    <button onclick="loadScoreCard('Birdsfoot Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Birdsfoot Golf Club</button>
                     <button onclick="loadScoreCard('Black Rock Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Black Rock Golf Course</button>
+                    <button onclick="loadScoreCard('Blackberry Oaks Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blackberry Oaks Golf Course</button>
                     <button onclick="loadScoreCard('Blue Bayou')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Bayou</button>
+                    <button onclick="loadScoreCard('Blue Bell Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Bell Country Club</button>
+                    <button onclick="loadScoreCard('Blue Heron Hills (NY)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Heron Hills (NY)</button>
+                    <button onclick="loadScoreCard('Blue Heron Hills (NY)_Ver 1')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Heron Hills (NY)_Ver 1</button>
+                    <button onclick="loadScoreCard('Blue Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Hills Country Club</button>
+                    <button onclick="loadScoreCard('Blue Springs Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Springs Golf Club</button>
+                    <button onclick="loadScoreCard('Brae Burn Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Brae Burn Country Club</button>
+                    <button onclick="loadScoreCard('Broken Top Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Broken Top Club</button>
                     <button onclick="loadScoreCard('Broken Tree Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Broken Tree Golf Course</button>
+                    <button onclick="loadScoreCard('Bull Valley Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bull Valley Golf Club</button>
+                    <button onclick="loadScoreCard('Burrangarra')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Burrangarra</button>
                     <button onclick="loadScoreCard('Butterfield Country Club Blue Red')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Butterfield Country Club Blue Red</button>
+                    <button onclick="loadScoreCard('Carnoustie Championship Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Carnoustie Championship Course</button>
                     <button onclick="loadScoreCard('Champions Run')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Champions Run</button>
                     <button onclick="loadScoreCard('Coeur d\'Alene Golf Resort')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Coeur d'Alene Golf Resort</button>
                     <button onclick="loadScoreCard('Colonial Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Colonial Country Club</button>
