@@ -216,10 +216,9 @@
         });
 
         function clipboardCopy() {
-
-            var courseDiv = document.getElementById("course-placeholder").querySelectorAll("div"); //TODO: Give course page div an ID
-
-            var copyText = courseDiv[0].innerText;
+            var courseDiv = document.getElementById("courseName");
+            
+            var copyText = courseDiv.innerHTML;
             var path = window.location.href.split('?')[0]
             var shareURL = encodeURI(path + "?course=" + copyText);
             console.log("course URL copied to clipboard: " + shareURL);
