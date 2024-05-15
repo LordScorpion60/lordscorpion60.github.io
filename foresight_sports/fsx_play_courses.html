@@ -57,10 +57,47 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">FSX Play Scorecards</h1>
+                    
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- Course Metadata to search:
+                "Name":  "",
+                "Version":  "",
+                "Par":  72.0,
+                "Altitude":  0.0,
+                "City":  "",
+                "Country":  "",
+                "Continent":  "",
+                "State":  ""
+                -->
             </div>
-            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Course Search <i class="fa fa-chevron-circle-right"></i></a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="input-group custom-search-form">
+                                        <input id="txtCourseSearch" type="text" class="form-control" placeholder="Search for Course...">
+                                        <span class="input-group-btn">
+                                            <button id="btnSearchCourseName" class="btn btn-default" type="button" onclick="SearchCourseName()">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="panel-footer small" style="display:none">
+                                    <em></em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <button onclick="loadScoreCard('Abu Dhabi Golf Club (National)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Abu Dhabi Golf Club (National)</button>
@@ -164,15 +201,13 @@
                             <div class="share-tooltip" id="courseShare">
                                 <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Link copied to clipboard" onclick="clipboardCopy()">
                                     Share link to course <i class="fa fa-share"></i>
-                                </a>    
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
     <!-- jQuery Version 1.11.0 -->
@@ -189,7 +224,10 @@
     <script src="/js/sb-admin-2.js"></script>
 
     <script>
-        
+
+        // Variable to hold course information
+        var courseArr = {};
+
         $("[data-toggle=popover]").popover({
             delay: {
                 show: 100,
@@ -203,6 +241,14 @@
             }, 1500, $(this));
         });
 
+        // Wire up keyboard enter key to course name search
+        $("#txtCourseSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                $("#btnSearchCourseName").trigger('click');
+            }
+        });
+
+        // On page-load.
         $(function () {
             $("#nav-placeholder").load("/nav.html");
 
@@ -213,6 +259,15 @@
             if (queryCourse != null) {
                 loadScoreCard(queryCourse);
             }
+
+            // Read in json course data
+            $.getJSON("fsx_play_courses/_allCourseData.json").done(function (data) {
+                window.courseArr = data;
+                console.log('course json loaded...');
+            }).fail(function (data) {
+                console.warn('no course data found!');
+                //window.courseArr = testData; // remove this line in non-demo mode
+            });
         });
 
         function clipboardCopy() {
@@ -242,6 +297,28 @@
             }
             catch (error) {
                 console.warn(error);
+            }
+        }
+
+        function SearchCourseName() {
+            var courseName = document.getElementById("txtCourseSearch").value;
+
+            if (courseName.length > 0) {
+                var result = window.courseArr.filter(function (course) {
+                    // look for the entry with a matching `code` value
+                    return (course.Name.toLowerCase() == courseName);
+                });
+
+                if (!result || result.length == 0) {
+                    console.warn('nothing found in course search for: ' + courseName);
+                }
+                else {
+                    var courseName = result[0].Name;
+                    console.log('search result found - loading course: ' + courseName);
+                    if (courseName) {
+                        loadScoreCard(courseName);
+                    }
+                }
             }
         }
     </script>
