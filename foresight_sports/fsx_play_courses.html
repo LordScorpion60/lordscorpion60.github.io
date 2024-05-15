@@ -144,8 +144,12 @@
                         <div class="panel-body" id="course-placeholder">
                             <!-- Leave blank so course content loads -->
                         </div>
-                        <div class="panel-footer" style="display:none">
-                            Panel Footer
+                        <div class="panel-footer" id="courseFooter" style="display:none">
+                            <div class="share-tooltip" id="courseShare">
+                                <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Link copied to clipboard" onclick="clipboardCopy()">
+                                    Share link to course <i class="fa fa-share"></i>
+                                </a>    
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,14 +173,61 @@
     <script src="/js/sb-admin-2.js"></script>
 
     <script>
-        $(function () {
-            $("#nav-placeholder").load("/nav.html");
+        
+        $("[data-toggle=popover]").popover({
+            delay: {
+                show: 100,
+                hide: 100
+            }
         });
 
-        function loadScoreCard(course) {
-            file = "fsx_play_courses/" + course + ".html"
+        $("[data-toggle=popover]").on('shown.bs.popover', function () {
+            setTimeout(function (a) {
+                a.popover('hide');
+            }, 1500, $(this));
+        });
 
-            $("#course-placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
+        $(function () {
+            $("#nav-placeholder").load("/nav.html");
+
+            // Check QS params when page loads in case we got a course to load up
+            const queryParams = new URLSearchParams(window.location.search);
+            const queryCourse = queryParams.get('course');
+            
+            if (queryCourse != null) {
+                loadScoreCard(queryCourse);
+            }
+        });
+
+        function clipboardCopy() {
+
+            var courseDiv = document.getElementById("course-placeholder").querySelectorAll("div"); //TODO: Give course page div an ID
+
+            var copyText = courseDiv[0].innerText;
+            var path = window.location.href.split('?')[0]
+            var shareURL = encodeURI(path + "?course=" + copyText);
+            console.log("course URL copied to clipboard: " + shareURL);
+            navigator.clipboard.writeText(shareURL);
+        }
+
+        function loadScoreCard(course) {
+            try {
+                // Add/Update any QS params first if user clicks on a course to load
+                var queryParams = new URLSearchParams(window.location.search);
+                queryParams.set("course", course);
+                window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
+
+                $("#course-placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
+
+                var x = document.getElementById("courseFooter");
+
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                }
+            }
+            catch (error) {
+                console.warn(error);
+            }
         }
     </script>
 </body>
