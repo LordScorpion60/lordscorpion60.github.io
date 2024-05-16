@@ -89,11 +89,11 @@
                     <p>These instructions are used to install a parallel version of FSX Play to test different builds as needed while preserving (and sharing) the entire course catalogue</p>
                     <p>After setting up the dual install, your file system will be setup to run FSX Play as:</p>
                     <ul>
-                        <li>BETA => &quot;C:\Program Files (x86)\FSX Play&quot;</li>
+                        <li>BETA => <code>&quot;C:\Program Files (x86)\FSX Play&quot;</code></li>
                         <ul>
                             <li>All FSX Play installers (regardless of Beta/Prod/RC will install to this default directory)</li>
                         </ul>
-                        <li>PROD => &quot;C:\Program Files (x86)\FSX Play - PROD&quot;</li>
+                        <li>PROD => <code>&quot;C:\Program Files (x86)\FSX Play - PROD&quot;</code></li>
                     </ul>
 
                     <hr />
@@ -112,10 +112,10 @@
                         <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands:</li>
 
                         <ul>
-                            <li><button onclick="myFunction('cmd1')" onmouseout="outFunc('cmd1')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd1BtnTxt">Copy</span></button>&nbsp;<span id="cmd1">CD &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot;</span></li>
-                            <li><button onclick="myFunction('cmd2')" onmouseout="outFunc('cmd2')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd2BtnTxt">Copy</span></button>&nbsp;<span id="cmd2">mklink /D Catalogue C:\temp\Catalogue</span></li>
-                            <li><button onclick="myFunction('cmd3')" onmouseout="outFunc('cmd3')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd3BtnTxt">Copy</span></button>&nbsp;<span id="cmd3">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</span></li>
-                            <li><button onclick="myFunction('cmd4')" onmouseout="outFunc('cmd4')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd4BtnTxt">Copy</span></button>&nbsp;<span id="cmd4">mklink /D Catalogue C:\temp\Catalogue</span></li>
+                            <li><button onclick="myFunction('cmd1')" onmouseout="outFunc('cmd1')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd1BtnTxt">Copy</span></button>&nbsp;<code id="cmd1">CD &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot;</code></li>
+                            <li><button onclick="myFunction('cmd2')" onmouseout="outFunc('cmd2')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd2BtnTxt">Copy</span></button>&nbsp;<code id="cmd2">mklink /D Catalogue C:\temp\Catalogue</code></li>
+                            <li><button onclick="myFunction('cmd3')" onmouseout="outFunc('cmd3')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd3BtnTxt">Copy</span></button>&nbsp;<code id="cmd3">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
+                            <li><button onclick="myFunction('cmd4')" onmouseout="outFunc('cmd4')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd4BtnTxt">Copy</span></button>&nbsp;<code id="cmd4">mklink /D Catalogue C:\temp\Catalogue</code></li>
                         </ul>
 
                         <li>In File Explorer, go into the &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut.</li>
@@ -158,9 +158,9 @@
                         <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;</li>
 
                         <ul>
-                            <li><button onclick="myFunction('cmd5')" onmouseout="outFunc('cmd5')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd5BtnTxt">Copy</span></button>&nbsp;<span id="cmd5">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</span></li>
-                            <li><button onclick="myFunction('cmd6')" onmouseout="outFunc('cmd6')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd6BtnTxt">Copy</span></button>&nbsp;<span id="cmd6">rmdir Catalogue</span></li>
-                            <li><button onclick="myFunction('cmd7')" onmouseout="outFunc('cmd7')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd7BtnTxt">Copy</span></button>&nbsp;<span id="cmd7">mklink /D Catalogue C:\temp\Catalogue</span></li>
+                            <li><button onclick="myFunction('cmd5')" onmouseout="outFunc('cmd5')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd5BtnTxt">Copy</span></button>&nbsp;<code id="cmd5">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
+                            <li><button onclick="myFunction('cmd6')" onmouseout="outFunc('cmd6')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd6BtnTxt">Copy</span></button>&nbsp;<code id="cmd6">rmdir Catalogue</code></li>
+                            <li><button onclick="myFunction('cmd7')" onmouseout="outFunc('cmd7')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd7BtnTxt">Copy</span></button>&nbsp;<code id="cmd7">mklink /D Catalogue C:\temp\Catalogue</code></li>
                         </ul>
 
                         <li>Re-install the same Beta version you were using under the steps in &quot;To Update BETA to an updated BETA version&quot; to complete the dual install setup</li>
