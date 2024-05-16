@@ -209,7 +209,7 @@
             </div>
         </div>
     </div>
-    <div id="courseData-placeholder" style="display:block">
+    <div id="courseData-placeholder" style="display:none">
         <!-- Leave blank so page content loads too -->
     </div>
     <!-- /#wrapper -->
@@ -271,7 +271,7 @@
 
             // Read in json course data
             
-            $.getJSON(currentHost + "/foresight_sports/fsx_play_courses/_allCourseData.json").done(function (data) {
+            $.getJSON(currentHost + "/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
                 console.log('course json loaded...');
             }).fail(function (data) {
