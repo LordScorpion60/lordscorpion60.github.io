@@ -209,9 +209,9 @@
             </div>
         </div>
     </div>
-    <div id="courseData-placeholder" style="display:none">
+    <!--<div id="courseData-placeholder" style="display:none">-->
         <!-- Leave blank so page content loads too -->
-    </div>
+    <!--</div>-->
     <!-- /#wrapper -->
     <!-- jQuery Version 1.11.0 -->
     <script src="/js/jquery-1.11.0.js"></script>
@@ -229,7 +229,7 @@
     <script>
 
         // Variable to hold course information
-        //var courseArr = {};
+        var courseArr = {};
 
         $("[data-toggle=popover]").popover({
             delay: {
@@ -264,21 +264,19 @@
             }
 
             // Temp hack until .getJSON works
-            $("#courseData-placeholder").load("/foresight_sports/fsx_play_courses/zz_allCourseData.html");
+            //$("#courseData-placeholder").load("/foresight_sports/fsx_play_courses/zz_allCourseData.html");
 
-            /*
             //var currentHost = window.location.protocol + "//" + window.location.host
 
             // Read in json course data
             
-            $.getJSON(currentHost + "/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
+            //$.getJSON(currentHost + "/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
+            $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
                 console.log('course json loaded...');
             }).fail(function (data) {
                 console.warn('no course data found!');
-                //window.courseArr = testData; // remove this line in non-demo mode
             });
-            */
         });
 
         function clipboardCopy() {
