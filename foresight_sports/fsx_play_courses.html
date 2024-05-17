@@ -458,7 +458,6 @@
         }
 
         function SearchCourseReset() {
-            
             $("#txtNameSearch").val('');
             $("#txtVersionSearch").val('');
             $("#txtParSearch").val('');
@@ -475,6 +474,19 @@
             unhideAllCourses();
 
             $("#courseResultCount").html("Courses found: " + window.courseArr.length);
+
+            var x = document.getElementById("courseFooter");
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            }
+
+            // Reset the query string parameter if we already loaded a course and reset the search parameters
+            var url = window.location.href;
+            if (url.indexOf("?") > 0) {
+                var updatedUrl = url.substring(0, url.indexOf("?"));
+                window.history.replaceState({}, document.title, updatedUrl);
+            }
         }
 
         function SearchCourse() {
