@@ -32,7 +32,7 @@
     <![endif]-->
 
     <!--
-        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename.replace("'","\'") + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block`" style=`"margin: 10px`">" + $_.basename + "</button>"} | out-file course_list.txt
+        dir -Filter *.html | % { "<button onclick=`"loadScoreCard('" + $_.basename.replace("'","\'") + "')`" type=`"button`" class=`"btn btn-outline btn-primary btn-lg btn-block courseButton`" style=`"margin: 10px`">" + $_.basename + "</button>"} | out-file course_list.txt
     -->
 
     <style>
@@ -59,16 +59,6 @@
                     <h1 class="page-header">FSX Play Scorecards</h1>
                     
                 </div>
-                <!-- Course Metadata to search:
-                "Name":  "",
-                "Version":  "",
-                "Par":  72.0,
-                "Altitude":  0.0,
-                "City":  "",
-                "Country":  "",
-                "Continent":  "",
-                "State":  ""
-                -->
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -76,22 +66,73 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Course Search <i class="fa fa-chevron-circle-right"></i></a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Course Search <i class="fa fa-search"></i></a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <div class="input-group custom-search-form">
-                                        <input id="txtCourseSearch" type="text" class="form-control" placeholder="Search for Course...">
-                                        <span class="input-group-btn">
-                                            <button id="btnSearchCourseName" class="btn btn-default" type="button" onclick="SearchCourseName()">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Course Name</span>
+                                        <input type="text" class="form-control" placeholder="" id="txtNameSearch">
+                                        <select class="form-control" id="ddlNameSearchOperator">
+                                            <option>Contains</option>
+                                            <option>Equals</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Version</span>
+                                        <input type="text" class="form-control" placeholder="" id="txtVersionSearch">                                        
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Par</span>
+                                        <input type="text" class="form-control" placeholder="" id="txtParSearch">
+                                        <select class="form-control" id="ddlParSearchOperator">
+                                            <option>=</option>
+                                            <option style="display:none">></option>
+                                            <option style="display:none"><</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Altitude</span>
+                                        <input type="text" class="form-control" placeholder="" id="txtAltitudeSearch">
+                                        <select class="form-control" id="ddlAltSearchOperator">
+                                            <option>=</option>
+                                            <option style="display:none">></option>
+                                            <option style="display:none"><</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">City</span>
+                                        <select class="form-control"  id="ddlCitySearch">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Country</span>
+                                        <select class="form-control" id="ddlCountrySearch">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Continent</span>
+                                        <select class="form-control" id="ddlContinentSearch">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">State</span>
+                                        <select class="form-control" id="ddlStateSearch">
+                                            <option></option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="panel-footer small" style="display:none">
-                                    <em></em>
+                                <div class="panel-footer small">
+                                    <button id="btnSearchCourseName" class="btn btn-info" type="button" onclick="SearchCourse()">
+                                        Search
+                                    </button>
+                                    <button id="btnSearchCourseName" class="btn btn-warning" type="button" data-container="body" data-toggle="popover" data-placement="right" data-content="Search Filters Reset" onclick="SearchCourseReset()">
+                                        Reset
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -99,95 +140,100 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12">
+                    <h4 id="courseResultCount">Courses loaded</h4>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-4">
-                    <button onclick="loadScoreCard('Abu Dhabi Golf Club (National)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Abu Dhabi Golf Club (National)</button>
-                    <button onclick="loadScoreCard('Airport National Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Airport National Golf Course</button>
-                    <button onclick="loadScoreCard('Akron Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Akron Country Club</button>
-                    <button onclick="loadScoreCard('Apple Valley Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Apple Valley Golf Course</button>
-                    <button onclick="loadScoreCard('Arcadia Ranch')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Arcadia Ranch</button>
-                    <button onclick="loadScoreCard('Aronimink Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Aronimink Golf Club</button>
-                    <button onclick="loadScoreCard('Audubon CC')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Audubon CC</button>
-                    <button onclick="loadScoreCard('Aurora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Aurora Country Club</button>
-                    <button onclick="loadScoreCard('Awbrey Glen Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Awbrey Glen Golf Course</button>
-                    <button onclick="loadScoreCard('Azalea National Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Azalea National Executive</button>
-                    <button onclick="loadScoreCard('Bala Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bala Golf Club</button>
-                    <button onclick="loadScoreCard('Ballyowen Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Ballyowen Golf Club</button>
-                    <button onclick="loadScoreCard('Barren Boulders Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Barren Boulders Executive</button>
-                    <button onclick="loadScoreCard('Bear Claw Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bear Claw Golf Club</button>
-                    <button onclick="loadScoreCard('Beaver Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Beaver Hills Country Club</button>
-                    <button onclick="loadScoreCard('Big Sur')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Big Sur</button>
-                    <button onclick="loadScoreCard('Birdsfoot Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Birdsfoot Golf Club</button>
-                    <button onclick="loadScoreCard('Black Rock Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Black Rock Golf Course</button>
-                    <button onclick="loadScoreCard('Blackberry Oaks Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blackberry Oaks Golf Course</button>
-                    <button onclick="loadScoreCard('Blue Bayou')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Bayou</button>
-                    <button onclick="loadScoreCard('Blue Bell Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Bell Country Club</button>
-                    <button onclick="loadScoreCard('Blue Heron Hills (NY)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Heron Hills (NY)</button>
-                    <button onclick="loadScoreCard('Blue Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Hills Country Club</button>
-                    <button onclick="loadScoreCard('Blue Springs Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Blue Springs Golf Club</button>
-                    <button onclick="loadScoreCard('Brae Burn Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Brae Burn Country Club</button>
-                    <button onclick="loadScoreCard('Broken Top Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Broken Top Club</button>
-                    <button onclick="loadScoreCard('Broken Tree Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Broken Tree Golf Course</button>
-                    <button onclick="loadScoreCard('Bull Valley Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Bull Valley Golf Club</button>
-                    <button onclick="loadScoreCard('Burrangarra')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Burrangarra</button>
-                    <button onclick="loadScoreCard('Cape Breton Highlands Links')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cape Breton Highlands Links</button>
-                    <button onclick="loadScoreCard('Carnoustie Championship Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Carnoustie Championship Course</button>
-                    <button onclick="loadScoreCard('Cavalier Golf & Yacht Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cavalier Golf & Yacht Club</button>
-                    <button onclick="loadScoreCard('Cedar Valley Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cedar Valley Golf Course</button>
-                    <button onclick="loadScoreCard('Celtic Manor Resort - Twenty Ten')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Celtic Manor Resort - Twenty Ten</button>
-                    <button onclick="loadScoreCard('Champaign Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Champaign Country Club</button>
-                    <button onclick="loadScoreCard('Champions Run')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Champions Run</button>
-                    <button onclick="loadScoreCard('Chicago Highlands Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Chicago Highlands Club</button>
-                    <button onclick="loadScoreCard('Clarity Hills')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Clarity Hills</button>
-                    <button onclick="loadScoreCard('Coatesville Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Coatesville Country Club</button>
-                    <button onclick="loadScoreCard('Cobble Beach')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cobble Beach</button>
-                    <button onclick="loadScoreCard('Coeur d\'Alene Golf Resort')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Coeur d'Alene Golf Resort</button>
-                    <button onclick="loadScoreCard('Cog Hill Golf Club - Dubsdread')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cog Hill Golf Club - Dubsdread</button>
-                    <button onclick="loadScoreCard('Colonial Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Colonial Country Club</button>
-                    <button onclick="loadScoreCard('Congressional Country Club - Blue')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Congressional Country Club - Blue</button>
-                    <button onclick="loadScoreCard('Conway Farms')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Conway Farms</button>
-                    <button onclick="loadScoreCard('Cottonwood Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cottonwood Golf Course</button>
-                    <button onclick="loadScoreCard('Country Club Of Lincoln')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Country Club Of Lincoln</button>
-                    <button onclick="loadScoreCard('Cranberry Highlands Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Cranberry Highlands Golf Course</button>
-                    <button onclick="loadScoreCard('Crans-sur-Sierre Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Crans-sur-Sierre Golf Club</button>
-                    <button onclick="loadScoreCard('Credit Valley Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Credit Valley Country Club</button>
-                    <button onclick="loadScoreCard('Crooked Cove Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Crooked Cove Executive</button>
-                    <button onclick="loadScoreCard('Crosswater Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Crosswater Golf Course</button>
-                    <button onclick="loadScoreCard('Detroit Country Club (Pine to Palm)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Detroit Country Club (Pine to Palm)</button>
-                    <button onclick="loadScoreCard('Doral - Blue Monster')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Doral - Blue Monster</button>
-                    <button onclick="loadScoreCard('Egypt Valley')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Egypt Valley</button>
-                    <button onclick="loadScoreCard('Emirates Golf Club Majlis')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Emirates Golf Club Majlis</button>
-                    <button onclick="loadScoreCard('Foresight Sports Practice Facility')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Foresight Sports Practice Facility</button>
-                    <button onclick="loadScoreCard('Glen Flora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Glen Flora Country Club</button>
-                    <button onclick="loadScoreCard('Glorietta Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Glorietta Golf Club</button>
-                    <button onclick="loadScoreCard('Greencastle Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Greencastle Golf Club</button>
-                    <button onclick="loadScoreCard('Hidden Shoals')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Hidden Shoals</button>
-                    <button onclick="loadScoreCard('Kinsale Golf & Fitness Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Kinsale Golf & Fitness Club</button>
-                    <button onclick="loadScoreCard('La Jolla Pines')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">La Jolla Pines</button>
-                    <button onclick="loadScoreCard('Linfield National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Linfield National Golf Club</button>
-                    <button onclick="loadScoreCard('Lone Wolf Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Lone Wolf Golf Club</button>
-                    <button onclick="loadScoreCard('Magnolia National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Magnolia National Golf Club</button>
-                    <button onclick="loadScoreCard('Meadowbrook Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Meadowbrook Country Club</button>
-                    <button onclick="loadScoreCard('Mill Creek')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Mill Creek</button>
-                    <button onclick="loadScoreCard('Paris')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Paris</button>
-                    <button onclick="loadScoreCard('Pebble Beach Golf Links')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Pebble Beach Golf Links</button>
-                    <button onclick="loadScoreCard('Pelican Hill Golf Club - South Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Pelican Hill Golf Club - South Course</button>
-                    <button onclick="loadScoreCard('Prairie Bluff Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Prairie Bluff Golf Club</button>
-                    <button onclick="loadScoreCard('Saxe Gotha')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Saxe Gotha</button>
-                    <button onclick="loadScoreCard('SentryWorld Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">SentryWorld Golf Course</button>
-                    <button onclick="loadScoreCard('Spyglass Hill')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Spyglass Hill</button>
-                    <button onclick="loadScoreCard('Sunnyside Golf & Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Sunnyside Golf & Country Club</button>
-                    <button onclick="loadScoreCard('Tall Pines Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tall Pines Golf Club</button>
-                    <button onclick="loadScoreCard('Tanah Merah')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tanah Merah</button>
-                    <button onclick="loadScoreCard('Teton Pines Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Teton Pines Country Club</button>
-                    <button onclick="loadScoreCard('The Bedens Brook Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Bedens Brook Club</button>
-                    <button onclick="loadScoreCard('The Crossing Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Crossing Golf Course</button>
-                    <button onclick="loadScoreCard('The Farms Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Farms Golf Club</button>
-                    <button onclick="loadScoreCard('The Heretic Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Heretic Golf Course</button>
-                    <button onclick="loadScoreCard('The Links at Spanish Bay')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">The Links at Spanish Bay</button>
-                    <button onclick="loadScoreCard('Tropical Paradise Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Tropical Paradise Executive</button>
-                    <button onclick="loadScoreCard('Twin Run Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Twin Run Golf Course</button>
-                    <button onclick="loadScoreCard('Wellington National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Wellington National Golf Club</button>
-                    <button onclick="loadScoreCard('Willow Crest Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block" style="margin: 10px">Willow Crest Golf Club</button>
+                    <button onclick="loadScoreCard('Abu Dhabi Golf Club (National)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Abu Dhabi Golf Club (National)</button>
+                    <button onclick="loadScoreCard('Airport National Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Airport National Golf Course</button>
+                    <button onclick="loadScoreCard('Akron Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Akron Country Club</button>
+                    <button onclick="loadScoreCard('Apple Valley Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Apple Valley Golf Course</button>
+                    <button onclick="loadScoreCard('Arcadia Ranch')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Arcadia Ranch</button>
+                    <button onclick="loadScoreCard('Aronimink Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Aronimink Golf Club</button>
+                    <button onclick="loadScoreCard('Audubon CC')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Audubon CC</button>
+                    <button onclick="loadScoreCard('Aurora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Aurora Country Club</button>
+                    <button onclick="loadScoreCard('Awbrey Glen Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Awbrey Glen Golf Course</button>
+                    <button onclick="loadScoreCard('Azalea National Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Azalea National Executive</button>
+                    <button onclick="loadScoreCard('Bala Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Bala Golf Club</button>
+                    <button onclick="loadScoreCard('Ballyowen Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Ballyowen Golf Club</button>
+                    <button onclick="loadScoreCard('Barren Boulders Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Barren Boulders Executive</button>
+                    <button onclick="loadScoreCard('Bear Claw Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Bear Claw Golf Club</button>
+                    <button onclick="loadScoreCard('Beaver Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Beaver Hills Country Club</button>
+                    <button onclick="loadScoreCard('Big Sur')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Big Sur</button>
+                    <button onclick="loadScoreCard('Birdsfoot Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Birdsfoot Golf Club</button>
+                    <button onclick="loadScoreCard('Black Rock Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Black Rock Golf Course</button>
+                    <button onclick="loadScoreCard('Blackberry Oaks Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blackberry Oaks Golf Course</button>
+                    <button onclick="loadScoreCard('Blue Bayou')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blue Bayou</button>
+                    <button onclick="loadScoreCard('Blue Bell Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blue Bell Country Club</button>
+                    <button onclick="loadScoreCard('Blue Heron Hills (NY)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blue Heron Hills (NY)</button>
+                    <button onclick="loadScoreCard('Blue Hills Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blue Hills Country Club</button>
+                    <button onclick="loadScoreCard('Blue Springs Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Blue Springs Golf Club</button>
+                    <button onclick="loadScoreCard('Brae Burn Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Brae Burn Country Club</button>
+                    <button onclick="loadScoreCard('Broken Top Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Broken Top Club</button>
+                    <button onclick="loadScoreCard('Broken Tree Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Broken Tree Golf Course</button>
+                    <button onclick="loadScoreCard('Bull Valley Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Bull Valley Golf Club</button>
+                    <button onclick="loadScoreCard('Burrangarra')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Burrangarra</button>
+                    <button onclick="loadScoreCard('Cape Breton Highlands Links')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cape Breton Highlands Links</button>
+                    <button onclick="loadScoreCard('Carnoustie Championship Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Carnoustie Championship Course</button>
+                    <button onclick="loadScoreCard('Cavalier Golf & Yacht Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cavalier Golf & Yacht Club</button>
+                    <button onclick="loadScoreCard('Cedar Valley Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cedar Valley Golf Course</button>
+                    <button onclick="loadScoreCard('Celtic Manor Resort - Twenty Ten')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Celtic Manor Resort - Twenty Ten</button>
+                    <button onclick="loadScoreCard('Champaign Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Champaign Country Club</button>
+                    <button onclick="loadScoreCard('Champions Run')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Champions Run</button>
+                    <button onclick="loadScoreCard('Chicago Highlands Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Chicago Highlands Club</button>
+                    <button onclick="loadScoreCard('Clarity Hills')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Clarity Hills</button>
+                    <button onclick="loadScoreCard('Coatesville Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Coatesville Country Club</button>
+                    <button onclick="loadScoreCard('Cobble Beach')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cobble Beach</button>
+                    <button onclick="loadScoreCard('Coeur d\'Alene Golf Resort')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Coeur d'Alene Golf Resort</button>
+                    <button onclick="loadScoreCard('Cog Hill Golf Club - Dubsdread')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cog Hill Golf Club - Dubsdread</button>
+                    <button onclick="loadScoreCard('Colonial Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Colonial Country Club</button>
+                    <button onclick="loadScoreCard('Congressional Country Club - Blue')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Congressional Country Club - Blue</button>
+                    <button onclick="loadScoreCard('Conway Farms')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Conway Farms</button>
+                    <button onclick="loadScoreCard('Cottonwood Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cottonwood Golf Course</button>
+                    <button onclick="loadScoreCard('Country Club Of Lincoln')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Country Club Of Lincoln</button>
+                    <button onclick="loadScoreCard('Cranberry Highlands Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Cranberry Highlands Golf Course</button>
+                    <button onclick="loadScoreCard('Crans-sur-Sierre Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Crans-sur-Sierre Golf Club</button>
+                    <button onclick="loadScoreCard('Credit Valley Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Credit Valley Country Club</button>
+                    <button onclick="loadScoreCard('Crooked Cove Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Crooked Cove Executive</button>
+                    <button onclick="loadScoreCard('Crosswater Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Crosswater Golf Course</button>
+                    <button onclick="loadScoreCard('Detroit Country Club (Pine to Palm)')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Detroit Country Club (Pine to Palm)</button>
+                    <button onclick="loadScoreCard('Doral - Blue Monster')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Doral - Blue Monster</button>
+                    <button onclick="loadScoreCard('Egypt Valley')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Egypt Valley</button>
+                    <button onclick="loadScoreCard('Emirates Golf Club Majlis')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Emirates Golf Club Majlis</button>
+                    <button onclick="loadScoreCard('Foresight Sports Practice Facility')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Foresight Sports Practice Facility</button>
+                    <button onclick="loadScoreCard('Glen Flora Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Glen Flora Country Club</button>
+                    <button onclick="loadScoreCard('Glorietta Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Glorietta Golf Club</button>
+                    <button onclick="loadScoreCard('Greencastle Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Greencastle Golf Club</button>
+                    <button onclick="loadScoreCard('Hidden Shoals')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Hidden Shoals</button>
+                    <button onclick="loadScoreCard('Kinsale Golf & Fitness Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Kinsale Golf & Fitness Club</button>
+                    <button onclick="loadScoreCard('La Jolla Pines')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">La Jolla Pines</button>
+                    <button onclick="loadScoreCard('Linfield National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Linfield National Golf Club</button>
+                    <button onclick="loadScoreCard('Lone Wolf Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Lone Wolf Golf Club</button>
+                    <button onclick="loadScoreCard('Magnolia National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Magnolia National Golf Club</button>
+                    <button onclick="loadScoreCard('Meadowbrook Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Meadowbrook Country Club</button>
+                    <button onclick="loadScoreCard('Mill Creek')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Mill Creek</button>
+                    <button onclick="loadScoreCard('Paris')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Paris</button>
+                    <button onclick="loadScoreCard('Pebble Beach Golf Links')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Pebble Beach Golf Links</button>
+                    <button onclick="loadScoreCard('Pelican Hill Golf Club - South Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Pelican Hill Golf Club - South Course</button>
+                    <button onclick="loadScoreCard('Prairie Bluff Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Prairie Bluff Golf Club</button>
+                    <button onclick="loadScoreCard('Saxe Gotha')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Saxe Gotha</button>
+                    <button onclick="loadScoreCard('SentryWorld Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">SentryWorld Golf Course</button>
+                    <button onclick="loadScoreCard('Spyglass Hill')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Spyglass Hill</button>
+                    <button onclick="loadScoreCard('Sunnyside Golf & Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Sunnyside Golf & Country Club</button>
+                    <button onclick="loadScoreCard('Tall Pines Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Tall Pines Golf Club</button>
+                    <button onclick="loadScoreCard('Tanah Merah')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Tanah Merah</button>
+                    <button onclick="loadScoreCard('Teton Pines Country Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Teton Pines Country Club</button>
+                    <button onclick="loadScoreCard('The Bedens Brook Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">The Bedens Brook Club</button>
+                    <button onclick="loadScoreCard('The Crossing Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">The Crossing Golf Course</button>
+                    <button onclick="loadScoreCard('The Farms Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">The Farms Golf Club</button>
+                    <button onclick="loadScoreCard('The Heretic Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">The Heretic Golf Course</button>
+                    <button onclick="loadScoreCard('The Links at Spanish Bay')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">The Links at Spanish Bay</button>
+                    <button onclick="loadScoreCard('Tropical Paradise Executive')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Tropical Paradise Executive</button>
+                    <button onclick="loadScoreCard('Twin Run Golf Course')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Twin Run Golf Course</button>
+                    <button onclick="loadScoreCard('Wellington National Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Wellington National Golf Club</button>
+                    <button onclick="loadScoreCard('Willow Crest Golf Club')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">Willow Crest Golf Club</button>
                 </div>
                 <div class="col-lg-8 sticky">
                     <div class="panel panel-primary">
@@ -241,10 +287,28 @@
             }, 1500, $(this));
         });
 
-        // Wire up keyboard enter key to course name search
-        $("#txtCourseSearch").on('keypress', function (event) {
+        // Wire up keyboard enter key for course searching
+        $("#txtNameSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                $("#btnSearchCourseName").trigger('click');
+                SearchCourse();
+            }
+        });
+
+        $("#txtVersionSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
+            }
+        });
+
+        $("#txtParSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
+            }
+        });
+
+        $("#txtAltitudeSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
             }
         });
 
@@ -264,10 +328,96 @@
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
                 console.log('course json loaded...');
+                if (window.courseArr.length > 0) {
+                    loadSearchDropdowns();
+                    $("#courseResultCount").html("Courses found: " + window.courseArr.length);
+                }
             }).fail(function (data) {
                 console.warn('no course data found!');
             });
         });
+
+        function loadSearchDropdowns() {
+
+            $.each(window.courseArr, function () {
+
+                //CITY
+                if (this.City && this.City.length > 0) {
+                    var cityExists = ($('#ddlCitySearch').find('option[value="' + this.City + '"]').length != 0);
+
+                    if (!cityExists) {
+                        $('#ddlCitySearch').append($('<option></option>').val(this.City).html(this.City));
+                    }
+                }
+
+                //COUNTRY
+                if (this.Country && this.Country.length > 0) {
+                    var countryExists = ($('#ddlCountrySearch').find('option[value="' + this.Country + '"]').length != 0);
+
+                    if (!countryExists) {
+                        $('#ddlCountrySearch').append($('<option></option>').val(this.Country).html(this.Country));
+                    }
+                }
+
+                //CONTINENT
+                if (this.Continent && this.Continent.length > 0) {
+                    var continentExists = ($('#ddlContinentSearch').find('option[value="' + this.Continent + '"]').length != 0);
+
+                    if (!continentExists) {
+                        $('#ddlContinentSearch').append($('<option></option>').val(this.Continent).html(this.Continent));
+                    }
+                }
+
+                //STATE
+                if (this.State && this.State.length > 0) {
+                    var stateExists = ($('#ddlStateSearch').find('option[value="' + this.State + '"]').length != 0);
+
+                    if (!stateExists) {
+                        $('#ddlStateSearch').append($('<option></option>').val(this.State).html(this.State));
+                    }
+                }
+            });
+
+            // Sort City list
+            var cities = $("#ddlCitySearch option");
+            cities.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            cities.appendTo("#ddlCitySearch");
+            $("#ddlCitySearch").val(''); // Select default blank value
+
+            // Sort Country list
+            var countries = $("#ddlCountrySearch option");
+            countries.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            countries.appendTo("#ddlCountrySearch");
+            $("#ddlCountrySearch").val(''); // Select default blank value
+
+            // Sort Continent list
+            var continents = $("#ddlContinentSearch option");
+            continents.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            continents.appendTo("#ddlContinentSearch");
+            $("#ddlContinentSearch").val(''); // Select default blank value
+
+            // Sort State list
+            var states = $("#ddlStateSearch option");
+            states.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            states.appendTo("#ddlStateSearch");
+            $("#ddlStateSearch").val(''); // Select default blank value
+        }
 
         function clipboardCopy() {
             var courseDiv = document.getElementById("courseName");
@@ -299,25 +449,162 @@
             }
         }
 
-        function SearchCourseName() {
-            var courseName = document.getElementById("txtCourseSearch").value;
+        function unhideAllCourses() {
+            document.querySelectorAll('.courseButton').forEach(function (el) {
+                el.style.display = 'block';
+            });
 
-            if (courseName.length > 0) {
-                var result = window.courseArr.filter(function (course) {
-                    // look for the entry with a matching `code` value
-                    return (course.Name.toLowerCase() == courseName);
-                });
+            $("#course-placeholder").empty();
+        }
 
-                if (!result || result.length == 0) {
-                    console.warn('nothing found in course search for: ' + courseName);
-                }
-                else {
-                    var courseName = result[0].Name;
-                    console.log('search result found - loading course: ' + courseName);
-                    if (courseName) {
-                        loadScoreCard(courseName);
+        function SearchCourseReset() {
+            
+            $("#txtNameSearch").val('');
+            $("#txtVersionSearch").val('');
+            $("#txtParSearch").val('');
+            $("#txtAltitudeSearch").val('');
+            $("#ddlCitySearch").val(''); // Select default blank value
+            $("#ddlCountrySearch").val(''); // Select default blank value
+            $("#ddlContinentSearch").val(''); // Select default blank value
+            $("#ddlStateSearch").val(''); // Select default blank value
+
+            unhideAllCourses();
+
+            $("#courseResultCount").html("Courses found: " + window.courseArr.length);
+        }
+
+        function SearchCourse() {
+            unhideAllCourses();
+
+            // Texts
+            var courseName = $("#txtNameSearch").val();
+            var courseVersion = $("#txtVersionSearch").val();
+            var coursePar = $("#txtParSearch").val();
+            var courseAlt = $("#txtAltitudeSearch").val();
+
+            // DDLs
+            var courseCity = $("#ddlCitySearch").val();
+            var courseCountry = $("#ddlCountrySearch").val();
+            var courseContinent = $("#ddlContinentSearch").val();
+            var courseState = $("#ddlStateSearch").val();
+
+            var matches = window.courseArr.filter(function (course) {
+                // Name
+                if (courseName.length > 0) {
+                    if ($("#ddlNameSearchOperator").val() == "Equals") {
+                        return course.Name.toLowerCase() == courseName.toLowerCase();
+                    }
+                    else {
+                        return course.Name.toLowerCase().includes(courseName.toLowerCase());
                     }
                 }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // Version
+                if (courseVersion.length > 0) {
+                    return course.Version.startsWith(courseVersion);
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // Par
+                if (coursePar.length > 0) {
+                    console.log("course.Par " + course.Par + " coursePar: " + coursePar);
+                    console.log("course.Par > coursePar :" + (course.Par > coursePar));
+                    console.log("course.Par < coursePar :" + (course.Par < coursePar));
+                    if ($("#ddlParSearchOperator").val() == "=") {
+                        return course.Par == coursePar;
+                    }
+                    else if ($("#ddlParSearchOperator").val() == ">") {
+                        return course.Par > coursePar;
+                    }
+                    else {
+                        return course.Par < coursePar;
+                    }
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // Altitude
+                if (courseAlt.length > 0) {
+                    console.log("course.Altitude " + course.Altitude + " courseAlt: " + courseAlt);
+                    console.log("course.Altitude > courseAlt :" + (course.Altitude > courseAlt));
+                    console.log("course.Altitude < courseAlt :" + (course.Altitude < courseAlt));
+                    if ($("#ddlParSearchOperator").val() == "=") {
+                        return course.Altitude == courseAlt;
+                    }
+                    else if ($("#ddlAltSearchOperator").val() == ">") {
+                        return course.Altitude > courseAlt;
+                    }
+                    else {
+                        return course.Altitude < courseAlt;
+                    }
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // City
+                if (courseCity.length > 0) {
+                    return course.City == courseCity;
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // Country
+                if (courseCountry.length > 0) {
+                    return course.Country == courseCountry;
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // Continent
+                if (courseContinent.length > 0) {
+                    return course.Continent == courseContinent;
+                }
+                else {
+                    return course;
+                }
+            }).filter(function (course) {
+                // State
+                if (courseState.length > 0) {
+                    return course.State == courseState;
+                }
+                else {
+                    return course;
+                }
+            });
+
+            var matchedCourses = [];
+            $.each(matches, function () {
+                matchedCourses.push(this.Name);
+            });
+
+            $("#courseResultCount").html("Courses found: " + matchedCourses.length);
+
+            if (matchedCourses.length > 0) {
+
+                document.querySelectorAll('.courseButton').forEach(function (el) {
+                    if ($.inArray(el.innerHTML, matchedCourses) == -1) {
+                        el.style.display = 'none';
+                    }
+                });
+
+                if (matchedCourses.length == 1) {
+                    loadScoreCard(matchedCourses[0]);
+                }
+            }
+            else {
+                console.warn('nothing found in course search');
+                document.querySelectorAll('.courseButton').forEach(function (el) {
+                    el.style.display = 'none';
+                });
             }
         }
     </script>
