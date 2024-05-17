@@ -89,10 +89,11 @@
                     <p>These instructions are used to install a parallel version of FSX Play to test different builds as needed while preserving (and sharing) the entire course catalogue</p>
                     <p>After setting up the dual install, your file system will be setup to run FSX Play as:</p>
                     <ul>
-                        <li>BETA => <code>&quot;C:\Program Files (x86)\FSX Play&quot;</code></li>
-                        <ul>
-                            <li>All FSX Play installers (regardless of Beta/Prod/RC will install to this default directory)</li>
-                        </ul>
+                        <li>BETA => <code>&quot;C:\Program Files (x86)\FSX Play&quot;</code>
+                            <ul>
+                                <li>All FSX Play installers (regardless of Beta/Prod/RC will install to this default directory)</li>
+                            </ul>
+                        </li>
                         <li>PROD => <code>&quot;C:\Program Files (x86)\FSX Play - PROD&quot;</code></li>
                     </ul>
 
@@ -109,14 +110,14 @@
 
                         <li>Install the Beta version - uncheck &quot;Create a desktop shortcut&quot; on the &quot;Select Additional Tasks&quot; screen (last screen before &quot;Install&quot;)</li>
 
-                        <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands:</li>
-
-                        <ul>
-                            <li><button onclick="myFunction('cmd1')" onmouseout="outFunc('cmd1')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd1BtnTxt">Copy</span></button>&nbsp;<code id="cmd1">CD &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot;</code></li>
-                            <li><button onclick="myFunction('cmd2')" onmouseout="outFunc('cmd2')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd2BtnTxt">Copy</span></button>&nbsp;<code id="cmd2">mklink /D Catalogue C:\temp\Catalogue</code></li>
-                            <li><button onclick="myFunction('cmd3')" onmouseout="outFunc('cmd3')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd3BtnTxt">Copy</span></button>&nbsp;<code id="cmd3">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
-                            <li><button onclick="myFunction('cmd4')" onmouseout="outFunc('cmd4')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd4BtnTxt">Copy</span></button>&nbsp;<code id="cmd4">mklink /D Catalogue C:\temp\Catalogue</code></li>
-                        </ul>
+                        <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands:
+                            <ul>
+                                <li><button onclick="myFunction('cmd1')" onmouseout="outFunc('cmd1')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd1BtnTxt">Copy</span></button>&nbsp;<code id="cmd1">CD &quot;C:\Program Files (x86)\FSX Play\FSX Play_Data\StreamingAssets&quot;</code></li>
+                                <li><button onclick="myFunction('cmd2')" onmouseout="outFunc('cmd2')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd2BtnTxt">Copy</span></button>&nbsp;<code id="cmd2">mklink /D Catalogue C:\temp\Catalogue</code></li>
+                                <li><button onclick="myFunction('cmd3')" onmouseout="outFunc('cmd3')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd3BtnTxt">Copy</span></button>&nbsp;<code id="cmd3">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
+                                <li><button onclick="myFunction('cmd4')" onmouseout="outFunc('cmd4')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd4BtnTxt">Copy</span></button>&nbsp;<code id="cmd4">mklink /D Catalogue C:\temp\Catalogue</code></li>
+                            </ul>
+                        </li>
 
                         <li>In File Explorer, go into the &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut.</li>
 
@@ -143,11 +144,11 @@
 
                         <li>Run the new PROD version once and exit out</li>
 
-                        <li>Delete old &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is now outdated</li>
-
-                        <ul>
-                            <li>OPTIONAL - If you want to keep it, just rename it from &quot;FSX Play - PROD&quot; to &quot;FSX Play - x_x_x_x&quot; (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later</li>
-                        </ul>
+                        <li>Delete old &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is now outdated
+                            <ul>
+                                <li>OPTIONAL - If you want to keep it, just rename it from &quot;FSX Play - PROD&quot; to &quot;FSX Play - x_x_x_x&quot; (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later</li>
+                            </ul>
+                        </li>
 
                         <li>Copy &quot;FSX Play&quot; folder in &quot;C:\Program Files (x86)&quot; folder and paste back into &quot;C:\Program Files (x86)&quot;</li>
 
@@ -155,13 +156,13 @@
 
                         <li>In File Explorer, go into the new &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut</li>
 
-                        <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;</li>
-
-                        <ul>
-                            <li><button onclick="myFunction('cmd5')" onmouseout="outFunc('cmd5')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd5BtnTxt">Copy</span></button>&nbsp;<code id="cmd5">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
-                            <li><button onclick="myFunction('cmd6')" onmouseout="outFunc('cmd6')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd6BtnTxt">Copy</span></button>&nbsp;<code id="cmd6">rmdir Catalogue</code></li>
-                            <li><button onclick="myFunction('cmd7')" onmouseout="outFunc('cmd7')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd7BtnTxt">Copy</span></button>&nbsp;<code id="cmd7">mklink /D Catalogue C:\temp\Catalogue</code></li>
-                        </ul>
+                        <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;
+                            <ul>
+                                <li><button onclick="myFunction('cmd5')" onmouseout="outFunc('cmd5')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd5BtnTxt">Copy</span></button>&nbsp;<code id="cmd5">CD &quot;C:\Program Files (x86)\FSX Play - PROD\FSX Play_Data\StreamingAssets&quot;</code></li>
+                                <li><button onclick="myFunction('cmd6')" onmouseout="outFunc('cmd6')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd6BtnTxt">Copy</span></button>&nbsp;<code id="cmd6">rmdir Catalogue</code></li>
+                                <li><button onclick="myFunction('cmd7')" onmouseout="outFunc('cmd7')" type="button" class="btn btn-primary btn-xs" style="margin: 3px"><span id="cmd7BtnTxt">Copy</span></button>&nbsp;<code id="cmd7">mklink /D Catalogue C:\temp\Catalogue</code></li>
+                            </ul>
+                        </li>
 
                         <li>Re-install the same Beta version you were using under the steps in &quot;To Update BETA to an updated BETA version&quot; to complete the dual install setup</li>
                     </ul>
@@ -171,10 +172,11 @@
                     <hr />
 
                     <ul>
-                        <li>Install the PROD version as normal to put it back into the default file system location</li>
-                        <ul>
-                            <li>OPTIONAL - Delete the &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is no longer needed</li>
-                        </ul>
+                        <li>Install the PROD version as normal to put it back into the default file system location
+                            <ul>
+                                <li>OPTIONAL - Delete the &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is no longer needed</li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <hr />
@@ -185,14 +187,15 @@
                         <li>You can always see which version of FSX Play you are running by clicking on the Foresights Sports logo at the top of the Main Menu</li>
                         <li>If you start play without using the desktop shortcuts (like from the start menu), you will load the RC version</li>
                         <li>Beta is updated frequently, so a new build can be installed as use the existing desktop shortcut</li>
-                        <li>Prod will be the &quot;side&quot; installed version so it will be out of harms way when Beta is updated - Run which ever you want</li>
-                        <ul>
-                            <li>Warning: Since the share the same data in the %appdata% folder, you might need to double check your settings [or accept T&amp;C each time] if you bounce back and forth frequently</li>
-                        </ul>
-                        <li>Both installs will now point to the same course catalogue, so you can install/update courses as normal from either</li>
-                        <ul>
-                            <li>Note: If the Download Manager has errors with courses in the Prod version, manage the course(s) in the Beta version (since the Beta version is using the expected installed file location &quot;C:\Program Files (x86)\FSX Play&quot;)</li>
-                        </ul>
+                        <li>Prod will be the &quot;side&quot; installed version so it will be out of harms way when Beta is updated - Run which ever you want
+                            <ul>
+                                <li>Warning: Since the share the same data in the %appdata% folder, you might need to double check your settings [or accept T&amp;C each time] if you bounce back and forth frequently</li>
+                            </ul>
+                        </li>
+                        <li>Both installs will now point to the same course catalogue, so you can install/update courses as normal from either
+                            <ul>
+                                <li>Note: If the Download Manager has errors with courses in the Prod version, manage the course(s) in the Beta version (since the Beta version is using the expected installed file location &quot;C:\Program Files (x86)\FSX Play&quot;)</li>
+                            </ul>
                         </li>
                     </ul>
 
