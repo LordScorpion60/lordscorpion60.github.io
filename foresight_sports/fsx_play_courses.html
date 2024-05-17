@@ -468,6 +468,10 @@
             $("#ddlContinentSearch").val(''); // Select default blank value
             $("#ddlStateSearch").val(''); // Select default blank value
 
+            $("#ddlNameSearchOperator").val('Contains'); // Select default value
+            $("#ddlParSearchOperator").val('='); // Select default value
+            $("#ddlAltSearchOperator").val('='); // Select default value
+
             unhideAllCourses();
 
             $("#courseResultCount").html("Courses found: " + window.courseArr.length);
