@@ -504,124 +504,128 @@
             var courseContinent = $("#ddlContinentSearch").val();
             var courseState = $("#ddlStateSearch").val();
 
-            var matches = window.courseArr.filter(function (course) {
-                // Name
-                if (courseName.length > 0) {
-                    if ($("#ddlNameSearchOperator").val() == "Equals") {
-                        return course.Name.toLowerCase() == courseName.toLowerCase();
+
+            // Check to see if we have any search parameters to actually do a search
+            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0) {
+                var matches = window.courseArr.filter(function (course) {
+                    // Name
+                    if (courseName.length > 0) {
+                        if ($("#ddlNameSearchOperator").val() == "Equals") {
+                            return course.Name.toLowerCase() == courseName.toLowerCase();
+                        }
+                        else {
+                            return course.Name.toLowerCase().includes(courseName.toLowerCase());
+                        }
                     }
                     else {
-                        return course.Name.toLowerCase().includes(courseName.toLowerCase());
+                        return course;
                     }
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // Version
-                if (courseVersion.length > 0) {
-                    return course.Version.startsWith(courseVersion);
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // Par
-                if (coursePar.length > 0) {
-                    console.log("course.Par " + course.Par + " coursePar: " + coursePar);
-                    console.log("course.Par > coursePar :" + (course.Par > coursePar));
-                    console.log("course.Par < coursePar :" + (course.Par < coursePar));
-                    if ($("#ddlParSearchOperator").val() == "=") {
-                        return course.Par == coursePar;
-                    }
-                    else if ($("#ddlParSearchOperator").val() == ">") {
-                        return course.Par > coursePar;
+                }).filter(function (course) {
+                    // Version
+                    if (courseVersion.length > 0) {
+                        return course.Version.startsWith(courseVersion);
                     }
                     else {
-                        return course.Par < coursePar;
+                        return course;
                     }
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // Altitude
-                if (courseAlt.length > 0) {
-                    console.log("course.Altitude " + course.Altitude + " courseAlt: " + courseAlt);
-                    console.log("course.Altitude > courseAlt :" + (course.Altitude > courseAlt));
-                    console.log("course.Altitude < courseAlt :" + (course.Altitude < courseAlt));
-                    if ($("#ddlParSearchOperator").val() == "=") {
-                        return course.Altitude == courseAlt;
-                    }
-                    else if ($("#ddlAltSearchOperator").val() == ">") {
-                        return course.Altitude > courseAlt;
+                }).filter(function (course) {
+                    // Par
+                    if (coursePar.length > 0) {
+                        console.log("course.Par " + course.Par + " coursePar: " + coursePar);
+                        console.log("course.Par > coursePar :" + (course.Par > coursePar));
+                        console.log("course.Par < coursePar :" + (course.Par < coursePar));
+                        if ($("#ddlParSearchOperator").val() == "=") {
+                            return course.Par == coursePar;
+                        }
+                        else if ($("#ddlParSearchOperator").val() == ">") {
+                            return course.Par > coursePar;
+                        }
+                        else {
+                            return course.Par < coursePar;
+                        }
                     }
                     else {
-                        return course.Altitude < courseAlt;
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Altitude
+                    if (courseAlt.length > 0) {
+                        console.log("course.Altitude " + course.Altitude + " courseAlt: " + courseAlt);
+                        console.log("course.Altitude > courseAlt :" + (course.Altitude > courseAlt));
+                        console.log("course.Altitude < courseAlt :" + (course.Altitude < courseAlt));
+                        if ($("#ddlParSearchOperator").val() == "=") {
+                            return course.Altitude == courseAlt;
+                        }
+                        else if ($("#ddlAltSearchOperator").val() == ">") {
+                            return course.Altitude > courseAlt;
+                        }
+                        else {
+                            return course.Altitude < courseAlt;
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // City
+                    if (courseCity.length > 0) {
+                        return course.City == courseCity;
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Country
+                    if (courseCountry.length > 0) {
+                        return course.Country == courseCountry;
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Continent
+                    if (courseContinent.length > 0) {
+                        return course.Continent == courseContinent;
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // State
+                    if (courseState.length > 0) {
+                        return course.State == courseState;
+                    }
+                    else {
+                        return course;
+                    }
+                });
+
+                var matchedCourses = [];
+                $.each(matches, function () {
+                    matchedCourses.push(this.Name);
+                });
+
+                $("#courseResultCount").html("Courses found: " + matchedCourses.length);
+
+                if (matchedCourses.length > 0) {
+
+                    document.querySelectorAll('.courseButton').forEach(function (el) {
+                        if ($.inArray(el.innerHTML, matchedCourses) == -1) {
+                            el.style.display = 'none';
+                        }
+                    });
+
+                    if (matchedCourses.length == 1) {
+                        loadScoreCard(matchedCourses[0]);
                     }
                 }
                 else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // City
-                if (courseCity.length > 0) {
-                    return course.City == courseCity;
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // Country
-                if (courseCountry.length > 0) {
-                    return course.Country == courseCountry;
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // Continent
-                if (courseContinent.length > 0) {
-                    return course.Continent == courseContinent;
-                }
-                else {
-                    return course;
-                }
-            }).filter(function (course) {
-                // State
-                if (courseState.length > 0) {
-                    return course.State == courseState;
-                }
-                else {
-                    return course;
-                }
-            });
-
-            var matchedCourses = [];
-            $.each(matches, function () {
-                matchedCourses.push(this.Name);
-            });
-
-            $("#courseResultCount").html("Courses found: " + matchedCourses.length);
-
-            if (matchedCourses.length > 0) {
-
-                document.querySelectorAll('.courseButton').forEach(function (el) {
-                    if ($.inArray(el.innerHTML, matchedCourses) == -1) {
+                    console.warn('nothing found in course search');
+                    document.querySelectorAll('.courseButton').forEach(function (el) {
                         el.style.display = 'none';
-                    }
-                });
-
-                if (matchedCourses.length == 1) {
-                    loadScoreCard(matchedCourses[0]);
+                    });
                 }
-            }
-            else {
-                console.warn('nothing found in course search');
-                document.querySelectorAll('.courseButton').forEach(function (el) {
-                    el.style.display = 'none';
-                });
-            }
+            }            
         }
     </script>
 </body>
