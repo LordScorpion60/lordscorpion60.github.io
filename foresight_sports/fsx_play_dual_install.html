@@ -96,9 +96,16 @@
                         </li>
                         <li>PROD => <code>&quot;C:\Program Files (x86)\FSX Play - PROD&quot;</code></li>
                     </ul>
-
+                    <h2>Table of Contents:</h2>
+                    <ul>
+                        <li><a href="#BETA_INSTALL">To install BETA version alongside PROD</a></li>
+                        <li><a href="#BETA_UPDATE">To update BETA to an updated BETA version</a></li>
+                        <li><a href="#PROD_UPDATE">To update PROD to new PROD version</a></li>
+                        <li><a href="#PROD_RESTORE">To return to factory single install</a></li>
+                        <li><a href="#NOTES">NOTES</a></li>
+                    </ul>
                     <hr />
-                    <h3>To install BETA version alongside PROD:</h3>
+                    <h3 id="BETA_INSTALL">To install BETA version alongside PROD:</h3>
                     <hr />
 
                     <ul>
@@ -127,7 +134,7 @@
                     </ul>
 
                     <hr />
-                    <h3>To update BETA to an updated BETA version:</h3>
+                    <h3 id="BETA_UPDATE">To update BETA to an updated BETA version:</h3>
                     <hr />
                     <ul>
                         <li>Install the newer Beta version - uncheck &quot;Create a desktop shortcut&quot;</li>
@@ -136,25 +143,44 @@
                     </ul>
 
                     <hr />
-                    <h3>To update PROD to new PROD version:</h3>
+                    <h3 id="PROD_UPDATE">To update PROD to new PROD version:</h3>
                     <hr />
 
                     <ul>
-                        <li>Install the new PROD version as normal</li>
+                        <li>Install the new PROD version from either method:
+                            <ol>
+                                <li>Web download
+                                    <ul>
+                                        <li>Install as normal</li>
+                                    </ul>
+                                </li>
+                                <li>In-game software update
+                                    <ul>
+                                        <li>Run the BETA version and update from there
+                                            <ul>
+                                                <li>WARNING: Running in-game update from PROD version will not work since PROD is not using the expected directory</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </li>
 
-                        <li>Run the new PROD version once and exit out</li>
+                        <li>Run the new PROD version once to confirm version from clicking logo and then exit out</li>
 
                         <li>Delete old &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is now outdated
                             <ul>
-                                <li>OPTIONAL - If you want to keep it, just rename it from &quot;FSX Play - PROD&quot; to &quot;FSX Play - x_x_x_x&quot; (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later</li>
+                                <li>OPTIONAL: If you want to keep it, just rename it from &quot;FSX Play - PROD&quot; to &quot;FSX Play - x_x_x_x&quot; (where x_x_x_x is the old version - ex: 1_10_0_10) - Create a desktop shortcut for it if you want to run it later</li>
                             </ul>
                         </li>
 
                         <li>Copy &quot;FSX Play&quot; folder in &quot;C:\Program Files (x86)&quot; folder and paste back into &quot;C:\Program Files (x86)&quot;</li>
 
-                        <li>Rename &quot;FSX Play - Copy&quot; to &quot;FSX Play - PROD&quot;</li>
-
-                        <li>In File Explorer, go into the new &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut</li>
+                        <li>Rename &quot;FSX Play - Copy&quot; to &quot;FSX Play - PROD&quot;
+                            <ul>
+                                <li>OPTIONAL: If the old PROD desktop shortcut is missing, in File Explorer, go into the new &quot;FSX Play - PROD&quot; folder, right click on &quot;FSX Play.exe&quot; and &quot;Send To -> Desktop&quot; to create a shortcut</li>
+                            </ul>
+                        </li>
 
                         <li>Run &quot;Command Prompt&quot; as administrator and then run the following commands after &quot;CMD: &quot;
                             <ul>
@@ -164,23 +190,23 @@
                             </ul>
                         </li>
 
-                        <li>Re-install the same Beta version you were using under the steps in &quot;To Update BETA to an updated BETA version&quot; to complete the dual install setup</li>
+                        <li>Re-install the same Beta version you were using under the steps in <a href="#BETA_UPDATE">To Update BETA to an updated BETA version</a> to complete the dual install setup</li>
                     </ul>
 
                     <hr />
-                    <h3>To return to factory single install:</h3>
+                    <h3 id="PROD_RESTORE">To return to factory single install:</h3>
                     <hr />
 
                     <ul>
                         <li>Install the PROD version as normal to put it back into the default file system location
                             <ul>
-                                <li>OPTIONAL - Delete the &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is no longer needed</li>
+                                <li>OPTIONAL: Delete the &quot;FSX Play - PROD&quot; folder in &quot;C:\Program Files (x86)&quot; that is no longer needed</li>
                             </ul>
                         </li>
                     </ul>
 
                     <hr />
-                    <h3>NOTES:</h3>
+                    <h3 id="NOTES">NOTES:</h3>
                     <hr />
 
                     <ul>
@@ -200,7 +226,7 @@
                     </ul>
 
                     <hr />
-                    <em>Last Updated: 5/11/24 @ 10:00AM MST</em>
+                    <em>Last Updated: 5/20/24 @ 6:00PM MST</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
