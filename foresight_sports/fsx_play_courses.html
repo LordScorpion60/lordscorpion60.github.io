@@ -253,7 +253,7 @@
             $.each(window.courseArr, function () {
 
                 // Build course list
-                var $courseButton = $('<button onclick="loadScoreCard(\'' + this.Name.replace("'", "\'") + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
+                var $courseButton = $('<button onclick="loadScoreCard(\'' + this.Name.replace("'", "\\'") + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
                 $courseButton.appendTo($("#courseList"));
 
                 //CITY
