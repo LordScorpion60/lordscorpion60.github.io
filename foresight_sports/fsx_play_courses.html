@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>LordScorpion60's GitHub Domain</title>
+    <title>LordScorpion60's GitHub Domain - FSX Play Scorecards</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -183,6 +183,7 @@
     <script>
 
         // Variable to hold course information
+        var documentTitle = document.title;
         var courseArr = {};
         var courseMediaArr = {};
 
@@ -365,6 +366,10 @@
                     var updatedUrl = url.substring(0, url.indexOf("?"));
                     window.history.replaceState({}, document.title, updatedUrl);
                 }
+
+                // Update page title to show current loaded course
+                
+                document.title = documentTitle + " - FSX Play Scorecard - " + course;
 
                 // Add/Update any QS params first if user clicks on a course to load
                 var queryParams = new URLSearchParams(window.location.search);
