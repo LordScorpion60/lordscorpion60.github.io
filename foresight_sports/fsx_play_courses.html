@@ -27,7 +27,6 @@
     <meta name="twitter:image" content="https://ogcdn.net/6064b869-74ed-4eb9-b76c-0b701ffe7e6b/v4/lordscorpion60.github.io/%5B%20LordScorpion60's%20Domain%20%5D%20FSX%20Play%20Scorecards/https%3A%2F%2Fopengraph.b-cdn.net%2Fproduction%2Fimages%2Ffa506cf3-1f23-44d9-aa2a-12b830eeaa9d.jpg%3Ftoken%3DUTJ_Ar12acqND3QxxCIsz2b80IzxN2SHbkvjihBaWuo%26height%3D763%26width%3D1018%26expires%3D33253712874/og.png">
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-    
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
@@ -55,7 +54,31 @@
             top: 10px;
             margin-top: 10px;
         }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 25px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #428bca;
+            border-radius: 8px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: grey;
+        }
     </style>
+
+    
 </head>
 
 <body>
@@ -70,12 +93,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">FSX Play Scorecards</h1>
-                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel-group" id="accordion">
+                        <div class="panel panel-danger" style="display:none">
+                            <div class="panel-heading">
+                                Disclaimer <i class="fa fa-exclamation-circle"></i>
+                            </div>
+                            <div class="panel-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                            </div>                            
+                        </div>
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -153,15 +183,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xs-12 col-md-8">
                     <h4 id="courseResultCount">Courses loaded</h4>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4" id="courseList">
+                <div class="col-xs-8 col-md-4" id="courseList" style="height: 900px; overflow-y: auto; overflow-x:hidden;">
                     <!-- Built on load -->
                 </div>
-                <div class="col-lg-8 sticky">
+                <div class="col-xs-4 col-md-8 sticky">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-arrow-left"></i> Click on a course to load it's scorecard here <i class="fa fa-arrow-down"></i>
@@ -172,7 +202,7 @@
                         <div class="panel-footer" id="courseFooter" style="display:none">
                             <div class="share-tooltip" id="courseShare">
                                 <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Link copied to clipboard" onclick="clipboardCopy()">
-                                    Share link to course <i class="fa fa-share"></i>
+                                    Share link to course <i class="fa fa-share-alt"></i>
                                 </a>
                                 <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
