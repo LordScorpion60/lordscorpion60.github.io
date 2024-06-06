@@ -394,6 +394,7 @@
                     }
                     else {
                         y.style.display = "none";
+                        y.href = "#";
                     }
 
                     //Check for Course Flyover link
@@ -403,7 +404,17 @@
                     }
                     else {
                         z.style.display = "none";
+                        z.href = "#";
                     }
+                }
+                else {
+                    // No media data found, so clean out links
+
+                    y.style.display = "none";
+                    y.href = "#";
+
+                    z.style.display = "none";
+                    z.href = "#";
                 }
             }
             catch (error) {
