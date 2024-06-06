@@ -369,6 +369,12 @@
                 if (x.style.display === "none") {
                     x.style.display = "block";
                 }
+
+                // Add media links (if they exist)
+                var $buyButton = $('<a class="btn btn-outline btn-primary" href="#">Buy Course <i class="fa fa-shopping-cart"></i></a>');
+                //$buyButton.appendTo($("#courseFooter"));
+                var $videoButton = $('<a class="btn btn-outline btn-primary" href="#">Watch Course Video <i class="fa fa-video-camera"></i></a>');
+                //$videoButton.appendTo($("#courseFooter"));
             }
             catch (error) {
                 console.warn(error);
