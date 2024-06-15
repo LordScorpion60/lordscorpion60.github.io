@@ -76,9 +76,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: grey;
         }
-    </style>
 
-    
+        input[type='checkbox'] {
+            width: 20px;
+            height: 20px;
+            background: white;
+            vertical-align: middle;
+            bottom: 3px;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -124,7 +131,7 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Version</span>
-                                        <input type="text" class="form-control" placeholder="" id="txtVersionSearch">                                        
+                                        <input type="text" class="form-control" placeholder="" id="txtVersionSearch">
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Par</span>
@@ -143,7 +150,7 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">City</span>
-                                        <select class="form-control"  id="ddlCitySearch">
+                                        <select class="form-control" id="ddlCitySearch">
                                             <option></option>
                                         </select>
                                     </div>
@@ -164,6 +171,11 @@
                                         <select class="form-control" id="ddlStateSearch">
                                             <option></option>
                                         </select>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Has Flyover Video <input type="checkbox" id="chkHasFlyoverVideo">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel-footer small">
@@ -506,6 +518,8 @@
             $("#ddlParSearchOperator").val('='); // Select default value
             $("#ddlAltSearchOperator").val('='); // Select default value
 
+            $("#chkHasFlyoverVideo").prop("checked", false);
+
             unhideAllCourses();
 
             $("#courseResultCount").html("Courses found: " + window.courseArr.length);
@@ -556,9 +570,11 @@
             var courseContinent = $("#ddlContinentSearch").val();
             var courseState = $("#ddlStateSearch").val();
 
+            // CHKs
+            var courseHasFlyoverVideoIsChecked = $("#chkHasFlyoverVideo").prop("checked");
 
             // Check to see if we have any search parameters to actually do a search
-            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0) {
+            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseHasFlyoverVideoIsChecked) {
                 var matches = window.courseArr.filter(function (course) {
                     // Name
                     if (courseName.length > 0) {
@@ -636,6 +652,22 @@
                     else {
                         return course;
                     }
+                }).filter(function (course) {
+                    // Has Flyover Video
+                    if (courseHasFlyoverVideoIsChecked) {
+                        var matchingCourse = window.courseMediaArr.find(item => item.Name === course.Name);
+
+                        if (typeof matchingCourse !== 'undefined') {
+                            //Check for Course Flyover link
+                            if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
+                                //console.log("matching Media Course: " + matchingCourse.Name);
+                                return course
+                            }
+                        }
+                    }
+                    else {
+                        return course;
+                    }
                 });
 
                 var matchedCourses = [];
@@ -663,7 +695,7 @@
                         el.style.display = 'none';
                     });
                 }
-            }            
+            }
         }
     </script>
 </body>
