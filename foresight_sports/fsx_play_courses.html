@@ -128,11 +128,8 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Par</span>
-                                        <input type="text" class="form-control" placeholder="" id="txtParSearch">
-                                        <select class="form-control" id="ddlParSearchOperator">
-                                            <option>=</option>
-                                            <option style="display:none">></option>
-                                            <option style="display:none"><</option>
+                                        <select class="form-control" id="ddlParSearch">
+                                            <option></option>
                                         </select>
                                     </div>
                                     <div class="form-group input-group">
@@ -260,12 +257,6 @@
             }
         });
 
-        $("#txtParSearch").on('keypress', function (event) {
-            if (event.which === 13) {
-                SearchCourse();
-            }
-        });
-
         $("#txtAltitudeSearch").on('keypress', function (event) {
             if (event.which === 13) {
                 SearchCourse();
@@ -289,7 +280,7 @@
             });
 
             // Read in json course media data
-            $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseMediaData.json").done(function (data) {
+            $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
                 window.courseMediaArr = data;
                 console.log('course media json loaded...');
 
@@ -312,6 +303,15 @@
                 // Build course list
                 var $courseButton = $('<button onclick="loadScoreCard(\'' + this.Name.replace("'", "\\'") + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
                 $courseButton.appendTo($("#courseList"));
+
+                //PAR
+                if (this.Par) {
+                    var parExists = ($('#ddlParSearch').find('option[value="' + this.Par + '"]').length != 0);
+
+                    if (!parExists) {
+                        $('#ddlParSearch').append($('<option></option>').val(this.Par).html(this.Par));
+                    }
+                }
 
                 //CITY
                 if (this.City && this.City.length > 0) {
@@ -351,6 +351,16 @@
             });
 
             console.log('courses added...');
+
+            // Sort Par list
+            var pars = $("#ddlParSearch option");
+            pars.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            pars.appendTo("#ddlParSearch");
+            $("#ddlParSearch").val(''); // Select default blank value
 
             // Sort City list
             var cities = $("#ddlCitySearch option");
@@ -485,7 +495,7 @@
         function SearchCourseReset() {
             $("#txtNameSearch").val('');
             $("#txtVersionSearch").val('');
-            $("#txtParSearch").val('');
+            $("#ddlParSearch").val(''); // Select default blank value
             $("#txtAltitudeSearch").val('');
             $("#ddlCitySearch").val(''); // Select default blank value
             $("#ddlCountrySearch").val(''); // Select default blank value
@@ -506,6 +516,10 @@
                 x.style.display = "none";
             }
 
+            ResetURL();
+        }
+
+        function ResetURL() {
             // Reset the query string parameter if we already loaded a course and reset the search parameters
             var url = window.location.href;
             if (url.indexOf("?") > 0) {
@@ -522,14 +536,21 @@
 
         function SearchCourse() {
             unhideAllCourses();
+            ResetURL();
+
+            var x = document.getElementById("courseFooter");
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            }
 
             // Texts
             var courseName = $("#txtNameSearch").val();
             var courseVersion = $("#txtVersionSearch").val();
-            var coursePar = $("#txtParSearch").val();
             var courseAlt = $("#txtAltitudeSearch").val();
 
             // DDLs
+            var coursePar = $("#ddlParSearch").val();
             var courseCity = $("#ddlCitySearch").val();
             var courseCountry = $("#ddlCountrySearch").val();
             var courseContinent = $("#ddlContinentSearch").val();
@@ -562,18 +583,7 @@
                 }).filter(function (course) {
                     // Par
                     if (coursePar.length > 0) {
-                        console.log("course.Par " + course.Par + " coursePar: " + coursePar);
-                        console.log("course.Par > coursePar :" + (course.Par > coursePar));
-                        console.log("course.Par < coursePar :" + (course.Par < coursePar));
-                        if ($("#ddlParSearchOperator").val() == "=") {
-                            return course.Par == coursePar;
-                        }
-                        else if ($("#ddlParSearchOperator").val() == ">") {
-                            return course.Par > coursePar;
-                        }
-                        else {
-                            return course.Par < coursePar;
-                        }
+                        return course.Par == coursePar;
                     }
                     else {
                         return course;
