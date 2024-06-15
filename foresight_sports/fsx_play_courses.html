@@ -137,8 +137,8 @@
                                         <input type="text" class="form-control" placeholder="" id="txtAltitudeSearch">
                                         <select class="form-control" id="ddlAltSearchOperator">
                                             <option>=</option>
-                                            <option style="display:none">></option>
-                                            <option style="display:none"><</option>
+                                            <option>></option>
+                                            <option><</option>
                                         </select>
                                     </div>
                                     <div class="form-group input-group">
@@ -591,10 +591,7 @@
                 }).filter(function (course) {
                     // Altitude
                     if (courseAlt.length > 0) {
-                        console.log("course.Altitude " + course.Altitude + " courseAlt: " + courseAlt);
-                        console.log("course.Altitude > courseAlt :" + (course.Altitude > courseAlt));
-                        console.log("course.Altitude < courseAlt :" + (course.Altitude < courseAlt));
-                        if ($("#ddlParSearchOperator").val() == "=") {
+                        if ($("#ddlAltSearchOperator").val() == "=") {
                             return course.Altitude == courseAlt;
                         }
                         else if ($("#ddlAltSearchOperator").val() == ">") {
