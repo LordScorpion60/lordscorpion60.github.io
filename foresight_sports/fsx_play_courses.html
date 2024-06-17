@@ -123,11 +123,13 @@
                                 <div class="panel-body">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Course Name</span>
+                                        <span class="input-group-btn" style="width: 105px;">
+                                            <select class="form-control" id="ddlNameSearchOperator">
+                                                <option>Contains</option>
+                                                <option>Equals</option>
+                                            </select>
+                                        </span>
                                         <input type="text" class="form-control" placeholder="" id="txtNameSearch">
-                                        <select class="form-control" id="ddlNameSearchOperator">
-                                            <option>Contains</option>
-                                            <option>Equals</option>
-                                        </select>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Version</span>
@@ -140,13 +142,45 @@
                                         </select>
                                     </div>
                                     <div class="form-group input-group">
+                                        <span class="input-group-addon tooltip-search">Slope <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Has at least one teebox that has..."></i></span>
+                                        <span class="input-group-btn" style="width: 60px;">
+                                            <select class="form-control" id="ddlSlopeSearchOperator">
+                                                <option>></option>
+                                                <option><</option>
+                                            </select>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="" id="txtSlopeSearch">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon tooltip-search">Rating <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Has at least one teebox that has..."></i></span>
+                                        <span class="input-group-btn" style="width: 60px;">
+                                            <select class="form-control" id="ddlRatingSearchOperator">
+                                                <option>></option>
+                                                <option><</option>
+                                            </select>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="" id="txtRatingSearch">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon tooltip-search">Yardage <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Has at least one teebox that has..."></i></span>
+                                        <span class="input-group-btn" style="width: 60px;">
+                                            <select class="form-control" id="ddlYardageSearchOperator">
+                                                <option>></option>
+                                                <option><</option>
+                                            </select>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="" id="txtYardageSearch">
+                                    </div>
+                                    <div class="form-group input-group">
                                         <span class="input-group-addon">Altitude</span>
+                                        <span class="input-group-btn" style="width: 60px;">
+                                            <select class="form-control" id="ddlAltSearchOperator">
+                                                <option>></option>
+                                                <option><</option>
+                                                <option>=</option>
+                                            </select>
+                                        </span>
                                         <input type="text" class="form-control" placeholder="" id="txtAltitudeSearch">
-                                        <select class="form-control" id="ddlAltSearchOperator">
-                                            <option>=</option>
-                                            <option>></option>
-                                            <option><</option>
-                                        </select>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">City</span>
@@ -250,6 +284,11 @@
             }
         });
 
+        $('.tooltip-search').tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        })
+
         $("[data-toggle=popover]").on('shown.bs.popover', function () {
             setTimeout(function (a) {
                 a.popover('hide');
@@ -275,6 +314,24 @@
             }
         });
 
+        $("#txtSlopeSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
+            }
+        });
+
+        $("#txtRatingSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
+            }
+        });
+
+        $("#txtYardageSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                SearchCourse();
+            }
+        });
+
         // On page-load.
         $(function () {
             $("#nav-placeholder").load("/nav.html");
@@ -283,6 +340,7 @@
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
                 console.log('course json loaded...');
+                //console.log(window.courseArr);
                 if (window.courseArr.length > 0) {
                     loadSearchDropdowns();
                     $("#courseResultCount").html("Courses found: " + window.courseArr.length);
@@ -506,17 +564,22 @@
 
         function SearchCourseReset() {
             $("#txtNameSearch").val('');
+            $("#ddlNameSearchOperator").val('Contains'); // Select default value
             $("#txtVersionSearch").val('');
             $("#ddlParSearch").val(''); // Select default blank value
+            $("#ddlParSearchOperator").val('='); // Select default value
+            $("#txtSlopeSearch").val('');
+            $("#ddlSlopeSearchOperator").val('>'); // Select default value
+            $("#txtRatingSearch").val('');
+            $("#ddlRatingSearchOperator").val('>'); // Select default value
+            $("#txtYardageSearch").val('');
+            $("#ddlYardageSearchOperator").val('>'); // Select default value
             $("#txtAltitudeSearch").val('');
+            $("#ddlAltSearchOperator").val('>'); // Select default value
             $("#ddlCitySearch").val(''); // Select default blank value
             $("#ddlCountrySearch").val(''); // Select default blank value
             $("#ddlContinentSearch").val(''); // Select default blank value
             $("#ddlStateSearch").val(''); // Select default blank value
-
-            $("#ddlNameSearchOperator").val('Contains'); // Select default value
-            $("#ddlParSearchOperator").val('='); // Select default value
-            $("#ddlAltSearchOperator").val('='); // Select default value
 
             $("#chkHasFlyoverVideo").prop("checked", false);
 
@@ -562,6 +625,9 @@
             var courseName = $("#txtNameSearch").val();
             var courseVersion = $("#txtVersionSearch").val();
             var courseAlt = $("#txtAltitudeSearch").val();
+            var courseYardage = $("#txtYardageSearch").val();
+            var courseSlope = $("#txtSlopeSearch").val();
+            var courseRating = $("#txtRatingSearch").val();
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
@@ -574,7 +640,7 @@
             var courseHasFlyoverVideoIsChecked = $("#chkHasFlyoverVideo").prop("checked");
 
             // Check to see if we have any search parameters to actually do a search
-            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseHasFlyoverVideoIsChecked) {
+            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked) {
                 var matches = window.courseArr.filter(function (course) {
                     // Name
                     if (courseName.length > 0) {
@@ -648,6 +714,45 @@
                     // State
                     if (courseState.length > 0) {
                         return course.State == courseState;
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Slope
+                    if (courseSlope.length > 0) {
+                        if ($("#ddlSlopeSearchOperator").val() == ">") {
+                            return courseSlope < course.MaxSlope;
+                        }
+                        else {
+                            return courseSlope > course.MinSlope;
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Rating
+                    if (courseRating.length > 0) {
+                        if ($("#ddlRatingSearchOperator").val() == ">") {
+                            return courseRating < course.MaxRating;
+                        }
+                        else {
+                            return courseRating > course.MinRating;
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Yardage
+                    if (courseYardage.length > 0) {
+                        if ($("#ddlYardageSearchOperator").val() == ">") {
+                            return courseYardage < course.MaxYardage;
+                        }
+                        else {
+                            return courseYardage > course.MinYardage;
+                        }
                     }
                     else {
                         return course;
