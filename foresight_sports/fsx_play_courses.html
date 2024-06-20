@@ -211,6 +211,11 @@
                                             Has Flyover Video <input type="checkbox" id="chkHasFlyoverVideo">
                                         </div>
                                     </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Is Favorite <input type="checkbox" id="chkIsFavorite">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-footer small">
                                     <button id="btnSearchCourseName" class="btn btn-info" type="button" onclick="SearchCourse()">
@@ -247,6 +252,9 @@
                                 <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Link copied to clipboard" onclick="clipboardCopy()">
                                     Share Course <i class="fa fa-share-alt"></i>
                                 </a>
+                                <span class="tooltip-search">
+                                    <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="MarkCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
+                                </span>
                                 <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
                             </div>
@@ -514,6 +522,13 @@
                 var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
                 //console.log("matchingCourse: " + matchingCourse);
 
+                // Set Course Favorite Button
+                var courseFav = LocalStorage('get', course + "_favorite");
+                
+                //console.log(course + " fav: " + courseFav);
+
+                SetCourseFavoriteStar(courseFav);
+
                 var y = document.getElementById("courseBuyLink");
                 var z = document.getElementById("courseFlyoverLink");
 
@@ -582,6 +597,7 @@
             $("#ddlStateSearch").val(''); // Select default blank value
 
             $("#chkHasFlyoverVideo").prop("checked", false);
+            $("#chkIsFavorite").prop("checked", false);
 
             unhideAllCourses();
 
@@ -611,6 +627,75 @@
             return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
         }
 
+        function LocalStorage(action, key, value) {
+
+            // Code for localStorage/sessionStorage
+            if (typeof (Storage) !== "undefined") {
+
+                if (action === 'get') {
+                    retVal = localStorage.getItem(key);
+                    //console.log("localStorage " + action + ": " + key + "," + retVal);
+                    return retVal;
+                }
+                else if (action === 'set') {
+                    //console.log("localStorage " + action + ": " + key + "," + value);
+                    localStorage.setItem(key, value);
+                }
+                else if (action === 'remove') {
+                    //console.log("localStorage " + action + ": " + key);
+                    localStorage.removeItem(key);
+                }
+            } else {
+                // No Web Storage support...
+                console.warn('No Web Storage support!');
+
+                if (action === 'get') {
+                    return null;
+                }
+            }
+        }
+
+        function MarkCourseFavorite() {
+            var courseDiv = document.getElementById("courseName");
+            var course = courseDiv.innerHTML;
+
+            var fav = LocalStorage('get', course + "_favorite");
+
+            //console.log("fav from storage: " + fav + " " + typeof fav);
+
+            if (fav == null) {
+                fav = true;
+            }
+            else if (fav === 'true') {
+                fav = false;
+            }
+            else {
+                fav = true;
+            }
+
+            //console.log(course + " new fav: " + fav);
+
+            if (fav) {
+                LocalStorage('set', course + "_favorite", fav);
+            }
+            else {
+                LocalStorage('remove', course + "_favorite");
+            }
+
+            SetCourseFavoriteStar(fav);
+        }
+
+        function SetCourseFavoriteStar(fav) {
+            if (fav === 'true' || fav === true) {
+                $("#courseFavoriteStar").removeClass("fa-star-o");
+                $("#courseFavoriteStar").addClass("fa-star");
+            }
+            else {
+                $("#courseFavoriteStar").removeClass("fa-star");
+                $("#courseFavoriteStar").addClass("fa-star-o");
+            }
+        }
+
         function SearchCourse() {
             unhideAllCourses();
             ResetURL();
@@ -638,9 +723,10 @@
 
             // CHKs
             var courseHasFlyoverVideoIsChecked = $("#chkHasFlyoverVideo").prop("checked");
+            var courseIsFavoriteIsChecked = $("#chkIsFavorite").prop("checked");
 
             // Check to see if we have any search parameters to actually do a search
-            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked) {
+            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked || courseIsFavoriteIsChecked) {
                 var matches = window.courseArr.filter(function (course) {
                     // Name
                     if (courseName.length > 0) {
@@ -766,6 +852,20 @@
                             //Check for Course Flyover link
                             if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
                                 //console.log("matching Media Course: " + matchingCourse.Name);
+                                return course
+                            }
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Is Favorite
+                    if (courseIsFavoriteIsChecked) {
+                        var matchingCourse = LocalStorage('get', course.Name + "_favorite");
+                        
+                        if (typeof matchingCourse !== 'undefined') {
+                            if (matchingCourse != null && matchingCourse === 'true') {
                                 return course
                             }
                         }
