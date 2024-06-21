@@ -817,6 +817,15 @@
 
                 if (typeof matchingCourse !== 'undefined') {
 
+                    //Check for Course Data link
+                    if (matchingCourse.Data != null && matchingCourse.Data.length > 0) {
+                        DownloadCourseData(course, matchingCourse.Data);
+                    }
+                    else {
+                        // Reset the course background image
+                        $('#course-placeholder').css('background-image', "");
+                    }
+
                     //Check for Course Buy link
                     if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
                         y.style.display = "";
@@ -855,6 +864,34 @@
             }
             catch (error) {
                 console.warn(error);
+            }
+        }
+
+        function DownloadCourseData(course, courseDataURL) {
+            //console.log("download from: " + courseDataURL);
+
+            var courseImage = SessionStorage('get', course + "_courseImg");
+
+            if (courseImage == null) {
+
+                $.getJSON(courseDataURL).done(function (data) {
+                    courseImage = data.product.image.src + "&width=1500";
+                    console.log("course downloaded image: " + courseImage);
+
+                    // Update the course background image
+                    $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
+                    $('#course-placeholder').css('background-size', "cover");
+
+                    // Cache it for next time in the session
+                    SessionStorage('set', course + "_courseImg", courseImage);
+                }).fail(function (data) {
+                    console.warn('course data could not be downloaded!');
+                });
+            }
+            else {
+                // Update the course background image
+                $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
+                $('#course-placeholder').css('background-size', "cover");
             }
         }
 
@@ -933,6 +970,34 @@
                 else if (action === 'remove') {
                     //console.log("localStorage " + action + ": " + key);
                     localStorage.removeItem(key);
+                }
+            } else {
+                // No Web Storage support...
+                console.warn('No Web Storage support!');
+
+                if (action === 'get') {
+                    return null;
+                }
+            }
+        }
+
+        function SessionStorage(action, key, value) {
+
+            // Code for localStorage/sessionStorage
+            if (typeof (Storage) !== "undefined") {
+
+                if (action === 'get') {
+                    retVal = sessionStorage.getItem(key);
+                    //console.log("sessionStorage " + action + ": " + key + "," + retVal);
+                    return retVal;
+                }
+                else if (action === 'set') {
+                    //console.log("sessionStorage " + action + ": " + key + "," + value);
+                    sessionStorage.setItem(key, value);
+                }
+                else if (action === 'remove') {
+                    //console.log("sessionStorage " + action + ": " + key);
+                    sessionStorage.removeItem(key);
                 }
             } else {
                 // No Web Storage support...
