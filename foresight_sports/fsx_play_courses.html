@@ -116,12 +116,12 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">Info <i class="fa fa-info-circle"></i></a>
+                                    <a data-toggle="collapse" data-parent="#accordionInfo" href="#collapseInfo">Info <i class="fa fa-info-circle"></i></a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse">
+                            <div id="collapseInfo" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>The following is my repository of scorecards collected from each <a href="https://www.foresightsports.com/collections/fsx-courses"target="_blank">Foresight Sports FSX Play course <i class="fa fa-external-link fa-fw"></i></a> to provide specific search capabilities in order to learn more about the courses you own, are looking to buy, or want to share with a friend.</p>
+                                    <p>The following is my repository of scorecards collected from each <a href="https://www.foresightsports.com/collections/fsx-courses" target="_blank">Foresight Sports FSX Play course <i class="fa fa-external-link fa-fw"></i></a> to provide specific search capabilities in order to learn more about the courses you own, are looking to buy, or want to share with a friend.</p>
                                     <p>Each scorecard will have a link to where you can purchase the course, some will have a link to watch a flyover video to learn more about how the course looks in FSX Play.</p>
                                     <p>Be sure to check the Notifications Panel on the <a href="/">home page</a> for updates and new features!</p>
                                 </div>
@@ -130,10 +130,34 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Course Search <i class="fa fa-search"></i></a>
+                                    <a data-toggle="collapse" data-parent="#accordionClub" href="#collapseClub">Club Data <i class="fa fa-crosshairs"></i></a>
                                 </h4>
                             </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
+                            <div id="collapseClub" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Enter your carry for each club at sea level (0 ft.) and each selected course will show the adjusted carry for altitude.</p>
+                                    <label style="text-align: center">
+                                        Driver <input id="clubDataDriver" class="form-control" style="text-align: center; width: 75px;">
+                                    </label>
+                                    <label style="text-align: center">&nbsp;</label>
+                                    <label style="text-align: center">
+                                        7 Iron<input id="clubData7Iron" class="form-control" style="text-align: center; width: 75px;">
+                                    </label>
+                                    <label style="text-align: center">&nbsp;</label>
+                                    <label style="text-align: center">
+                                        Wedge<input id="clubDataWedge" class="form-control" style="text-align: center; width: 75px;">
+                                    </label>
+                                    &nbsp;&nbsp;<button id="btnSaveClubData" class="btn btn-info" type="button" data-container="body" data-toggle="popover" data-placement="right" data-content="Club data saved" onclick="saveClubData()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordionSearch" href="#collapseSearch">Course Search <i class="fa fa-search"></i></a>
+                                </h4>
+                            </div>
+                            <div id="collapseSearch" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Course Name</span>
@@ -268,17 +292,29 @@
                             <!-- Leave blank so course content loads -->
                         </div>
                         <div class="panel-footer" id="courseFooter" style="display:none">
-                            <div class="share-tooltip" id="courseShare">
-                                <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Link copied to clipboard" onclick="clipboardCopy()">
-                                    Share Course <i class="fa fa-share-alt"></i>
-                                </a>
-                                <span class="tooltip-search">
-                                    <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="MarkCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
-                                </span>
-                                <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
-                                <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
-                                <button class="btn btn-outline btn-primary" id="courseRequestFlyover" data-container="body" data-toggle="popover" data-placement="top" data-content="Request sent!" style="display:none" onclick="requestFlyOverVideo()">Request Flyover Video <i class="fa fa-bullhorn"></i></button>
-                            </div>
+                            <table width="100%">
+                                <tr>
+                                    <td align="left">
+                                        <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Link copied to clipboard" onclick="clipboardCopy()">
+                                            Share Course <i class="fa fa-share-alt"></i>
+                                        </a>
+                                        <span class="tooltip-search">
+                                            <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="MarkCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
+                                        </span>
+                                        <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
+                                        <button class="btn btn-outline btn-primary" id="courseRequestFlyover" data-container="body" data-toggle="popover" data-placement="top" data-content="Request sent!" style="display:none" onclick="requestFlyOverVideo()">Request Flyover Video <i class="fa fa-bullhorn"></i></button>
+                                    </td>
+                                    <td align="right">
+                                        <div style="display: none; vertical-align: middle;" id="clubDataAltAdj">
+                                            <button type="button" id="btnAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8;"><b>Alt Gain:</b> <span id="courseAltAdj"></span></button>
+                                            <button type="button" id="btnDriverAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display:none;"><b>D:</b> <span id="clubDriverAltAdj"></span></button>
+                                            <button type="button" id="btn7IronAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display: none;"><b>7i:</b> <span id="club7IronAltAdj"></span></button>
+                                            <button type="button" id="btnWedgeAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display: none;"><b>W:</b> <span id="clubWedgeAltAdj"></span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -366,6 +402,10 @@
         $(function () {
             $("#nav-placeholder").load("/nav.html");
 
+            // Check QS params when page loads in case we got a course to load up
+            const queryParams = new URLSearchParams(window.location.search);
+            const queryCourse = queryParams.get('course');
+
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
@@ -375,27 +415,25 @@
                     loadSearchDropdowns();
                     $("#courseResultCount").html("Courses found: " + window.courseArr.length);
                 }
+
+                // Read in json course media data
+                $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
+                    window.courseMediaArr = data;
+                    console.log('course media json loaded...');
+
+                    if (queryCourse != null) {
+                        loadScoreCard(queryCourse);
+                    }
+                }).fail(function (data) {
+                    console.warn('no course media data found!');
+                });
+
             }).fail(function (data) {
                 console.warn('no course data found!');
             });
-
-            // Read in json course media data
-            $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
-                window.courseMediaArr = data;
-                console.log('course media json loaded...');
-
-                if (queryCourse != null) {
-                    loadScoreCard(queryCourse);
-                }
-            }).fail(function (data) {
-                console.warn('no course media data found!');
-            });
-
-            // Check QS params when page loads in case we got a course to load up
-            const queryParams = new URLSearchParams(window.location.search);
-            const queryCourse = queryParams.get('course');
-
+            
             GetUserData();
+            LoadClubData();
         });
 
         async function GetUserData() {
@@ -420,6 +458,102 @@
             }
 
             console.log(window.userInfo);
+        }
+
+        function LoadClubData() {
+            var clubDriver = LocalStorage('get', "clubData_Driver");
+            var club7Iron = LocalStorage('get', "clubData_7Iron");
+            var clubWedge = LocalStorage('get', "clubData_Wedge");
+
+            if (clubDriver != null) {
+                $('#clubDataDriver').val(clubDriver);
+            }
+
+            if (club7Iron != null) {
+                $('#clubData7Iron').val(club7Iron);
+            }
+
+            if (clubWedge != null) {
+                $('#clubDataWedge').val(clubWedge);
+            }
+        }
+
+        function saveClubData() {
+            var clubDriver = $('#clubDataDriver').val();
+            var club7Iron = $('#clubData7Iron').val();
+            var clubWedge = $('#clubDataWedge').val();
+            var errMsg = "";
+            var finalMsg = "";
+
+            var regex = /^[0-9]+$/;
+
+            if (!clubDriver.match(regex) || Number(clubDriver) == 0 || Number(clubDriver) > 999) {
+                if (clubDriver.length == 0) {
+                    LocalStorage('remove', "clubData_Driver");
+                }
+                else {
+                    errMsg = "Use a number (1-999) for Driver";
+                }
+            }
+            else {
+                LocalStorage('set', "clubData_Driver", clubDriver);
+            }
+
+            if (!club7Iron.match(regex) || Number(club7Iron) == 0 || Number(club7Iron) > 999) {
+                if (club7Iron.length == 0) {
+                    LocalStorage('remove', "clubData_7Iron");
+                }
+                else {
+                    if (errMsg.length == 0) {
+                        errMsg = "Use a number (1-999) for 7 Iron";
+                    }
+                    else {
+                        errMsg += " & 7 Iron";
+                    }
+                }
+            }
+            else {
+                LocalStorage('set', "clubData_7Iron", club7Iron);
+            }
+
+            if (!clubWedge.match(regex) || Number(clubWedge) == 0 || Number(clubWedge) > 999) {
+                if (clubWedge.length == 0) {
+                    LocalStorage('remove', "clubData_Wedge");
+                }
+                else {
+                    if (errMsg.length == 0) {
+                        errMsg = "Use a number (1-999) for Wedge";
+                    }
+                    else {
+                        errMsg += " & Wedge";
+                    }
+                }
+            }
+            else {
+                LocalStorage('set', "clubData_Wedge", clubWedge);
+            }
+
+            if (errMsg.length > 0) {
+                finalMsg = errMsg;
+            }
+            else if (clubDriver.length == 0 && club7Iron.length == 0 && clubWedge.length == 0) {
+                finalMsg = "Nothing to save...";
+            }
+            else
+            {
+                finalMsg = "Club data saved";
+            }
+
+            var yourElement = document.getElementById("btnSaveClubData");
+            yourElement.setAttribute("data-content", finalMsg);
+
+            // Check QS params in case we need to reload the scorecard to use new values
+            queryParams = new URLSearchParams(window.location.search);
+            queryCourse = queryParams.get('course');
+
+            if (queryCourse != null) {
+                loadScoreCard(queryCourse);
+            }
         }
 
         function loadSearchDropdowns() {
@@ -584,9 +718,6 @@
                     x.style.display = "block";
                 }
 
-                var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
-                //console.log("matchingCourse: " + matchingCourse);
-
                 // Set Course Favorite Button
                 var courseFav = LocalStorage('get', course + "_favorite");
                 
@@ -597,6 +728,92 @@
                 var y = document.getElementById("courseBuyLink");
                 var z = document.getElementById("courseFlyoverLink");
                 var zz = document.getElementById("courseRequestFlyover");
+                var clubDataDiv = document.getElementById("clubDataAltAdj");
+                var clubDriverBtn = document.getElementById("btnDriverAltAdj");
+                var club7IronBtn = document.getElementById("btn7IronAltAdj");
+                var clubWedgeBtn = document.getElementById("btnWedgeAltAdj");
+
+                var clubDriver = LocalStorage('get', "clubData_Driver");
+                var club7Iron = LocalStorage('get', "clubData_7Iron");
+                var clubWedge = LocalStorage('get', "clubData_Wedge");
+
+                clubDriverBtn.style.display = "none";
+                club7IronBtn.style.display = "none";
+                clubWedgeBtn.style.display = "none";
+
+                //console.log("driver: " + clubDriver);
+                //console.log("7i: " + club7Iron);
+                //console.log("wedge: " + clubWedge);
+
+                var courseAlt = window.courseArr.find(item => item.Name === course).Altitude;
+                // Altitude(y) to % gain(x): 0.00002y=x
+                altGain = (0.00002 * courseAlt);
+
+                //console.log("course alt: " + courseAlt);
+
+                var courseAltAdj = Math.round((altGain * 100));
+
+                //console.log("course alt gain: " + courseAltAdj);
+
+                if (courseAltAdj > 0) {
+                    clubDataDiv.style.display = "table-cell";
+
+                    $("#courseAltAdj").text(courseAltAdj + "%");
+
+                    if (clubDriver != null || club7Iron != null || clubWedge != null) {
+
+                        if (clubDriver != null) {
+                            var newDriver = clubDriver;
+
+                            try {
+                                newDriver = Number(clubDriver);
+                                newDriver = Math.round((newDriver * altGain) + newDriver);
+                            }
+                            catch (e) {
+                                console.warn("error calculating driver altitude adjustment: " + e);
+                            }
+
+                            clubDriverBtn.style.display = "";
+                            $("#clubDriverAltAdj").text(newDriver);
+                        }
+
+                        if (club7Iron != null) {
+                            var new7Iron = club7Iron;
+
+                            try {
+                                new7Iron = Number(club7Iron);
+                                new7Iron = Math.round((new7Iron * altGain) + new7Iron);
+                            }
+                            catch (e) {
+                                console.warn("error calculating 7iron altitude adjustment: " + e);
+                            }
+
+                            club7IronBtn.style.display = "";
+                            $("#club7IronAltAdj").text(new7Iron);
+                        }
+
+                        if (clubWedge != null) {
+                            var newWedge = clubWedge;
+
+                            try {
+                                newWedge = Number(clubWedge);
+                                newWedge = Math.round((newWedge * altGain) + newWedge);
+                            }
+                            catch (e) {
+                                console.warn("error calculating wedge altitude adjustment: " + e);
+                            }
+
+                            clubWedgeBtn.style.display = "";
+                            $("#clubWedgeAltAdj").text(newWedge);
+                        }
+                    }
+                }
+                else {
+                    clubDataDiv.style.display = "none";
+                }
+
+                var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
+                //console.log("matchingCourse: " + matchingCourse);
 
                 if (typeof matchingCourse !== 'undefined') {
 
