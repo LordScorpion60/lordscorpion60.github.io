@@ -197,6 +197,12 @@
                                         <input type="text" class="form-control" placeholder="" id="txtAltitudeSearch">
                                     </div>
                                     <div class="form-group input-group">
+                                        <span class="input-group-addon">Type</span>
+                                        <select class="form-control" id="ddlTypeSearch">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group input-group">
                                         <span class="input-group-addon">City</span>
                                         <select class="form-control" id="ddlCitySearch">
                                             <option></option>
@@ -433,6 +439,15 @@
                     }
                 }
 
+                //TYPE
+                if (this.Type) {
+                    var typeExists = ($('#ddlTypeSearch').find('option[value="' + this.Type + '"]').length != 0);
+
+                    if (!typeExists) {
+                        $('#ddlTypeSearch').append($('<option></option>').val(this.Type).html(this.Type));
+                    }
+                }
+
                 //CITY
                 if (this.City && this.City.length > 0) {
                     var cityExists = ($('#ddlCitySearch').find('option[value="' + this.City + '"]').length != 0);
@@ -481,6 +496,16 @@
             });
             pars.appendTo("#ddlParSearch");
             $("#ddlParSearch").val(''); // Select default blank value
+
+            // Sort Type list
+            var types = $("#ddlTypeSearch option");
+            types.detach().sort(function (a, b) {
+                var at = $(a).text();
+                var bt = $(b).text();
+                return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+            });
+            types.appendTo("#ddlTypeSearch");
+            $("#ddlTypeSearch").val(''); // Select default blank value
 
             // Sort City list
             var cities = $("#ddlCitySearch option");
@@ -629,7 +654,6 @@
             $("#ddlNameSearchOperator").val('Contains'); // Select default value
             $("#txtVersionSearch").val('');
             $("#ddlParSearch").val(''); // Select default blank value
-            $("#ddlParSearchOperator").val('='); // Select default value
             $("#txtSlopeSearch").val('');
             $("#ddlSlopeSearchOperator").val('>'); // Select default value
             $("#txtRatingSearch").val('');
@@ -642,6 +666,7 @@
             $("#ddlCountrySearch").val(''); // Select default blank value
             $("#ddlContinentSearch").val(''); // Select default blank value
             $("#ddlStateSearch").val(''); // Select default blank value
+            $("#ddlTypeSearch").val(''); // Select default blank value
 
             $("#chkHasFlyoverVideo").prop("checked", false);
             $("#chkIsFavorite").prop("checked", false);
@@ -801,6 +826,7 @@
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
+            var courseType = $("#ddlTypeSearch").val();
             var courseCity = $("#ddlCitySearch").val();
             var courseCountry = $("#ddlCountrySearch").val();
             var courseContinent = $("#ddlContinentSearch").val();
@@ -811,7 +837,7 @@
             var courseIsFavoriteIsChecked = $("#chkIsFavorite").prop("checked");
 
             // Check to see if we have any search parameters to actually do a search
-            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked || courseIsFavoriteIsChecked) {
+            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseType.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked || courseIsFavoriteIsChecked) {
                 var matches = window.courseArr.filter(function (course) {
                     // Name
                     if (courseName.length > 0) {
@@ -837,6 +863,14 @@
                     // Par
                     if (coursePar.length > 0) {
                         return course.Par == coursePar;
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Type
+                    if (courseType.length > 0) {
+                        return course.Type == courseType;
                     }
                     else {
                         return course;
