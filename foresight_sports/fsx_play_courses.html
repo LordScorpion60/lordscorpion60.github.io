@@ -111,15 +111,29 @@
                             </div>
                             <div class="panel-body">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                            </div>                            
+                            </div>
                         </div>
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Course Search <i class="fa fa-search"></i></a>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">Info <i class="fa fa-info-circle"></i></a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>The following is my repository of scorecards collected from each <a href="https://www.foresightsports.com/collections/fsx-courses"target="_blank">Foresight Sports FSX Play course <i class="fa fa-external-link fa-fw"></i></a> to provide specific search capabilities in order to learn more about the courses you own, are looking to buy, or want to share with a friend.</p>
+                                    <p>Each scorecard will have a link to where you can purchase the course, some will have a link to watch a flyover video to learn more about how the course looks in FSX Play.</p>
+                                    <p>Be sure to check the Notifications Panel on the <a href="/">home page</a> for updates and new features!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Course Search <i class="fa fa-search"></i></a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Course Name</span>
@@ -257,6 +271,7 @@
                                 </span>
                                 <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
+                                <button class="btn btn-outline btn-primary" id="courseRequestFlyover" data-container="body" data-toggle="popover" data-placement="top" data-content="Request sent!" style="display:none" onclick="requestFlyOverVideo()">Request Flyover Video <i class="fa fa-bullhorn"></i></button>
                             </div>
                         </div>
                     </div>
@@ -284,6 +299,7 @@
         var documentTitle = document.title;
         var courseArr = {};
         var courseMediaArr = {};
+        var userInfo = "[NO_IP]";
 
         $("[data-toggle=popover]").popover({
             delay: {
@@ -372,7 +388,33 @@
             // Check QS params when page loads in case we got a course to load up
             const queryParams = new URLSearchParams(window.location.search);
             const queryCourse = queryParams.get('course');
+
+            GetUserData();
         });
+
+        async function GetUserData() {
+            try {
+                var request1 = await fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        window.userInfo = "[" + data.ip + "]";
+
+                        $.getJSON("https://ipinfo.io/json?token=e96ec5b44f0930").done(function (data) {
+                            window.userInfo = "[" + jsonResponse.ip + ":" + jsonResponse.city + ":" + jsonResponse.country + ":" + jsonResponse.postal + "]";
+                        }).fail(function (data) {
+                            console.warn('no extra user data could be loaded!');
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching IP:', error);
+                    });
+            }
+            catch {
+                console.warn("could not get user IP...");
+            }
+
+            console.log(window.userInfo);
+        }
 
         function loadSearchDropdowns() {
 
@@ -485,7 +527,6 @@
 
         function clipboardCopy() {
             var courseDiv = document.getElementById("courseName");
-            
             var copyText = courseDiv.innerHTML;
             var path = window.location.href.split('?')[0]
             var shareURL = encodeURI(path + "?course=" + copyText);
@@ -503,7 +544,6 @@
                 }
 
                 // Update page title to show current loaded course
-                
                 document.title = documentTitle + " - " + course;
 
                 // Add/Update any QS params first if user clicks on a course to load
@@ -531,6 +571,7 @@
 
                 var y = document.getElementById("courseBuyLink");
                 var z = document.getElementById("courseFlyoverLink");
+                var zz = document.getElementById("courseRequestFlyover");
 
                 if (typeof matchingCourse !== 'undefined') {
 
@@ -548,10 +589,14 @@
                     if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
                         z.style.display = ""
                         z.href = matchingCourse.Flyover;
+
+                        zz.style.display = "none";
                     }
                     else {
                         z.style.display = "none";
                         z.href = "#";
+
+                        zz.style.display = "";
                     }
                 }
                 else {
@@ -562,6 +607,8 @@
 
                     z.style.display = "none";
                     z.href = "#";
+
+                    zz.style.display = "none";
                 }
             }
             catch (error) {
@@ -694,6 +741,44 @@
                 $("#courseFavoriteStar").removeClass("fa-star");
                 $("#courseFavoriteStar").addClass("fa-star-o");
             }
+        }
+
+        function requestFlyOverVideo() {
+            var courseDiv = document.getElementById("courseName");
+            var course = courseDiv.innerHTML;
+
+            var hasSentCourseRequest = LocalStorage('get', course + "_requestedFlyover");
+
+            //console.log("hasSentCourseRequest from storage: " + hasSentCourseRequest + " " + typeof hasSentCourseRequest);
+
+            if (hasSentCourseRequest == null) {
+                var msg = "Requesting a flyover video for: " + course;
+
+                SendMessage(msg);
+
+                console.log("Message sent - " + msg);
+
+                LocalStorage('set', course + "_requestedFlyover", true);
+            }
+            else {
+                console.log("A request has already sent for: " + course + " - Nothing to do...");
+            }
+        }
+
+        function SendMessage(msg) {
+
+            const request = new XMLHttpRequest();
+            request.open("POST", "https://discord.com/api/webhooks/1253472184752410675/zf9b9C0dKCPc2JlmuopVRryFrD4YBCqYv4DIpbD4O6zg11K-Oi7pxwaeKpAP4xd8r9G2");
+
+            request.setRequestHeader('Content-type', 'application/json');
+
+            const params = {
+                username: "Website User - " + window.userInfo,
+                avatar_url: "https://lordscorpion60.github.io/images/homepage_og_img.png",
+                content: msg
+            }
+
+            request.send(JSON.stringify(params));
         }
 
         function SearchCourse() {
