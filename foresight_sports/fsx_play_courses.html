@@ -872,11 +872,18 @@
 
             var courseImage = SessionStorage('get', course + "_courseImg");
 
+            //console.log("course image: " + courseImage);
+
             if (courseImage == null) {
 
                 $.getJSON(courseDataURL).done(function (data) {
-                    courseImage = data.product.image.src + "&width=1500";
-                    console.log("course downloaded image: " + courseImage);
+                    courseImage = data.product.image.src;
+
+                    if (courseImage.startsWith("https://")) {
+                        courseImage += "&width=1500";
+                    }
+
+                    //console.log("course downloaded image: " + courseImage);
 
                     // Update the course background image
                     $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
