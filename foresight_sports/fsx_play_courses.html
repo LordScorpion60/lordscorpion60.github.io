@@ -287,13 +287,28 @@
                     <!-- Built on load -->
                 </div>
                 <div class="col-xs-8 col-md-8">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" style="display: inline-block">
                         <div class="panel-heading">
                             <i class="fa fa-arrow-left"></i> Click on a course to load it's scorecard here <i class="fa fa-arrow-down"></i>
                         </div>
-                        <div class="panel-body" id="course-placeholder">
+                        <div class="panel-body" id="course_placeholder">
                             <!-- Leave blank so course content loads -->
                         </div>
+                        <!-- Image Modal -->
+                        <div class="modal fade" id="courseImageModal" tabindex="-1" role="dialog" aria-labelledby="courseImageModalTitle" aria-hidden="true">
+                            <div class="modal-dialog" style="display: inline-block; width: auto; margin: 10px; display: flex; justify-content: center; text-align: center; ">
+                                <div class="modal-content" style="">
+                                    <div class="modal-header" style="padding: 5px;">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-right: 7px; margin-top:0px; font-size: 30px;">&times;</button>
+                                        <h4 class="modal-title" id="courseImageModalTitle">Course Name</h4>
+                                    </div>
+                                    <div class="modal-body" data-dismiss="modal" style="padding: 0px;">
+                                        <img id="courseImageModalFull" />
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Modal -->
                         <div class="panel-footer" id="courseFooter" style="display:none">
                             <table width="100%">
                                 <tr>
@@ -310,7 +325,7 @@
                                     </td>
                                     <td align="right">
                                         <div style="display: none; vertical-align: middle;" id="clubDataAltAdj">
-                                            <button type="button" id="btnAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8;"><b>Alt Gain:</b> <span id="courseAltAdj"></span></button>
+                                            &nbsp;<button type="button" id="btnAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8;"><b>Alt Gain:</b> <span id="courseAltAdj"></span></button>
                                             <button type="button" id="btnDriverAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display:none;"><b>D:</b> <span id="clubDriverAltAdj"></span></button>
                                             <button type="button" id="btn7IronAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display: none;"><b>7i:</b> <span id="club7IronAltAdj"></span></button>
                                             <button type="button" id="btnWedgeAltAdj" class="btn btn-info disabled" style="color: #000; opacity: .8; display: none;"><b>W:</b> <span id="clubWedgeAltAdj"></span></button>
@@ -411,7 +426,7 @@
 
             // Check QS params when page loads in case we got a course to load up
             const queryParams = new URLSearchParams(window.location.search);
-            const queryCourse = queryParams.get('course');
+            queryCourse = queryParams.get('course');
             const querySearch = queryParams.get('search');
 
             // Read in json course data
@@ -435,6 +450,7 @@
 
                         if (lastSearch != null) {
                             // Restore search criteria to each field on the page...
+                            queryCourse = null;
                             PreloadSearchCriteria(lastSearch);
                         }
                         else {
@@ -456,7 +472,7 @@
                     Debug('course media json loaded...');
 
                     if (querySearch != null) {
-                        Debug(querySearch);
+                        Debug("search passed in via URL: " + querySearch);
 
                         try {
                             var searchString_dec = Base64_decode_url(querySearch);
@@ -937,7 +953,7 @@
                 queryParams.set("course", course);
                 window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
 
-                $("#course-placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
+                $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
 
                 var x = document.getElementById("courseFooter");
 
@@ -1051,7 +1067,7 @@
                     }
                     else {
                         // Reset the course background image
-                        $('#course-placeholder').css('background-image', "");
+                        RemoveCourseModal();
                     }
 
                     //Check for Course Buy link
@@ -1114,8 +1130,7 @@
                     Debug("course downloaded image: " + courseImage);
 
                     // Update the course background image
-                    $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
-                    $('#course-placeholder').css('background-size', "cover");
+                    UpdateCourseModal(course, courseImage);
 
                     // Cache it for next time in the session
                     SessionStorage('set', course + "_courseImg", courseImage);
@@ -1125,20 +1140,37 @@
             }
             else {
                 // Update the course background image
-                $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
-                $('#course-placeholder').css('background-size', "cover");
+                UpdateCourseModal(course, courseImage);
             }
+        }
+
+        function UpdateCourseModal(course, courseImage) {
+            $('#course_placeholder').css('background-image', "url(" + courseImage + ")");
+            $('#course_placeholder').css('background-size', "cover");
+            $('#course_placeholder').attr('data-target', '#courseImageModal');
+            $('#course_placeholder').attr('data-toggle', 'modal');
+            $('#courseImageModalTitle').text(course);
+            $("#courseImageModalFull").attr("src", courseImage);
+            $('#course_placeholder').css('cursor', 'pointer');
+        }
+
+        function RemoveCourseModal() {
+            $('#course_placeholder').css('background-image', "");
+            $('#course_placeholder').attr('data-target', '');
+            $('#course_placeholder').attr('data-toggle', '');
+            $('#courseImageModalTitle').text('Course Name');
+            $('#course_placeholder').css('cursor', '');
         }
 
         function UnhideAllCourses() {
             // Reset the course background image
-            $('#course-placeholder').css('background-image', "");
+            RemoveCourseModal();
 
             document.querySelectorAll('.courseButton').forEach(function (el) {
                 el.style.display = 'block';
             });
 
-            $("#course-placeholder").empty();
+            $("#course_placeholder").empty();
         }
 
         function searchCourseReset() {
