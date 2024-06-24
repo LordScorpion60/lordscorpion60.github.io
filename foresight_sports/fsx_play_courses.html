@@ -261,12 +261,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel-footer small">
-                                    <button id="btnSearchCourseName" class="btn btn-info" type="button" onclick="SearchCourse()">
+                                <div id="searchFooter" class="panel-footer small">
+                                    <button id="btnSearchCourseName" class="btn btn-info" type="button" onclick="searchCourse()">
                                         Search
                                     </button>
-                                    <button id="btnSearchCourseName" class="btn btn-warning" type="button" data-container="body" data-toggle="popover" data-placement="right" data-content="Search Filters Reset" onclick="SearchCourseReset()">
+                                    <button id="btnSearchCourseName" class="btn btn-warning" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Search Filters Reset" onclick="searchCourseReset()">
                                         Reset
+                                    </button>
+                                    <button id="btnSearchShare" class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="" onclick="shareSearch()">
+                                        Share Search <i class="fa fa-share-alt"></i>
                                     </button>
                                 </div>
                             </div>
@@ -295,11 +298,11 @@
                             <table width="100%">
                                 <tr>
                                     <td align="left">
-                                        <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Link copied to clipboard" onclick="clipboardCopy()">
+                                        <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="URL copied to clipboard" onclick="shareCourse()">
                                             Share Course <i class="fa fa-share-alt"></i>
                                         </a>
                                         <span class="tooltip-search">
-                                            <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="MarkCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
+                                            <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="markCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
                                         </span>
                                         <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
                                         <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
@@ -342,6 +345,8 @@
         var courseArr = {};
         var courseMediaArr = {};
         var userInfo = "[NO_IP]";
+        var searchDataFound = false;
+        var isDebug = false;
 
         $("[data-toggle=popover]").popover({
             delay: {
@@ -364,65 +369,118 @@
         // Wire up keyboard enter key for course searching
         $("#txtNameSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         $("#txtVersionSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         $("#txtAltitudeSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         $("#txtSlopeSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         $("#txtRatingSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         $("#txtYardageSearch").on('keypress', function (event) {
             if (event.which === 13) {
-                SearchCourse();
+                searchCourse();
             }
         });
 
         // On page-load.
         $(function () {
+            SetDebugMode();
+
             $("#nav-placeholder").load("/nav.html");
 
             // Check QS params when page loads in case we got a course to load up
             const queryParams = new URLSearchParams(window.location.search);
             const queryCourse = queryParams.get('course');
+            const querySearch = queryParams.get('search');
 
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
-                console.log('course json loaded...');
-                //console.log(window.courseArr);
+
+                Debug('course json loaded...');
+                Debug(window.courseArr);
+
                 if (window.courseArr.length > 0) {
-                    loadSearchDropdowns();
+                    LoadSearchDropdowns();
                     $("#courseResultCount").html("Courses found: " + window.courseArr.length);
+                }
+
+                // Restore any seach criteria if from refresh/reload
+                if (window.performance) {
+                    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+                        // Page was reloaded - Restore any previous search criteria
+
+                        var lastSearch = SessionStorage('get', 'lastSearch');
+
+                        if (lastSearch != null) {
+                            // Restore search criteria to each field on the page...
+                            PreloadSearchCriteria(lastSearch);
+                        }
+                        else {
+                            Debug("no previous search found...");
+                        }
+                    } else {
+                        // Page was not reloaded, so remove any last search criteria that might be cached
+                        SessionStorage('remove', 'lastSearch');
+                    }
+                }
+                else {
+                    console.warn("Navigation Timing API is not supported on this browser!");
                 }
 
                 // Read in json course media data
                 $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
                     window.courseMediaArr = data;
-                    console.log('course media json loaded...');
 
-                    if (queryCourse != null) {
+                    Debug('course media json loaded...');
+
+                    if (querySearch != null) {
+                        Debug(querySearch);
+
+                        try {
+                            var searchString_dec = Base64_decode_url(querySearch);
+
+                            Debug("decoded URL search string:" + searchString_dec);
+
+                            // Restore search criteria to each field on the page...
+                            PreloadSearchCriteria(searchString_dec);
+                        }
+                        catch (e) {
+                            console.warn('could not parse search url parameter: ' + e);
+                            ResetURL();
+                        }
+                    }
+                    else if (queryCourse != null) {
                         loadScoreCard(queryCourse);
+                    }
+                }).done(function (data) {
+                    if (window.searchDataFound) {
+                        // Expand search criteria box
+                        $('#collapseSearch').addClass('in');
+                        // Re-run search
+                        searchCourse();
+                        window.searchDataFound = false;
                     }
                 }).fail(function (data) {
                     console.warn('no course media data found!');
@@ -443,21 +501,150 @@
                     .then(data => {
                         window.userInfo = "[" + data.ip + "]";
 
-                        $.getJSON("https://ipinfo.io/json?token=e96ec5b44f0930").done(function (data) {
-                            window.userInfo = "[" + jsonResponse.ip + ":" + jsonResponse.city + ":" + jsonResponse.country + ":" + jsonResponse.postal + "]";
+                        $.getJSON("https://ipinfo.io/json?token=e96ec5b44f0930").done(function (ipData) {
+                            window.userInfo = "[" + ipData.ip + ":" + ipData.city + ":" + ipData.country + ":" + ipData.postal + "]";
+
+                            Debug(ipData);
                         }).fail(function (data) {
-                            console.warn('no extra user data could be loaded!');
+                            Debug('no extra user data could be loaded!');
+                        }).always(function (data) {
+                            Debug(window.userInfo);
                         });
                     })
                     .catch(error => {
-                        console.error('Error fetching IP:', error);
+                        Debug('Error fetching IP:' + error);
                     });
             }
-            catch {
-                console.warn("could not get user IP...");
+            catch (e) {
+                Debug("could not get user IP: " + e);
             }
+        }
 
-            console.log(window.userInfo);
+        function PreloadSearchCriteria(searchData) {
+
+            var searchArr = searchData.split('|');
+
+            $.each(searchArr, function (index, value) {
+                var searchField = value.split(';');
+
+                // Name
+                if (searchField[0] == ('courseName') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseName: ' + searchField[1] + ' ' + searchField[2]);
+
+                    $("#txtNameSearch").val(searchField[1]);
+                    $("#ddlNameSearchOperator").val(searchField[2]);
+                }
+                // Version
+                if (searchField[0] == ('courseVersion') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+                    
+                    Debug('courseVersion: ' + searchField[1]);
+
+                    $("#txtVersionSearch").val(searchField[1]);
+                }
+                // Par
+                if (searchField[0] == ('coursePar') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('coursePar: ' + searchField[1]);
+
+                    $("#ddlParSearch").val(searchField[1]);
+                }
+                // Type
+                if (searchField[0] == ('courseType') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseType: ' + searchField[1]);
+
+                    $("#ddlTypeSearch").val(searchField[1]);
+                }
+                // Altitude
+                if (searchField[0] == ('courseAlt') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseAlt: ' + searchField[1] + ' ' + searchField[2]);
+
+                    $("#txtAltitudeSearch").val(searchField[1]);
+                    $("#ddlAltSearchOperator").val(searchField[2]);
+                }
+                // City
+                if (searchField[0] == ('courseCity') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseCity: ' + searchField[1]);
+
+                    $("#ddlCitySearch").val(searchField[1]);
+                }
+                // Country
+                if (searchField[0] == ('courseCountry') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseCountry: ' + searchField[1]);
+
+                    $("#ddlCountrySearch").val(searchField[1]);
+                }
+                // Continent
+                if (searchField[0] == ('courseContinent') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseContinent: ' + searchField[1]);
+
+                    $("#ddlContinentSearch").val(searchField[1]);
+                }
+                // State
+                if (searchField[0] == ('courseState') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseState: ' + searchField[1]);
+
+                    $("#ddlStateSearch").val(searchField[1]);
+                }
+                // Slope
+                if (searchField[0] == ('courseSlope') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseSlope: ' + searchField[1] + ' ' + searchField[2]);
+
+                    $("#txtSlopeSearch").val(searchField[1]);
+                    $("#ddlSlopeSearchOperator").val(searchField[2]);
+                }
+                // Rating
+                if (searchField[0] == ('courseRating') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseRating: ' + searchField[1] + ' ' + searchField[2]);
+
+                    $("#txtRatingSearch").val(searchField[1]);
+                    $("#ddlRatingSearchOperator").val(searchField[2]);
+                }
+                // Yardage
+                if (searchField[0] == ('courseYardage') && searchField[1].length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('courseYardage: ' + searchField[1] + ' ' + searchField[2]);
+
+                    $("#txtYardageSearch").val(searchField[1]);
+                    $("#ddlYardageSearchOperator").val(searchField[2]);
+                }
+                // Has Flyover Video
+                if (searchField[0] == ('courseHasFlyoverVideoIsChecked')) {
+                    window.searchDataFound = true;
+
+                    Debug('courseHasFlyoverVideoIsChecked: ' + searchField[1]);
+
+                    $("#chkHasFlyoverVideo").prop("checked", searchField[1].toLowerCase() === "true");
+                }
+                // Is Favorite
+                if (searchField[0] == ('courseIsFavoriteIsChecked')) {
+                    window.searchDataFound = true;
+
+                    Debug('courseIsFavoriteIsChecked: ' + searchField[1]);
+
+                    $("#chkIsFavorite").prop("checked", searchField[1].toLowerCase() === "true");
+                }
+            });
         }
 
         function LoadClubData() {
@@ -556,7 +743,7 @@
             }
         }
 
-        function loadSearchDropdowns() {
+        function LoadSearchDropdowns() {
 
             $.each(window.courseArr, function () {
 
@@ -619,7 +806,7 @@
                 }
             });
 
-            console.log('courses added...');
+            Debug('courses added...');
 
             // Sort Par list
             var pars = $("#ddlParSearch option");
@@ -681,22 +868,62 @@
             states.appendTo("#ddlStateSearch");
             $("#ddlStateSearch").val(''); // Select default blank value
 
-            console.log('search dropdowns populated...');
+            Debug('search dropdowns populated...');
         }
 
-        function clipboardCopy() {
+        function shareCourse() {
             var courseDiv = document.getElementById("courseName");
             var copyText = courseDiv.innerHTML;
             var path = window.location.href.split('?')[0]
             var shareURL = encodeURI(path + "?course=" + copyText);
-            console.log("course URL copied to clipboard: " + shareURL);
-            navigator.clipboard.writeText(shareURL);
+
+            SendToClipboard(shareURL);
+        }
+
+        function shareSearch() {
+            var searchCriteria = GetSearchCriteria();
+            var yourElement = document.getElementById("btnSearchShare");
+            var finalMsg = "URL copied to clipboard";
+
+            if (searchCriteria.hasData) {
+                Debug("search criteria to share: " + searchCriteria.searchString);
+
+                try {
+                    var searchString_enc = Base64_encode_url(searchCriteria.searchString);
+
+                    var path = window.location.href.split('?')[0]
+                    var shareURL = encodeURI(path + "?search=" + searchString_enc);
+
+                    SendToClipboard(shareURL);
+                }
+                catch (e) {
+                    finalMsg = "Error sharing URL!"
+                    console.warn(finalMsg + "-" + e);
+                }
+            }
+            else {
+                finalMsg = "No search criteria to share!";
+            }
+
+            yourElement.setAttribute("data-content", finalMsg);
+        }
+
+        function SendToClipboard(str) {
+            try {
+                navigator.clipboard.writeText(str);
+
+                Debug("data copied to clipboard: " + str);
+            }
+            catch (e) {
+                console.warn("error copying data (" + str + ") to clipboard: " + e);
+            }
         }
 
         function loadScoreCard(course) {
             try {
                 // Reset the query string parameter if we already loaded a course and reset the search parameters
                 var url = window.location.href;
+
                 if (url.indexOf("?") > 0) {
                     var updatedUrl = url.substring(0, url.indexOf("?"));
                     window.history.replaceState({}, document.title, updatedUrl);
@@ -721,7 +948,7 @@
                 // Set Course Favorite Button
                 var courseFav = LocalStorage('get', course + "_favorite");
                 
-                //console.log(course + " fav: " + courseFav);
+                Debug(course + " fav: " + courseFav);
 
                 SetCourseFavoriteStar(courseFav);
 
@@ -741,19 +968,19 @@
                 club7IronBtn.style.display = "none";
                 clubWedgeBtn.style.display = "none";
 
-                //console.log("driver: " + clubDriver);
-                //console.log("7i: " + club7Iron);
-                //console.log("wedge: " + clubWedge);
+                Debug("driver: " + clubDriver);
+                Debug("7i: " + club7Iron);
+                Debug("wedge: " + clubWedge);
 
                 var courseAlt = window.courseArr.find(item => item.Name === course).Altitude;
                 // Altitude(y) to % gain(x): 0.00002y=x
                 altGain = (0.00002 * courseAlt);
 
-                //console.log("course alt: " + courseAlt);
+                Debug("course alt: " + courseAlt);
 
                 var courseAltAdj = Math.round((altGain * 100));
 
-                //console.log("course alt gain: " + courseAltAdj);
+                Debug("course alt gain: " + courseAltAdj);
 
                 if (courseAltAdj > 0) {
                     clubDataDiv.style.display = "table-cell";
@@ -813,7 +1040,8 @@
                 }
 
                 var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
-                //console.log("matchingCourse: " + matchingCourse);
+
+                Debug("matchingCourse: " + JSON.stringify(matchingCourse));
 
                 if (typeof matchingCourse !== 'undefined') {
 
@@ -863,16 +1091,16 @@
                 }
             }
             catch (error) {
-                console.warn(error);
+                console.error("error loading scorecard: ", error);
             }
         }
 
         function DownloadCourseData(course, courseDataURL) {
-            //console.log("download from: " + courseDataURL);
+            Debug("download from: " + courseDataURL);
 
             var courseImage = SessionStorage('get', course + "_courseImg");
 
-            //console.log("course image: " + courseImage);
+            Debug("course image: " + courseImage);
 
             if (courseImage == null) {
 
@@ -883,7 +1111,7 @@
                         courseImage += "&width=1500";
                     }
 
-                    //console.log("course downloaded image: " + courseImage);
+                    Debug("course downloaded image: " + courseImage);
 
                     // Update the course background image
                     $('#course-placeholder').css('background-image', "url(" + courseImage + ")");
@@ -902,7 +1130,10 @@
             }
         }
 
-        function unhideAllCourses() {
+        function UnhideAllCourses() {
+            // Reset the course background image
+            $('#course-placeholder').css('background-image', "");
+
             document.querySelectorAll('.courseButton').forEach(function (el) {
                 el.style.display = 'block';
             });
@@ -910,7 +1141,9 @@
             $("#course-placeholder").empty();
         }
 
-        function SearchCourseReset() {
+        function searchCourseReset() {
+            SessionStorage('remove', 'lastSearch');
+
             $("#txtNameSearch").val('');
             $("#ddlNameSearchOperator").val('Contains'); // Select default value
             $("#txtVersionSearch").val('');
@@ -932,7 +1165,7 @@
             $("#chkHasFlyoverVideo").prop("checked", false);
             $("#chkIsFavorite").prop("checked", false);
 
-            unhideAllCourses();
+            UnhideAllCourses();
 
             $("#courseResultCount").html("Courses found: " + window.courseArr.length);
 
@@ -954,7 +1187,7 @@
             }
         }
 
-        function htmlDecode(input) {
+        function HtmlDecode(input) {
             var e = document.createElement('textarea');
             e.innerHTML = input;
             return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
@@ -967,16 +1200,20 @@
 
                 if (action === 'get') {
                     retVal = localStorage.getItem(key);
-                    //console.log("localStorage " + action + ": " + key + "," + retVal);
+
+                    Debug("localStorage " + action + ": " + key + "," + retVal);
+
                     return retVal;
                 }
                 else if (action === 'set') {
-                    //console.log("localStorage " + action + ": " + key + "," + value);
                     localStorage.setItem(key, value);
+
+                    Debug("localStorage " + action + ": " + key + "," + value);
                 }
                 else if (action === 'remove') {
-                    //console.log("localStorage " + action + ": " + key);
                     localStorage.removeItem(key);
+
+                    Debug("localStorage " + action + ": " + key);
                 }
             } else {
                 // No Web Storage support...
@@ -995,16 +1232,20 @@
 
                 if (action === 'get') {
                     retVal = sessionStorage.getItem(key);
-                    //console.log("sessionStorage " + action + ": " + key + "," + retVal);
+
+                    Debug("sessionStorage " + action + ": " + key + "," + retVal);
+
                     return retVal;
                 }
                 else if (action === 'set') {
-                    //console.log("sessionStorage " + action + ": " + key + "," + value);
                     sessionStorage.setItem(key, value);
+
+                    Debug("sessionStorage " + action + ": " + key + "," + value);
                 }
                 else if (action === 'remove') {
-                    //console.log("sessionStorage " + action + ": " + key);
                     sessionStorage.removeItem(key);
+
+                    Debug("sessionStorage " + action + ": " + key);
                 }
             } else {
                 // No Web Storage support...
@@ -1016,13 +1257,13 @@
             }
         }
 
-        function MarkCourseFavorite() {
+        function markCourseFavorite() {
             var courseDiv = document.getElementById("courseName");
             var course = courseDiv.innerHTML;
 
             var fav = LocalStorage('get', course + "_favorite");
 
-            //console.log("fav from storage: " + fav + " " + typeof fav);
+            Debug("fav from storage: " + fav + " " + typeof fav);
 
             if (fav == null) {
                 fav = true;
@@ -1034,7 +1275,7 @@
                 fav = true;
             }
 
-            //console.log(course + " new fav: " + fav);
+            Debug(course + " new fav: " + fav);
 
             if (fav) {
                 LocalStorage('set', course + "_favorite", fav);
@@ -1063,19 +1304,19 @@
 
             var hasSentCourseRequest = LocalStorage('get', course + "_requestedFlyover");
 
-            //console.log("hasSentCourseRequest from storage: " + hasSentCourseRequest + " " + typeof hasSentCourseRequest);
+            Debug("hasSentCourseRequest from storage: " + hasSentCourseRequest + " " + typeof hasSentCourseRequest);
 
             if (hasSentCourseRequest == null) {
                 var msg = "Requesting a flyover video for: " + course;
 
                 SendMessage(msg);
 
-                console.log("Message sent - " + msg);
+                Debug("Message sent - " + msg);
 
                 LocalStorage('set', course + "_requestedFlyover", true);
             }
             else {
-                console.log("A request has already sent for: " + course + " - Nothing to do...");
+                Debug("A request has already sent for: " + course + " - Nothing to do...");
             }
         }
 
@@ -1095,16 +1336,33 @@
             request.send(JSON.stringify(params));
         }
 
-        function SearchCourse() {
-            unhideAllCourses();
-            ResetURL();
+        function Base64_encode_url(s) {
+            var str = window.btoa(unescape(encodeURIComponent(s)));
+            return str.replace(/\+/g, '-').replace(/\//g, '_');
+        }
 
-            var x = document.getElementById("courseFooter");
+        function Base64_decode_url(s) {
+            var str = s, str_pad = (str + '===');
+            str = str_pad.slice(0, str.length + (str.length % 4));
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            return decodeURIComponent(escape(window.atob(str)));
+        }
 
-            if (x.style.display === "block") {
-                x.style.display = "none";
+        function SetDebugMode() {
+            var dbgKey = SessionStorage('get', 'debug');
+
+            window.isDebug = (dbgKey != null && dbgKey.toLowerCase() === 'true');
+
+            console.info("debug mode:" + window.isDebug);
+        }
+
+        function Debug(msg) {
+            if (window.isDebug) {
+                console.log(msg);
             }
+        }
 
+        function GetSearchCriteria() {
             // Texts
             var courseName = $("#txtNameSearch").val();
             var courseVersion = $("#txtVersionSearch").val();
@@ -1125,16 +1383,83 @@
             var courseHasFlyoverVideoIsChecked = $("#chkHasFlyoverVideo").prop("checked");
             var courseIsFavoriteIsChecked = $("#chkIsFavorite").prop("checked");
 
+            // Operators
+            var courseNameSearchOperator = $("#ddlNameSearchOperator").val();
+            var courseAltSearchOperator = $("#ddlAltSearchOperator").val();
+            var courseSlopeSearchOperator = $("#ddlSlopeSearchOperator").val();
+            var courseRatingSearchOperator = $("#ddlRatingSearchOperator").val();
+            var courseYardageSearchOperator = $("#ddlYardageSearchOperator").val();
+
+            var obj = new Object();
+
+            obj.courseName = courseName;
+            obj.courseVersion = courseVersion;
+            obj.courseAlt = courseAlt;
+            obj.courseYardage = courseYardage;
+            obj.courseSlope = courseSlope;
+            obj.courseRating = courseRating;
+            obj.coursePar = coursePar;
+            obj.courseType = courseType;
+            obj.courseCity = courseCity;
+            obj.courseCountry = courseCountry;
+            obj.courseContinent = courseContinent;
+            obj.courseState = courseState;
+            obj.courseHasFlyoverVideoIsChecked = courseHasFlyoverVideoIsChecked;
+            obj.courseIsFavoriteIsChecked = courseIsFavoriteIsChecked;
+            obj.courseNameSearchOperator = courseNameSearchOperator;
+            obj.courseAltSearchOperator = courseAltSearchOperator;
+            obj.courseSlopeSearchOperator = courseSlopeSearchOperator;
+            obj.courseRatingSearchOperator = courseRatingSearchOperator;
+            obj.courseYardageSearchOperator = courseYardageSearchOperator;
+
+            let count = 0;
+
+            for (const value of Object.values(obj)) {
+                if ((value.length > 0 && value != 'Contains' && value != 'Equals' && value != '=' && value != '>' && value != '<') || value == true) {
+                    count++;
+                }
+            }
+
+            if (count == 0) {
+                obj.hasData = false;
+            }
+            else {
+                obj.hasData = true;
+            }
+
+            obj.searchString = "courseName;" + obj.courseName + ";" + obj.courseNameSearchOperator + "|courseVersion;" + obj.courseVersion + "|coursePar;" + obj.coursePar + "|courseType;" + obj.courseType + "|courseAlt;" + obj.courseAlt + ";" + obj.courseAltSearchOperator + "|courseCity;" + obj.courseCity + "|courseCountry;" + obj.courseCountry + "|courseContinent;" + obj.courseContinent + "|courseState;" + obj.courseState + "|courseYardage;" + obj.courseYardage + ";" + obj.courseYardageSearchOperator + "|courseSlope;" + obj.courseSlope + ";" + obj.courseSlopeSearchOperator + "|courseRating;" + obj.courseRating + ";" + obj.courseRatingSearchOperator + "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked + "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
+
+            Debug("has search data: " + obj.hasData);
+
+            return obj;
+        }
+
+        function searchCourse() {
+            UnhideAllCourses();
+            ResetURL();
+
+            var x = document.getElementById("courseFooter");
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            }
+
+            var searchCriteria = GetSearchCriteria();
+
             // Check to see if we have any search parameters to actually do a search
-            if (courseName.length > 0 || courseVersion.length > 0 || coursePar.length > 0 || courseType.length > 0 || courseAlt.length > 0 || courseCity.length > 0 || courseCountry.length > 0 || courseCountry.length > 0 || courseContinent.length > 0 || courseState.length > 0 || courseYardage.length > 0 || courseSlope.length > 0 || courseRating.length > 0 || courseHasFlyoverVideoIsChecked || courseIsFavoriteIsChecked) {
+            if (searchCriteria.hasData) {
+                // Store search criteria for page refresh/reload
+                SessionStorage("set", "lastSearch", searchCriteria.searchString);
+
+                // Perform search
                 var matches = window.courseArr.filter(function (course) {
                     // Name
-                    if (courseName.length > 0) {
-                        if ($("#ddlNameSearchOperator").val() == "Equals") {
-                            return course.Name.toLowerCase() == courseName.toLowerCase();
+                    if (searchCriteria.courseName.length > 0) {
+                        if (searchCriteria.courseNameSearchOperator == "Equals") {
+                            return course.Name.toLowerCase() == searchCriteria.courseName.toLowerCase();
                         }
                         else {
-                            return course.Name.toLowerCase().includes(courseName.toLowerCase());
+                            return course.Name.toLowerCase().includes(searchCriteria.courseName.toLowerCase());
                         }
                     }
                     else {
@@ -1142,39 +1467,39 @@
                     }
                 }).filter(function (course) {
                     // Version
-                    if (courseVersion.length > 0) {
-                        return course.Version.startsWith(courseVersion);
+                    if (searchCriteria.courseVersion.length > 0) {
+                        return course.Version.startsWith(searchCriteria.courseVersion);
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Par
-                    if (coursePar.length > 0) {
-                        return course.Par == coursePar;
+                    if (searchCriteria.coursePar.length > 0) {
+                        return course.Par == searchCriteria.coursePar;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Type
-                    if (courseType.length > 0) {
-                        return course.Type == courseType;
+                    if (searchCriteria.courseType.length > 0) {
+                        return course.Type == searchCriteria.courseType;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Altitude
-                    if (courseAlt.length > 0) {
-                        if ($("#ddlAltSearchOperator").val() == "=") {
-                            return course.Altitude == courseAlt;
+                    if (searchCriteria.courseAlt.length > 0) {
+                        if (searchCriteria.courseAltSearchOperator == "=") {
+                            return course.Altitude == searchCriteria.courseAlt;
                         }
-                        else if ($("#ddlAltSearchOperator").val() == ">") {
-                            return course.Altitude > courseAlt;
+                        else if (searchCriteria.courseAltSearchOperator == ">") {
+                            return course.Altitude > searchCriteria.courseAlt;
                         }
                         else {
-                            return course.Altitude < courseAlt;
+                            return course.Altitude < searchCriteria.courseAlt;
                         }
                     }
                     else {
@@ -1182,44 +1507,44 @@
                     }
                 }).filter(function (course) {
                     // City
-                    if (courseCity.length > 0) {
-                        return course.City == courseCity;
+                    if (searchCriteria.courseCity.length > 0) {
+                        return course.City == searchCriteria.courseCity;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Country
-                    if (courseCountry.length > 0) {
-                        return course.Country == courseCountry;
+                    if (searchCriteria.courseCountry.length > 0) {
+                        return course.Country == searchCriteria.courseCountry;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Continent
-                    if (courseContinent.length > 0) {
-                        return course.Continent == courseContinent;
+                    if (searchCriteria.courseContinent.length > 0) {
+                        return course.Continent == searchCriteria.courseContinent;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // State
-                    if (courseState.length > 0) {
-                        return course.State == courseState;
+                    if (searchCriteria.courseState.length > 0) {
+                        return course.State == searchCriteria.courseState;
                     }
                     else {
                         return course;
                     }
                 }).filter(function (course) {
                     // Slope
-                    if (courseSlope.length > 0) {
-                        if ($("#ddlSlopeSearchOperator").val() == ">") {
-                            return courseSlope < course.MaxSlope;
+                    if (searchCriteria.courseSlope.length > 0) {
+                        if (searchCriteria.courseSlopeSearchOperator == ">") {
+                            return searchCriteria.courseSlope < course.MaxSlope;
                         }
                         else {
-                            return courseSlope > course.MinSlope;
+                            return searchCriteria.courseSlope > course.MinSlope;
                         }
                     }
                     else {
@@ -1227,12 +1552,12 @@
                     }
                 }).filter(function (course) {
                     // Rating
-                    if (courseRating.length > 0) {
-                        if ($("#ddlRatingSearchOperator").val() == ">") {
-                            return courseRating < course.MaxRating;
+                    if (searchCriteria.courseRating.length > 0) {
+                        if (searchCriteria.courseRatingSearchOperator == ">") {
+                            return searchCriteria.courseRating < course.MaxRating;
                         }
                         else {
-                            return courseRating > course.MinRating;
+                            return searchCriteria.courseRating > course.MinRating;
                         }
                     }
                     else {
@@ -1240,12 +1565,12 @@
                     }
                 }).filter(function (course) {
                     // Yardage
-                    if (courseYardage.length > 0) {
-                        if ($("#ddlYardageSearchOperator").val() == ">") {
-                            return courseYardage < course.MaxYardage;
+                    if (searchCriteria.courseYardage.length > 0) {
+                        if (searchCriteria.courseYardageSearchOperator == ">") {
+                            return searchCriteria.courseYardage < course.MaxYardage;
                         }
                         else {
-                            return courseYardage > course.MinYardage;
+                            return searchCriteria.courseYardage > course.MinYardage;
                         }
                     }
                     else {
@@ -1253,13 +1578,14 @@
                     }
                 }).filter(function (course) {
                     // Has Flyover Video
-                    if (courseHasFlyoverVideoIsChecked) {
+                    if (searchCriteria.courseHasFlyoverVideoIsChecked) {
                         var matchingCourse = window.courseMediaArr.find(item => item.Name === course.Name);
 
                         if (typeof matchingCourse !== 'undefined') {
                             //Check for Course Flyover link
                             if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
-                                //console.log("matching Media Course: " + matchingCourse.Name);
+                                Debug("matching Media Course: " + matchingCourse.Name);
+
                                 return course
                             }
                         }
@@ -1269,7 +1595,7 @@
                     }
                 }).filter(function (course) {
                     // Is Favorite
-                    if (courseIsFavoriteIsChecked) {
+                    if (searchCriteria.courseIsFavoriteIsChecked) {
                         var matchingCourse = LocalStorage('get', course.Name + "_favorite");
                         
                         if (typeof matchingCourse !== 'undefined') {
@@ -1293,7 +1619,7 @@
                 if (matchedCourses.length > 0) {
 
                     document.querySelectorAll('.courseButton').forEach(function (el) {
-                        if ($.inArray(htmlDecode(el.innerHTML), matchedCourses) == -1) {
+                        if ($.inArray(HtmlDecode(el.innerHTML), matchedCourses) == -1) {
                             el.style.display = 'none';
                         }
                     });
@@ -1303,12 +1629,15 @@
                     }
                 }
                 else {
-                    console.warn('nothing found in course search');
+                    Debug('nothing found in course search...');
                     document.querySelectorAll('.courseButton').forEach(function (el) {
                         el.style.display = 'none';
                     });
                 }
             }
+
+            var result = document.getElementById("searchFooter");
+            result.scrollIntoView();
         }
     </script>
 </body>
