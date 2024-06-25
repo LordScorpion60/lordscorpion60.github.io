@@ -302,8 +302,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-right: 7px; margin-top:0px; font-size: 30px;">&times;</button>
                                         <h4 class="modal-title" id="courseImageModalTitle">Course Name</h4>
                                     </div>
-                                    <div class="modal-body" data-dismiss="modal" style="padding: 0px;">
-                                        <img id="courseImageModalFull" />
+                                    <div class="modal-body" id="courseImageModalFull" data-dismiss="modal" style="padding: 0px; width: 1500px; height: 843px;">
                                     </div>                                    
                                 </div>
                             </div>
@@ -1150,8 +1149,8 @@
             $('#course_placeholder').attr('data-target', '#courseImageModal');
             $('#course_placeholder').attr('data-toggle', 'modal');
             $('#courseImageModalTitle').text(course);
-            $("#courseImageModalFull").attr("src", courseImage);
             $('#course_placeholder').css('cursor', 'pointer');
+            $('#courseImageModalFull').css('background-image', "url(" + courseImage + ")");
         }
 
         function RemoveCourseModal() {
