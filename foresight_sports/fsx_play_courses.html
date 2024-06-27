@@ -953,7 +953,36 @@
                 queryParams.set("course", course);
                 window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
 
-                $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"));
+                $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
+
+                    $('table').css('cursor', 'default');
+
+                    var courseHoleImage = course.replaceAll(" ", "_") + "$##HOLE##_.png";
+
+                    $('#courseHolesTable tr td:first-child').each(function () {
+                        $(this).on("click", function () {
+                            var holeNo = $(this)[0].innerText;
+                            $('#courseImageModalTitle').text(course + ' - Hole: ' + holeNo);
+
+                            var courseHoleImageURL = encodeURIComponent("fsx_play_course_images/" + courseHoleImage.replace("##HOLE##", holeNo)).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+                            $("#courseImageModalFull").attr("src", courseHoleImageURL);
+                        })
+
+                        $(this).css('cursor', 'zoom-in');
+                        $(this).css('text-decoration', 'underline');
+                        $(this).css('text-decoration', 'underline');
+
+                        var oldBGColor = $(this).css("background-color");
+
+                        $(this).on('mouseenter', function () {
+                            $(this).css("background-color", "#428bca");
+                            $(this).css('text-decoration', 'none');
+                        }).on('mouseleave', function () {
+                            $(this).css("background-color", oldBGColor);
+                            $(this).css('text-decoration', 'underline');
+                        })                        
+                    })
+                });
 
                 var x = document.getElementById("courseFooter");
 
@@ -1115,11 +1144,28 @@
 
             $('#course_placeholder').css('background-image', "url(" + courseImageURL + ")");
             $('#course_placeholder').css('background-size', "cover");
-            $('#course_placeholder').attr('data-target', '#courseImageModal');
-            $('#course_placeholder').attr('data-toggle', 'modal');
-            $('#courseImageModalTitle').text(course);
-            $("#courseImageModalFull").attr("src", courseImageURL);
-            $('#course_placeholder').css('cursor', 'pointer');
+            $('#course_placeholder').css('cursor', 'zoom-in');            
+            $('#course_placeholder').on("click", function (e) {
+                var senderElement = e.target;
+                // Clear modal
+                $('#course_placeholder').attr('data-target', '');
+                $('#course_placeholder').attr('data-toggle', '');
+
+                // Check if sender is the parent placeholder <div> element
+                if ($(e.target).is("div")) {
+                    Debug('course_placeholder - clicked');
+                    $('#courseImageModalTitle').text(course);
+                    $("#courseImageModalFull").attr("src", courseImageURL);
+                    $('#course_placeholder').attr('data-target', '#courseImageModal');
+                    $('#course_placeholder').attr('data-toggle', 'modal');
+                }
+                else if ($(e.target).is("td") && e.target.style.cursor == 'zoom-in') {
+                    Debug('course_hole - clicked');
+                    $('#course_placeholder').attr('data-target', '#courseImageModal');
+                    $('#course_placeholder').attr('data-toggle', 'modal');
+                }
+                return true;
+            })
         }
 
         function RemoveCourseModal() {
