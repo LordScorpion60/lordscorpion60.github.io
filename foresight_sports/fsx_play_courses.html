@@ -1055,20 +1055,14 @@
                     clubDataDiv.style.display = "none";
                 }
 
+                // Update the course background image
+                UpdateCourseModal(course);
+
                 var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
 
                 Debug("matchingCourse: " + JSON.stringify(matchingCourse));
 
                 if (typeof matchingCourse !== 'undefined') {
-
-                    //Check for Course Data link
-                    if (matchingCourse.Data != null && matchingCourse.Data.length > 0) {
-                        DownloadCourseData(course, matchingCourse.Data);
-                    }
-                    else {
-                        // Reset the course background image
-                        RemoveCourseModal();
-                    }
 
                     //Check for Course Buy link
                     if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
@@ -1111,46 +1105,20 @@
             }
         }
 
-        function DownloadCourseData(course, courseDataURL) {
-            Debug("download from: " + courseDataURL);
+        function UpdateCourseModal(course) {
+            var courseImage = course.replaceAll(" ", "_") + "_.png";
+            var courseImageURL = encodeURIComponent("fsx_play_course_images/" + courseImage).replace("(", "%28").replace(")", "%29").replace("'", "%27");
 
-            var courseImage = SessionStorage('get', course + "_courseImg");
+            Debug(course);
+            Debug(courseImage);
+            Debug(courseImageURL);
 
-            Debug("course image: " + courseImage);
-
-            if (courseImage == null) {
-
-                $.getJSON(courseDataURL).done(function (data) {
-                    courseImage = data.product.image.src;
-
-                    if (courseImage.startsWith("https://")) {
-                        courseImage += "&width=1500";
-                    }
-
-                    Debug("course downloaded image: " + courseImage);
-
-                    // Update the course background image
-                    UpdateCourseModal(course, courseImage);
-
-                    // Cache it for next time in the session
-                    SessionStorage('set', course + "_courseImg", courseImage);
-                }).fail(function (data) {
-                    console.warn('course data could not be downloaded!');
-                });
-            }
-            else {
-                // Update the course background image
-                UpdateCourseModal(course, courseImage);
-            }
-        }
-
-        function UpdateCourseModal(course, courseImage) {
-            $('#course_placeholder').css('background-image', "url(" + courseImage + ")");
+            $('#course_placeholder').css('background-image', "url(" + courseImageURL + ")");
             $('#course_placeholder').css('background-size', "cover");
             $('#course_placeholder').attr('data-target', '#courseImageModal');
             $('#course_placeholder').attr('data-toggle', 'modal');
             $('#courseImageModalTitle').text(course);
-            $("#courseImageModalFull").attr("src", courseImage);
+            $("#courseImageModalFull").attr("src", courseImageURL);
             $('#course_placeholder').css('cursor', 'pointer');
         }
 
