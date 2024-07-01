@@ -426,10 +426,26 @@
 
             // Check QS params when page loads in case we got a course to load up
             const queryParams = new URLSearchParams(window.location.search);
-            queryCourse = queryParams.get('course');
-            const querySearch = queryParams.get('search');
+
+            var queryCourse = queryParams.get('course');
+            var querySearch = queryParams.get('search');
 
             Debug("query string course: " + queryCourse);
+
+            var queryCourseAfterAmp = "";
+
+            for (const key of queryParams.keys()) {
+                if (key.startsWith(" ") && queryParams.get(key).length == 0) {
+                    Debug("course query string w/ amp: '" + key + "'");
+                    queryCourseAfterAmp = key;
+                }
+            }
+
+            if (queryCourseAfterAmp.length > 0) {
+                // We need to assume the course has an unescaped & in it and need to re-build the course name
+                queryCourse += "&" + queryCourseAfterAmp;
+                Debug("updated query string course: " + queryCourse);
+            }
 
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
@@ -491,6 +507,11 @@
                     }
                     else if (queryCourse != null) {
                         loadScoreCard(queryCourse);
+                    }
+                    else {
+                        // Remove all query string parameters just in case
+                        Debug("no actions to take!");
+                        ResetURL();
                     }
                 }).done(function (data) {
                     if (window.searchDataFound) {
@@ -974,201 +995,234 @@
             }
         }
 
+        function ResetURL() {
+            var url = window.location.href;
+
+            if (url.indexOf("?") > 0) {
+                var updatedUrl = url.substring(0, url.indexOf("?"));
+                window.history.replaceState({}, document.title, updatedUrl);
+            }
+        }
+
         function loadScoreCard(course) {
             try {
-                Debug("load scorecard: " + course);
+                Debug("Trying to load scorecard for course: " + course);
 
-                // Reset the query string parameter if we already loaded a course and reset the search parameters
-                var url = window.location.href;
+                // Make sure the course is the full proper name of the course and update incase a partial url was passed in (YT kill's courses ended in ')')
+                var matchedCourses = window.courseArr.filter(function (a) { return (a.Name.toLowerCase().includes(course.toLowerCase())) });
+                var matchCourseCount = matchedCourses.length;
+                Debug("matched courses: " + matchCourseCount);
 
-                if (url.indexOf("?") > 0) {
-                    var updatedUrl = url.substring(0, url.indexOf("?"));
-                    window.history.replaceState({}, document.title, updatedUrl);
-                }
-
-                // Update page title to show current loaded course
-                document.title = documentTitle + " - " + course;
-
-                // Add/Update any QS params first if user clicks on a course to load
-                var queryParams = new URLSearchParams(window.location.search);
-                queryParams.set("course", escapeURL(course));
-                Debug("url param set: " + escapeURL(course));
-                window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
-
-                $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
-
-                    $('table').css('cursor', 'default');
-
-                    var courseHoleImage = course.replaceAll(" ", "_") + "$##HOLE##_.png";
-
-                    $('#courseHolesTable tr td:first-child').each(function () {
-                        $(this).on("click", function () {
-                            var holeNo = $(this)[0].innerText;
-                            $('#courseImageModalTitle').text(course + ' - Hole: ' + holeNo);
-
-                            var courseHoleImageURL = encodeURIComponent("fsx_play_course_images/" + courseHoleImage.replace("##HOLE##", holeNo)).replace("(", "%28").replace(")", "%29").replace("'", "%27");
-                            $("#courseImageModalFull").attr("src", courseHoleImageURL);
-                        })
-
-                        $(this).css('cursor', 'zoom-in');
-                        $(this).css('text-decoration', 'underline');
-                        $(this).css('text-decoration', 'underline');
-
-                        var oldBGColor = $(this).css("background-color");
-
-                        $(this).on('mouseenter', function () {
-                            $(this).css("background-color", "#428bca");
-                            $(this).css('text-decoration', 'none');
-                        }).on('mouseleave', function () {
-                            $(this).css("background-color", oldBGColor);
-                            $(this).css('text-decoration', 'underline');
-                        })                        
-                    })
-                });
-
-                var x = document.getElementById("courseFooter");
-
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                }
-
-                // Set Course Favorite Button
-                var courseFav = LocalStorage('get', course + "_favorite");
-                
-                Debug(course + " fav: " + courseFav);
-
-                SetCourseFavoriteStar(courseFav);
-
-                var y = document.getElementById("courseBuyLink");
-                var z = document.getElementById("courseFlyoverLink");
-                var zz = document.getElementById("courseRequestFlyover");
-                var clubDataDiv = document.getElementById("clubDataAltAdj");
-                var clubDriverBtn = document.getElementById("btnDriverAltAdj");
-                var club7IronBtn = document.getElementById("btn7IronAltAdj");
-                var clubWedgeBtn = document.getElementById("btnWedgeAltAdj");
-
-                var clubDriver = LocalStorage('get', "clubData_Driver");
-                var club7Iron = LocalStorage('get', "clubData_7Iron");
-                var clubWedge = LocalStorage('get', "clubData_Wedge");
-
-                clubDriverBtn.style.display = "none";
-                club7IronBtn.style.display = "none";
-                clubWedgeBtn.style.display = "none";
-
-                Debug("driver: " + clubDriver);
-                Debug("7i: " + club7Iron);
-                Debug("wedge: " + clubWedge);
-
-                var courseAlt = window.courseArr.find(item => item.Name === course).Altitude;
-                // Altitude(y) to % gain(x): 0.00002y=x
-                altGain = (0.00002 * courseAlt);
-
-                Debug("course alt: " + courseAlt);
-
-                var courseAltAdj = Math.round((altGain * 100));
-
-                Debug("course alt gain: " + courseAltAdj);
-
-                if (courseAltAdj > 0) {
-                    clubDataDiv.style.display = "table-cell";
-
-                    $("#courseAltAdj").text(courseAltAdj + "%");
-
-                    if (clubDriver != null || club7Iron != null || clubWedge != null) {
-
-                        if (clubDriver != null) {
-                            var newDriver = clubDriver;
-
-                            try {
-                                newDriver = Number(clubDriver);
-                                newDriver = Math.round((newDriver * altGain) + newDriver);
-                            }
-                            catch (e) {
-                                console.warn("error calculating driver altitude adjustment: " + e);
-                            }
-
-                            clubDriverBtn.style.display = "";
-                            $("#clubDriverAltAdj").text(newDriver);
-                        }
-
-                        if (club7Iron != null) {
-                            var new7Iron = club7Iron;
-
-                            try {
-                                new7Iron = Number(club7Iron);
-                                new7Iron = Math.round((new7Iron * altGain) + new7Iron);
-                            }
-                            catch (e) {
-                                console.warn("error calculating 7iron altitude adjustment: " + e);
-                            }
-
-                            club7IronBtn.style.display = "";
-                            $("#club7IronAltAdj").text(new7Iron);
-                        }
-
-                        if (clubWedge != null) {
-                            var newWedge = clubWedge;
-
-                            try {
-                                newWedge = Number(clubWedge);
-                                newWedge = Math.round((newWedge * altGain) + newWedge);
-                            }
-                            catch (e) {
-                                console.warn("error calculating wedge altitude adjustment: " + e);
-                            }
-
-                            clubWedgeBtn.style.display = "";
-                            $("#clubWedgeAltAdj").text(newWedge);
-                        }
+                if (matchCourseCount == 1) {
+                    // Partial match is unique, change the course name to be correct and proceed
+                    if (course.toLowerCase() != matchedCourses[0].Name.toLowerCase()) {
+                        Debug("passed in course name is incorrect. Updating...");
+                        course = matchedCourses[0].Name;
                     }
+                }
+
+                if (matchCourseCount != 1) {
+                    Debug("No direct course match, loading search instead...");
+
+                    // Too many courses match the passed in course name, so we need to redirect to a course name search...
+                    var newSearch = "courseName;" + course + ";Contains";
+
+                    PreloadSearchCriteria(newSearch);
+                    // Expand search criteria box
+                    $('#collapseSearch').addClass('in');
+                    // Re-run search
+                    searchCourse();
                 }
                 else {
-                    clubDataDiv.style.display = "none";
-                }
+                    Debug("load scorecard: " + course);
 
-                // Update the course background image
-                UpdateCourseModal(course);
+                    // Reset the query string parameter if we already loaded a course and reset the search parameters
+                    ResetURL();
 
-                var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
+                    // Update page title to show current loaded course
+                    document.title = documentTitle + " - " + course;
 
-                Debug("matchingCourse: " + JSON.stringify(matchingCourse));
+                    // Add/Update any QS params first if user clicks on a course to load
+                    var queryParams = new URLSearchParams(window.location.search);
+                    queryParams.set("course", escapeURL(course));
+                    Debug("url param set: " + escapeURL(course));
+                    window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
 
-                if (typeof matchingCourse !== 'undefined') {
+                    $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
 
-                    //Check for Course Buy link
-                    if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
-                        y.style.display = "";
-                        y.href = matchingCourse.Buy;
+                        $('table').css('cursor', 'default');
+
+                        var courseHoleImage = course.replaceAll(" ", "_") + "$##HOLE##_.png";
+
+                        $('#courseHolesTable tr td:first-child').each(function () {
+                            $(this).on("click", function () {
+                                var holeNo = $(this)[0].innerText;
+                                $('#courseImageModalTitle').text(course + ' - Hole: ' + holeNo);
+
+                                var courseHoleImageURL = encodeURIComponent("fsx_play_course_images/" + courseHoleImage.replace("##HOLE##", holeNo)).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+                                $("#courseImageModalFull").attr("src", courseHoleImageURL);
+                            })
+
+                            $(this).css('cursor', 'zoom-in');
+                            $(this).css('text-decoration', 'underline');
+                            $(this).css('text-decoration', 'underline');
+
+                            var oldBGColor = $(this).css("background-color");
+
+                            $(this).on('mouseenter', function () {
+                                $(this).css("background-color", "#428bca");
+                                $(this).css('text-decoration', 'none');
+                            }).on('mouseleave', function () {
+                                $(this).css("background-color", oldBGColor);
+                                $(this).css('text-decoration', 'underline');
+                            })
+                        })
+                    });
+
+                    var x = document.getElementById("courseFooter");
+
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+
+                    // Set Course Favorite Button
+                    var courseFav = LocalStorage('get', course + "_favorite");
+
+                    Debug(course + " fav: " + courseFav);
+
+                    SetCourseFavoriteStar(courseFav);
+
+                    var y = document.getElementById("courseBuyLink");
+                    var z = document.getElementById("courseFlyoverLink");
+                    var zz = document.getElementById("courseRequestFlyover");
+                    var clubDataDiv = document.getElementById("clubDataAltAdj");
+                    var clubDriverBtn = document.getElementById("btnDriverAltAdj");
+                    var club7IronBtn = document.getElementById("btn7IronAltAdj");
+                    var clubWedgeBtn = document.getElementById("btnWedgeAltAdj");
+
+                    var clubDriver = LocalStorage('get', "clubData_Driver");
+                    var club7Iron = LocalStorage('get', "clubData_7Iron");
+                    var clubWedge = LocalStorage('get', "clubData_Wedge");
+
+                    clubDriverBtn.style.display = "none";
+                    club7IronBtn.style.display = "none";
+                    clubWedgeBtn.style.display = "none";
+
+                    Debug("driver: " + clubDriver);
+                    Debug("7i: " + club7Iron);
+                    Debug("wedge: " + clubWedge);
+
+                    var courseAlt = window.courseArr.find(item => item.Name === course).Altitude;
+                    // Altitude(y) to % gain(x): 0.00002y=x
+                    altGain = (0.00002 * courseAlt);
+
+                    Debug("course alt: " + courseAlt);
+
+                    var courseAltAdj = Math.round((altGain * 100));
+
+                    Debug("course alt gain: " + courseAltAdj);
+
+                    if (courseAltAdj > 0) {
+                        clubDataDiv.style.display = "table-cell";
+
+                        $("#courseAltAdj").text(courseAltAdj + "%");
+
+                        if (clubDriver != null || club7Iron != null || clubWedge != null) {
+
+                            if (clubDriver != null) {
+                                var newDriver = clubDriver;
+
+                                try {
+                                    newDriver = Number(clubDriver);
+                                    newDriver = Math.round((newDriver * altGain) + newDriver);
+                                }
+                                catch (e) {
+                                    console.warn("error calculating driver altitude adjustment: " + e);
+                                }
+
+                                clubDriverBtn.style.display = "";
+                                $("#clubDriverAltAdj").text(newDriver);
+                            }
+
+                            if (club7Iron != null) {
+                                var new7Iron = club7Iron;
+
+                                try {
+                                    new7Iron = Number(club7Iron);
+                                    new7Iron = Math.round((new7Iron * altGain) + new7Iron);
+                                }
+                                catch (e) {
+                                    console.warn("error calculating 7iron altitude adjustment: " + e);
+                                }
+
+                                club7IronBtn.style.display = "";
+                                $("#club7IronAltAdj").text(new7Iron);
+                            }
+
+                            if (clubWedge != null) {
+                                var newWedge = clubWedge;
+
+                                try {
+                                    newWedge = Number(clubWedge);
+                                    newWedge = Math.round((newWedge * altGain) + newWedge);
+                                }
+                                catch (e) {
+                                    console.warn("error calculating wedge altitude adjustment: " + e);
+                                }
+
+                                clubWedgeBtn.style.display = "";
+                                $("#clubWedgeAltAdj").text(newWedge);
+                            }
+                        }
                     }
                     else {
+                        clubDataDiv.style.display = "none";
+                    }
+
+                    // Update the course background image
+                    UpdateCourseModal(course);
+
+                    var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
+
+                    Debug("matchingCourse: " + JSON.stringify(matchingCourse));
+
+                    if (typeof matchingCourse !== 'undefined') {
+
+                        //Check for Course Buy link
+                        if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
+                            y.style.display = "";
+                            y.href = matchingCourse.Buy;
+                        }
+                        else {
+                            y.style.display = "none";
+                            y.href = "#";
+                        }
+
+                        //Check for Course Flyover link
+                        if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
+                            z.style.display = ""
+                            z.href = matchingCourse.Flyover;
+
+                            zz.style.display = "none";
+                        }
+                        else {
+                            z.style.display = "none";
+                            z.href = "#";
+
+                            zz.style.display = "";
+                        }
+                    }
+                    else {
+                        // No media data found, so clean out links
+
                         y.style.display = "none";
                         y.href = "#";
-                    }
 
-                    //Check for Course Flyover link
-                    if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
-                        z.style.display = ""
-                        z.href = matchingCourse.Flyover;
-
-                        zz.style.display = "none";
-                    }
-                    else {
                         z.style.display = "none";
                         z.href = "#";
 
-                        zz.style.display = "";
+                        zz.style.display = "none";
                     }
-                }
-                else {
-                    // No media data found, so clean out links
-
-                    y.style.display = "none";
-                    y.href = "#";
-
-                    z.style.display = "none";
-                    z.href = "#";
-
-                    zz.style.display = "none";
                 }
             }
             catch (error) {
