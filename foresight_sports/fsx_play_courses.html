@@ -429,6 +429,8 @@
             queryCourse = queryParams.get('course');
             const querySearch = queryParams.get('search');
 
+            Debug("query string course: " + queryCourse);
+
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
@@ -542,123 +544,124 @@
 
             $.each(searchArr, function (index, value) {
                 var searchField = value.split(';');
+                var searchTerm = unEscapeURL(searchField[1]);
 
                 // Name
-                if (searchField[0] == ('courseName') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseName') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseName: ' + searchField[1] + ' ' + searchField[2]);
+                    Debug('courseName: ' + searchTerm + ' ' + searchField[2]);
 
-                    $("#txtNameSearch").val(searchField[1]);
+                    $("#txtNameSearch").val(searchTerm);
                     $("#ddlNameSearchOperator").val(searchField[2]);
                 }
                 // Version
-                if (searchField[0] == ('courseVersion') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseVersion') && searchTerm.length > 0) {
                     window.searchDataFound = true;
                     
-                    Debug('courseVersion: ' + searchField[1]);
+                    Debug('courseVersion: ' + searchTerm);
 
-                    $("#txtVersionSearch").val(searchField[1]);
+                    $("#txtVersionSearch").val(searchTerm);
                 }
                 // Par
-                if (searchField[0] == ('coursePar') && searchField[1].length > 0) {
+                if (searchField[0] == ('coursePar') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('coursePar: ' + searchField[1]);
+                    Debug('coursePar: ' + searchTerm);
 
-                    $("#ddlParSearch").val(searchField[1]);
+                    $("#ddlParSearch").val(searchTerm);
                 }
                 // Type
-                if (searchField[0] == ('courseType') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseType') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseType: ' + searchField[1]);
+                    Debug('courseType: ' + searchTerm);
 
-                    $("#ddlTypeSearch").val(searchField[1]);
+                    $("#ddlTypeSearch").val(searchTerm);
                 }
                 // Altitude
-                if (searchField[0] == ('courseAlt') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseAlt') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseAlt: ' + searchField[1] + ' ' + searchField[2]);
+                    Debug('courseAlt: ' + searchTerm + ' ' + searchField[2]);
 
-                    $("#txtAltitudeSearch").val(searchField[1]);
+                    $("#txtAltitudeSearch").val(searchTerm);
                     $("#ddlAltSearchOperator").val(searchField[2]);
                 }
                 // City
-                if (searchField[0] == ('courseCity') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseCity') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseCity: ' + searchField[1]);
+                    Debug('courseCity: ' + searchTerm);
 
-                    $("#ddlCitySearch").val(searchField[1]);
+                    $("#ddlCitySearch").val(searchTerm);
                 }
                 // Country
-                if (searchField[0] == ('courseCountry') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseCountry') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseCountry: ' + searchField[1]);
+                    Debug('courseCountry: ' + searchTerm);
 
-                    $("#ddlCountrySearch").val(searchField[1]);
+                    $("#ddlCountrySearch").val(searchTerm);
                 }
                 // Continent
-                if (searchField[0] == ('courseContinent') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseContinent') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseContinent: ' + searchField[1]);
+                    Debug('courseContinent: ' + searchTerm);
 
-                    $("#ddlContinentSearch").val(searchField[1]);
+                    $("#ddlContinentSearch").val(searchTerm);
                 }
                 // State
-                if (searchField[0] == ('courseState') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseState') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseState: ' + searchField[1]);
+                    Debug('courseState: ' + searchTerm);
 
-                    $("#ddlStateSearch").val(searchField[1]);
+                    $("#ddlStateSearch").val(searchTerm);
                 }
                 // Slope
-                if (searchField[0] == ('courseSlope') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseSlope') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseSlope: ' + searchField[1] + ' ' + searchField[2]);
+                    Debug('courseSlope: ' + searchTerm + ' ' + searchField[2]);
 
-                    $("#txtSlopeSearch").val(searchField[1]);
+                    $("#txtSlopeSearch").val(searchTerm);
                     $("#ddlSlopeSearchOperator").val(searchField[2]);
                 }
                 // Rating
-                if (searchField[0] == ('courseRating') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseRating') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseRating: ' + searchField[1] + ' ' + searchField[2]);
+                    Debug('courseRating: ' + searchTerm + ' ' + searchField[2]);
 
-                    $("#txtRatingSearch").val(searchField[1]);
+                    $("#txtRatingSearch").val(searchTerm);
                     $("#ddlRatingSearchOperator").val(searchField[2]);
                 }
                 // Yardage
-                if (searchField[0] == ('courseYardage') && searchField[1].length > 0) {
+                if (searchField[0] == ('courseYardage') && searchTerm.length > 0) {
                     window.searchDataFound = true;
 
-                    Debug('courseYardage: ' + searchField[1] + ' ' + searchField[2]);
+                    Debug('courseYardage: ' + searchTerm + ' ' + searchField[2]);
 
-                    $("#txtYardageSearch").val(searchField[1]);
+                    $("#txtYardageSearch").val(searchTerm);
                     $("#ddlYardageSearchOperator").val(searchField[2]);
                 }
                 // Has Flyover Video
                 if (searchField[0] == ('courseHasFlyoverVideoIsChecked')) {
                     window.searchDataFound = true;
 
-                    Debug('courseHasFlyoverVideoIsChecked: ' + searchField[1]);
+                    Debug('courseHasFlyoverVideoIsChecked: ' + searchTerm);
 
-                    $("#chkHasFlyoverVideo").prop("checked", searchField[1].toLowerCase() === "true");
+                    $("#chkHasFlyoverVideo").prop("checked", searchTerm.toLowerCase() === "true");
                 }
                 // Is Favorite
                 if (searchField[0] == ('courseIsFavoriteIsChecked')) {
                     window.searchDataFound = true;
 
-                    Debug('courseIsFavoriteIsChecked: ' + searchField[1]);
+                    Debug('courseIsFavoriteIsChecked: ' + searchTerm);
 
-                    $("#chkIsFavorite").prop("checked", searchField[1].toLowerCase() === "true");
+                    $("#chkIsFavorite").prop("checked", searchTerm.toLowerCase() === "true");
                 }
             });
         }
@@ -759,12 +762,47 @@
             }
         }
 
+        function escapeHTML(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+        
+        function escapeURL(str) {
+            return str
+                .replaceAll(" ", "%20")
+                .replaceAll("&", "%26")
+                .replaceAll("<", "%3C")
+                .replaceAll(">", "%3E")
+                .replaceAll("\"", "%22")
+                .replaceAll("'", "%27")
+                .replaceAll(";", "%3B")
+                .replaceAll("|", "%7C")
+                .replaceAll(",", "%2C");
+        }
+
+        function unEscapeURL(str) {
+            return str
+                .replaceAll("%20", " ")
+                .replaceAll("%26", "&")
+                .replaceAll("%3C", "<")
+                .replaceAll("%3E", ">")
+                .replaceAll("%22", "\"")
+                .replaceAll("%27", "'")
+                .replaceAll("%3B", ";")
+                .replaceAll("%7C", "|")
+                .replaceAll("%2C", ",");
+        }
+
         function LoadSearchDropdowns() {
 
             $.each(window.courseArr, function () {
 
                 // Build course list
-                var $courseButton = $('<button onclick="loadScoreCard(\'' + this.Name.replace("'", "\\'") + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
+                var $courseButton = $('<button onclick="loadScoreCard(\'' + escapeHTML(this.Name.replace("'", "\\'")) + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
                 $courseButton.appendTo($("#courseList"));
 
                 //PAR
@@ -889,9 +927,10 @@
 
         function shareCourse() {
             var courseDiv = document.getElementById("courseName");
-            var copyText = courseDiv.innerHTML;
+            var copyText = courseDiv.innerText;
+
             var path = window.location.href.split('?')[0]
-            var shareURL = encodeURI(path + "?course=" + copyText);
+            var shareURL = path + "?course=" + escapeURL(copyText);
 
             SendToClipboard(shareURL);
         }
@@ -908,7 +947,7 @@
                     var searchString_enc = Base64_encode_url(searchCriteria.searchString);
 
                     var path = window.location.href.split('?')[0]
-                    var shareURL = encodeURI(path + "?search=" + searchString_enc);
+                    var shareURL = path + "?search=" + escapeURL(searchString_enc);
 
                     SendToClipboard(shareURL);
                 }
@@ -937,6 +976,8 @@
 
         function loadScoreCard(course) {
             try {
+                Debug("load scorecard: " + course);
+
                 // Reset the query string parameter if we already loaded a course and reset the search parameters
                 var url = window.location.href;
 
@@ -950,7 +991,8 @@
 
                 // Add/Update any QS params first if user clicks on a course to load
                 var queryParams = new URLSearchParams(window.location.search);
-                queryParams.set("course", course);
+                queryParams.set("course", escapeURL(course));
+                Debug("url param set: " + escapeURL(course));
                 window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
 
                 $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
@@ -1305,7 +1347,7 @@
 
         function markCourseFavorite() {
             var courseDiv = document.getElementById("courseName");
-            var course = courseDiv.innerHTML;
+            var course = courseDiv.innerText;
 
             var fav = LocalStorage('get', course + "_favorite");
 
@@ -1346,7 +1388,7 @@
 
         function requestFlyOverVideo() {
             var courseDiv = document.getElementById("courseName");
-            var course = courseDiv.innerHTML;
+            var course = courseDiv.innerText;
 
             var hasSentCourseRequest = LocalStorage('get', course + "_requestedFlyover");
 
@@ -1410,12 +1452,12 @@
 
         function GetSearchCriteria() {
             // Texts
-            var courseName = $("#txtNameSearch").val();
-            var courseVersion = $("#txtVersionSearch").val();
-            var courseAlt = $("#txtAltitudeSearch").val();
-            var courseYardage = $("#txtYardageSearch").val();
-            var courseSlope = $("#txtSlopeSearch").val();
-            var courseRating = $("#txtRatingSearch").val();
+            var courseName = escapeURL($("#txtNameSearch").val());
+            var courseVersion = escapeURL($("#txtVersionSearch").val());
+            var courseAlt = escapeURL($("#txtAltitudeSearch").val());
+            var courseYardage = escapeURL($("#txtYardageSearch").val());
+            var courseSlope = escapeURL($("#txtSlopeSearch").val());
+            var courseRating = escapeURL($("#txtRatingSearch").val());
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
@@ -1460,11 +1502,20 @@
 
             let count = 0;
 
-            for (const value of Object.values(obj)) {
-                if ((value.length > 0 && value != 'Contains' && value != 'Equals' && value != '=' && value != '>' && value != '<') || value == true) {
+            for (const key of Object.keys(obj)) {
+                var value = obj[key];
+
+                if (!key.endsWith("SearchOperator") && value.length > 0) {
                     count++;
+                    Debug("search term - " + key + " : " + value);
+                }
+                else if (key.endsWith("IsChecked") && value) {
+                    count++;
+                    Debug("search check box - " + key + " : " + value);
                 }
             }
+
+            Debug("search parameter count: " + count);
 
             if (count == 0) {
                 obj.hasData = false;
