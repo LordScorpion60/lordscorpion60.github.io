@@ -85,6 +85,20 @@
             bottom: 3px;
             position: relative;
         }
+
+        .btn-header {
+            color: #31708f;
+            background-color: #d9edf7;
+            border: none;
+            border-radius: 3px;
+            transition: all .5s;
+        }
+
+        .btn-header:hover, .btn-header:focus, .btn-header:active, .btn-header.active, .open > .dropdown-toggle.btn-header {
+            color: #fff;
+            background-color: #428bca;
+            border-color: #269abc
+        }
     </style>
 </head>
 
@@ -114,9 +128,9 @@
                             </div>
                         </div>
                         <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordionInfo" href="#collapseInfo">Info <i class="fa fa-info-circle"></i></a>
+                            <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionInfo" href="#collapseInfo">
+                                <h4 class="panel-title" style="text-align: left;">
+                                    Info <i class="fa fa-info-circle"></i>
                                 </h4>
                             </div>
                             <div id="collapseInfo" class="panel-collapse collapse">
@@ -128,9 +142,9 @@
                             </div>
                         </div>
                         <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordionClub" href="#collapseClub">Club Data <i class="fa fa-crosshairs"></i></a>
+                            <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionClub" href="#collapseClub">
+                                <h4 class="panel-title" style="text-align: left;">
+                                    Club Data <i class="fa fa-crosshairs"></i>
                                 </h4>
                             </div>
                             <div id="collapseClub" class="panel-collapse collapse">
@@ -152,9 +166,9 @@
                             </div>
                         </div>
                         <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordionSearch" href="#collapseSearch">Course Search <i class="fa fa-search"></i></a>
+                            <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionSearch" href="#collapseSearch">
+                                <h4 class="panel-title" style="text-align: left;">
+                                    Course Search <i class="fa fa-search"></i>
                                 </h4>
                             </div>
                             <div id="collapseSearch" class="panel-collapse collapse">
@@ -287,7 +301,7 @@
                     <!-- Built on load -->
                 </div>
                 <div class="col-xs-8 col-md-8">
-                    <div class="panel panel-primary" style="display: inline-block">
+                    <div class="panel panel-primary" style="display: table; width:100%;">
                         <div class="panel-heading">
                             <i class="fa fa-arrow-left"></i> Click on a course to load it's scorecard here <i class="fa fa-arrow-down"></i>
                         </div>
