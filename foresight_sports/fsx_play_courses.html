@@ -1561,19 +1561,20 @@
             var courseYardageSearchOperator = $("#ddlYardageSearchOperator").val();
 
             var obj = new Object();
+            var searchString = "";
 
-            obj.courseName = courseName;
-            obj.courseVersion = courseVersion;
-            obj.courseAlt = courseAlt;
-            obj.courseYardage = courseYardage;
-            obj.courseSlope = courseSlope;
-            obj.courseRating = courseRating;
-            obj.coursePar = coursePar;
-            obj.courseType = courseType;
-            obj.courseCity = courseCity;
-            obj.courseCountry = courseCountry;
-            obj.courseContinent = courseContinent;
-            obj.courseState = courseState;
+            obj.courseName = (courseName.length > 0) ? courseName : "";
+            obj.courseVersion = (courseVersion.length > 0) ? courseVersion : "";
+            obj.courseAlt = (courseAlt.length > 0) ? courseAlt : "";
+            obj.courseYardage = (courseYardage.length > 0) ? courseYardage : "";
+            obj.courseSlope = (courseSlope.length > 0) ? courseSlope : "";
+            obj.courseRating = (courseRating.length > 0) ? courseRating : "";
+            obj.coursePar = (coursePar.length > 0) ? coursePar : "";
+            obj.courseType = (courseType.length > 0) ? courseType : "";
+            obj.courseCity = (courseCity.length > 0) ? courseCity : "";
+            obj.courseCountry = (courseCountry.length > 0) ? courseCountry : "";
+            obj.courseContinent = (courseContinent.length > 0) ? courseContinent : "";
+            obj.courseState = (courseState.length > 0) ? courseState : "";
             obj.courseHasFlyoverVideoIsChecked = courseHasFlyoverVideoIsChecked;
             obj.courseIsFavoriteIsChecked = courseIsFavoriteIsChecked;
             obj.courseNameSearchOperator = courseNameSearchOperator;
@@ -1582,31 +1583,72 @@
             obj.courseRatingSearchOperator = courseRatingSearchOperator;
             obj.courseYardageSearchOperator = courseYardageSearchOperator;
 
-            let count = 0;
-
-            for (const key of Object.keys(obj)) {
-                var value = obj[key];
-
-                if (!key.endsWith("SearchOperator") && value.length > 0) {
-                    count++;
-                    Debug("search term - " + key + " : " + value);
-                }
-                else if (key.endsWith("IsChecked") && value) {
-                    count++;
-                    Debug("search check box - " + key + " : " + value);
-                }
+            if (courseName.length > 0) {
+                searchString += "courseName;" + escapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator;
+                Debug("search term - courseName: " + obj.courseNameSearchOperator + " " + obj.courseName);
+            }
+            if (courseVersion.length > 0) {
+                searchString += "|courseVersion;" + escapeURL(obj.courseVersion);
+                Debug("search term - courseVersion: " + obj.courseVersion);
+            }
+            if (coursePar.length > 0) {
+                searchString += "|coursePar;" + obj.coursePar;
+                Debug("search term - coursePar: " + obj.coursePar);
+            }
+            if (courseType.length > 0) {
+                searchString += "|courseType;" + obj.courseType;
+                Debug("search term - courseType: " + obj.courseType);
+            }
+            if (courseAlt.length > 0) {
+                searchString += "|courseAlt;" + escapeURL(obj.courseAlt) + ";" + obj.courseAltSearchOperator;
+                Debug("search term - courseAlt: " + obj.courseAltSearchOperator + " " + obj.courseAlt);
+            }
+            if (courseCity.length > 0) {
+                searchString += "|courseCity;" + obj.courseCity;
+                Debug("search term - courseCity: " + obj.courseCity);
+            }
+            if (courseCountry.length > 0) {
+                searchString += "|courseCountry;" + obj.courseCountry;
+                Debug("search term - courseCountry: " + obj.courseCountry);
+            }
+            if (courseContinent.length > 0) {
+                searchString += "|courseContinent;" + obj.courseContinent;
+                Debug("search term - courseContinent: " + obj.courseContinent);
+            }
+            if (courseState.length > 0) {
+                searchString += "|courseState;" + obj.courseState;
+                Debug("search term - courseState: " + obj.courseState);
+            }
+            if (courseYardage.length > 0) {
+                searchString += "|courseYardage;" + escapeURL(obj.courseYardage) + ";" + obj.courseYardageSearchOperator;
+                Debug("search term - courseYardage: " + obj.courseYardageSearchOperator + " " + obj.courseYardage);
+            }
+            if (courseSlope.length > 0) {
+                searchString += "|courseSlope;" + escapeURL(obj.courseSlope) + ";" + obj.courseSlopeSearchOperator;
+                Debug("search term - courseSlope: " + obj.courseSlopeSearchOperator + " " + obj.courseSlope);
+            }
+            if (courseRating.length > 0) {
+                searchString += "|courseRating;" + escapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator;
+                Debug("search term - courseRating: " + obj.courseRatingSearchOperator + " " + obj.courseRating);
+            }
+            
+            // Add checkboxes
+            if (obj.courseHasFlyoverVideoIsChecked) {
+                searchString += "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked;
+                Debug("search check box - courseHasFlyoverVideoIsChecked: " + obj.courseHasFlyoverVideoIsChecked);
+            }
+            if (obj.courseIsFavoriteIsChecked) {
+                searchString += "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
+                Debug("search check box - courseIsFavoriteIsChecked: " + obj.courseIsFavoriteIsChecked);
             }
 
-            Debug("search parameter count: " + count);
-
-            if (count == 0) {
-                obj.hasData = false;
-            }
-            else {
-                obj.hasData = true;
+            // Clean up and finish
+            if (searchString.startsWith('|')) {
+                searchString = searchString.replace('|', '');
             }
 
-            obj.searchString = "courseName;" + escapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator + "|courseVersion;" + escapeURL(obj.courseVersion) + "|coursePar;" + obj.coursePar + "|courseType;" + obj.courseType + "|courseAlt;" + escapeURL(obj.courseAlt) + ";" + obj.courseAltSearchOperator + "|courseCity;" + obj.courseCity + "|courseCountry;" + obj.courseCountry + "|courseContinent;" + obj.courseContinent + "|courseState;" + obj.courseState + "|courseYardage;" + escapeURL(obj.courseYardage) + ";" + obj.courseYardageSearchOperator + "|courseSlope;" + escapeURL(obj.courseSlope) + ";" + obj.courseSlopeSearchOperator + "|courseRating;" + escapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator + "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked + "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
+            obj.searchString = searchString;
+            obj.hasData = (searchString.length > 0);
 
             Debug("has search data: " + obj.hasData);
 
