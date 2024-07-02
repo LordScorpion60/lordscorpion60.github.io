@@ -1009,7 +1009,21 @@
                 Debug("Trying to load scorecard for course: " + course);
 
                 // Make sure the course is the full proper name of the course and update incase a partial url was passed in (YT kill's courses ended in ')')
-                var matchedCourses = window.courseArr.filter(function (a) { return (a.Name.toLowerCase().includes(course.toLowerCase())) });
+                var matchedCourses = window.courseArr.filter(function (a) { return (a.Name.toLowerCase() == course.toLowerCase()) });
+
+                if (matchedCourses == 0) {
+                    Debug("course not an exact match...");
+                    // Not an exact match, so check for partial matches...
+                    matchedCourses = window.courseArr.filter(function (a) { return (a.Name.toLowerCase().includes(course.toLowerCase())) });
+                }
+                else {
+                    // Exact match, just check for improper cased course name
+                    if (course != matchedCourses[0].Name) {
+                        Debug("passed in course name is not correct case. Updating...");
+                        course = matchedCourses[0].Name;
+                    }
+                }
+
                 var matchCourseCount = matchedCourses.length;
                 Debug("matched courses: " + matchCourseCount);
 
@@ -1022,15 +1036,15 @@
                 }
 
                 if (matchCourseCount != 1) {
+                    // Too many courses match the passed in course name, so we need to redirect to a course name search...
                     Debug("No direct course match, loading search instead...");
 
-                    // Too many courses match the passed in course name, so we need to redirect to a course name search...
                     var newSearch = "courseName;" + course + ";Contains";
 
                     PreloadSearchCriteria(newSearch);
                     // Expand search criteria box
                     $('#collapseSearch').addClass('in');
-                    // Re-run search
+                    // Run search
                     searchCourse();
                 }
                 else {
@@ -1506,12 +1520,12 @@
 
         function GetSearchCriteria() {
             // Texts
-            var courseName = escapeURL($("#txtNameSearch").val());
-            var courseVersion = escapeURL($("#txtVersionSearch").val());
-            var courseAlt = escapeURL($("#txtAltitudeSearch").val());
-            var courseYardage = escapeURL($("#txtYardageSearch").val());
-            var courseSlope = escapeURL($("#txtSlopeSearch").val());
-            var courseRating = escapeURL($("#txtRatingSearch").val());
+            var courseName = $("#txtNameSearch").val();
+            var courseVersion = $("#txtVersionSearch").val();
+            var courseAlt = $("#txtAltitudeSearch").val();
+            var courseYardage = $("#txtYardageSearch").val();
+            var courseSlope = $("#txtSlopeSearch").val();
+            var courseRating = $("#txtRatingSearch").val();
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
@@ -1578,7 +1592,7 @@
                 obj.hasData = true;
             }
 
-            obj.searchString = "courseName;" + obj.courseName + ";" + obj.courseNameSearchOperator + "|courseVersion;" + obj.courseVersion + "|coursePar;" + obj.coursePar + "|courseType;" + obj.courseType + "|courseAlt;" + obj.courseAlt + ";" + obj.courseAltSearchOperator + "|courseCity;" + obj.courseCity + "|courseCountry;" + obj.courseCountry + "|courseContinent;" + obj.courseContinent + "|courseState;" + obj.courseState + "|courseYardage;" + obj.courseYardage + ";" + obj.courseYardageSearchOperator + "|courseSlope;" + obj.courseSlope + ";" + obj.courseSlopeSearchOperator + "|courseRating;" + obj.courseRating + ";" + obj.courseRatingSearchOperator + "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked + "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
+            obj.searchString = "courseName;" + escapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator + "|courseVersion;" + escapeURL(obj.courseVersion) + "|coursePar;" + obj.coursePar + "|courseType;" + obj.courseType + "|courseAlt;" + escapeURL(obj.courseAlt) + ";" + obj.courseAltSearchOperator + "|courseCity;" + obj.courseCity + "|courseCountry;" + obj.courseCountry + "|courseContinent;" + obj.courseContinent + "|courseState;" + obj.courseState + "|courseYardage;" + escapeURL(obj.courseYardage) + ";" + obj.courseYardageSearchOperator + "|courseSlope;" + escapeURL(obj.courseSlope) + ";" + obj.courseSlopeSearchOperator + "|courseRating;" + escapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator + "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked + "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
 
             Debug("has search data: " + obj.hasData);
 
