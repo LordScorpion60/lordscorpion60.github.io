@@ -6,9 +6,15 @@ function SetDebugMode() {
     console.info("debug mode:" + window.isDebug);
 }
 
-function Debug(msg) {
+function Debug(msg, callerOverride) {
     if (window.isDebug) {
-        console.log(msg);
+        var caller = arguments.callee.caller.name;
+
+        if (callerOverride != null && callerOverride.length > 0) {
+            caller = callerOverride;
+        }
+
+        console.log("[" + caller + "] " + msg);
     }
 }
 
@@ -46,19 +52,19 @@ function LocalStorage(action, key, value) {
         if (action === 'get') {
             retVal = localStorage.getItem(key);
 
-            Debug("localStorage " + action + ": " + key + "," + retVal);
+            Debug(action + ": " + key + "," + retVal);
 
             return retVal;
         }
         else if (action === 'set') {
             localStorage.setItem(key, value);
 
-            Debug("localStorage " + action + ": " + key + "," + value);
+            Debug(action + ": " + key + "," + value);
         }
         else if (action === 'remove') {
             localStorage.removeItem(key);
 
-            Debug("localStorage " + action + ": " + key);
+            Debug(action + ": " + key);
         }
     }
     else {
@@ -79,19 +85,19 @@ function SessionStorage(action, key, value) {
         if (action === 'get') {
             retVal = sessionStorage.getItem(key);
 
-            Debug("sessionStorage " + action + ": " + key + "," + retVal);
+            Debug(action + ": " + key + "," + retVal);
 
             return retVal;
         }
         else if (action === 'set') {
             sessionStorage.setItem(key, value);
 
-            Debug("sessionStorage " + action + ": " + key + "," + value);
+            Debug(action + ": " + key + "," + value);
         }
         else if (action === 'remove') {
             sessionStorage.removeItem(key);
 
-            Debug("sessionStorage " + action + ": " + key);
+            Debug(action + ": " + key);
         }
     }
     else {

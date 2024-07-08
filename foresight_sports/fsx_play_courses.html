@@ -27,6 +27,7 @@
     <meta name="twitter:image" content="https://ogcdn.net/6064b869-74ed-4eb9-b76c-0b701ffe7e6b/v4/lordscorpion60.github.io/%5B%20LordScorpion60's%20Domain%20%5D%20FSX%20Play%20Scorecards/https%3A%2F%2Fopengraph.b-cdn.net%2Fproduction%2Fimages%2Ffa506cf3-1f23-44d9-aa2a-12b830eeaa9d.jpg%3Ftoken%3DUTJ_Ar12acqND3QxxCIsz2b80IzxN2SHbkvjihBaWuo%26height%3D763%26width%3D1018%26expires%3D33253712874/og.png">
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
@@ -424,6 +425,7 @@
         // On page-load.
         $(function () {
             SetDebugMode();
+            var debugType = "OnLoad";
 
             $("#nav-placeholder").load("/nav.html");
 
@@ -433,13 +435,13 @@
             var queryCourse = queryParams.get('course');
             var querySearch = queryParams.get('search');
 
-            Debug("query string course: " + queryCourse);
+            Debug("query string course: " + queryCourse, debugType);
 
             var queryCourseAfterAmp = "";
 
             for (const key of queryParams.keys()) {
                 if (key.startsWith(" ") && queryParams.get(key).length == 0) {
-                    Debug("course query string w/ amp: '" + key + "'");
+                    Debug("course query string w/ amp: '" + key + "'", debugType);
                     queryCourseAfterAmp = key;
                 }
             }
@@ -447,15 +449,17 @@
             if (queryCourseAfterAmp.length > 0) {
                 // We need to assume the course has an unescaped & in it and need to re-build the course name
                 queryCourse += "&" + queryCourseAfterAmp;
-                Debug("updated query string course: " + queryCourse);
+                Debug("updated query string course: " + queryCourse, debugType);
             }
+
+            var isCourseinURL = false;
 
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
                 window.courseArr = data;
 
-                Debug('course json loaded...');
-                Debug(window.courseArr);
+                Debug('course json loaded...', debugType);
+                Debug('courses found: ' + window.courseArr.length, debugType);
 
                 if (window.courseArr.length > 0) {
                     LoadSearchDropdowns();
@@ -467,21 +471,26 @@
                     if (window.performance.getEntriesByType("navigation")[0].type === "reload") {
 
                         // Page was reloaded
-                        Debug("Page was reloaded, restore any previous search criteria...");
+                        Debug("Page was reloaded, restore any previous search criteria...", debugType);
                         var lastSearch = SessionStorage('get', 'lastSearch');
 
                         if (lastSearch != null) {
+                            Debug("previous search found...", debugType);
                             // Restore search criteria to each field on the page...
-                            queryCourse = null;
                             PreloadSearchCriteria(lastSearch);
+
+                            if (queryCourse != null) {
+                                Debug("Need to reload selected course from URL: " + queryCourse, debugType);
+                                isCourseinURL = true;
+                            }
                         }
                         else {
-                            Debug("no previous search found...");
+                            Debug("no previous search found...", debugType);
                         }
                     }
                     else {
                         // Page was not reloaded
-                        Debug("Page was not reloaded, remove any last search criteria that might be cached...");
+                        Debug("Page was not reloaded, remove any last search criteria that might be cached...", debugType);
                         SessionStorage('remove', 'lastSearch');
                     }
                 }
@@ -493,15 +502,15 @@
                 $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
                     window.courseMediaArr = data;
 
-                    Debug('course media json loaded...');
+                    Debug('course media json loaded...', debugType);
 
                     if (querySearch != null) {
-                        Debug("search passed in via URL: " + querySearch);
+                        Debug("search passed in via URL: " + querySearch, debugType);
 
                         try {
                             var searchString_dec = Base64_decode_url(querySearch);
 
-                            Debug("decoded URL search string:" + searchString_dec);
+                            Debug("decoded URL search string:" + searchString_dec, debugType);
 
                             // Restore search criteria to each field on the page...
                             PreloadSearchCriteria(searchString_dec);
@@ -512,11 +521,12 @@
                         }
                     }
                     else if (queryCourse != null) {
+                        Debug("Loading scorecard: " + queryCourse, debugType);
                         loadScoreCard(queryCourse);
                     }
                     else {
                         // Remove all query string parameters just in case
-                        Debug("no actions to take!");
+                        Debug("no actions to take!", debugType);
                         ResetURL();
                     }
                 }).done(function (data) {
@@ -524,7 +534,8 @@
                         // Expand search criteria box
                         $('#collapseSearch').addClass('in');
                         // Re-run search
-                        searchCourse();
+                        Debug("Re-run search...", debugType);
+                        searchCourse(isCourseinURL);
                         window.searchDataFound = false;
                     }
                 }).fail(function (data) {
@@ -540,6 +551,8 @@
         });
 
         async function GetUserData() {
+            var debugType = "GetUserData";
+
             try {
                 var request1 = await fetch('https://api.ipify.org?format=json')
                     .then(response => response.json())
@@ -549,19 +562,19 @@
                         $.getJSON("https://ipinfo.io/json?token=e96ec5b44f0930").done(function (ipData) {
                             window.userInfo = "[" + ipData.ip + ":" + ipData.city + ":" + ipData.country + ":" + ipData.postal + "]";
 
-                            Debug(ipData);
+                            Debug(ipData, debugType);
                         }).fail(function (data) {
-                            Debug('no extra user data could be loaded!');
+                            Debug('no extra user data could be loaded!', debugType);
                         }).always(function (data) {
-                            Debug(window.userInfo);
+                            Debug(window.userInfo, debugType);
                         });
                     })
                     .catch(error => {
-                        Debug('Error fetching IP:' + error);
+                        Debug('Error fetching IP:' + error, debugType);
                     });
             }
             catch (e) {
-                Debug("could not get user IP: " + e);
+                Debug("could not get user IP: " + e, debugType);
             }
         }
 
@@ -569,7 +582,7 @@
 
             var searchArr = searchData.split('|');
 
-            $.each(searchArr, function (index, value) {
+            $.each(searchArr, function PreloadSearchCriterias (index, value) {
                 var searchField = value.split(';');
                 var searchTerm = UnEscapeURL(searchField[1]);
 
@@ -975,13 +988,13 @@
                 }
 
                 var matchCourseCount = matchedCourses.length;
-                Debug("matched courses: " + matchCourseCount);
+                Debug("scorecards matching course value: " + matchCourseCount);
 
                 if (matchCourseCount == 1) {
                     // Partial match is unique, change the course name to be correct and proceed
                     if (course.toLowerCase() != matchedCourses[0].Name.toLowerCase()) {
-                        Debug("passed in course name is incorrect. Updating...");
                         course = matchedCourses[0].Name;
+                        Debug("passed in course name is incorrect. Updating to: " + course);
                     }
                 }
 
@@ -998,7 +1011,7 @@
                     searchCourse();
                 }
                 else {
-                    Debug("load scorecard: " + course);
+                    Debug("Direct course match, loading scorecard...");
 
                     // Reset the query string parameter if we already loaded a course and reset the search parameters
                     ResetURL();
@@ -1052,7 +1065,7 @@
                     // Set Course Favorite Button
                     var courseFav = LocalStorage('get', course + "_favorite");
 
-                    Debug(course + " fav: " + courseFav);
+                    Debug("Is course a favorite: " + courseFav);
 
                     SetCourseFavoriteStar(courseFav);
 
@@ -1072,9 +1085,9 @@
                     club7IronBtn.style.display = "none";
                     clubWedgeBtn.style.display = "none";
 
-                    Debug("driver: " + clubDriver);
-                    Debug("7i: " + club7Iron);
-                    Debug("wedge: " + clubWedge);
+                    Debug("driver set to: " + clubDriver);
+                    Debug("7i set to: " + club7Iron);
+                    Debug("wedge set to: " + clubWedge);
 
                     var courseAlt = window.courseArr.find(item => item.Name === course).Altitude;
                     // Altitude(y) to % gain(x): 0.00002y=x
@@ -1148,9 +1161,9 @@
 
                     var matchingCourse = window.courseMediaArr.find(item => item.Name === course);
 
-                    Debug("matchingCourse: " + JSON.stringify(matchingCourse));
-
                     if (typeof matchingCourse !== 'undefined') {
+                        // Course media data found, set links with available information
+                        Debug("course media match: " + JSON.stringify(matchingCourse));
 
                         //Check for Course Buy link
                         if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
@@ -1178,6 +1191,7 @@
                     }
                     else {
                         // No media data found, so clean out links
+                        Debug("no course media match!");
 
                         y.style.display = "none";
                         y.href = "#";
@@ -1196,11 +1210,11 @@
 
         function UpdateCourseModal(course) {
             var courseImage = course.replaceAll(" ", "_") + "_.png";
-            var courseImageURL = encodeURIComponent("fsx_play_course_images/" + courseImage).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+            var courseImageURL = "fsx_play_course_images/" + encodeURIComponent(courseImage).replace("(", "%28").replace(")", "%29").replace("'", "%27");
 
-            Debug(course);
-            Debug(courseImage);
-            Debug(courseImageURL);
+            Debug("Updating course modal images...");
+            Debug("Course image: " + courseImage);
+            Debug("Course image URL: " + courseImageURL);
 
             $('#course_placeholder').css('background-image', "url(" + courseImageURL + ")");
             $('#course_placeholder').css('background-size', "cover");
@@ -1213,14 +1227,14 @@
 
                 // Check if sender is the parent placeholder <div> element
                 if ($(e.target).is("div")) {
-                    Debug('course_placeholder - clicked');
+                    Debug('course_placeholder - clicked', "Event");
                     $('#courseImageModalTitle').text(course);
                     $("#courseImageModalFull").attr("src", courseImageURL);
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
                 }
                 else if ($(e.target).is("td") && e.target.style.cursor == 'zoom-in') {
-                    Debug('course_hole - clicked');
+                    Debug('course_hole - clicked', "Event");
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
                 }
@@ -1470,14 +1484,19 @@
             return obj;
         }
 
-        function searchCourse() {
-            UnhideAllCourses();
-            ResetURL();
+        function searchCourse(isCourseSelected = false) {
+            Debug("searchCourse - isCourseSelected: " + isCourseSelected);
 
-            var x = document.getElementById("courseFooter");
+            if (!isCourseSelected) {
+                Debug("Unhide courses and reset URL...");
+                UnhideAllCourses();
+                ResetURL();
 
-            if (x.style.display === "block") {
-                x.style.display = "none";
+                var x = document.getElementById("courseFooter");
+
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                }
             }
 
             var searchCriteria = GetSearchCriteria();
@@ -1620,8 +1639,6 @@
                         if (typeof matchingCourse !== 'undefined') {
                             //Check for Course Flyover link
                             if (matchingCourse.Flyover != null && matchingCourse.Flyover.length > 0) {
-                                Debug("matching Media Course: " + matchingCourse.Name);
-
                                 return course
                             }
                         }
@@ -1650,10 +1667,12 @@
                     matchedCourses.push(this.Name);
                 });
 
+                Debug("courses matched: " + matchedCourses.length);
                 $("#courseResultCount").html("Courses found: " + matchedCourses.length);
 
                 if (matchedCourses.length > 0) {
 
+                    Debug("Hiding unmatched courses...");
                     document.querySelectorAll('.courseButton').forEach(function (el) {
                         if ($.inArray(HtmlDecode(el.innerHTML), matchedCourses) == -1) {
                             el.style.display = 'none';
@@ -1661,6 +1680,7 @@
                     });
 
                     if (matchedCourses.length == 1) {
+                        Debug("Search had exact match, loading scorecard...");
                         loadScoreCard(matchedCourses[0]);
                     }
                 }
