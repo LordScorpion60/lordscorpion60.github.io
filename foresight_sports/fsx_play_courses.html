@@ -85,20 +85,6 @@
             bottom: 3px;
             position: relative;
         }
-
-        .btn-header {
-            color: #31708f;
-            background-color: #d9edf7;
-            border: none;
-            border-radius: 3px;
-            transition: all .5s;
-        }
-
-        .btn-header:hover, .btn-header:focus, .btn-header:active, .btn-header.active, .open > .dropdown-toggle.btn-header {
-            color: #fff;
-            background-color: #428bca;
-            border-color: #269abc
-        }
     </style>
 </head>
 
@@ -129,7 +115,7 @@
                         </div>
                         <div class="panel panel-info">
                             <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionInfo" href="#collapseInfo">
-                                <h4 class="panel-title" style="text-align: left;">
+                                <h4 class="panel-title text-left">
                                     Info <i class="fa fa-info-circle"></i>
                                 </h4>
                             </div>
@@ -143,7 +129,7 @@
                         </div>
                         <div class="panel panel-info">
                             <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionClub" href="#collapseClub">
-                                <h4 class="panel-title" style="text-align: left;">
+                                <h4 class="panel-title text-left">
                                     Club Data <i class="fa fa-crosshairs"></i>
                                 </h4>
                             </div>
@@ -167,7 +153,7 @@
                         </div>
                         <div class="panel panel-info">
                             <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionSearch" href="#collapseSearch">
-                                <h4 class="panel-title" style="text-align: left;">
+                                <h4 class="panel-title text-left">
                                     Course Search <i class="fa fa-search"></i>
                                 </h4>
                             </div>
@@ -318,7 +304,7 @@
                                     </div>
                                     <div class="modal-body" data-dismiss="modal" style="padding: 0px;">
                                         <img id="courseImageModalFull" style="object-fit: contain; max-width: 100%;" />
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -354,6 +340,9 @@
         </div>
     </div>
     <!-- /#wrapper -->
+    <!-- Site Functions -->
+    <script src="/js/site.js"></script>
+
     <!-- jQuery Version 1.11.0 -->
     <script src="/js/jquery-1.11.0.js"></script>
 
@@ -475,9 +464,10 @@
 
                 // Restore any seach criteria if from refresh/reload
                 if (window.performance) {
-                    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-                        // Page was reloaded - Restore any previous search criteria
+                    if (window.performance.getEntriesByType("navigation")[0].type === "reload") {
 
+                        // Page was reloaded
+                        Debug("Page was reloaded, restore any previous search criteria...");
                         var lastSearch = SessionStorage('get', 'lastSearch');
 
                         if (lastSearch != null) {
@@ -488,8 +478,10 @@
                         else {
                             Debug("no previous search found...");
                         }
-                    } else {
-                        // Page was not reloaded, so remove any last search criteria that might be cached
+                    }
+                    else {
+                        // Page was not reloaded
+                        Debug("Page was not reloaded, remove any last search criteria that might be cached...");
                         SessionStorage('remove', 'lastSearch');
                     }
                 }
@@ -542,7 +534,7 @@
             }).fail(function (data) {
                 console.warn('no course data found!');
             });
-            
+
             GetUserData();
             LoadClubData();
         });
@@ -579,7 +571,7 @@
 
             $.each(searchArr, function (index, value) {
                 var searchField = value.split(';');
-                var searchTerm = unEscapeURL(searchField[1]);
+                var searchTerm = UnEscapeURL(searchField[1]);
 
                 // Name
                 if (searchField[0] == ('courseName') && searchTerm.length > 0) {
@@ -593,7 +585,7 @@
                 // Version
                 if (searchField[0] == ('courseVersion') && searchTerm.length > 0) {
                     window.searchDataFound = true;
-                    
+
                     Debug('courseVersion: ' + searchTerm);
 
                     $("#txtVersionSearch").val(searchTerm);
@@ -780,8 +772,7 @@
             else if (clubDriver.length == 0 && club7Iron.length == 0 && clubWedge.length == 0) {
                 finalMsg = "Nothing to save...";
             }
-            else
-            {
+            else {
                 finalMsg = "Club data saved";
             }
 
@@ -797,47 +788,12 @@
             }
         }
 
-        function escapeHTML(str) {
-            return str
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-        
-        function escapeURL(str) {
-            return str
-                .replaceAll(" ", "%20")
-                .replaceAll("&", "%26")
-                .replaceAll("<", "%3C")
-                .replaceAll(">", "%3E")
-                .replaceAll("\"", "%22")
-                .replaceAll("'", "%27")
-                .replaceAll(";", "%3B")
-                .replaceAll("|", "%7C")
-                .replaceAll(",", "%2C");
-        }
-
-        function unEscapeURL(str) {
-            return str
-                .replaceAll("%20", " ")
-                .replaceAll("%26", "&")
-                .replaceAll("%3C", "<")
-                .replaceAll("%3E", ">")
-                .replaceAll("%22", "\"")
-                .replaceAll("%27", "'")
-                .replaceAll("%3B", ";")
-                .replaceAll("%7C", "|")
-                .replaceAll("%2C", ",");
-        }
-
         function LoadSearchDropdowns() {
 
             $.each(window.courseArr, function () {
 
                 // Build course list
-                var $courseButton = $('<button onclick="loadScoreCard(\'' + escapeHTML(this.Name.replace("'", "\\'")) + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
+                var $courseButton = $('<button onclick="loadScoreCard(\'' + EscapeHTML(this.Name.replace("'", "\\'")) + '\')" type="button" class="btn btn-outline btn-primary btn-lg btn-block courseButton" style="margin: 10px">' + this.Name + '</button>');
                 $courseButton.appendTo($("#courseList"));
 
                 //PAR
@@ -965,7 +921,7 @@
             var copyText = courseDiv.innerText;
 
             var path = window.location.href.split('?')[0]
-            var shareURL = path + "?course=" + escapeURL(copyText);
+            var shareURL = path + "?course=" + EscapeURL(copyText);
 
             SendToClipboard(shareURL);
         }
@@ -982,7 +938,7 @@
                     var searchString_enc = Base64_encode_url(searchCriteria.searchString);
 
                     var path = window.location.href.split('?')[0]
-                    var shareURL = path + "?search=" + escapeURL(searchString_enc);
+                    var shareURL = path + "?search=" + EscapeURL(searchString_enc);
 
                     SendToClipboard(shareURL);
                 }
@@ -996,26 +952,6 @@
             }
 
             yourElement.setAttribute("data-content", finalMsg);
-        }
-
-        function SendToClipboard(str) {
-            try {
-                navigator.clipboard.writeText(str);
-
-                Debug("data copied to clipboard: " + str);
-            }
-            catch (e) {
-                console.warn("error copying data (" + str + ") to clipboard: " + e);
-            }
-        }
-
-        function ResetURL() {
-            var url = window.location.href;
-
-            if (url.indexOf("?") > 0) {
-                var updatedUrl = url.substring(0, url.indexOf("?"));
-                window.history.replaceState({}, document.title, updatedUrl);
-            }
         }
 
         function loadScoreCard(course) {
@@ -1072,8 +1008,8 @@
 
                     // Add/Update any QS params first if user clicks on a course to load
                     var queryParams = new URLSearchParams(window.location.search);
-                    queryParams.set("course", escapeURL(course));
-                    Debug("url param set: " + escapeURL(course));
+                    queryParams.set("course", EscapeURL(course));
+                    Debug("url param set: " + EscapeURL(course));
                     window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
 
                     $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
@@ -1268,7 +1204,7 @@
 
             $('#course_placeholder').css('background-image', "url(" + courseImageURL + ")");
             $('#course_placeholder').css('background-size', "cover");
-            $('#course_placeholder').css('cursor', 'zoom-in');            
+            $('#course_placeholder').css('cursor', 'zoom-in');
             $('#course_placeholder').on("click", function (e) {
                 var senderElement = e.target;
                 // Clear modal
@@ -1348,85 +1284,6 @@
             ResetURL();
         }
 
-        function ResetURL() {
-            // Reset the query string parameter if we already loaded a course and reset the search parameters
-            var url = window.location.href;
-            if (url.indexOf("?") > 0) {
-                var updatedUrl = url.substring(0, url.indexOf("?"));
-                window.history.replaceState({}, document.title, updatedUrl);
-            }
-        }
-
-        function HtmlDecode(input) {
-            var e = document.createElement('textarea');
-            e.innerHTML = input;
-            return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-        }
-
-        function LocalStorage(action, key, value) {
-
-            // Code for localStorage/sessionStorage
-            if (typeof (Storage) !== "undefined") {
-
-                if (action === 'get') {
-                    retVal = localStorage.getItem(key);
-
-                    Debug("localStorage " + action + ": " + key + "," + retVal);
-
-                    return retVal;
-                }
-                else if (action === 'set') {
-                    localStorage.setItem(key, value);
-
-                    Debug("localStorage " + action + ": " + key + "," + value);
-                }
-                else if (action === 'remove') {
-                    localStorage.removeItem(key);
-
-                    Debug("localStorage " + action + ": " + key);
-                }
-            } else {
-                // No Web Storage support...
-                console.warn('No Web Storage support!');
-
-                if (action === 'get') {
-                    return null;
-                }
-            }
-        }
-
-        function SessionStorage(action, key, value) {
-
-            // Code for localStorage/sessionStorage
-            if (typeof (Storage) !== "undefined") {
-
-                if (action === 'get') {
-                    retVal = sessionStorage.getItem(key);
-
-                    Debug("sessionStorage " + action + ": " + key + "," + retVal);
-
-                    return retVal;
-                }
-                else if (action === 'set') {
-                    sessionStorage.setItem(key, value);
-
-                    Debug("sessionStorage " + action + ": " + key + "," + value);
-                }
-                else if (action === 'remove') {
-                    sessionStorage.removeItem(key);
-
-                    Debug("sessionStorage " + action + ": " + key);
-                }
-            } else {
-                // No Web Storage support...
-                console.warn('No Web Storage support!');
-
-                if (action === 'get') {
-                    return null;
-                }
-            }
-        }
-
         function markCourseFavorite() {
             var courseDiv = document.getElementById("courseName");
             var course = courseDiv.innerText;
@@ -1490,48 +1347,6 @@
             }
         }
 
-        function SendMessage(msg) {
-
-            const request = new XMLHttpRequest();
-            request.open("POST", "https://discord.com/api/webhooks/1253472184752410675/zf9b9C0dKCPc2JlmuopVRryFrD4YBCqYv4DIpbD4O6zg11K-Oi7pxwaeKpAP4xd8r9G2");
-
-            request.setRequestHeader('Content-type', 'application/json');
-
-            const params = {
-                username: "Website User - " + window.userInfo,
-                avatar_url: "https://lordscorpion60.github.io/images/homepage_og_img.png",
-                content: msg
-            }
-
-            request.send(JSON.stringify(params));
-        }
-
-        function Base64_encode_url(s) {
-            var str = window.btoa(unescape(encodeURIComponent(s)));
-            return str.replace(/\+/g, '-').replace(/\//g, '_');
-        }
-
-        function Base64_decode_url(s) {
-            var str = s, str_pad = (str + '===');
-            str = str_pad.slice(0, str.length + (str.length % 4));
-            str = str.replace(/-/g, '+').replace(/_/g, '/');
-            return decodeURIComponent(escape(window.atob(str)));
-        }
-
-        function SetDebugMode() {
-            var dbgKey = SessionStorage('get', 'debug');
-
-            window.isDebug = (dbgKey != null && dbgKey.toLowerCase() === 'true');
-
-            console.info("debug mode:" + window.isDebug);
-        }
-
-        function Debug(msg) {
-            if (window.isDebug) {
-                console.log(msg);
-            }
-        }
-
         function GetSearchCriteria() {
             // Texts
             var courseName = $("#txtNameSearch").val();
@@ -1584,11 +1399,11 @@
             obj.courseYardageSearchOperator = courseYardageSearchOperator;
 
             if (courseName.length > 0) {
-                searchString += "courseName;" + escapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator;
+                searchString += "courseName;" + EscapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator;
                 Debug("search term - courseName: " + obj.courseNameSearchOperator + " " + obj.courseName);
             }
             if (courseVersion.length > 0) {
-                searchString += "|courseVersion;" + escapeURL(obj.courseVersion);
+                searchString += "|courseVersion;" + EscapeURL(obj.courseVersion);
                 Debug("search term - courseVersion: " + obj.courseVersion);
             }
             if (coursePar.length > 0) {
@@ -1600,7 +1415,7 @@
                 Debug("search term - courseType: " + obj.courseType);
             }
             if (courseAlt.length > 0) {
-                searchString += "|courseAlt;" + escapeURL(obj.courseAlt) + ";" + obj.courseAltSearchOperator;
+                searchString += "|courseAlt;" + EscapeURL(obj.courseAlt) + ";" + obj.courseAltSearchOperator;
                 Debug("search term - courseAlt: " + obj.courseAltSearchOperator + " " + obj.courseAlt);
             }
             if (courseCity.length > 0) {
@@ -1620,18 +1435,18 @@
                 Debug("search term - courseState: " + obj.courseState);
             }
             if (courseYardage.length > 0) {
-                searchString += "|courseYardage;" + escapeURL(obj.courseYardage) + ";" + obj.courseYardageSearchOperator;
+                searchString += "|courseYardage;" + EscapeURL(obj.courseYardage) + ";" + obj.courseYardageSearchOperator;
                 Debug("search term - courseYardage: " + obj.courseYardageSearchOperator + " " + obj.courseYardage);
             }
             if (courseSlope.length > 0) {
-                searchString += "|courseSlope;" + escapeURL(obj.courseSlope) + ";" + obj.courseSlopeSearchOperator;
+                searchString += "|courseSlope;" + EscapeURL(obj.courseSlope) + ";" + obj.courseSlopeSearchOperator;
                 Debug("search term - courseSlope: " + obj.courseSlopeSearchOperator + " " + obj.courseSlope);
             }
             if (courseRating.length > 0) {
-                searchString += "|courseRating;" + escapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator;
+                searchString += "|courseRating;" + EscapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator;
                 Debug("search term - courseRating: " + obj.courseRatingSearchOperator + " " + obj.courseRating);
             }
-            
+
             // Add checkboxes
             if (obj.courseHasFlyoverVideoIsChecked) {
                 searchString += "|courseHasFlyoverVideoIsChecked;" + obj.courseHasFlyoverVideoIsChecked;
@@ -1818,7 +1633,7 @@
                     // Is Favorite
                     if (searchCriteria.courseIsFavoriteIsChecked) {
                         var matchingCourse = LocalStorage('get', course.Name + "_favorite");
-                        
+
                         if (typeof matchingCourse !== 'undefined') {
                             if (matchingCourse != null && matchingCourse === 'true') {
                                 return course

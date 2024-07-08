@@ -343,3 +343,30 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+.btn-header {
+    color: #31708f;
+    background-color: #d9edf7;
+    border: none;
+    border-radius: 3px;
+    transition: all .5s;
+}
+
+.btn-header:hover, .btn-header:focus, .btn-header:active, .btn-header.active, .open > .dropdown-toggle.btn-header {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #269abc
+}
+
+.btn-date-header {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border: none;
+    border-radius: 3px;
+    transition: all .5s;
+}
+
+.btn-date-header:hover, .btn-date-header:focus, .btn-date-header:active, .btn-date-header.active, .open > .dropdown-toggle.btn-date-header {
+    color: #fff;
+    background-color: #3c763d;
+}
