@@ -3136,6 +3136,7 @@
     "Country": "United States",
     "Continent": "North America",
     "State": "Ohio,OH",
+    "Type": "Parkland",
     "MaxYardage": 5354,
     "MinYardage": 4265,
     "MaxSlope": 114.0,
