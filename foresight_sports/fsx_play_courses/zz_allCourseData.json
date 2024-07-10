@@ -391,6 +391,23 @@
     "MinRating": 100
   },
   {
+    "Name": "Blue Beast Golf Club",
+    "Version": "1.4.0.4",
+    "Par": 54.0,
+    "Altitude": 15.0,
+    "City": "Fort Lauderdale",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Florida,FL",
+    "Type": "Links",
+    "MaxYardage": 7278,
+    "MinYardage": 1075,
+    "MaxSlope": 135.0,
+    "MinSlope": 95.0,
+    "MaxRating": 74.0,
+    "MinRating": 55.0
+  },
+  {
     "Name": "Blue Bell Country Club",
     "Version": "1.2.0.3",
     "Par": 71.0,
@@ -1511,6 +1528,23 @@
     "MinSlope": 120.0,
     "MaxRating": 78.6,
     "MinRating": 66.2
+  },
+  {
+    "Name": "Great White Course",
+    "Version": "1.4.0.4",
+    "Par": 72.0,
+    "Altitude": 15.0,
+    "City": "Miami",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Florida,FL",
+    "Type": "Parkland",
+    "MaxYardage": 7171,
+    "MinYardage": 4911,
+    "MaxSlope": 143.0,
+    "MinSlope": 122.0,
+    "MaxRating": 75.1,
+    "MinRating": 67.5
   },
   {
     "Name": "Green Valley Country Club",
@@ -3907,6 +3941,23 @@
     "MinSlope": 113.0,
     "MaxRating": 75.8,
     "MinRating": 69.1
+  },
+  {
+    "Name": "Tara Iti Golf Club",
+    "Version": "1.5.0.3",
+    "Par": 71.0,
+    "Altitude": 10.0,
+    "City": " Mangawhai",
+    "Country": "New Zealand",
+    "Continent": "Australia and Oceania",
+    "State": "N/A",
+    "Type": "Links",
+    "MaxYardage": 6928,
+    "MinYardage": 4758,
+    "MaxSlope": 73.8,
+    "MinSlope": 68.5,
+    "MaxRating": 136.0,
+    "MinRating": 100
   },
   {
     "Name": "Tetherow Golf Club",
