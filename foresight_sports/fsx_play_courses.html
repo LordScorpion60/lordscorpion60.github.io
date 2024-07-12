@@ -86,6 +86,16 @@
             bottom: 3px;
             position: relative;
         }
+
+        .courseHoleImg {
+            object-fit: contain;
+            max-width: 100%;
+        }
+
+        .courseHoleImg-ALL {
+            object-fit: contain;
+            max-width: 95%;
+        }
     </style>
 </head>
 
@@ -304,7 +314,66 @@
                                         <h4 class="modal-title" id="courseImageModalTitle">Course Name</h4>
                                     </div>
                                     <div class="modal-body" data-dismiss="modal" style="padding: 0px;">
-                                        <img id="courseImageModalFull" style="object-fit: contain; max-width: 100%;" />
+                                        <img id="courseImageModalFull" class="courseHoleImg" />
+                                        <table id="courseHolesAllTable" style="width:100%; margin-bottom: 15px; font-weight:bold; font-size: 16px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                    <td>4</td>
+                                                    <td>5</td>
+                                                    <td>6</td>
+                                                    <td>7</td>
+                                                    <td>8</td>
+                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="courseHoleImg_1" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_2" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_3" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_4" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_5" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_6" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_7" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_8" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_9" class="courseHoleImg-ALL" /></td>
+                                                </tr>
+                                                <tr style="height:20px">
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>11</td>
+                                                    <td>12</td>
+                                                    <td>13</td>
+                                                    <td>14</td>
+                                                    <td>15</td>
+                                                    <td>16</td>
+                                                    <td>17</td>
+                                                    <td>18</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="courseHoleImg_10" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_11" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_12" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_13" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_14" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_15" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_16" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_17" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_18" class="courseHoleImg-ALL" /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -1031,6 +1100,38 @@
 
                         var courseHoleImage = course.replaceAll(" ", "_") + "$##HOLE##_.png";
 
+                        $('#courseHolesTable th').each(function (i, i1) {
+                            if ($(i1)[0].innerText == "Hole") {
+                                $(i1).on("click", function () {
+                                    $('#courseHolesTable tr td:first-child').each(function (ii, i2) {
+                                        var holeNo = $(i2)[0].innerText;
+                                        var courseHoleImageURL = encodeURIComponent("fsx_play_course_images/" + courseHoleImage.replace("##HOLE##", holeNo)).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+                                        var courseHole = "#courseHoleImg_" + holeNo;
+                                        $(courseHole).attr("src", courseHoleImageURL);
+                                    })
+                                })
+
+                                $(this).css('cursor', 'zoom-in');
+                                $(this).css('text-decoration', 'underline');
+                                $(this).attr("data-toggle", "tooltip");
+                                $(this).attr("data-placement", "auto");
+                                $(this).attr("title", "See all holes at once");                                    
+
+                                var oldBGColor = $(this).css("background-color");
+
+                                $(this).on('mouseenter', function () {
+                                    $(this).css("background-color", "#5bc0de");
+                                    $(this).css('text-decoration', 'none');
+                                }).on('mouseleave', function () {
+                                    $(this).css("background-color", oldBGColor);
+                                    $(this).css('text-decoration', 'underline');
+                                })
+
+                                // Get out of the loop. No reason to go through the rest...
+                                return false;
+                            }
+                        });
+
                         $('#courseHolesTable tr td:first-child').each(function () {
                             $(this).on("click", function () {
                                 var holeNo = $(this)[0].innerText;
@@ -1041,7 +1142,6 @@
                             })
 
                             $(this).css('cursor', 'zoom-in');
-                            $(this).css('text-decoration', 'underline');
                             $(this).css('text-decoration', 'underline');
 
                             var oldBGColor = $(this).css("background-color");
@@ -1232,11 +1332,23 @@
                     $("#courseImageModalFull").attr("src", courseImageURL);
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
+                    $('#courseImageModalFull').show();
+                    $('#courseHolesAllTable').hide();
                 }
                 else if ($(e.target).is("td") && e.target.style.cursor == 'zoom-in') {
                     Debug('course_hole - clicked', "Event");
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
+                    $('#courseImageModalFull').show();
+                    $('#courseHolesAllTable').hide();
+                }
+                else if ($(e.target).is("th") && e.target.style.cursor == 'zoom-in') {
+                    Debug('course_all_holes - clicked', "Event");
+                    $('#courseImageModalTitle').text(course);
+                    $('#course_placeholder').attr('data-target', '#courseImageModal');
+                    $('#course_placeholder').attr('data-toggle', 'modal');
+                    $('#courseImageModalFull').hide();
+                    $('#courseHolesAllTable').show();
                 }
                 return true;
             })
