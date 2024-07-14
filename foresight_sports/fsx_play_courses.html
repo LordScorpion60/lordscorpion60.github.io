@@ -41,6 +41,9 @@
     <!-- Custom Fonts -->
     <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Quill -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,14 +90,27 @@
             position: relative;
         }
 
-        .courseHoleImg {
+        .courseBGImg {
             object-fit: contain;
             max-width: 100%;
         }
 
-        .courseHoleImg-ALL {
+        .courseNotesBGImg {
+            object-fit: contain;
+            max-width: 50%;
+        }
+
+        .courseHoleImg {
             object-fit: contain;
             max-width: 95%;
+        }
+
+        .courseHolesTable {
+            cursor: zoom-out !important;
+            width: 100%;
+            /*margin-bottom: 15px;*/
+            font-weight: bold;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -306,16 +322,16 @@
                             <!-- Leave blank so course content loads -->
                         </div>
                         <!-- Image Modal -->
-                        <div class="modal fade" id="courseImageModal" tabindex="-1" role="dialog" aria-labelledby="courseImageModalTitle" aria-hidden="true">
-                            <div class="modal-dialog" style="display: inline-block; width: auto; margin: 10px; display: flex; justify-content: center; text-align: center; ">
-                                <div class="modal-content" style="">
+                        <div class="modal fade" id="courseImageModal" tabindex="-1" role="dialog" aria-labelledby="courseImageModalTitle" aria-hidden="true" >
+                            <div class="modal-dialog" style="width: auto; margin: 10px; justify-content: center; text-align: center;">
+                                <div class="modal-content">
                                     <div class="modal-header" style="padding: 5px;">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-right: 7px; margin-top:0px; font-size: 30px;">&times;</button>
                                         <h4 class="modal-title" id="courseImageModalTitle">Course Name</h4>
                                     </div>
-                                    <div class="modal-body" data-dismiss="modal" style="padding: 0px;">
+                                    <div id="courseModalBody" class="modal-body" data-dismiss="modal" style="padding: 10px; cursor: zoom-out">
                                         <img id="courseImageModalFull" class="courseHoleImg" />
-                                        <table id="courseHolesAllTable" style="width:100%; margin-bottom: 15px; font-weight:bold; font-size: 16px;">
+                                        <table id="courseHolesAllTable" class="courseHolesTable">
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
@@ -329,15 +345,15 @@
                                                     <td>9</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><img id="courseHoleImg_1" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_2" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_3" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_4" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_5" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_6" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_7" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_8" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_9" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_1" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_2" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_3" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_4" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_5" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_6" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_7" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_8" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_9" class="courseHoleImg" /></td>
                                                 </tr>
                                                 <tr style="height:20px">
                                                     <td></td>
@@ -362,18 +378,62 @@
                                                     <td>18</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><img id="courseHoleImg_10" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_11" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_12" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_13" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_14" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_15" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_16" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_17" class="courseHoleImg-ALL" /></td>
-                                                    <td><img id="courseHoleImg_18" class="courseHoleImg-ALL" /></td>
+                                                    <td><img id="courseHoleImg_10" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_11" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_12" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_13" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_14" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_15" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_16" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_17" class="courseHoleImg" /></td>
+                                                    <td><img id="courseHoleImg_18" class="courseHoleImg" /></td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div id="courseNotesAll" style="cursor:default; display:inline-block;">
+                                            <div id="courseNotesToolbar">
+                                                <span class="ql-formats">
+                                                    <select class="ql-font"></select>
+                                                    <select class="ql-size"></select>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-bold"></button>
+                                                    <button class="ql-italic"></button>
+                                                    <button class="ql-underline"></button>
+                                                    <button class="ql-strike"></button>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <select class="ql-color"></select>
+                                                    <select class="ql-background"></select>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-script" value="sub"></button>
+                                                    <button class="ql-script" value="super"></button>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-header" value="1"></button>
+                                                    <button class="ql-header" value="2"></button>
+                                                    <button class="ql-blockquote"></button>
+                                                    <button class="ql-code-block"></button>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-list" value="ordered"></button>
+                                                    <button class="ql-list" value="bullet"></button>
+                                                    <button class="ql-indent" value="-1"></button>
+                                                    <button class="ql-indent" value="+1"></button>
+                                                    <select class="ql-align"></select>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-link"></button>
+                                                </span>
+                                                <span class="ql-formats">
+                                                    <button class="ql-clean"></button>
+                                                </span>
+                                            </div>
+                                            <div id="courseNotesEditor" style="height: 150px;">
+                                            </div>
+                                            <button id="btnSaveCourseNotes" class="btn btn-date-header btn-lg btn-block" onclick="saveCourseNotes()" data-container="body" data-toggle="popover" data-placement="top">Save <i class="fa fa-save"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -383,15 +443,16 @@
                             <table width="100%">
                                 <tr>
                                     <td align="left">
+                                        <button class="btn btn-outline btn-primary" id="courseNotes" onclick="takeCourseNotes()" title="Take notes on this course">Notes <i class="fa fa-pencil"></i></button>
                                         <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="URL copied to clipboard" onclick="shareCourse()">
-                                            Share Course <i class="fa fa-share-alt"></i>
+                                            Share <i class="fa fa-share-alt"></i>
                                         </a>
                                         <span class="tooltip-search">
                                             <button class="btn btn-outline btn-primary" id="courseFavorite" onclick="markCourseFavorite()" data-toggle="tooltip" data-placement="top" title="Choice will persist on your next visit">Favorite <i id="courseFavoriteStar" class="fa fa-star-o"></i></button>
                                         </span>
-                                        <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy Course <i class="fa fa-shopping-cart"></i></a>
-                                        <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover Video <i class="fa fa-video-camera"></i></a>
-                                        <button class="btn btn-outline btn-primary" id="courseRequestFlyover" data-container="body" data-toggle="popover" data-placement="top" data-content="Request sent!" style="display:none" onclick="requestFlyOverVideo()">Request Flyover Video <i class="fa fa-bullhorn"></i></button>
+                                        <a class="btn btn-outline btn-primary" id="courseBuyLink" href="#" style="display:none" target="_blank">Buy <i class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline btn-primary" id="courseFlyoverLink" href="#" style="display:none" target="_blank">Watch Flyover <i class="fa fa-video-camera"></i></a>
+                                        <button class="btn btn-outline btn-primary" id="courseRequestFlyover" data-container="body" data-toggle="popover" data-placement="top" data-content="Request sent!" style="display:none" onclick="requestFlyOverVideo()">Request Flyover <i class="fa fa-bullhorn"></i></button>
                                     </td>
                                     <td align="right">
                                         <div style="display: none; vertical-align: middle;" id="clubDataAltAdj">
@@ -426,6 +487,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/sb-admin-2.js"></script>
 
+    <!-- Quill -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
     <script>
 
         // Variable to hold course information
@@ -435,6 +499,7 @@
         var userInfo = "[NO_IP]";
         var searchDataFound = false;
         var isDebug = false;
+        var quill = null;
 
         $("[data-toggle=popover]").popover({
             delay: {
@@ -999,13 +1064,19 @@
         }
 
         function shareCourse() {
-            var courseDiv = document.getElementById("courseName");
-            var copyText = courseDiv.innerText;
+            var copyText = GetSelectedCourseName();
 
             var path = window.location.href.split('?')[0]
             var shareURL = path + "?course=" + EscapeURL(copyText);
 
             SendToClipboard(shareURL);
+        }
+
+        function GetSelectedCourseName() {
+            var courseDiv = document.getElementById("courseName");
+            var courseName = courseDiv.innerText;
+
+            return courseName
         }
 
         function shareSearch() {
@@ -1113,9 +1184,7 @@
 
                                 $(this).css('cursor', 'zoom-in');
                                 $(this).css('text-decoration', 'underline');
-                                $(this).attr("data-toggle", "tooltip");
-                                $(this).attr("data-placement", "auto");
-                                $(this).attr("title", "See all holes at once");                                    
+                                $(this).attr("title", "See all holes at once");
 
                                 var oldBGColor = $(this).css("background-color");
 
@@ -1309,12 +1378,9 @@
         }
 
         function UpdateCourseModal(course) {
-            var courseImage = course.replaceAll(" ", "_") + "_.png";
-            var courseImageURL = "fsx_play_course_images/" + encodeURIComponent(courseImage).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+            var courseImageURL = GetCourseImage(course);
 
             Debug("Updating course modal images...");
-            Debug("Course image: " + courseImage);
-            Debug("Course image URL: " + courseImageURL);
 
             $('#course_placeholder').css('background-image', "url(" + courseImageURL + ")");
             $('#course_placeholder').css('background-size', "cover");
@@ -1332,26 +1398,44 @@
                     $("#courseImageModalFull").attr("src", courseImageURL);
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
-                    $('#courseImageModalFull').show();
-                    $('#courseHolesAllTable').hide();
+
+                    ShowActiveModal("courseImageModalFull");
                 }
                 else if ($(e.target).is("td") && e.target.style.cursor == 'zoom-in') {
                     Debug('course_hole - clicked', "Event");
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
-                    $('#courseImageModalFull').show();
-                    $('#courseHolesAllTable').hide();
+
+                    ShowActiveModal("courseImageModalFull");
                 }
                 else if ($(e.target).is("th") && e.target.style.cursor == 'zoom-in') {
                     Debug('course_all_holes - clicked', "Event");
                     $('#courseImageModalTitle').text(course);
                     $('#course_placeholder').attr('data-target', '#courseImageModal');
                     $('#course_placeholder').attr('data-toggle', 'modal');
-                    $('#courseImageModalFull').hide();
-                    $('#courseHolesAllTable').show();
+
+                    ShowActiveModal("courseHolesAllTable");
                 }
                 return true;
             })
+        }
+
+        function ShowActiveModal(elementID) {
+            $('#courseImageModalFull').hide();
+            $('#courseHolesAllTable').hide();
+            $('#courseNotesAll').hide();
+
+            // For course notes we want the default cursor and turn off most modal dismiss options so user can work...
+            if (elementID == "courseNotesAll") {
+                $('#courseModalBody').attr('data-dismiss', '');
+                $('#courseModalBody').css('cursor', 'default');
+            }
+            else {
+                $('#courseModalBody').attr('data-dismiss', 'modal');
+                $('#courseModalBody').css('cursor', 'zoom-out');
+            }
+
+            $('#' + elementID).show();
         }
 
         function RemoveCourseModal() {
@@ -1371,6 +1455,15 @@
             });
 
             $("#course_placeholder").empty();
+        }
+
+        function GetCourseImage(course) {
+            var courseImage = course.replaceAll(" ", "_") + "_.png";
+            var courseImageURL = "fsx_play_course_images/" + encodeURIComponent(courseImage).replace("(", "%28").replace(")", "%29").replace("'", "%27");
+
+            Debug("courseImageURL: " + courseImageURL);
+
+            return courseImageURL;
         }
 
         function searchCourseReset() {
@@ -1410,9 +1503,80 @@
             ResetURL();
         }
 
+        function LoadNoteEditor(existingNotes) {
+            try {
+                if (window.quill == null) {
+                    window.quill = new Quill('#courseNotesEditor', {
+                        modules: {
+                            toolbar: '#courseNotesToolbar',
+                        },
+                        placeholder: 'Add your personal notes and Save when done. Your saved notes will be available the next time you come back...',
+                        theme: 'snow',
+                    });
+                    Debug("initializing editor for the first time...");
+                }
+
+                if (existingNotes == null) {
+                    window.quill.setText('\n');
+                    Debug("loading editor with no notes...");
+                }
+                else {
+                    Debug("course notes found, loading them into editor...");
+                    window.quill.setContents(JSON.parse(existingNotes));
+                }
+            }
+            catch (e) {
+                alert("There was an error loading the course notes editor. Cannot take notes at this time...");
+                console.warn("Quill could not be loaded: " + e);
+            }
+        }
+
+        function takeCourseNotes() {
+            var course = GetSelectedCourseName();
+
+            Debug("Taking notes for course: " + course);
+
+            var existingNotes = LocalStorage('get', course + "_notes");
+
+            LoadNoteEditor(existingNotes);
+
+            $('#courseImageModalTitle').text(course + " - Notes");
+            $('#courseNotes').attr('data-target', '#courseImageModal');
+            $('#courseNotes').attr('data-toggle', 'modal');
+            
+            ShowActiveModal("courseNotesAll");
+        }
+
+        function saveCourseNotes() {
+            var course = GetSelectedCourseName();
+
+            Debug("Saving course notes for: " + course);
+
+            var btnSaveCourseNotesTooltip = document.getElementById("btnSaveCourseNotes");
+            var finalMsg = "Notes Saved!";
+
+            var courseNotes = window.quill.getContents();
+            var notesLength = window.quill.getLength();
+            
+            if (notesLength > 1) {
+                try {
+                    LocalStorage('set', course + "_notes", JSON.stringify(courseNotes));
+                }
+                catch (e) {
+                    finalMsg = "Error saving course notes!"
+                    console.warn(finalMsg + "-" + e);
+                }
+            }
+            else {
+                finalMsg = "No notes to save!";
+            }
+
+            btnSaveCourseNotesTooltip.setAttribute("data-content", finalMsg);
+            Debug(finalMsg);
+        }
+
         function markCourseFavorite() {
-            var courseDiv = document.getElementById("courseName");
-            var course = courseDiv.innerText;
+            var course = GetSelectedCourseName();
 
             var fav = LocalStorage('get', course + "_favorite");
 
@@ -1452,8 +1616,7 @@
         }
 
         function requestFlyOverVideo() {
-            var courseDiv = document.getElementById("courseName");
-            var course = courseDiv.innerText;
+            var course = GetSelectedCourseName();
 
             var hasSentCourseRequest = LocalStorage('get', course + "_requestedFlyover");
 
