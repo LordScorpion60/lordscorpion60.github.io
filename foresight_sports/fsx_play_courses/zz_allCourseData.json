@@ -527,6 +527,23 @@
     "MinRating": 68.0
   },
   {
+    "Name": "Brookside Country Club",
+    "Version": "1.4.0.7",
+    "Par": 73.0,
+    "Altitude": 277.0,
+    "City": "Pottstown",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Pennsylvania,PA",
+    "Type": "Parkland",
+    "MaxYardage": 6702,
+    "MinYardage": 4960,
+    "MaxSlope": 141.0,
+    "MinSlope": 124.0,
+    "MaxRating": 73.6,
+    "MinRating": 68.1
+  },
+  {
     "Name": "Bull Valley Golf Club",
     "Version": "1.4.0.4",
     "Par": 72.0,
@@ -4248,6 +4265,23 @@
     "MinSlope": 123.0,
     "MaxRating": 75.3,
     "MinRating": 65.2
+  },
+  {
+    "Name": "The Royal Fox Country Club",
+    "Version": "1.4.0.3",
+    "Par": 71.0,
+    "Altitude": 755.0,
+    "City": "St. Charles",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Illinois,IL",
+    "Type": "Parkland",
+    "MaxYardage": 6806,
+    "MinYardage": 5225,
+    "MaxSlope": 137.0,
+    "MinSlope": 129.0,
+    "MaxRating": 73.5,
+    "MinRating": 70.4
   },
   {
     "Name": "The Seawane Club",

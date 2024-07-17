@@ -31,6 +31,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Blue%20Spring
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Brae%20Burn%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Broken%20Top%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Broken%20Tree%20Golf%20Course.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Brookside%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Bull%20Valley%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Burrangarra.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Butterfield%20Country%20Club%20Blue%20Red.html
@@ -250,6 +251,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Mission
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pete%20Dye%20Course%20at%20French%20Lick.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pulpit%20Club%20%28Paintbrush%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pulpit%20Club%20%28Pulpit%29.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Royal%20Fox%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Seawane%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Springhaven%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Thornhill%20Club.html
