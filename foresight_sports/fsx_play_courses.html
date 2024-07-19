@@ -108,6 +108,11 @@
             font-weight: bold;
             font-size: 16px;
         }
+
+        .updatedCourseDateLink {
+            pointer-events: none;
+            color: inherit;
+        }
     </style>
 </head>
 
@@ -565,6 +570,9 @@
             var queryCourse = queryParams.get('course');
             var querySearch = queryParams.get('search');
 
+            var selectedCourse = SessionStorage('get', "selectedCourse");
+
+            Debug("selectedCourse: " + selectedCourse, debugType);
             Debug("query string course: " + queryCourse, debugType);
 
             var queryCourseAfterAmp = "";
@@ -582,7 +590,7 @@
                 Debug("updated query string course: " + queryCourse, debugType);
             }
 
-            var isCourseinURL = false;
+            var isCourseinURLorSelected = false;
 
             // Read in json course data
             $.getJSON("/foresight_sports/fsx_play_courses/zz_allCourseData.json").done(function (data) {
@@ -601,32 +609,24 @@
                     if (window.performance.getEntriesByType("navigation")[0].type === "reload") {
 
                         // Page was reloaded
-                        Debug("Page was reloaded, restore any previous search criteria...", debugType);
-                        var lastSearch = SessionStorage('get', 'lastSearch');
-
-                        if (lastSearch != null) {
-                            Debug("previous search found...", debugType);
-                            // Restore search criteria to each field on the page...
-                            PreloadSearchCriteria(lastSearch);
-
-                            if (queryCourse != null) {
-                                Debug("Need to reload selected course from URL: " + queryCourse, debugType);
-                                isCourseinURL = true;
-                            }
-                        }
-                        else {
-                            Debug("no previous search found...", debugType);
-                        }
+                        Debug("Page was reloaded...", debugType);
                     }
                     else {
                         // Page was not reloaded
-                        Debug("Page was not reloaded, remove any last search criteria that might be cached...", debugType);
-                        SessionStorage('remove', 'lastSearch');
+                        Debug("Page was not reloaded...", debugType);
+
+                        if (document.referrer != null && document.referrer.includes("foresight_sports/fsx_play_courses/")) {
+                            // Came in from course share link, clear any prior searches in existing sessions
+                            Debug("Page load came from course page...", debugType);
+                            SessionStorage('remove', 'lastSearch');
+                        }
                     }
                 }
                 else {
                     console.warn("Navigation Timing API is not supported on this browser!");
                 }
+
+                var lastSearch = SessionStorage('get', 'lastSearch');
 
                 // Read in json course media data
                 $.getJSON("/foresight_sports/fsx_play_courses/aa_allCourseMediaData.json").done(function (data) {
@@ -635,6 +635,7 @@
                     Debug('course media json loaded...', debugType);
 
                     if (querySearch != null) {
+                        // User passed in search
                         Debug("search passed in via URL: " + querySearch, debugType);
 
                         try {
@@ -651,11 +652,41 @@
                         }
                     }
                     else if (queryCourse != null) {
-                        Debug("Loading scorecard: " + queryCourse, debugType);
+                        // User passed in course query
+                        Debug("Need to reload selected course from URL: " + queryCourse, debugType);
+                        isCourseinURLorSelected = true;
+
+                        SessionStorage('remove', 'lastSearch');
+
+                        Debug("Loading scorecard from query search: " + queryCourse, debugType);
                         loadScoreCard(queryCourse);
                     }
+                    else if (selectedCourse != null) {
+                        // User previously selected a course
+                        Debug("Need to reload selected course from previous selected: " + selectedCourse, debugType);
+                        isCourseinURLorSelected = true;
+
+                        Debug("Restore last search criteria and/or selected course that might be cached...", debugType);
+
+                        if (lastSearch != null) {
+                            Debug("previous search found...", debugType);
+                            // Restore search criteria to each field on the page...
+                            PreloadSearchCriteria(lastSearch);
+                        }
+                        else {
+                            Debug("no previous search found...", debugType);
+                        }
+
+                        Debug("Loading scorecard from last selected: " + selectedCourse, debugType);
+                        loadScoreCard(selectedCourse);
+                    }
+                    else if (lastSearch != null) {
+                        Debug("previous search found...", debugType);
+                        // Restore search criteria to each field on the page...
+                        PreloadSearchCriteria(lastSearch);
+                    }
                     else {
-                        // Remove all query string parameters just in case
+                        // Remove all query string parameters just in case - Should be just be first hit to page
                         Debug("no actions to take!", debugType);
                         ResetURL();
                     }
@@ -665,7 +696,7 @@
                         $('#collapseSearch').addClass('in');
                         // Re-run search
                         Debug("Re-run search...", debugType);
-                        searchCourse(isCourseinURL);
+                        searchCourse(isCourseinURLorSelected);
                         window.searchDataFound = false;
                     }
                 }).fail(function (data) {
@@ -922,12 +953,14 @@
             var yourElement = document.getElementById("btnSaveClubData");
             yourElement.setAttribute("data-content", finalMsg);
 
-            // Check QS params in case we need to reload the scorecard to use new values
-            queryParams = new URLSearchParams(window.location.search);
-            queryCourse = queryParams.get('course');
+            Debug(finalMsg);
 
-            if (queryCourse != null) {
-                loadScoreCard(queryCourse);
+            // Check QS params in case we need to reload the scorecard to use new values
+            var selectedCourse = SessionStorage('get', "selectedCourse");
+
+            if (selectedCourse != null) {
+                Debug("course is already selected, reload it to show new club data: " + selectedCourse);
+                loadScoreCard(selectedCourse);
             }
         }
 
@@ -1063,7 +1096,7 @@
             var copyText = GetSelectedCourseName();
 
             var path = window.location.href.split('?')[0]
-            var shareURL = path + "?course=" + EscapeURL(copyText);
+            var shareURL = path.replace(".html", "") + "/" + EscapeURL(copyText) + ".html";
 
             SendToClipboard(shareURL);
         }
@@ -1120,6 +1153,7 @@
                     if (course != matchedCourses[0].Name) {
                         Debug("passed in course name is not correct case. Updating...");
                         course = matchedCourses[0].Name;
+                        SessionStorage('remove', 'lastSearch');
                     }
                 }
 
@@ -1131,6 +1165,7 @@
                     if (course.toLowerCase() != matchedCourses[0].Name.toLowerCase()) {
                         course = matchedCourses[0].Name;
                         Debug("passed in course name is incorrect. Updating to: " + course);
+                        SessionStorage('remove', 'lastSearch');
                     }
                 }
 
@@ -1155,11 +1190,8 @@
                     // Update page title to show current loaded course
                     document.title = documentTitle + " - " + course;
 
-                    // Add/Update any QS params first if user clicks on a course to load
-                    var queryParams = new URLSearchParams(window.location.search);
-                    queryParams.set("course", EscapeURL(course));
-                    Debug("url param set: " + EscapeURL(course));
-                    window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${queryParams}`));
+                    // Save the course if user clicks on a course to load
+                    SessionStorage('set', "selectedCourse", course);
 
                     $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
 
@@ -1464,6 +1496,7 @@
 
         function searchCourseReset() {
             SessionStorage('remove', 'lastSearch');
+            SessionStorage('remove', 'selectedCourse');
 
             $("#txtNameSearch").val('');
             $("#ddlNameSearchOperator").val('Contains'); // Select default value
@@ -1762,6 +1795,7 @@
                 Debug("Unhide courses and reset URL...");
                 UnhideAllCourses();
                 ResetURL();
+                SessionStorage('remove', 'selectedCourse');
 
                 var x = document.getElementById("courseFooter");
 
