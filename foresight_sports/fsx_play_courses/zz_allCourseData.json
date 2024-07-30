@@ -4148,6 +4148,23 @@
     "MinRating": 68.1
   },
   {
+    "Name": "The Grove Golf Club (UK)",
+    "Version": "1.5.0.2",
+    "Par": 72.0,
+    "Altitude": 275.0,
+    "City": "Rickmansworth",
+    "Country": "United Kingdom",
+    "Continent": "Europe",
+    "State": "N/A",
+    "Type": "Parkland",
+    "MaxYardage": 7152,
+    "MinYardage": 5506,
+    "MaxSlope": 131.0,
+    "MinSlope": 119.0,
+    "MaxRating": 74.9,
+    "MinRating": 70.2
+  },
+  {
     "Name": "The Heretic Golf Course",
     "Version": "1.4.0.3",
     "Par": 70.0,
