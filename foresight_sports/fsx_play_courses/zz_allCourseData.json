@@ -2754,6 +2754,23 @@
     "MinRating": 64.5
   },
   {
+    "Name": "Mountain Ridge Country Club",
+    "Version": "1.5.0.2",
+    "Par": 71.0,
+    "Altitude": 184.0,
+    "City": "West Caldwell",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "New Jersey,NJ",
+    "Type": "Parkland",
+    "MaxYardage": 7099,
+    "MinYardage": 5485,
+    "MaxSlope": 140.0,
+    "MinSlope": 116.0,
+    "MaxRating": 74.8,
+    "MinRating": 65.5
+  },
+  {
     "Name": "Muirfield Village Golf Club",
     "Version": "1.5.2.1",
     "Par": 72.0,
