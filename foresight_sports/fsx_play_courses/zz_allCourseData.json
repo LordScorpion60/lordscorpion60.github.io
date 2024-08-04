@@ -3366,6 +3366,23 @@
     "MinRating": 49.2
   },
   {
+    "Name": "Rivercrest Golf Club & Preserve",
+    "Version": "1.5.0.3",
+    "Par": 71.0,
+    "Altitude": 272.0,
+    "City": "Phoenixville",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Pennsylvania,PA",
+    "Type": "Parklands",
+    "MaxYardage": 6751,
+    "MinYardage": 5218,
+    "MaxSlope": 138.0,
+    "MinSlope": 122.0,
+    "MaxRating": 73.1,
+    "MinRating": 65.2
+  },
+  {
     "Name": "Rivermont Golf Club",
     "Version": "1.4.0.5",
     "Par": 72.0,
