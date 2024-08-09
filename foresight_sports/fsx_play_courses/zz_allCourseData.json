@@ -3672,6 +3672,23 @@
     "MinRating": 67.5
   },
   {
+    "Name": "Soggy Swamp Golf Links",
+    "Version": "1.5.0.9",
+    "Par": 71.0,
+    "Altitude": 59.0,
+    "City": "Bayou La Croix",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Mississippi,MS",
+    "Type": "Links",
+    "MaxYardage": 7266,
+    "MinYardage": 3611,
+    "MaxSlope": 138.0,
+    "MinSlope": 115.0,
+    "MaxRating": 72.6,
+    "MinRating": 65.5
+  },
+  {
     "Name": "South Hills Golf Course",
     "Version": "1.4.0.2",
     "Par": 72.0,
