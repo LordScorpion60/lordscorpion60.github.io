@@ -2806,7 +2806,7 @@
   },
   {
     "Name": "Nashua Town & Country Club",
-    "Version": "1.4.0.2",
+    "Version": "1.5.0.2",
     "Par": 67.0,
     "Altitude": 974.0,
     "City": "Nashua",
@@ -3095,7 +3095,7 @@
   },
   {
     "Name": "Pestovo Golf & Yacht Club",
-    "Version": "1.4.0.4",
+    "Version": "1.5.0.2",
     "Par": 72.0,
     "Altitude": 580.0,
     "City": " Moscow Oblast",
@@ -3469,7 +3469,7 @@
   },
   {
     "Name": "Royal Troon - Old Course",
-    "Version": "1.5.0.6",
+    "Version": "1.5.1.1",
     "Par": 71.0,
     "Altitude": 14.0,
     "City": "Troon",
@@ -4472,20 +4472,20 @@
   },
   {
     "Name": "Transit Valley Country Club",
-    "Version": "1.1.0.2",
+    "Version": "1.5.0.5",
     "Par": 71.0,
-    "Altitude": 593.8,
-    "City": "East Amherst",
+    "Altitude": 584.0,
+    "City": "New York",
     "Country": "United States",
     "Continent": "North America",
     "State": "New York,NY",
     "Type": "Parkland",
     "MaxYardage": 6672,
     "MinYardage": 5247,
-    "MaxSlope": 130.0,
-    "MinSlope": 117.0,
-    "MaxRating": 73.1,
-    "MinRating": 66.6
+    "MaxSlope": 127.0,
+    "MinSlope": 116.0,
+    "MaxRating": 72.5,
+    "MinRating": 65.9000015258789
   },
   {
     "Name": "Tropical Paradise Executive",
