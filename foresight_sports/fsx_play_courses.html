@@ -278,6 +278,17 @@
                                             <option></option>
                                         </select>
                                     </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon tooltip-search">Price <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Check current price on Foresight's website using &quot;Buy&quot; link..."></i></span>
+                                        <span class="input-group-btn" style="width: 60px;">
+                                            <select class="form-control" id="ddlPriceSearchOperator">
+                                                <option>=</option>
+                                                <option>></option>
+                                                <option><</option>
+                                            </select>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="" id="txtPriceSearch">
+                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             Has Flyover Video <input type="checkbox" id="chkHasFlyoverVideo">
@@ -552,6 +563,12 @@
         });
 
         $("#txtYardageSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                searchCourse();
+            }
+        });
+
+        $("#txtPriceSearch").on('keypress', function (event) {
             if (event.which === 13) {
                 searchCourse();
             }
@@ -863,6 +880,15 @@
                     Debug('courseIsFavoriteIsChecked: ' + searchTerm);
 
                     $("#chkIsFavorite").prop("checked", searchTerm.toLowerCase() === "true");
+                }
+                // Price
+                if (searchField[0] == ('coursePrice') && searchTerm.length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('coursePrice: ' + searchTerm + ' ' + searchField[2]);
+
+                    $("#txtPriceSearch").val(searchTerm);
+                    $("#ddlPriceSearchOperator").val(searchField[2]);
                 }
             });
         }
@@ -1366,6 +1392,11 @@
                         if (matchingCourse.Buy != null && matchingCourse.Buy.length > 0) {
                             y.style.display = "";
                             y.href = matchingCourse.Buy;
+                            y.title = "";
+
+                            if (matchingCourse.Price != null && matchingCourse.Price.length > 0) {
+                                y.title = "MSRP: $" + matchingCourse.Price;
+                            }
                         }
                         else {
                             y.style.display = "none";
@@ -1515,6 +1546,8 @@
             $("#ddlContinentSearch").val(''); // Select default blank value
             $("#ddlStateSearch").val(''); // Select default blank value
             $("#ddlTypeSearch").val(''); // Select default blank value
+            $("#txtPriceSearch").val('');
+            $("#ddlPriceSearchOperator").val('='); // Select default value
 
             $("#chkHasFlyoverVideo").prop("checked", false);
             $("#chkIsFavorite").prop("checked", false);
@@ -1673,6 +1706,7 @@
             var courseYardage = $("#txtYardageSearch").val();
             var courseSlope = $("#txtSlopeSearch").val();
             var courseRating = $("#txtRatingSearch").val();
+            var coursePrice = $("#txtPriceSearch").val();
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
@@ -1692,6 +1726,7 @@
             var courseSlopeSearchOperator = $("#ddlSlopeSearchOperator").val();
             var courseRatingSearchOperator = $("#ddlRatingSearchOperator").val();
             var courseYardageSearchOperator = $("#ddlYardageSearchOperator").val();
+            var coursePriceSearchOperator = $("#ddlPriceSearchOperator").val();
 
             var obj = new Object();
             var searchString = "";
@@ -1715,6 +1750,8 @@
             obj.courseSlopeSearchOperator = courseSlopeSearchOperator;
             obj.courseRatingSearchOperator = courseRatingSearchOperator;
             obj.courseYardageSearchOperator = courseYardageSearchOperator;
+            obj.coursePrice = (coursePrice.length > 0) ? coursePrice : "";
+            obj.coursePriceSearchOperator = coursePriceSearchOperator;
 
             if (courseName.length > 0) {
                 searchString += "courseName;" + EscapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator;
@@ -1763,6 +1800,10 @@
             if (courseRating.length > 0) {
                 searchString += "|courseRating;" + EscapeURL(obj.courseRating) + ";" + obj.courseRatingSearchOperator;
                 Debug("search term - courseRating: " + obj.courseRatingSearchOperator + " " + obj.courseRating);
+            }
+            if (coursePrice.length > 0) {
+                searchString += "|coursePrice;" + EscapeURL(obj.coursePrice) + ";" + obj.coursePriceSearchOperator;
+                Debug("search term - coursePrice: " + obj.coursePriceSearchOperator + " " + obj.coursePrice);
             }
 
             // Add checkboxes
@@ -1959,6 +2000,36 @@
                         if (typeof matchingCourse !== 'undefined') {
                             if (matchingCourse != null && matchingCourse === 'true') {
                                 return course
+                            }
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
+                    // Price
+                    if (searchCriteria.coursePrice.length > 0) {
+
+                        var matchingCourse = window.courseMediaArr.find(item => item.Name === course.Name);
+
+                        if (typeof matchingCourse !== 'undefined') {
+                            //Check Course Price
+                            if (matchingCourse.Price != null && matchingCourse.Price.length > 0) {
+                                if (searchCriteria.coursePriceSearchOperator == "=") {
+                                    if (matchingCourse.Price == searchCriteria.coursePrice) {
+                                        return course;
+                                    }
+                                }
+                                else if (searchCriteria.coursePriceSearchOperator == ">") {
+                                    if (matchingCourse.Price > searchCriteria.coursePrice) {
+                                        return course;
+                                    }
+                                }
+                                else {
+                                    if (matchingCourse.Price < searchCriteria.coursePrice) {
+                                        return course;
+                                    }
+                                }
                             }
                         }
                     }
