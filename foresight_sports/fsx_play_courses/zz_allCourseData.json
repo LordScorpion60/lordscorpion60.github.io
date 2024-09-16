@@ -561,6 +561,23 @@
     "MinRating": 67.2
   },
   {
+    "Name": "Bunker Hills Golf Club",
+    "Version": "1.5.0.4",
+    "Par": 72.0,
+    "Altitude": 44.575,
+    "City": "Bunkerville",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Wyoming,WY",
+    "Type": "Links",
+    "MaxYardage": 6903,
+    "MinYardage": 999,
+    "MaxSlope": 135.0,
+    "MinSlope": 95.0,
+    "MaxRating": 74.0,
+    "MinRating": 55.0
+  },
+  {
     "Name": "Burrangarra",
     "Version": "1.2.0.5",
     "Par": 72.0,
