@@ -85,6 +85,23 @@
     "MinRating": 69.6
   },
   {
+    "Name": "Applegate River Golf Club",
+    "Version": "1.5.0.8",
+    "Par": 72.0,
+    "Altitude": 4669.0,
+    "City": "Grant Pass",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Oregon,OR",
+    "Type": "Parkland",
+    "MaxYardage": 5380,
+    "MinYardage": 4540,
+    "MaxSlope": 112.0,
+    "MinSlope": 93.0,
+    "MaxRating": 66.6,
+    "MinRating": 61.4
+  },
+  {
     "Name": "Arcadia Ranch",
     "Version": "1.4.2.0",
     "Par": 71.0,
