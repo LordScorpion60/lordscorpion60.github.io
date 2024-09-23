@@ -289,14 +289,19 @@
                                         </span>
                                         <input type="text" class="form-control" placeholder="" id="txtPriceSearch">
                                     </div>
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default" style="margin-bottom: 15px;">
                                         <div class="panel-heading">
                                             Has Flyover Video <input type="checkbox" id="chkHasFlyoverVideo">
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default" style="margin-bottom: 15px;">
                                         <div class="panel-heading">
                                             Is Favorite <input type="checkbox" id="chkIsFavorite">
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <span class="tooltip-search">FSX 2020 <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Does FSX 2020 version exist..."></i></span> <input type="checkbox" id="chkIs2020">
                                         </div>
                                     </div>
                                 </div>
@@ -880,6 +885,14 @@
                     Debug('courseIsFavoriteIsChecked: ' + searchTerm);
 
                     $("#chkIsFavorite").prop("checked", searchTerm.toLowerCase() === "true");
+                }
+                // Is 2020
+                if (searchField[0] == ('courseIs2020IsChecked')) {
+                    window.searchDataFound = true;
+
+                    Debug('courseIs2020IsChecked: ' + searchTerm);
+
+                    $("#chkIs2020").prop("checked", searchTerm.toLowerCase() === "true");
                 }
                 // Price
                 if (searchField[0] == ('coursePrice') && searchTerm.length > 0) {
@@ -1551,6 +1564,7 @@
 
             $("#chkHasFlyoverVideo").prop("checked", false);
             $("#chkIsFavorite").prop("checked", false);
+            $("#chkIs2020").prop("checked", false);
 
             UnhideAllCourses();
 
@@ -1719,6 +1733,7 @@
             // CHKs
             var courseHasFlyoverVideoIsChecked = $("#chkHasFlyoverVideo").prop("checked");
             var courseIsFavoriteIsChecked = $("#chkIsFavorite").prop("checked");
+            var courseIs2020Checked = $("#chkIs2020").prop("checked");
 
             // Operators
             var courseNameSearchOperator = $("#ddlNameSearchOperator").val();
@@ -1745,6 +1760,7 @@
             obj.courseState = (courseState.length > 0) ? courseState : "";
             obj.courseHasFlyoverVideoIsChecked = courseHasFlyoverVideoIsChecked;
             obj.courseIsFavoriteIsChecked = courseIsFavoriteIsChecked;
+            obj.courseIs2020IsChecked = courseIs2020Checked;
             obj.courseNameSearchOperator = courseNameSearchOperator;
             obj.courseAltSearchOperator = courseAltSearchOperator;
             obj.courseSlopeSearchOperator = courseSlopeSearchOperator;
@@ -1814,6 +1830,10 @@
             if (obj.courseIsFavoriteIsChecked) {
                 searchString += "|courseIsFavoriteIsChecked;" + obj.courseIsFavoriteIsChecked;
                 Debug("search check box - courseIsFavoriteIsChecked: " + obj.courseIsFavoriteIsChecked);
+            }
+            if (obj.courseIs2020IsChecked) {
+                searchString += "|courseIs2020IsChecked;" + obj.courseIs2020IsChecked;
+                Debug("search check box - courseIs2020IsChecked: " + obj.courseIs2020IsChecked);
             }
 
             // Clean up and finish
@@ -2007,6 +2027,21 @@
                         return course;
                     }
                 }).filter(function (course) {
+                    // Is FSX 2020
+                    if (searchCriteria.courseIs2020IsChecked) {
+                        var matchingCourse = window.courseMediaArr.find(item => item.Name === course.Name);
+
+                        if (typeof matchingCourse !== 'undefined') {
+                            //Check for FSX 2020 Flag
+                            if (matchingCourse.FSX_2020 != null && matchingCourse.FSX_2020 == 1) {
+                                return course
+                            }
+                        }
+                    }
+                    else {
+                        return course;
+                    }
+                }).filter(function (course) {
                     // Price
                     if (searchCriteria.coursePrice.length > 0) {
 
@@ -2043,8 +2078,9 @@
                     matchedCourses.push(this.Name);
                 });
 
-                Debug("courses matched: " + matchedCourses.length);
+                Debug("# of courses matched: " + matchedCourses.length);
                 $("#courseResultCount").html("Courses found: " + matchedCourses.length);
+                Debug("courses matched: \r\n" + (matchedCourses.join('\r\n')));
 
                 if (matchedCourses.length > 0) {
 
