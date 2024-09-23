@@ -281,26 +281,33 @@
                                     <div class="form-group input-group">
                                         <span class="input-group-addon tooltip-search">Price <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Check current price on Foresight's website using &quot;Buy&quot; link..."></i></span>
                                         <span class="input-group-btn" style="width: 60px;">
-                                            <select class="form-control" id="ddlPriceSearchOperator">
+                                            <select class="form-control" id="ddlPriceSearchOperator" onchange="ddlPriceSearchOperatorFromChange(this.value)">
                                                 <option>=</option>
+                                                <option><</option>
                                                 <option>></option>
+                                            </select>
+                                        </span>
+                                        <input type="text" class="form-control" style="width: 200px;" placeholder="" id="txtPriceSearch">
+                                        <span class="input-group-btn" style="float: left; width: 60px;">
+                                            <select class="form-control" id="ddlPriceMaxSearchOperator" onchange="ddlPriceSearchOperatorToChange(this.value)" disabled>
+                                                <option></option>
                                                 <option><</option>
                                             </select>
                                         </span>
-                                        <input type="text" class="form-control" placeholder="" id="txtPriceSearch">
+                                        <input type="text" class="form-control" style="width: 200px;" placeholder="" id="txtPriceMaxSearch" disabled>
                                     </div>
                                     <div class="panel panel-default" style="margin-bottom: 15px;">
-                                        <div class="panel-heading">
+                                        <div class="panel-heading" style="padding: 6px 12px;">
                                             Has Flyover Video <input type="checkbox" id="chkHasFlyoverVideo">
                                         </div>
                                     </div>
                                     <div class="panel panel-default" style="margin-bottom: 15px;">
-                                        <div class="panel-heading">
+                                        <div class="panel-heading" style="padding: 6px 12px;">
                                             Is Favorite <input type="checkbox" id="chkIsFavorite">
                                         </div>
                                     </div>
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="panel-heading" style="padding: 6px 12px;">
                                             <span class="tooltip-search">FSX 2020 <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Does FSX 2020 version exist..."></i></span> <input type="checkbox" id="chkIs2020">
                                         </div>
                                     </div>
@@ -579,6 +586,12 @@
             }
         });
 
+        $("#txtPriceMaxSearch").on('keypress', function (event) {
+            if (event.which === 13) {
+                searchCourse();
+            }
+        });
+
         // On page-load.
         $(function () {
             SetDebugMode();
@@ -761,6 +774,28 @@
             }
         }
 
+        function ddlPriceSearchOperatorFromChange(value) {
+            if (value == "=" || value == "<") {
+                $("#ddlPriceMaxSearchOperator").val('');
+                $('#ddlPriceMaxSearchOperator').attr('disabled', true);
+                $('#txtPriceMaxSearch').attr('disabled', true);
+                $('#txtPriceMaxSearch').val('');
+            }
+            else {
+                $('#ddlPriceMaxSearchOperator').attr('disabled', false);
+            }
+        }
+
+        function ddlPriceSearchOperatorToChange(value) {
+            if (value == "") {
+                $('#txtPriceMaxSearch').attr('disabled', true);
+                $('#txtPriceMaxSearch').val('');
+            }
+            else {
+                $('#txtPriceMaxSearch').attr('disabled', false);
+            }
+        }
+
         function PreloadSearchCriteria(searchData) {
 
             var searchArr = searchData.split('|');
@@ -902,6 +937,26 @@
 
                     $("#txtPriceSearch").val(searchTerm);
                     $("#ddlPriceSearchOperator").val(searchField[2]);
+
+                    ddlPriceSearchOperatorFromChange(searchField[2]);
+                }
+                // PriceMax
+                if (searchField[0] == ('coursePriceMax') && searchTerm.length > 0) {
+                    window.searchDataFound = true;
+
+                    Debug('coursePriceMax: ' + searchTerm + ' ' + searchField[2]);
+
+                    $("#txtPriceMaxSearch").val(searchTerm);
+                    $("#ddlPriceMaxSearchOperator").val(searchField[2]);
+
+                    if ($("#ddlPriceSearchOperator").val() == '>') {
+                        ddlPriceSearchOperatorToChange('<');
+                    }
+                    else {
+                        $("#ddlPriceSearchOperator").val('>');
+                        ddlPriceSearchOperatorFromChange('>');
+                        ddlPriceSearchOperatorToChange('<');
+                    }
                 }
             });
         }
@@ -1561,6 +1616,7 @@
             $("#ddlTypeSearch").val(''); // Select default blank value
             $("#txtPriceSearch").val('');
             $("#ddlPriceSearchOperator").val('='); // Select default value
+            ddlPriceSearchOperatorFromChange('=');
 
             $("#chkHasFlyoverVideo").prop("checked", false);
             $("#chkIsFavorite").prop("checked", false);
@@ -1721,6 +1777,7 @@
             var courseSlope = $("#txtSlopeSearch").val();
             var courseRating = $("#txtRatingSearch").val();
             var coursePrice = $("#txtPriceSearch").val();
+            var coursePriceMax = $("#txtPriceMaxSearch").val();
 
             // DDLs
             var coursePar = $("#ddlParSearch").val();
@@ -1742,6 +1799,7 @@
             var courseRatingSearchOperator = $("#ddlRatingSearchOperator").val();
             var courseYardageSearchOperator = $("#ddlYardageSearchOperator").val();
             var coursePriceSearchOperator = $("#ddlPriceSearchOperator").val();
+            var coursePriceMaxSearchOperator = $("#ddlPriceMaxSearchOperator").val();
 
             var obj = new Object();
             var searchString = "";
@@ -1767,7 +1825,9 @@
             obj.courseRatingSearchOperator = courseRatingSearchOperator;
             obj.courseYardageSearchOperator = courseYardageSearchOperator;
             obj.coursePrice = (coursePrice.length > 0) ? coursePrice : "";
+            obj.coursePriceMax = (coursePriceMax.length > 0) ? coursePriceMax : "";
             obj.coursePriceSearchOperator = coursePriceSearchOperator;
+            obj.coursePriceMaxSearchOperator = coursePriceMaxSearchOperator;
 
             if (courseName.length > 0) {
                 searchString += "courseName;" + EscapeURL(obj.courseName) + ";" + obj.courseNameSearchOperator;
@@ -1820,6 +1880,10 @@
             if (coursePrice.length > 0) {
                 searchString += "|coursePrice;" + EscapeURL(obj.coursePrice) + ";" + obj.coursePriceSearchOperator;
                 Debug("search term - coursePrice: " + obj.coursePriceSearchOperator + " " + obj.coursePrice);
+            }
+            if (coursePriceMax.length > 0) {
+                searchString += "|coursePriceMax;" + EscapeURL(obj.coursePriceMax) + ";" + obj.coursePriceMaxSearchOperator;
+                Debug("search term - coursePriceMax: " + obj.coursePriceMaxSearchOperator + " " + obj.coursePriceMax);
             }
 
             // Add checkboxes
@@ -2043,24 +2107,30 @@
                     }
                 }).filter(function (course) {
                     // Price
-                    if (searchCriteria.coursePrice.length > 0) {
+                    if (searchCriteria.coursePrice.length > 0 || searchCriteria.coursePriceMax.length > 0) {
 
                         var matchingCourse = window.courseMediaArr.find(item => item.Name === course.Name);
 
                         if (typeof matchingCourse !== 'undefined') {
                             //Check Course Price
-                            if (matchingCourse.Price != null && matchingCourse.Price.length > 0) {
-                                if (searchCriteria.coursePriceSearchOperator == "=") {
+                            if (matchingCourse.Price != null) {
+                                if (searchCriteria.coursePrice.length > 0 && searchCriteria.coursePriceSearchOperator == "=") {
                                     if (matchingCourse.Price == searchCriteria.coursePrice) {
                                         return course;
                                     }
                                 }
                                 else if (searchCriteria.coursePriceSearchOperator == ">") {
-                                    if (matchingCourse.Price > searchCriteria.coursePrice) {
+                                    var minPrice = (searchCriteria.coursePrice.length > 0) ? searchCriteria.coursePrice : -1;
+                                    if (searchCriteria.coursePriceMax.length > 0) {
+                                        if (matchingCourse.Price > minPrice && matchingCourse.Price < searchCriteria.coursePriceMax) {
+                                            return course;
+                                        }
+                                    }
+                                    else if (matchingCourse.Price > minPrice) {
                                         return course;
                                     }
                                 }
-                                else {
+                                else if (searchCriteria.coursePrice.length > 0) {
                                     if (matchingCourse.Price < searchCriteria.coursePrice) {
                                         return course;
                                     }
@@ -2102,6 +2172,10 @@
                         el.style.display = 'none';
                     });
                 }
+            }
+            else {
+                Debug("Nothing to search for, resetting search...");
+                searchCourseReset();
             }
 
             var result = document.getElementById("searchFooter");
