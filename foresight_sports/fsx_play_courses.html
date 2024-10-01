@@ -325,6 +325,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-info">
+                            <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionClub" href="#collapseCompare">
+                                <h4 class="panel-title text-left">
+                                    Course Compare <i class="fa fa-exchange"></i> (<span id="courseCompareCount">0</span>)
+                                </h4>
+                            </div>
+                            <div id="collapseCompare" class="panel-collapse collapse">
+                                <div class="panel-body" style="padding: 5px;">
+                                    <div class="panel-body" id="course_compare_placeholder" style="display:none">
+                                        <!-- Template to load courses raw -->
+                                    </div>
+                                    <div class="panel-body" id="course_compare_placeholder_toSort" style="display:none">
+                                        <!-- Template to load courses sorted -->
+                                    </div>
+                                    <div class="panel-body" id="course_compare_results" style="overflow-x: auto; white-space: nowrap; padding: 5px;">
+                                        <!-- Leave blank so course compare loads -->
+                                    </div>
+                                </div>
+                                <div id="compareFooter" class="panel-footer small">
+                                    <button id="btnResetCourseCompare" class="btn btn-warning" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="All courses removed from compare list" onclick="courseCompareReset()">
+                                        Remove All
+                                    </button>
+                                    <button id="btnCompareShare" class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="" onclick="shareCompareList()">
+                                        Share Compare List <i class="fa fa-share-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,7 +374,7 @@
                             <!-- Leave blank so course content loads -->
                         </div>
                         <!-- Image Modal -->
-                        <div class="modal fade" id="courseImageModal" tabindex="-1" role="dialog" aria-labelledby="courseImageModalTitle" aria-hidden="true" >
+                        <div class="modal fade" id="courseImageModal" tabindex="-1" role="dialog" aria-labelledby="courseImageModalTitle" aria-hidden="true">
                             <div class="modal-dialog" style="width: auto; margin: 10px; justify-content: center; text-align: center;">
                                 <div class="modal-content">
                                     <div class="modal-header" style="padding: 5px;">
@@ -467,6 +495,7 @@
                             <table width="100%">
                                 <tr>
                                     <td align="left">
+                                        <button class="btn btn-outline btn-primary" id="courseCompare" data-container="body" data-toggle="popover" data-placement="top" data-content="" onclick="addCourseCompare()">Compare <i id="courseCompareIcon" class="fa fa-plus"></i></button>
                                         <button class="btn btn-outline btn-primary" id="courseNotes" onclick="takeCourseNotes()" title="Take notes on this course">Notes <i class="fa fa-pencil"></i></button>
                                         <a class="btn btn-outline btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="URL copied to clipboard" onclick="shareCourse()">
                                             Share <i class="fa fa-share-alt"></i>
@@ -500,6 +529,9 @@
 
     <!-- jQuery Version 1.11.0 -->
     <script src="/js/jquery-1.11.0.js"></script>
+
+    <!-- jQuery UI Version 1.13.3 -->
+    <script src="/js/jquery-ui.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
@@ -596,6 +628,25 @@
         $(function () {
             SetDebugMode();
             var debugType = "OnLoad";
+            $("#course_compare_results").sortable({
+                start: function (event, ui) {
+                    // Event when user starts to drag item
+                },
+                stop: function (event, ui) {
+                    // Event when user drops item
+                    $(ui.item).css("cursor", "grab");
+                    var compareOrder = $("#course_compare_results").sortable('toArray').toString();
+
+                    var newCourseCompareList = compareOrder.replaceAll("compare_", "").split(",");
+
+                    if (newCourseCompareList.length > 1) {
+                        // Only save new order if there is more than one in the list...
+                        Debug("Saving sorted course compare list...");
+
+                        SessionStorage('set', "courseCompareList", JSON.stringify(newCourseCompareList));
+                    }
+                }
+            });
 
             $("#nav-placeholder").load("/nav.html");
 
@@ -604,6 +655,7 @@
 
             var queryCourse = queryParams.get('course');
             var querySearch = queryParams.get('search');
+            var queryCompare = queryParams.get('compare');
 
             var selectedCourse = SessionStorage('get', "selectedCourse");
 
@@ -738,6 +790,57 @@
                     console.warn('no course media data found!');
                 });
 
+                // User passed in compare list
+                if (queryCompare != null) {
+                    Debug("compare list passed in via URL: " + queryCompare, debugType);
+
+                    try {
+                        if (queryCompare.length > 0) {
+                            var compareString_dec = Base64_decode_url(queryCompare);
+
+                            Debug("decoded URL compare list string:" + compareString_dec, debugType);
+
+                            // Replace compare list with that passed in
+                            var courseCompareList = compareString_dec.split(",");
+
+                            if (courseCompareList != null) {
+                                //Check each course against course manifest, kick out any that are not legit...
+
+                                newCompareList = [];
+
+                                courseCompareList.forEach((compareCourse) => {
+                                    if (window.courseArr.find((element) => element.Name == compareCourse)) {
+                                        newCompareList.push(compareCourse);
+                                        Debug("clean compare course passed in: " + compareCourse, debugType);
+                                    }
+                                    else {
+                                        console.warn("Invalid compare course passed in will be ommitted: " + compareCourse);
+                                    }
+                                });
+
+                                Debug("Clean course compare list: " + newCompareList, debugType);
+
+                                $("#courseCompareCount").text(newCompareList.length);
+
+                                if (newCompareList.length > 0) {
+                                    // Leave this here if you only want shared compare lists to auto expand the compare panel
+                                    $('#collapseCompare').addClass('in');
+                                }
+
+                                SessionStorage('set', "courseCompareList", JSON.stringify(newCompareList));
+                            }
+                        }
+                        else {
+                            throw ("cannot proccess an empty string...");
+                        }
+                    }
+                    catch (e) {
+                        console.warn('could not parse compare url parameter: ' + e);
+                        ResetURL();
+                    }
+                }
+
+                compareCourses();
             }).fail(function (data) {
                 console.warn('no course data found!');
             });
@@ -800,7 +903,7 @@
 
             var searchArr = searchData.split('|');
 
-            $.each(searchArr, function PreloadSearchCriterias (index, value) {
+            $.each(searchArr, function PreloadSearchCriterias(index, value) {
                 var searchField = value.split(';');
                 var searchTerm = UnEscapeURL(searchField[1]);
 
@@ -1202,6 +1305,34 @@
             return courseName
         }
 
+        function shareCompareList() {
+            var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+            var yourElement = document.getElementById("btnCompareShare");
+            var finalMsg = "Course list copied to clipboard";
+
+            if (courseCompareList != null && courseCompareList.length > 0) {
+                Debug("course compare list to share: " + courseCompareList);
+
+                try {
+                    var compareString_enc = Base64_encode_url(courseCompareList);
+
+                    var path = window.location.href.split('?')[0]
+                    var shareURL = path + "?compare=" + EscapeURL(compareString_enc);
+
+                    SendToClipboard(shareURL);
+                }
+                catch (e) {
+                    finalMsg = "Error sharing course compare list!"
+                    console.warn(finalMsg + "-" + e);
+                }
+            }
+            else {
+                finalMsg = "No compare criteria to share!";
+            }
+
+            yourElement.setAttribute("data-content", finalMsg);
+        }
+
         function shareSearch() {
             var searchCriteria = GetSearchCriteria();
             var yourElement = document.getElementById("btnSearchShare");
@@ -1289,7 +1420,17 @@
 
                     $("#course_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function () {
 
-                        $('table').css('cursor', 'default');
+                        $('#courseDataTable tr').each(function () {
+                            $(this).css('cursor', 'default');
+                        })
+
+                        $('#courseYardageTable tr').each(function () {
+                            $(this).css('cursor', 'default');
+                        })
+
+                        $('#courseHolesTable tr').each(function () {
+                            $(this).css('cursor', 'default');
+                        })
 
                         var courseHoleImage = course.replaceAll(" ", "_") + "$##HOLE##_.png";
 
@@ -1317,9 +1458,6 @@
                                     $(this).css("background-color", oldBGColor);
                                     $(this).css('text-decoration', 'underline');
                                 })
-
-                                // Get out of the loop. No reason to go through the rest...
-                                return false;
                             }
                         });
 
@@ -1352,6 +1490,21 @@
                     if (x.style.display === "none") {
                         x.style.display = "block";
                     }
+
+                    // Set Course Compare state
+                    var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+                    var inCourseCompare = false;
+
+                    if (courseCompareList != null) {
+                        // Check to see if already exists
+                        if ((courseCompareList.some(courseCompare => courseCompare === course)) === true) {
+                            inCourseCompare = true;
+                        }
+                    }
+
+                    Debug("Is course in compare list: " + inCourseCompare);
+
+                    SetCourseCompareIcon(inCourseCompare);
 
                     // Set Course Favorite Button
                     var courseFav = LocalStorage('get', course + "_favorite");
@@ -1675,7 +1828,7 @@
             $('#courseImageModalTitle').text(course + " - Notes");
             $('#courseNotes').attr('data-target', '#courseImageModal');
             $('#courseNotes').attr('data-toggle', 'modal');
-            
+
             ShowActiveModal("courseNotesAll");
         }
 
@@ -1689,7 +1842,7 @@
 
             var courseNotes = window.quill.getContents();
             var notesLength = window.quill.getLength();
-            
+
             if (notesLength > 1) {
                 try {
                     LocalStorage('set', course + "_notes", JSON.stringify(courseNotes));
@@ -1705,6 +1858,169 @@
 
             btnSaveCourseNotesTooltip.setAttribute("data-content", finalMsg);
             Debug(finalMsg);
+        }
+
+        function removeCourseCompare(course) {
+
+            var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+            var selectedCourse = "";
+
+            try {
+                selectedCourse = GetSelectedCourseName();
+            }
+            catch {
+                console.log("No course selected, no compare icons to update...");
+            }
+
+            if (courseCompareList != null) {
+                Debug("Removing course from compare: " + course);
+
+                courseCompareList = courseCompareList.filter(function (item) {
+                    return item !== course
+                })
+
+                SessionStorage('set', "courseCompareList", JSON.stringify(courseCompareList));
+
+                // Update button if selected course
+                if (selectedCourse == course) {
+                    SetCourseCompareIcon(false);
+                }
+
+                // Update compare count
+                $("#courseCompareCount").text(courseCompareList.length);
+
+                compareCourses();
+            }
+        }
+
+        function addCourseCompare() {
+            var course = GetSelectedCourseName();
+
+            Debug("Selected course: " + course);
+
+            var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+            var addCourse = false;
+            var yourElement = document.getElementById("courseCompare");
+            var finalMsg = "";
+
+            if (courseCompareList != null) {
+                // Check to see if already exists
+                if ((courseCompareList.some(courseCompare => courseCompare === course)) === false) {
+                    // Course doesn't exist, add it...
+                    addCourse = true;
+                    courseCompareList.push(course);
+                }
+            }
+            else {
+                // Add course for the first time
+                courseCompareList = [];
+                courseCompareList.push(course);
+                addCourse = true;
+            }
+
+            if (addCourse) {
+                Debug("Adding course to compare: " + course);
+                finalMsg = "Course added to compare list";
+            }
+            else {
+                Debug("Removing course from compare: " + course);
+                finalMsg = "Course removed from compare list";
+
+                courseCompareList = courseCompareList.filter(function (item) {
+                    return item !== course
+                })                
+            }
+
+            SessionStorage('set', "courseCompareList", JSON.stringify(courseCompareList));
+
+            // Update tooltip
+            yourElement.setAttribute("data-content", finalMsg);
+
+            // Update button
+            SetCourseCompareIcon(addCourse);
+
+            // Update compare count
+            $("#courseCompareCount").text(courseCompareList.length);
+
+            // Update compare
+            compareCourses();
+        }
+
+        function compareCourses() {
+
+            $("#course_compare_results").html('');
+
+            var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+
+            if (courseCompareList != null) {
+                $("#courseCompareCount").text(courseCompareList.length);
+                // Check to see if already exists
+                $("#course_compare_placeholder_toSort").html('');
+                $("#course_compare_placeholder").html('');
+
+                // Leave this here if you want the compare list to always open if there are courses in the list
+                //$('#collapseCompare').addClass('in');
+
+                courseCompareList.forEach((course) => {
+                    Debug("Load into compare: " + course, "compareCourses");
+
+                    $("#course_compare_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function (html, status, xhr) {
+                        if (status == "error") {
+                            console.warn("Cannot load compare data for: " + course);
+                        }
+                        else {
+                            var title = $(html).filter('title').text();
+                            Debug("course title: " + title, "compareCourses");
+                            //TODO: Refactor this monster line...
+                            $("#course_compare_placeholder_toSort").append('<div style="display: inline-block; margin: 5px; padding: 10px; border-style:solid; border-width: 1px; border-color: #428bca; border-radius: 20px; zoom: 0.8; cursor: grab;" id="compare_' + course + '" onmousedown="$(this).css(\'cursor\', \'grabbing\')" onmouseup="$(this).css(\'cursor\', \'grab\')"><button class="btn btn-info btn-circle disabled" style="float: left;"><i class="fa fa-reorder"></i></button><button class="btn btn-danger" style="float: right;" onclick="removeCourseCompare(\'' + course.replace("'", "\\'") + '\')">Remove</button>' + $("#course_compare_placeholder").html().replace('id="courseName"', '').replace('id="courseHolesTable"', '').replace('id="courseYardageTable"', '').replace('id="courseDataTable"', '') + '</div>');
+                        }
+                    });
+                });
+
+                // Need to wait for DOM to digest new dynamic divs, so set quick timeout function call
+                setTimeout(compareCoursesSort, 100);
+            }
+        }
+
+        function compareCoursesSort() {
+            Debug("setTimeout");
+
+            $("#course_compare_results").html('');
+            var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
+            
+            courseCompareList.forEach((course) => {
+                try {
+                    var $matchedCourseFind = $('[id="compare_' + course + '"]').clone();
+
+                    Debug(course + " - matched to - " + $matchedCourseFind[0].id, "compareCoursesSort");
+
+                    $("#course_compare_results").append($matchedCourseFind);
+                }
+                catch {
+                    console.warn("Cannot load compare data for: " + course);
+                }
+            });
+
+            $("#course_compare_placeholder_toSort").html('');
+            $("#course_compare_placeholder").html('');
+        }
+
+        function courseCompareReset() {
+            var courseCompareList = [];
+            SessionStorage('set', "courseCompareList", JSON.stringify(courseCompareList));
+
+            // Update compare count
+            $("#courseCompareCount").text(courseCompareList.length);
+
+            // Check QS params in case we need to reload the scorecard to use new values
+            var selectedCourse = SessionStorage('get', "selectedCourse");
+
+            if (selectedCourse != null) {
+                Debug("A course is selected, reload it to update compare icon: " + selectedCourse);
+                loadScoreCard(selectedCourse);
+            }
+
+            compareCourses();
         }
 
         function markCourseFavorite() {
@@ -1744,6 +2060,17 @@
             else {
                 $("#courseFavoriteStar").removeClass("fa-star");
                 $("#courseFavoriteStar").addClass("fa-star-o");
+            }
+        }
+
+        function SetCourseCompareIcon(set) {
+            if (set === 'true' || set === true) {
+                $("#courseCompareIcon").removeClass("fa-plus");
+                $("#courseCompareIcon").addClass("fa-minus");
+            }
+            else {
+                $("#courseCompareIcon").removeClass("fa-minus");
+                $("#courseCompareIcon").addClass("fa-plus");
             }
         }
 
