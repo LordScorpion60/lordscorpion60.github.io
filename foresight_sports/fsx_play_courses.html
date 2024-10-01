@@ -113,6 +113,38 @@
             pointer-events: none;
             color: inherit;
         }
+
+        .compareCourseSortable {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #428bca;
+            border-radius: 20px;
+            zoom: 0.8;
+            cursor: grab;
+            vertical-align: top;
+        }
+
+        .compareCourseTitle {
+            display: table;
+            margin: auto;
+            padding-left: 45px;
+        }
+
+        .btn-plain {
+            color: #000;
+            background-color: #6495ED;
+            border-color: #000;
+        }
+
+        .btn-plain:hover {
+            color: #000;
+            background-color: #3071a9;
+            border-color: #285e8e;
+            transition: all .5s;
+        }
     </style>
 </head>
 
@@ -1969,16 +2001,53 @@
                             console.warn("Cannot load compare data for: " + course);
                         }
                         else {
-                            var title = $(html).filter('title').text();
-                            Debug("course title: " + title, "compareCourses");
-                            //TODO: Refactor this monster line...
-                            $("#course_compare_placeholder_toSort").append('<div style="display: inline-block; margin: 5px; padding: 10px; border-style:solid; border-width: 1px; border-color: #428bca; border-radius: 20px; zoom: 0.8; cursor: grab;" id="compare_' + course + '" onmousedown="$(this).css(\'cursor\', \'grabbing\')" onmouseup="$(this).css(\'cursor\', \'grab\')"><button class="btn btn-info btn-circle disabled" style="float: left;"><i class="fa fa-reorder"></i></button><button class="btn btn-danger" style="float: right;" onclick="removeCourseCompare(\'' + course.replace("'", "\\'") + '\')">Remove</button>' + $("#course_compare_placeholder").html().replace('id="courseName"', '').replace('id="courseHolesTable"', '').replace('id="courseYardageTable"', '').replace('id="courseDataTable"', '') + '</div>');
+                            var titleDiv = $(this).find('.courseTitle').html();
+                            Debug("course title: " + titleDiv, "compareCourses");
+
+                            var btnTitle = $("<button>").attr({
+                                'class': "btn btn-plain",
+                                'onclick': "loadScoreCard('" + course.replace("'", "\\'") + "')"
+                            }).html(titleDiv)
+
+                            // Remove existing course title so we can replace it with a button
+                            $(this).find('.courseTitle').html(btnTitle);
+                            $(this).find('.courseTitle').addClass('compareCourseTitle');
+                            $(this).find('.courseTitle').removeClass('courseTitle');
+
+                            var courseHtml = $(this).html()
+                                .replace('id="courseName"', '')
+                                .replace('id="courseHolesTable"', '')
+                                .replace('id="courseYardageTable"', '')
+                                .replace('id="courseDataTable"', '');
+
+                            var btnDrag = $("<button>").attr({
+                                'class': "btn btn-info btn-circle disabled",
+                                'style': "float: left;"
+                            }).html('<i class="fa fa-reorder"></i>');
+
+                            var btnRemove = $("<button>").attr({
+                                'class': "btn btn-danger",
+                                'style': "float: right;",
+                                'onclick': "removeCourseCompare('" + course.replace("'", "\\'") + "')"
+                            }).text("Remove")
+
+                            var divHtml = $("<div>").attr({
+                                'id': "compare_" + course,
+                                'class': "compareCourseSortable",
+                                'onmousedown': "$(this).css(\'cursor\', \'grabbing\')",
+                                'onmouseup': "$(this).css(\'cursor\', \'grab\')"
+                            })
+                                .append(btnDrag)
+                                .append(btnRemove)
+                                .append(courseHtml)
+
+                            $("#course_compare_placeholder_toSort").append(divHtml);
                         }
                     });
                 });
 
                 // Need to wait for DOM to digest new dynamic divs, so set quick timeout function call
-                setTimeout(compareCoursesSort, 100);
+                setTimeout(compareCoursesSort, 10);
             }
         }
 
@@ -1996,8 +2065,8 @@
 
                     $("#course_compare_results").append($matchedCourseFind);
                 }
-                catch {
-                    console.warn("Cannot load compare data for: " + course);
+                catch (e) {
+                    console.warn("Cannot load compare data for: " + course + " - " + e);
                 }
             });
 
