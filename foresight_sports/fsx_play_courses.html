@@ -58,6 +58,7 @@
         /* width */
         ::-webkit-scrollbar {
             width: 25px;
+            height: 25px;
         }
 
         /* Track */
@@ -357,7 +358,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-info">
+                        <div class="panel panel-info" style="display: table; width: 100%;">
                             <div class="btn btn-header btn-lg btn-block" data-toggle="collapse" data-parent="#accordionClub" href="#collapseCompare">
                                 <h4 class="panel-title text-left">
                                     Course Compare <i class="fa fa-exchange"></i> (<span id="courseCompareCount">0</span>)
@@ -394,8 +395,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-4" id="courseList" style="height: 900px; overflow-y: auto; overflow-x:hidden;">
-                    <!-- Built on load -->
+                <div class="col-xs-4 col-md-4" style="height: 900px; overflow-y: auto; overflow-x:hidden;">
+                    <div id="courseList" style="display: table; width: 100%;">
+                        <!-- Built on load -->
+                    </div>
                 </div>
                 <div class="col-xs-8 col-md-8">
                     <div class="panel panel-primary" style="display: table; width:100%;">
