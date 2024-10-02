@@ -565,6 +565,9 @@
     <!-- jQuery UI Version 1.13.3 -->
     <script src="/js/jquery-ui.js"></script>
 
+    <!-- jQuery UI Touch Punch 0.2.3 -->
+    <script src="/js/jquery.ui.touch-punch.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
@@ -1960,7 +1963,7 @@
 
                 courseCompareList = courseCompareList.filter(function (item) {
                     return item !== course
-                })                
+                })
             }
 
             SessionStorage('set', "courseCompareList", JSON.stringify(courseCompareList));
@@ -1978,6 +1981,53 @@
             compareCourses();
         }
 
+        function BuildDynamicCompareCourse(courseData) {
+            var loadedCourse = $("#course_compare_placeholder");
+            loadedCourse.html(courseData);
+
+            var titleDiv = loadedCourse.find('.courseTitle').html();
+            Debug("course title: " + titleDiv, "BuildDynamicCompareCourse");
+
+            var btnTitle = $("<button>").attr({
+                'class': "btn btn-plain",
+                'onclick': "loadScoreCard('" + titleDiv.replace("'", "\\'") + "')"
+            }).html(titleDiv)
+
+            // Remove existing course title so we can replace it with a button
+            loadedCourse.find('.courseTitle').html(btnTitle);
+            loadedCourse.find('.courseTitle').addClass('compareCourseTitle');
+            loadedCourse.find('.courseTitle').removeClass('courseTitle');
+
+            var courseHtml = loadedCourse.html()
+                .replace('id="courseName"', '')
+                .replace('id="courseHolesTable"', '')
+                .replace('id="courseYardageTable"', '')
+                .replace('id="courseDataTable"', '');
+
+            var btnDrag = $("<button>").attr({
+                'class': "btn btn-info btn-circle disabled",
+                'style': "float: left;"
+            }).html('<i class="fa fa-reorder"></i>');
+
+            var btnRemove = $("<button>").attr({
+                'class': "btn btn-danger",
+                'style': "float: right;",
+                'onclick': "removeCourseCompare('" + titleDiv.replace("'", "\\'") + "')"
+            }).text("Remove")
+
+            var divHtml = $("<div>").attr({
+                'id': "compare_" + titleDiv,
+                'class': "compareCourseSortable",
+                'onmousedown': "$(this).css(\'cursor\', \'grabbing\')",
+                'onmouseup': "$(this).css(\'cursor\', \'grab\')"
+            })
+                .append(btnDrag)
+                .append(btnRemove)
+                .append(courseHtml)
+
+            $("#course_compare_placeholder_toSort").append(divHtml);
+        }
+
         function compareCourses() {
 
             $("#course_compare_results").html('');
@@ -1993,70 +2043,69 @@
                 // Leave this here if you want the compare list to always open if there are courses in the list
                 //$('#collapseCompare').addClass('in');
 
+                // Array of course requests
+                var courseRequests = Array();
+                var existingCourses = [];
+
                 courseCompareList.forEach((course) => {
-                    Debug("Load into compare: " + course, "compareCourses");
+                    //TODO: Check #course_compare_results to see if we have already downloaded the course and use that instead
 
-                    $("#course_compare_placeholder").load(encodeURIComponent("fsx_play_courses/" + course + ".html"), function (html, status, xhr) {
-                        if (status == "error") {
-                            console.warn("Cannot load compare data for: " + course);
-                        }
-                        else {
-                            var titleDiv = $(this).find('.courseTitle').html();
-                            Debug("course title: " + titleDiv, "compareCourses");
+                    //var existingCourse = $("#course_compare_results");
+                    //var courseHTML = existingCourse.find('[id="compare_' + course + '"]');
+                    //console.dir(courseHTML[0]);
 
-                            var btnTitle = $("<button>").attr({
-                                'class': "btn btn-plain",
-                                'onclick': "loadScoreCard('" + course.replace("'", "\\'") + "')"
-                            }).html(titleDiv)
+                    var courseHTML = null;
 
-                            // Remove existing course title so we can replace it with a button
-                            $(this).find('.courseTitle').html(btnTitle);
-                            $(this).find('.courseTitle').addClass('compareCourseTitle');
-                            $(this).find('.courseTitle').removeClass('courseTitle');
-
-                            var courseHtml = $(this).html()
-                                .replace('id="courseName"', '')
-                                .replace('id="courseHolesTable"', '')
-                                .replace('id="courseYardageTable"', '')
-                                .replace('id="courseDataTable"', '');
-
-                            var btnDrag = $("<button>").attr({
-                                'class': "btn btn-info btn-circle disabled",
-                                'style': "float: left;"
-                            }).html('<i class="fa fa-reorder"></i>');
-
-                            var btnRemove = $("<button>").attr({
-                                'class': "btn btn-danger",
-                                'style': "float: right;",
-                                'onclick': "removeCourseCompare('" + course.replace("'", "\\'") + "')"
-                            }).text("Remove")
-
-                            var divHtml = $("<div>").attr({
-                                'id': "compare_" + course,
-                                'class': "compareCourseSortable",
-                                'onmousedown': "$(this).css(\'cursor\', \'grabbing\')",
-                                'onmouseup': "$(this).css(\'cursor\', \'grab\')"
-                            })
-                                .append(btnDrag)
-                                .append(btnRemove)
-                                .append(courseHtml)
-
-                            $("#course_compare_placeholder_toSort").append(divHtml);
-                        }
-                    });
+                    if (courseHTML != null) {
+                        Debug("Reuse existing: " + course, "compareCourses");
+                        existingCourses.push(courseHTML.context.children[0].outerHTML);
+                    }
+                    else {
+                        Debug("Download: fsx_play_courses/" + course + ".html", "compareCourses");
+                        courseRequests.push($.get(encodeURIComponent("fsx_play_courses/" + course + ".html")));
+                    }
                 });
 
-                // Need to wait for DOM to digest new dynamic divs, so set quick timeout function call
-                setTimeout(compareCoursesSort, 10);
+                var defer = $.when.apply($, courseRequests);
+
+                defer.done(function () {
+                    // This is executed only after every ajax request has been completed
+                    Debug("Downloads completed: " + courseRequests.length, "compareCourses - defer");
+
+                    $.each(arguments, function (index, responseData) {
+                        // "responseData" will contain an array of response information for each specific request
+
+                        if (typeof responseData === 'string' && responseData.startsWith("<!DOCTYPE html")) {
+                            BuildDynamicCompareCourse(responseData);
+                        }
+                        else if (typeof responseData === 'object' && responseData[0] != null && responseData[0].startsWith("<!DOCTYPE html")) {
+                            BuildDynamicCompareCourse(responseData[0]);
+                        }
+                    });
+
+                    Debug("existingCourses.length: " + existingCourses.length, "compareCourses - defer");
+
+                    if (existingCourses.length > 0) {
+                        existingCourses.forEach((course) => {
+                            BuildDynamicCompareCourse(course);
+                        });
+                    }
+
+                    Debug("Call setTimeout...", "compareCourses - defer");
+                    $("#course_compare_placeholder").html('');
+                    setTimeout(compareCoursesSort, 100);
+                });
+
+                Debug("DONE!");
             }
         }
 
         function compareCoursesSort() {
-            Debug("setTimeout");
+            Debug("setTimeout triggered...");
 
             $("#course_compare_results").html('');
             var courseCompareList = JSON.parse(SessionStorage('get', "courseCompareList"));
-            
+
             courseCompareList.forEach((course) => {
                 try {
                     var $matchedCourseFind = $('[id="compare_' + course + '"]').clone();
