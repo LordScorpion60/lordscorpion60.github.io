@@ -3179,6 +3179,23 @@
     "MinRating": 63.7
   },
   {
+    "Name": "Pinehurst (The Cradle)",
+    "Version": "1.5.0.3",
+    "Par": 54.0,
+    "Altitude": 528.0,
+    "City": "Pinehurst",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "North Carolina,NC",
+    "Type": "Links",
+    "MaxYardage": 1578,
+    "MinYardage": 1578,
+    "MaxSlope": 99.0,
+    "MinSlope": 99.0,
+    "MaxRating": 53.2,
+    "MinRating": 53.2
+  },
+  {
     "Name": "Pinehurst No. 2",
     "Version": "1.5.0.7",
     "Par": 70.0,
