@@ -1309,10 +1309,10 @@
   },
   {
     "Name": "Pinehurst (The Cradle)",
-    "2020": "0",
-    "Buy": "",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/the-cradle-at-pinehurst-resort",
     "Price": 150,
-    "Flyover": ""
+    "Flyover": "https://www.youtube.com/watch?v=c9Wt6JrAknc"
   },
   {
     "Name": "Pinehurst No. 2",
