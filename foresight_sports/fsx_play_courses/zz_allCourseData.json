@@ -1360,6 +1360,23 @@
     "MinRating": 68.3
   },
   {
+    "Name": "Fairmont Banff Springs Golf Course",
+    "Version": "1.5.1.0",
+    "Par": 71.0,
+    "Altitude": 4621.0,
+    "City": "Alberta",
+    "Country": "Canada",
+    "Continent": "North America",
+    "State": "N/A",
+    "Type": "Mountain",
+    "MaxYardage": 6906,
+    "MinYardage": 4646,
+    "MaxSlope": 131.0,
+    "MinSlope": 99.0,
+    "MaxRating": 72.6,
+    "MinRating": 61.8
+  },
+  {
     "Name": "Fairmont Jasper Park Golf Club",
     "Version": "1.4.0.3",
     "Par": 71.0,
