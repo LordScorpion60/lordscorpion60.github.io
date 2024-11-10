@@ -3,6 +3,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Abu%20Dhabi%20Golf%20Club%20%28National%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Airport%20National%20Golf%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Akron%20South%20Course.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/American%20Dunes%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Apple%20Valley%20Golf%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Applebrook%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Applegate%20River%20Golf%20Club.html
@@ -258,6 +259,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Heretic
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Links%20at%20Spanish%20Bay.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Loxahatchee%20Club%20%28Nine%20Lakes%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Mission%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Patriot%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pete%20Dye%20Course%20at%20French%20Lick.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pulpit%20Club%20%28Paintbrush%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Pulpit%20Club%20%28Pulpit%29.html

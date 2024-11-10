@@ -51,6 +51,23 @@
     "MinRating": 69.01
   },
   {
+    "Name": "American Dunes Golf Club",
+    "Version": "1.5.0.7",
+    "Par": 72.0,
+    "Altitude": 640.0,
+    "City": "Grand Haven",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Michigan,MI",
+    "Type": "Links",
+    "MaxYardage": 7220,
+    "MinYardage": 4938,
+    "MaxSlope": 148.0,
+    "MinSlope": 116.0,
+    "MaxRating": 75.4,
+    "MinRating": 63.9
+  },
+  {
     "Name": "Apple Valley Golf Course",
     "Version": "1.4.0.2",
     "Par": 72.0,
@@ -4384,6 +4401,23 @@
     "MinSlope": 110.0,
     "MaxRating": 71.9,
     "MinRating": 65.5
+  },
+  {
+    "Name": "The Patriot Golf Club",
+    "Version": "1.5.0.4",
+    "Par": 72.0,
+    "Altitude": 625.0,
+    "City": "Owasso",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Oklahoma,OK",
+    "Type": "Parkland",
+    "MaxYardage": 7073,
+    "MinYardage": 5506,
+    "MaxSlope": 144.0,
+    "MinSlope": 129.0,
+    "MaxRating": 74.7,
+    "MinRating": 70.0
   },
   {
     "Name": "The Pete Dye Course at French Lick",

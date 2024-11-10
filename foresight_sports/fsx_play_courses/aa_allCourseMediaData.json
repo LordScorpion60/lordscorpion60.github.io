@@ -21,6 +21,13 @@
     "Flyover": "https://www.youtube.com/watch?v=nu8tG7i7MxU"
   },
   {
+    "Name": "American Dunes Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/american-dunes-golf-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Apple Valley Golf Course",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/apple-valley-golf-course",
@@ -1802,6 +1809,13 @@
     "Name": "The Mission Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/the-mission-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "The Patriot Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/the-patriot-golf-club",
     "Price": 150,
     "Flyover": ""
   },
