@@ -3736,8 +3736,8 @@
     "MinYardage": 5244,
     "MaxSlope": 149.0,
     "MinSlope": 121.0,
-    "MaxRating": 75.19999694824219,
-    "MinRating": 68.0999984741211
+    "MaxRating": 75.2,
+    "MinRating": 68.1
   },
   {
     "Name": "Skolkovo Golf Club",
