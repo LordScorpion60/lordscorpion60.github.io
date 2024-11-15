@@ -3723,6 +3723,23 @@
     "MinRating": 68.0
   },
   {
+    "Name": "Shadow Valley Country Club",
+    "Version": "1.5.0.10",
+    "Par": 72.0,
+    "Altitude": 1352.0,
+    "City": "Rogers",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Arkansas,AR",
+    "Type": "Links",
+    "MaxYardage": 7101,
+    "MinYardage": 5244,
+    "MaxSlope": 149.0,
+    "MinSlope": 121.0,
+    "MaxRating": 75.19999694824219,
+    "MinRating": 68.0999984741211
+  },
+  {
     "Name": "Skolkovo Golf Club",
     "Version": "1.4.0.2",
     "Par": 72.0,
