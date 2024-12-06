@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- HTML Meta Tags -->
+    <title>LordScorpion60's Domain - FSX Play Optimizations</title>
+    <meta name="description" content="">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://lordscorpion60.github.io/foresight_sports/fsx_play_courses.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LordScorpion60's Domain">
+    <meta property="og:title" content="FSX Play Optimizations">
+    <meta property="og:description" content="Tips & tricks to optimize FSX Play performance.">
+    <meta property="og:image" content="https://lordscorpion60.github.io/images/foresight_sports/golf_ball_in_mirror.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary">
+
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <!--<link href="/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <div id="nav-placeholder">
+            <!-- Leave blank so page content loads too -->
+        </div>
+        <!-- end of Navigation -->
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">FSX Play Optimizations</h1>
+
+                    <p>These tips & tricks could help optimize the performance of FSX Play on your current system</p>
+
+                    <hr />
+
+                    <h2>Table of Contents:</h2>
+                    <ul>
+                        <li><a href="#LS_GFX_TUNING">Graphics Tuning with Lossless Scaling</a></li>
+                        <li><a href="#FS_TUNING">Foresight Provided Help</a></li>
+                        <li><a href="#NOTES">Notes</a></li>
+                    </ul>
+
+                    <hr />
+                    <h3 id="LS_GFX_TUNING">Graphics Tuning with Lossless Scaling:</h3>
+                    <hr />
+
+                    <p>
+                        <a href="https://store.steampowered.com/app/993090/Lossless_Scaling/" target="_blank">Lossless Scaling <i class="fa fa-external-link fa-fw"></i></a> "allows you to scale windowed games to full screen using the state-of-the-art scaling algorithms, as well as use ML based proprietary scaling and frame generation."
+                    </p>
+                    <p>
+                        Requirements:
+                        <ul>
+                            <li>Scaling makes sense when you are limited by GPU power</li>
+                            <li>
+                                For the best experience, limit the game to a stable frame rate so that Lossless Scaling has resources to work with
+                                <ul>
+                                    <li>The game must be running in windowed mode</li>
+                                    <li>Windows 10 1903 or newer</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        <img src=".\images\lossless_scaling.jpg" style="width: 40vw; margin: 15px" />
+                    </p>
+
+                    <p>
+                        <iframe style="margin: 15px" width="960" height="715" src="https://www.youtube.com/embed/7SgA7M_XhQw?si=K_znbGZv4DIL_b1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </p>
+
+                    <p>
+                        There are a few options to leverage this standalone software to either boost FPS or enable V-Sync like smoothness of frame rate on your screen (default settings unless specified).
+                    </p>
+
+                    <hr />
+
+                    <p>Test System:</p>
+                    <ul>
+                        <li>Win 10 - Hardware-accelerated GPU Scheduling: High Performance enabled for FSXPlay.exe</li>
+                        <li>RTX 2070 Super 8GB</li>
+                        <li>i7-2600k</li>
+                        <li>16gb DDR3</li>
+                        <li>4K TV @ 60Hz</li>
+                        <li>
+                            FSX Play Scenario:
+                            <ul>
+                                <li>Course: Teton Pines #3</li>
+                                <li>Wind: Moderate (10mph)</li>
+                                <li>Time of the Day: Afternoon</li>
+                                <li>Sky: Partly Cloudy</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p>Tests & Results:</p>
+                    <ul>
+                        <li>
+                            <b>Control - Native 4K:</b>
+                            <ul>
+                                <li>Play - Screen: Fullscreen</li>
+                                <li>Play - Framerate Cap: Unlimited</li>
+                                <li>Play - Graphic Quality: Ultra</li>
+                                <li>Play - Resolution: 3840x2160</li>
+                                <li>Lossless - OFF</li>
+                                <li>
+                                    <b>Result: ~5 FPS</b>
+                                    <ul>
+                                        <li>Very choppy from tee to green & unplayable...</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Scale to 4k:
+                            <ul>
+                                <li>Play - Screen: Windowed</li>
+                                <li>Play - Framerate Cap: 60</li>
+                                <li>Play - Graphic Quality: Ultra</li>
+                                <li>Play - Resolution: 1920x1080</li>
+                                <li>Lossless - Scaling Type: LS1</li>
+                                <li>Lossless - Sharpness: 1</li>
+                                <li>
+                                    <b>Result: ~15 FPS</b>
+                                    <ul>
+                                        <li>Not as choppy, but FPS much higher once ball is in the air (trees out of the way)...</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Native 4k - Frame generation:
+                            <ul>
+                                <li>Play - Screen: Fullscreen</li>
+                                <li>Play - Framerate Cap: 30</li>
+                                <li>Play - Graphic Quality: High</li>
+                                <li>Play - Resolution: 3840x2160</li>
+                                <li>Lossless - Frame Generation: LSFG 2.3</li>
+                                <li>Lossless - Mode: X2</li>
+                                <li>Lossless - Rendering - Sync Mode: Default</li>
+                                <li>
+                                    <b>Result: 15-20 FPS</b>
+                                    <ul>
+                                        <li>V-Sync like smoothness with no screen tearing!</li>
+                                        <li>Had to run on High settings to maintain FPS</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Scale to 4k + Frame generation:
+                            <ul>
+                                <li>Play - Screen: Windowed</li>
+                                <li>Play - Framerate Cap: 30</li>
+                                <li>Play - Graphic Quality: Ultra</li>
+                                <li>Play - Resolution: 1920x1080</li>
+                                <li>Lossless - Scaling Type: LS1</li>
+                                <li>Lossless - Sharpness: 1</li>
+                                <li>Lossless - Frame Generation: LSFG 2.3</li>
+                                <li>Lossless - Mode: X2</li>
+                                <li>Lossless - Rendering - Sync Mode: Default</li>
+                                <li>
+                                    <b>Result: 57-60 FPS</b>
+                                    <ul>
+                                        <li>Combining both settings allowed for smooth vsync like smoothness and a solid FPS to run Ultra settings with no studdering!</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p>Final Thoughts:</p>
+                    <ul>
+                        <li>The DLSS options in Play don't provide enough performance and with my card created a very choppy/blurry movement of any text/lines...</li>
+                        <li>High powered RTX cards are very expensive and for a $7 (at the time of this update) software to provide an 1100% FPS upgrade @ 4K is amazing!</li>
+                        <li>Lossless works even better when not running 4K</li>
+                        <li>There are other Lossless Scaling options to use to fine tune performance</li>
+                        <li>There are other Lossless Frame Generation options to use to fine tune performance</li>
+                        <li>Lossless can be used with scaling and/or frame generation based on GPU to reduce heat, power, noise, etc...</li>
+                    </ul>
+
+                    <hr />
+                    <h3 id="FS_TUNING">Foresight Provided Help:</h3>
+                    <hr />
+
+                    <ul>
+                        <li>
+                            <a href="https://help.foresightsports.com/hc/en-us/articles/8956819790355-Optimizing-Windows-Graphic-Settings-for-FSX-Play" target="_blank">Optimizing Windows Graphic Settings for FSX Play <i class="fa fa-external-link fa-fw"></i></a>
+                            <br />
+                            <img src=".\images\FS_Optimizing_Windows_GFX.png" />
+                        </li>
+                    </ul>
+
+                    <hr />
+                    <h3 id="NOTES">Notes:</h3>
+                    <hr />
+
+                    <ul>
+                        <li>
+                            GPU Requirements:
+                            <ul>
+                                <li>I've run Play just fine with a GTX 1070 on Medium settings...</li>
+                                <li>I've seen Play work just fine on a RTX Nvidia Quadro...</li>
+                            </ul>
+                        </li>
+                        <li>
+                            High vs Ultra quality settings:
+                            <ul>
+                                <li>So far, the only difference I can see is Ultra applies <a href="https://en.wikipedia.org/wiki/Ambient_occlusion" target="_blank">Ambient occlusion <i class="fa fa-external-link fa-fw"></i></a> shadowing to everything! So the grass looks dark, cavernous and newer course versions (1.5) the fairway looks like shag carpet...
+                                <br />
+                                <img style="margin: 15px" src=".\images\ultra_v_high.png" />
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <hr />
+                    <em>Last Updated: 12/5/24 @ 7:00PM MST</em>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <!--<script src="/js/plugins/metisMenu/metisMenu.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/sb-admin-2.js"></script>
+
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/nav.html");
+        });
+    </script>
+</body>
+</html>
