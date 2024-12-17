@@ -1,4 +1,5 @@
 https://lordscorpion60.github.io/
+https://lordscorpion60.github.io/foresight_sports/fsx_play_optimizations.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Abu%20Dhabi%20Golf%20Club%20%28National%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Airport%20National%20Golf%20Course.html
@@ -245,6 +246,8 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Sunset%20Ridg
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Tall%20Pines%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Tanah%20Merah.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Tara%20Iti%20Golf%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Te%20Arai%20Links%20%28North%29.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Te%20Arai%20Links%20%28South%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Tetherow%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Teton%20Pines%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Bedens%20Brook%20Club.html
