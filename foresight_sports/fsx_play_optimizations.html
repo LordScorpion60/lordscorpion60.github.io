@@ -75,15 +75,20 @@
 
                     <hr />
 
-                    <h2>Table of Contents:</h2>
+                    <h1>Table of Contents:</h1>
                     <ul>
-                        <li><a href="#LS_GFX_TUNING">Graphics Tuning with Lossless Scaling</a></li>
+                        <li><a href="#LS_GFX_TUNING">Graphics Tuning with Lossless Scaling</a>
+                            <ul>
+                                <li><a href="#LS_GFX_TUNING_4K">4K 60FPS Test</a></li>
+                                <li><a href="#LS_GFX_TUNING_2K">1080p 120FPS Test</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#FS_TUNING">Foresight Provided Help</a></li>
                         <li><a href="#NOTES">Notes</a></li>
                     </ul>
 
                     <hr />
-                    <h3 id="LS_GFX_TUNING">Graphics Tuning with Lossless Scaling:</h3>
+                    <h2 id="LS_GFX_TUNING">Graphics Tuning with Lossless Scaling:</h2>
                     <hr />
 
                     <p>
@@ -117,13 +122,12 @@
 
                     <hr />
 
-                    <p>Test System:</p>
+                    <p><h3 id="LS_GFX_TUNING_TEST_SYSTEM">Test System:</h3></p>
                     <ul>
                         <li>Win 10 - Hardware-accelerated GPU Scheduling: High Performance enabled for FSXPlay.exe</li>
                         <li>RTX 2070 Super 8GB</li>
                         <li>i7-2600k</li>
                         <li>16gb DDR3</li>
-                        <li>4K TV @ 60Hz</li>
                         <li>
                             FSX Play Scenario:
                             <ul>
@@ -131,7 +135,7 @@
                                     Course:
                                     <ul>
                                         <li>Course: Teton Pines #3</li>
-                                        <li>Wind: Moderate (10mph)</li>
+                                        <li>Wind: 10mph</li>
                                         <li>Time of the Day: Afternoon</li>
                                         <li>Sky: Partly Cloudy</li>
                                     </ul>
@@ -144,87 +148,220 @@
                                     </ul>
 
                                 </li>
+                                <li>
+                                    Testing:
+                                    <ul>
+                                        <li>Result FPS is AVG of sitting on the tee box for 60 sec w/ trees blowing in the wind</li>
+                                        <li>Comments added for changes in framerate once ball is moving, trees/wind out of frame, etc.</li>
+                                    </ul>
+
+                                </li>
                             </ul>
                         </li>
                     </ul>
 
-                    <p>Tests & Results:</p>
+                    <p><h3>Tests & Results:</h3></p>
                     <ul>
+                        <li><h4 id="LS_GFX_TUNING_4K">Test 1 - GOAL: 4k @ 60FPS</h4></li>
+                        <li><a href="#LS_GFX_TUNING_TEST_SYSTEM">Test System</a></li>
                         <li>
-                            <b>Control - Native 4K:</b>
+                            <i>Display: 4K TV @ 60Hz</i>
                             <ul>
-                                <li>Play - Screen: Fullscreen</li>
-                                <li>Play - Framerate Cap: Unlimited</li>
-                                <li>Play - Graphic Quality: Ultra</li>
-                                <li>Play - Resolution: 3840x2160</li>
-                                <li>Lossless - OFF</li>
+
                                 <li>
-                                    <b>Result: ~5 FPS</b>
+                                    <b>Control - Native 4K - Ultra:</b>
                                     <ul>
-                                        <li>Very choppy from tee to green & unplayable...</li>
+                                        <li>Play - Screen: Fullscreen</li>
+                                        <li>Play - Framerate Cap: Unlimited</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 3840x2160</li>
+                                        <li>Lossless - OFF</li>
+                                        <li>
+                                            <b>Result: ~5 FPS</b>
+                                            <ul>
+                                                <li>Very choppy from tee to green & unplayable...</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Scale to 4k - Ultra:
+                                    <ul>
+                                        <li>Play - Screen: Windowed</li>
+                                        <li>Play - Framerate Cap: 60</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 1920x1080</li>
+                                        <li>
+                                            Lossless - Scaling Type: LS1
+                                            <ul>
+                                                <li>Sharpness: 1</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: ~15 FPS</b>
+                                            <ul>
+                                                <li>Not as choppy, but FPS much higher once ball is in the air (trees out of the way)...</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Native 4k - Frame generation - High:
+                                    <ul>
+                                        <li>Play - Screen: Fullscreen</li>
+                                        <li>Play - Framerate Cap: 30</li>
+                                        <li>Play - Graphic Quality: High</li>
+                                        <li>Play - Resolution: 3840x2160</li>
+                                        <li>
+                                            Lossless - Frame Generation: LSFG 2.3
+                                            <ul>
+                                                <li>Mode: X2</li>
+                                                <li>Rendering - Sync Mode: Default</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: 15-20 FPS</b>
+                                            <ul>
+                                                <li>V-Sync like smoothness with no screen tearing!</li>
+                                                <li>Had to run on High settings to maintain FPS</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Scale to 4k + Frame generation - Ultra:
+                                    <ul>
+                                        <li>Play - Screen: Windowed</li>
+                                        <li>Play - Framerate Cap: 30</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 1920x1080</li>
+                                        <li>
+                                            Lossless - Scaling Type: LS1
+                                            <ul>
+                                                <li>Sharpness: 1</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Lossless - Frame Generation: LSFG 2.3
+                                            <ul>
+                                                <li>Mode: X2</li>
+                                                <li>Rendering - Sync Mode: Default</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: 57-60 FPS [WINNER]</b>
+                                            <ul>
+                                                <li>Combining both settings allowed for smooth vsync like smoothness and a solid FPS to run Ultra settings with no studdering!</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
+                        <li><h4 id="LS_GFX_TUNING_2K">Test 2 - GOAL: 1080p @ 120FPS</h4></li>
+                        <li><a href="#LS_GFX_TUNING_TEST_SYSTEM">Test System</a></li>
                         <li>
-                            Scale to 4k:
+                            <i>Display: 1080p TV @ 120Hz</i>
                             <ul>
-                                <li>Play - Screen: Windowed</li>
-                                <li>Play - Framerate Cap: 60</li>
-                                <li>Play - Graphic Quality: Ultra</li>
-                                <li>Play - Resolution: 1920x1080</li>
-                                <li>Lossless - Scaling Type: LS1</li>
-                                <li>Lossless - Sharpness: 1</li>
+
                                 <li>
-                                    <b>Result: ~15 FPS</b>
+                                    <b>Control - Native 1080p - Ultra:</b>
                                     <ul>
-                                        <li>Not as choppy, but FPS much higher once ball is in the air (trees out of the way)...</li>
+                                        <li>Play - Screen: Fullscreen</li>
+                                        <li>Play - Framerate Cap: Unlimited</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 1920x1080</li>
+                                        <li>Lossless - OFF</li>
+                                        <li>
+                                            <b>Result: 34 FPS</b>
+                                            <ul>
+                                                <li>FPS closer to 52 once ball is in the air (trees out of the way)...</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li>
-                            Native 4k - Frame generation:
-                            <ul>
-                                <li>Play - Screen: Fullscreen</li>
-                                <li>Play - Framerate Cap: 30</li>
-                                <li>Play - Graphic Quality: High</li>
-                                <li>Play - Resolution: 3840x2160</li>
-                                <li>Lossless - Frame Generation: LSFG 2.3</li>
-                                <li>Lossless - Mode: X2</li>
-                                <li>Lossless - Rendering - Sync Mode: Default</li>
                                 <li>
-                                    <b>Result: 15-20 FPS</b>
+                                    Scale to 1080p - Ultra:
                                     <ul>
-                                        <li>V-Sync like smoothness with no screen tearing!</li>
-                                        <li>Had to run on High settings to maintain FPS</li>
+                                        <li>Play - Screen: Windowed</li>
+                                        <li>Play - Framerate Cap: Unlimited</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 1366x768</li>
+                                        <li>
+                                            Lossless - Scaling Type: LS1
+                                            <ul>
+                                                <li>Sharpness: 1</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: 47 FPS</b>
+                                            <ul>
+                                                <li>FPS closer to 81 once ball is in the air (trees out of the way)...</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li>
-                            Scale to 4k + Frame generation:
-                            <ul>
-                                <li>Play - Screen: Windowed</li>
-                                <li>Play - Framerate Cap: 30</li>
-                                <li>Play - Graphic Quality: Ultra</li>
-                                <li>Play - Resolution: 1920x1080</li>
-                                <li>Lossless - Scaling Type: LS1</li>
-                                <li>Lossless - Sharpness: 1</li>
-                                <li>Lossless - Frame Generation: LSFG 2.3</li>
-                                <li>Lossless - Mode: X2</li>
-                                <li>Lossless - Rendering - Sync Mode: Default</li>
                                 <li>
-                                    <b>Result: 57-60 FPS</b>
+                                    Scale to 1080p + Frame generation - Ultra:
                                     <ul>
-                                        <li>Combining both settings allowed for smooth vsync like smoothness and a solid FPS to run Ultra settings with no studdering!</li>
+                                        <li>Play - Screen: Windowed</li>
+                                        <li>Play - Framerate Cap: 60</li>
+                                        <li>Play - Graphic Quality: Ultra</li>
+                                        <li>Play - Resolution: 1366x768</li>
+                                        <li>
+                                            Lossless - Scaling Type: LS1
+                                            <ul>
+                                                <li>Sharpness: 1</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Lossless - Frame Generation: LSFG 2.3
+                                            <ul>
+                                                <li>Mode: X2</li>
+                                                <li>Rendering - Sync Mode: Default</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: 87 FPS</b>
+                                            <ul>
+                                                <li>FPS to 118 once ball is in the air (trees out of the way)...</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Scale to 1080p + Frame generation - High:
+                                    <ul>
+                                        <li>Play - Screen: Windowed</li>
+                                        <li>Play - Framerate Cap: 60</li>
+                                        <li>Play - Graphic Quality: High</li>
+                                        <li>Play - Resolution: 1366x768</li>
+                                        <li>
+                                            Lossless - Scaling Type: LS1
+                                            <ul>
+                                                <li>Sharpness: 1</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Lossless - Frame Generation: LSFG 2.3
+                                            <ul>
+                                                <li>Mode: X2</li>
+                                                <li>Rendering - Sync Mode: Default</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <b>Result: 115 FPS [WINNER!]</b>
+                                            <ul>
+                                                <li>FPS solid 120 once ball is moving and looks amazing on the 120Hz TV (since I don't like Ultra's shadows)</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                     </ul>
 
-                    <p>Final Thoughts:</p>
+                    <p><h3>Final Thoughts:</h3></p>
                     <ul>
                         <li>The DLSS options in Play don't provide enough performance and with my card created a very choppy/blurry movement of any text/lines...</li>
                         <li>High powered RTX cards are very expensive and for a $7 (at the time of this update) software to provide an 1100% FPS upgrade @ 4K is amazing!</li>
@@ -236,7 +373,7 @@
                     </ul>
 
                     <hr />
-                    <h3 id="FS_TUNING">Foresight Provided Help:</h3>
+                    <h2 id="FS_TUNING">Foresight Provided Help:</h2>
                     <hr />
 
                     <ul>
@@ -248,7 +385,7 @@
                     </ul>
 
                     <hr />
-                    <h3 id="NOTES">Notes:</h3>
+                    <h2 id="NOTES">Notes:</h2>
                     <hr />
 
                     <ul>
@@ -271,7 +408,7 @@
                     </ul>
 
                     <hr />
-                    <em>Last Updated: 12/6/24 @ 2:00PM MST</em>
+                    <em>Last Updated: 12/21/24 @ 2:00PM MST</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
