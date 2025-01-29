@@ -9,5 +9,11 @@
       "Version": "1.0.1",
       "Notes": "Added the ability to include a shot replay to the end of a merged shot video"
     }
+  ],
+  "Licenses" : [
+    {
+      "System": "tkp+MRSFbNlMkcFXLVjDUXjqAdrf5Fx6qouAbYdgO0p9pHPWxdQ5qyZhEvMF2BUk",
+      "License": "BETA"
+    }
   ]
 }
