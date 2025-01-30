@@ -3,11 +3,7 @@
   "ReleaseNotes": [
     {
       "Version": "1.0.0",
-      "Notes": "Initial Release"
-    },
-    {
-      "Version": "1.0.1",
-      "Notes": "Added the ability to include a shot replay to the end of a merged shot video"
+      "Notes": "Beta Release"
     }
   ],
   "Licenses" : [
