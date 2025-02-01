@@ -1,7 +1,7 @@
 {
   "LatestVersion": "1.0.0",
-  "LatestVersion_BETA": "1.0.0:BETA",
-  "LatestVersion_DEBUG": "1.0.0:DEBUG",
+  "LatestVersion_BETA": "1.0.0_BETA",
+  "LatestVersion_DEBUG": "1.0.0_DEBUG",
 
   "ReleaseNotes": [
     {
