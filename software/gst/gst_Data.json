@@ -1,15 +1,31 @@
 {
   "LatestVersion": "1.0.0",
+  "LatestVersion_BETA": "1.0.0:BETA",
+  "LatestVersion_DEBUG": "1.0.0:DEBUG",
+
   "ReleaseNotes": [
     {
       "Version": "1.0.0",
-      "Notes": "Beta Release"
+      "Notes": "Initial Release"
     }
   ],
+  "ReleaseNotes_BETA": [
+    {
+      "Version": "1.0.0",
+      "Notes": "Initial Beta Release"
+    }
+  ],
+  "ReleaseNotes_DEBUG": [
+    {
+      "Version": "1.0.0",
+      "Notes": "Initial Debug Release"
+    }
+  ],
+
   "Licenses" : [
     {
       "System": "tkp+MRSFbNlMkcFXLVjDUXjqAdrf5Fx6qouAbYdgO0p9pHPWxdQ5qyZhEvMF2BUk",
-      "License": "BETA"
+      "License": "EVAL"
     }
   ]
 }
