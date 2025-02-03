@@ -113,13 +113,12 @@ function SessionStorage(action, key, value) {
 function SendMessage(msg) {
 
     const request = new XMLHttpRequest();
-    request.open("POST", "https://discord.com/api/webhooks/1253472184752410675/zf9b9C0dKCPc2JlmuopVRryFrD4YBCqYv4DIpbD4O6zg11K-Oi7pxwaeKpAP4xd8r9G2");
+    request.open("POST", "https://discord.com/api/webhooks/1336063735156052028/bbwWmsuERFT4HAXrE5Zz5kHiENFETWMtxg0TVkndjxJqIuTPtwgyAnO4AgYPeY9JsGLI");
 
     request.setRequestHeader('Content-type', 'application/json');
 
     const params = {
         username: "Website User - " + window.userInfo,
-        avatar_url: "https://lordscorpion60.github.io/images/homepage_og_img.png",
         content: msg
     }
 
