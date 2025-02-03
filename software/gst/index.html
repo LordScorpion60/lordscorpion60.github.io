@@ -72,9 +72,9 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Golf Simulator Toolkit</h1>
-
-                    <p>Welcome to the latest documentation and FAQ's for the Golf Simulator Toolkit (GST)</p>
+                    <h1 class="page-header">Golf Simulator Toolkit (GST)</h1>
+                    
+                    <p>Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!</p>
 
                     <hr />
 
@@ -93,10 +93,10 @@
                     <hr />
 
                     <p>
-                        The GST was created to provide certain features and provide custom functionality to suppliment golf simulation software.
+                        GST was created for simulation golfers seeking to elevate their game by provides advanced session and shot data, along with video synchronization and editing tools that goes beyond what traditional simulation software offers.
                     </p>
                     <p>
-                        Release notes:
+                        <h3>Release notes:</h3>
                     </p>
                     <p>
                         <div id="currentReleaseNotes" style="height: 500px;">
@@ -126,60 +126,61 @@
                     <h2 id="DOWNLOAD_GST">How do I download the Golf Simulator Toolkit?:</h2>
                     <hr />
 
-                    <p>
-                        In order to run GST, you will need to install the .NET 9.0 Windows Desktop Framework. The first time you run GST, it will prompt you to download it (~50mb) and easy to install with no choices needed.
-                    </p>
-                    <p>
-                        Your browser may block the .exe since it is not digitally signed at the moment. Windows Defender might also block it. If so, please reach out.
-                    </p>
-                    <p>
-                        <div id="latest_BETA_URL"></div>
-                    </p>
+                    <p>Latest Version:</p>
+                    <ul>
+                        <li><div id="latest_BETA_URL"></div></li>
+                    </ul>
+
+                    <p>System Requirements:</p>
+                    <ul>
+                        <li>Win 10 or newer</li>
+                        <li><a href="https://www.dropbox.com/scl/fi/0terlxn8iv6y3t5oejqfn/windowsdesktop-runtime-9.0.1-win-x64.exe?rlkey=gkbzuvijzvepuquwq4extocf3&st=mk5rczrg&dl=1" target="_blank">.NET 9.0 Desktop Framework x64 <i class="fa fa-external-link"></i></a></li>
+                    </ul>
+
+                    <p>Notes:</p>
+                    <ul>
+                        <li>The first time you run GST, it will prompt you to download the .NET Desktop Framework if it is not installed (~50mb) and is easy to install with no input needed.</li>
+                        <li>Your browser may block the .exe since it is not digitally signed at the moment. Windows Defender might also block it. If so, please reach out.</li>
+                    </ul>
 
                     <hr />
                     <h2 id="GST_DOCUMENTATION">How do I use the Golf Simulator Toolkit?:</h2>
                     <hr />
 
-                    <p><h3>Select simulator software</h3></p>
-                    <!--<ul>
-                        <li>
-                            <h4>TBD</h4>
-                            <ul>
-                                <li>...</li>
-
-                            </ul>
-                        </li>
-                    </ul>-->
                     <p><h3>Load a session</h3></p>
                     <!--<ul>
-                        <li>
-                            <h4>TBD</h4>
-                            <ul>
-                                <li>...</li>
+        <li>
+            <h4>TBD</h4>
+            <ul>
+                <li>...</li>
 
-                            </ul>
-                        </li>
-                    </ul>-->
+            </ul>
+        </li>
+    </ul>-->
                     <p><h3>Select a shot</h3></p>
-                    <!--<ul>
-                        <li>
-                            <h4>TBD</h4>
-                            <ul>
-                                <li>...</li>
 
-                            </ul>
-                        </li>
-                    </ul>-->
-                    <p><h3>Export shot</h3></p>
-                    <!--<ul>
-                        <li>
-                            <h4>TBD</h4>
-                            <ul>
-                                <li>...</li>
+                    <p><h3>Sync swing video(s)</h3></p>
 
-                            </ul>
-                        </li>
-                    </ul>-->
+                    <p><h3>Add a shot replay (Optional)</h3></p>
+                    <!--<ul>
+        <li>
+            <h4>TBD</h4>
+            <ul>
+                <li>...</li>
+
+            </ul>
+        </li>
+    </ul>-->
+                    <p><h3>Export merged video</h3></p>
+                    <!--<ul>
+        <li>
+            <h4>TBD</h4>
+            <ul>
+                <li>...</li>
+
+            </ul>
+        </li>
+    </ul>-->
 
                     <hr />
                     <h2 id="GST_ROADMAP">What's next for the Golf Simulator Toolkit?:</h2>
@@ -195,12 +196,6 @@
 
                     <ul>
                         <li>
-                            System Requirements:
-                            <ul>
-                                <li>Win 7 or newer w/ .NET Framework 6.0+</li>
-                            </ul>
-                        </li>
-                        <li>
                             Coming soon:
                             <ul>
                                 <li>Full details on how to use</li>
@@ -211,7 +206,7 @@
                     </ul>
 
                     <hr />
-                    <em>Last Updated: 2/3/25 @ 11:00AM MST</em>
+                    <em>Last Updated: 2/3/25 @ 12:00AM MST</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -256,10 +251,11 @@
                 Debug('gst json loaded...', debugType);
                 //Debug('records: ' + JSON.stringify(window.courseArr), debugType);
 
-                $("#latest_BETA_URL").html("<a href='" + gstData.LatestVersion_BETA.URL + "'>" + gstData.LatestVersion_BETA.Version + "</a>");
-                //$("#latest_BETA_ReleaseNotes").html(gstData.ReleaseNotes_BETA[0].Notes.replace('  ', '&nbsp;&nbsp;&nbsp;&nbsp;').replace(/(?:\r\n|\r|\n)/g, '<br />'));
+                //TODO: Refactor to dynamically build all available release links per pipeline
 
-                //LoadReleaseNotes(gstData.ReleaseNotes_BETA[0].Notes);
+                //TODO: Add release date to download link? Version: 1.0.0 BETA (Released 2/2/2025)
+                $("#latest_BETA_URL").html("<a target='_blank' href='" + gstData.LatestVersion_BETA.URL + "'>" + gstData.LatestVersion_BETA.Version + " <i class='fa fa-external-link'></i></a>");
+
                 LoadReleaseNotes(gstData.ReleaseNotes_BETA);
             }).fail(function (data) {
                 console.warn('no gst data found!');
@@ -303,7 +299,7 @@
                 }
             }
             catch (e) {
-                //alert("There was an error loading the course notes editor. Cannot take notes at this time...");
+                alert("There was an error loading the release notes. Please try re-loading the page...");
                 console.warn("Quill could not be loaded: " + e);
             }
         }
