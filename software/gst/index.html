@@ -39,6 +39,9 @@
     <!-- Custom Fonts -->
     <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Quill -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -93,9 +96,11 @@
                         The GST was created to provide certain features and provide custom functionality to suppliment golf simulation software.
                     </p>
                     <p>
-                        Here are the current release notes:
+                        Here are the release notes:
                     </p>
                     <p>
+                        <div id="currentReleaseNotes" style="height: 500px;">
+                        </div>
                         <div id="latest_BETA_ReleaseNotes"></div>
                     </p>
 
@@ -137,44 +142,44 @@
 
                     <p><h3>Select simulator software</h3></p>
                     <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                        <li>
+                            <h4>TBD</h4>
+                            <ul>
+                                <li>...</li>
 
-            </ul>
-        </li>
-    </ul>-->
+                            </ul>
+                        </li>
+                    </ul>-->
                     <p><h3>Load a session</h3></p>
                     <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                        <li>
+                            <h4>TBD</h4>
+                            <ul>
+                                <li>...</li>
 
-            </ul>
-        </li>
-    </ul>-->
+                            </ul>
+                        </li>
+                    </ul>-->
                     <p><h3>Select a shot</h3></p>
                     <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                        <li>
+                            <h4>TBD</h4>
+                            <ul>
+                                <li>...</li>
 
-            </ul>
-        </li>
-    </ul>-->
+                            </ul>
+                        </li>
+                    </ul>-->
                     <p><h3>Export shot</h3></p>
                     <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                        <li>
+                            <h4>TBD</h4>
+                            <ul>
+                                <li>...</li>
 
-            </ul>
-        </li>
-    </ul>-->
+                            </ul>
+                        </li>
+                    </ul>-->
 
                     <hr />
                     <h2 id="GST_ROADMAP">What's next for the Golf Simulator Toolkit?:</h2>
@@ -231,27 +236,77 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/sb-admin-2.js"></script>
 
+    <!-- Quill -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
     <script>
+        var quill = null;
+
         // On page-load.
         $(function () {
             $("#nav-placeholder").load("/nav.html");
 
             SetDebugMode();
             var debugType = "OnLoad";
-
+            
             // Read in json course data
             $.getJSON("/software/gst/gst_Data.json").done(function (gstData) {
                 window.courseArr = gstData;
 
                 Debug('gst json loaded...', debugType);
-                Debug('records: ' + JSON.stringify(window.courseArr), debugType);
+                //Debug('records: ' + JSON.stringify(window.courseArr), debugType);
 
                 $("#latest_BETA_URL").html("<a href='" + gstData.LatestVersion_BETA.URL + "'>" + gstData.LatestVersion_BETA.Version + "</a>");
-                $("#latest_BETA_ReleaseNotes").html(gstData.ReleaseNotes_BETA[0].Notes.replace('  ', '&nbsp;&nbsp;&nbsp;&nbsp;').replace(/(?:\r\n|\r|\n)/g, '<br />'));
+                //$("#latest_BETA_ReleaseNotes").html(gstData.ReleaseNotes_BETA[0].Notes.replace('  ', '&nbsp;&nbsp;&nbsp;&nbsp;').replace(/(?:\r\n|\r|\n)/g, '<br />'));
+
+                //LoadReleaseNotes(gstData.ReleaseNotes_BETA[0].Notes);
+                LoadReleaseNotes(gstData.ReleaseNotes_BETA);
             }).fail(function (data) {
                 console.warn('no gst data found!');
             });
         });
+
+        function LoadReleaseNotes(releaseNotes) {
+            try {
+                if (window.quill == null) {
+                    window.quill = new Quill('#currentReleaseNotes', {
+                        readOnly: true,
+                        modules: {
+                            toolbar: false,
+                        },
+                        placeholder: 'Current GST Release Notes...',
+                        theme: 'snow',
+                    });
+                    Debug("initializing editor for the first time...");
+                }
+
+                if (releaseNotes == null) {
+                    window.quill.setText('\n');
+                    Debug("loading editor with no notes...");
+                }
+                else {
+                    Debug("release notes found, loading them into editor...");
+
+                    // releaseNotes is JSON array object
+                    Debug(JSON.stringify(releaseNotes));
+
+                    var allReleaseNotes = "";
+
+                    $.each(releaseNotes, function () {
+                        allReleaseNotes += "==========================\n";
+                        allReleaseNotes += this.Version + " - " + this.Date + "\n";
+                        allReleaseNotes += "==========================\n";
+                        allReleaseNotes += "\n" + this.Notes + "\n\n";
+                    });
+
+                    window.quill.setText(allReleaseNotes); // works w/ gstData.ReleaseNotes_BETA[0].Notes
+                }
+            }
+            catch (e) {
+                //alert("There was an error loading the course notes editor. Cannot take notes at this time...");
+                console.warn("Quill could not be loaded: " + e);
+            }
+        }
     </script>
 </body>
 </html>

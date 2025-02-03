@@ -19,18 +19,21 @@
   "ReleaseNotes_RELEASE": [
     {
       "Version": "1.0.0",
+      "Date": "",
       "Notes": "Initial Release"
     }
   ],
   "ReleaseNotes_BETA": [
     {
       "Version": "1.0.0_BETA",
+      "Date": "2/2/2025",
       "Notes": "Initial Release!\n\nKnown issues will be shown in the \"Important News\" popup.\n\nThe following are available in this version:\n  BASIC License Features:\n    FSX2020 sessions are currently supported.\n      Each session will have 1 to many shots that can be selected. Found videos will automatically be loaded.\n      Any shot data recorded by LM device will be populated.\n    FSX2020 swing Videos are currently supported (FSX2020 only natively supports 2 cameras).\n    A custom session folder can be selected if the default FSX2020 directory is not desired.\n    A custom swing video can be selected if the default FSX2020 directory is not desired.\n    Swing video offsets for each found video can be set to sync to taste.\n    Linked video control will Play, Pause, Stop, or Step forwards and backwards for both videos.\n    A single shot replay can be loaded with it's own offset to trim it's length\n  PRO License Features:\n    Each shot can be exported to a merged video with sync'd videos and the option to append the shot replay to the end. Shot data will be applied to the bottom of the merged video.\n  General Features:\n    An upgraded license can be requested from the menu. A Discord account is currently required.\n    Options for Donations or purchasing a Patreon membership for even more benefits are available in the menu.\n    Feedback, Bug Reports, and/or Enhancement Requests can be submitted from the menu."
     }
   ],
   "ReleaseNotes_DEBUG": [
     {
       "Version": "1.0.0_DEBUG",
+      "Date": "",
       "Notes": "Initial Release!\n\nKnown issues will be shown in the \"Important News\" popup.\n\nThe following are available in this version:\n  BASIC License Features:\n    FSX2020 sessions are currently supported.\n      Each session will have 1 to many shots that can be selected. Found videos will automatically be loaded.\n      Any shot data recorded by LM device will be populated.\n    FSX2020 swing Videos are currently supported (FSX2020 only natively supports 2 cameras).\n    A custom session folder can be selected if the default FSX2020 directory is not desired.\n    A custom swing video can be selected if the default FSX2020 directory is not desired.\n    Swing video offsets for each found video can be set to sync to taste.\n    Linked video control will Play, Pause, Stop, or Step forwards and backwards for both videos.\n    A single shot replay can be loaded with it's own offset to trim it's length\n  PRO License Features:\n    Each shot can be exported to a merged video with sync'd videos and the option to append the shot replay to the end. Shot data will be applied to the bottom of the merged video.\n  General Features:\n    An upgraded license can be requested from the menu. A Discord account is currently required.\n    Options for Donations or purchasing a Patreon membership for even more benefits are available in the menu.\n    Feedback, Bug Reports, and/or Enhancement Requests can be submitted from the menu."
     }
   ],
