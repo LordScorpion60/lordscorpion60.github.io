@@ -25,7 +25,7 @@
   ],
   "ReleaseNotes_BETA": [
     {
-      "Version": "1.1.0_DEBUG",
+      "Version": "1.1.0_BETA",
       "Date": "2/3/2025",
       "Notes": "Known issues will be shown in the \"Important News\" popup.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tA new submenu, Unit of Measurement (Imperial/Metric), has been added to a new Settings menu to choose which units the shot data will be shown as.\r\n\t\t\tCurrent restrictions published in Important News\r\n\tNew Features - PRO:\r\n\t\tNone\r\n\tBug Fixes:\r\n\t\tIncorrect video search timestamp won't load swing videos\r\n\t\tMultiple sessions on the same day are sorted by player name, not timestamp\r\n\t\tSessions with videos not showing the Video indicator in the Sessions list\r\n\tPerformance/QoL Improvements:\r\n\t\tSimulation Software menu is now a sub menu under Settings\r\n\t\tVideo Play button does nothing now when videos are not stopped or paused\r\n\t\tTab Index has been reset for all existing controls"
     },
