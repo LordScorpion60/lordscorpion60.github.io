@@ -6,8 +6,8 @@
     },
   "LatestVersion_BETA":
     {
-      "Version": "1.1.1_BETA",
-      "URL": "https://www.dropbox.com/scl/fi/5kxlqc3wtvpecelr0z6gm/Golf-Simulator-Toolkit_1.1.1.38728_BETA.exe?rlkey=a2wten3tt78uvvp9h5fqf9mvo&st=gym7qxcr&dl=1"
+      "Version": "1.1.2_BETA",
+      "URL": "https://www.dropbox.com/scl/fi/p2h8x4jhebsyiozyjcfqp/Golf-Simulator-Toolkit_1.1.2.40873_BETA.exe?rlkey=e8ryo6e1yq68seldbvcytnro6&st=fe8kbm7r&dl=1"
     },
   "LatestVersion_DEBUG":
     {
@@ -25,6 +25,11 @@
   ],
   "ReleaseNotes_BETA": [
     {
+      "Version": "1.1.2_BETA",
+      "Date": "2/5/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tBug Fixes:\r\n\t\tSwitching to shot with 2 videos after playing 1 video shot causes hang\r\n\t\tUsing stepping video controls while video is playing doesn't pause video or honor new stepped position on next playback\r\n\t\t\tLinked video Stepping has been disabled while swing videos are playing\r\n\t\t\tStepping any video back before stepping forward now works"
+    },
+    {
       "Version": "1.1.1_BETA",
       "Date": "2/4/2025",
       "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nKnown bugs:\r\n\tSwitching to a shot with 2 videos after playing 1 video shot causes hang\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tSession list now supports duplicates and/or modified copies of session files\r\n\t\tRight-clicking on the Session list now shows the filename being used\r\n\t\tAuto check for updates on start can be turned off via user setting"
@@ -41,6 +46,11 @@
     }
   ],
   "ReleaseNotes_DEBUG": [
+    {
+      "Version": "1.1.2_DEBUG",
+      "Date": "2/5/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tBug Fixes:\r\n\t\tSwitching to shot with 2 videos after playing 1 video shot causes hang\r\n\t\tUsing stepping video controls while video is playing doesn't pause video or honor new stepped position on next playback\r\n\t\t\tLinked video Stepping has been disabled while swing videos are playing\r\n\t\t\tStepping any video back before stepping forward now works"
+    },
     {
       "Version": "1.1.1_DEBUG",
       "Date": "2/4/2025",
