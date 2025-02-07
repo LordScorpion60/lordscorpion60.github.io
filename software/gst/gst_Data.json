@@ -6,8 +6,8 @@
     },
   "LatestVersion_BETA":
     {
-      "Version": "1.1.2_BETA",
-      "URL": "https://www.dropbox.com/scl/fi/p2h8x4jhebsyiozyjcfqp/Golf-Simulator-Toolkit_1.1.2.40873_BETA.exe?rlkey=e8ryo6e1yq68seldbvcytnro6&st=fe8kbm7r&dl=1"
+      "Version": "1.1.3_BETA",
+      "URL": "https://www.dropbox.com/scl/fi/1y6zedtnnilb61zkuz690/Golf-Simulator-Toolkit_1.1.3.34964_BETA.exe?rlkey=ftg37wcovbvkozsjx3l25pdnm&st=y66k72mp&dl=1"
     },
   "LatestVersion_DEBUG":
     {
@@ -24,6 +24,11 @@
     }
   ],
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.3_BETA",
+      "Date": "2/6/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tVideo files that are empty (0KB) are no longer factored into Session \"VIDEO\" label, Shot \"Has Video\" indicator, or loaded into either Video Player\r\n\t\tCopies of swing videos sharing the same name will now be ignored\r\n\t\tVideo information gathering no longer running each time the video is loaded"
+    },
     {
       "Version": "1.1.2_BETA",
       "Date": "2/5/2025",
@@ -46,6 +51,11 @@
     }
   ],
   "ReleaseNotes_DEBUG": [
+    {
+      "Version": "1.1.3_DEBUG",
+      "Date": "2/6/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tVideo files that are empty (0KB) are no longer factored into Session \"VIDEO\" label, Shot \"Has Video\" indicator, or loaded into either Video Player\r\n\t\tCopies of swing videos sharing the same name will now be ignored\r\n\t\tVideo information gathering no longer running each time the video is loaded"
+    },
     {
       "Version": "1.1.2_DEBUG",
       "Date": "2/5/2025",
