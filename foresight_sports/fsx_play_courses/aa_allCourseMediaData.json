@@ -819,6 +819,13 @@
     "Flyover": ""
   },
   {
+    "Name": "Hude Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/hude-golf-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Idle Hour Golf & Country Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/idle-hour-club",
@@ -1396,6 +1403,13 @@
     "Name": "Prairie Dunes Country Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/prairie-dunes",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "Predator Ridge Golf Resort - Ridge",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/predator-ridge-golf-resort-ridge",
     "Price": 150,
     "Flyover": ""
   },

@@ -1989,6 +1989,23 @@
     "MinRating": 65.1
   },
   {
+    "Name": "Hude Golf Club",
+    "Version": "1.5.0.3",
+    "Par": 72.0,
+    "Altitude": 50.0,
+    "City": "Hude",
+    "Country": "Germany",
+    "Continent": "Europe",
+    "State": "N/A",
+    "Type": "Parkland",
+    "MaxYardage": 6603,
+    "MinYardage": 5469,
+    "MaxSlope": 133.0,
+    "MinSlope": 123.0,
+    "MaxRating": 72.5,
+    "MinRating": 72.4000015258789
+  },
+  {
     "Name": "Idle Hour Golf & Country Club",
     "Version": "1.4.0.4",
     "Par": 72.0,
@@ -3398,6 +3415,23 @@
     "MinSlope": 123.0,
     "MaxRating": 75.5,
     "MinRating": 69.2
+  },
+  {
+    "Name": "Predator Ridge Golf Resort - Ridge",
+    "Version": "1.5.0.4",
+    "Par": 72.0,
+    "Altitude": 1280.0,
+    "City": "Vernon",
+    "Country": "Canada",
+    "Continent": "North America",
+    "State": "N/A",
+    "Type": "Parkland",
+    "MaxYardage": 7128,
+    "MinYardage": 5057,
+    "MaxSlope": 137.0,
+    "MinSlope": 104.0,
+    "MaxRating": 73.8,
+    "MinRating": 64.4
   },
   {
     "Name": "Prestwick Country Club",
