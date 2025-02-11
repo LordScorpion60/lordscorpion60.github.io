@@ -6,8 +6,8 @@
     },
   "LatestVersion_BETA":
     {
-      "Version": "1.1.4_BETA",
-      "URL": "https://www.dropbox.com/scl/fi/fpw6roaw4bj0di3zy6p2p/Golf-Simulator-Toolkit_1.1.4.36090_BETA.exe?rlkey=jmyd39h9pn3y56jcs325ma9qr&st=ujucq3gv&dl=1"
+      "Version": "1.1.5_BETA",
+      "URL": "https://www.dropbox.com/scl/fi/a7b9b7cpgr4hvinljgvsg/Golf-Simulator-Toolkit_1.1.5.37406_BETA.exe?rlkey=ozudnf6iyucd95aqo11lo82xo&st=oosd6zgl&dl=1"
     },
   "LatestVersion_DEBUG":
     {
@@ -24,6 +24,11 @@
     }
   ],
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.5_BETA",
+      "Date": "2/10/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tAbility added to cancel an active video export\r\n\t\tTimer added to modal screen showing video export progress\r\n\t\tRemove dependency on installing .NET 9.0 x64 Desktop Runtime"
+    },
     {
       "Version": "1.1.4_BETA",
       "Date": "2/7/2025",
@@ -56,6 +61,11 @@
     }
   ],
   "ReleaseNotes_DEBUG": [
+    {
+      "Version": "1.1.5_DEBUG",
+      "Date": "2/10/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tAbility added to cancel an active video export\r\n\t\tTimer added to modal screen showing video export progress\r\n\t\tRemove dependency on installing .NET 9.0 x64 Desktop Runtime"
+    },
     {
       "Version": "1.1.4_DEBUG",
       "Date": "2/7/2025",
