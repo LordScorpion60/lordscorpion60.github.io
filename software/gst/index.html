@@ -269,12 +269,12 @@
                 Debug('gst json loaded...', debugType);
                 //Debug('records: ' + JSON.stringify(window.courseArr), debugType);
 
-                //TODO: Refactor to dynamically build all available release links per pipeline
+                var targetBuild = gstData.Pipelines.find(item => item.Build === "BETA");
+                var targetDeployment = targetBuild.Deployments.find(item => item.Version === targetBuild.LatestVersion);
 
-                //TODO: Add release date to download link? Version: 1.0.0 BETA (Released 2/2/2025)
-                $("#latest_BETA_URL").html("<a target='_blank' href='" + gstData.LatestVersion_BETA.URL + "'>" + gstData.LatestVersion_BETA.Version + " <i class='fa fa-external-link'></i></a>");
+                $("#latest_BETA_URL").html("<a target='_blank' href='" + targetDeployment.URLs.GST + "'>" + targetBuild.LatestVersion + "_" + targetBuild.Build + " (Released " + targetDeployment.Date + ") <i class='fa fa-external-link'></i></a>");
 
-                LoadReleaseNotes(gstData.ReleaseNotes_BETA);
+                LoadReleaseNotes(targetBuild.Deployments);
             }).fail(function (data) {
                 console.warn('no gst data found!');
             });
@@ -310,7 +310,7 @@
                         allReleaseNotes += "==========================\n";
                         allReleaseNotes += this.Version + " - " + this.Date + "\n";
                         allReleaseNotes += "==========================\n";
-                        allReleaseNotes += "\n" + this.Notes + "\n\n";
+                        allReleaseNotes += "\n" + this.ReleaseNotes + "\n\n";
                     });
 
                     window.quill.setText(allReleaseNotes); // works w/ gstData.ReleaseNotes_BETA[0].Notes
