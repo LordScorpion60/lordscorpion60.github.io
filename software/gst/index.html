@@ -269,18 +269,19 @@
                 Debug('gst json loaded...', debugType);
                 //Debug('records: ' + JSON.stringify(window.courseArr), debugType);
 
-                var targetBuild = gstData.Pipelines.find(item => item.Build === "BETA");
+                var build = "BETA";
+                var targetBuild = gstData.Pipelines.find(item => item.Build === build);
                 var targetDeployment = targetBuild.Deployments.find(item => item.Version === targetBuild.LatestVersion);
 
                 $("#latest_BETA_URL").html("<a target='_blank' href='" + targetDeployment.URLs.GST + "'>" + targetBuild.LatestVersion + "_" + targetBuild.Build + " (Released " + targetDeployment.Date + ") <i class='fa fa-external-link'></i></a>");
 
-                LoadReleaseNotes(targetBuild.Deployments);
+                LoadReleaseNotes(build, targetBuild.Deployments);
             }).fail(function (data) {
                 console.warn('no gst data found!');
             });
         });
 
-        function LoadReleaseNotes(releaseNotes) {
+        function LoadReleaseNotes(build, releaseNotes) {
             try {
                 if (window.quill == null) {
                     window.quill = new Quill('#currentReleaseNotes', {
@@ -308,7 +309,7 @@
 
                     $.each(releaseNotes, function () {
                         allReleaseNotes += "==========================\n";
-                        allReleaseNotes += this.Version + " - " + this.Date + "\n";
+                        allReleaseNotes += this.Version + "_" + build + " - " + this.Date + "\n";
                         allReleaseNotes += "==========================\n";
                         allReleaseNotes += "\n" + this.ReleaseNotes + "\n\n";
                     });
