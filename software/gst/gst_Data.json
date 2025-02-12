@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.5_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/a7b9b7cpgr4hvinljgvsg/Golf-Simulator-Toolkit_1.1.5.37406_BETA.exe?rlkey=ozudnf6iyucd95aqo11lo82xo&st=oosd6zgl&dl=1"
+    "Version": "1.1.6_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/ag88jhxez1o5uf1g8eygy/Golf-Simulator-Toolkit_1.1.6.40161_BETA.exe?rlkey=mfoomh90odyzpuzhz4u6jso4s&st=zehr6rsa&dl=1"
   },
-  
+
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.6_BETA",
+      "Date": "2/11/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tRight-click on a shot to copy filename prefix for shot replay\r\n\t\t\tIn the future if GST scans for matching replays to a shot, this will help find them!\r\n\t\tAdded Open Folder icons to Session/Video directory menu labels\r\n\tTuning:\r\n\t\tRelease notes and external dependencies data model refactoring"
+    },
     {
       "Version": "1.1.5_BETA",
       "Date": "2/10/2025",
@@ -41,12 +46,38 @@
       "Notes": "Initial Release!\r\n\r\nFeature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following are available in this version:\r\n\tNew Features - BASIC:\r\n\t\tFSX2020 sessions are currently supported.\r\n\t\t\tEach session will have 1 to many shots that can be selected. Found videos will automatically be loaded.\r\n\t\t\tAny shot data recorded by LM device will be populated.\r\n\t\tFSX2020 swing Videos are currently supported (FSX2020 only natively supports 2 cameras).\r\n\t\tA custom session folder can be selected if the default FSX2020 directory is not desired.\r\n\t\tA custom swing video can be selected if the default FSX2020 directory is not desired.\r\n\t\tSwing video offsets for each found video can be set to sync to taste.\r\n\t\tLinked video control will Play, Pause, Stop, or Step forwards and backwards for both videos.\r\n\t\tA single shot replay can be loaded with it's own offset to trim it's length\r\n\t\tAn upgraded license can be requested from the menu. A Discord account is currently required.\r\n\t\tOptions for Donations or purchasing a Patreon membership for even more benefits are available in the menu.\r\n\t\tFeedback, Bug Reports, and/or Enhancement Requests can be submitted from the menu.\r\n\tNew Features - PRO:\r\n\t\tEach shot can be exported to a merged video with sync'd videos and the option to append the shot replay to the end. Shot data will be applied to the bottom of the merged video.\r\n\tBug Fixes:\r\n\t\tNone\r\n\tPerformance/QoL Improvements:\r\n\t\tNone"
     }
   ],
-  
+
   "Pipelines": [
     {
-      "Build": "BETA",
-      "LatestVersion": "1.1.5",
+      "Build": "DEBUG",
+      "LatestVersion": "1.1.6",
       "Deployments": [
+        {
+          "Version": "1.1.6",
+          "Date": "2/10/2025",
+          "ReleaseNotes": "Debug Test",
+          "URLs": {
+            "GST": "",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        }
+      ]
+    },
+    {
+      "Build": "BETA",
+      "LatestVersion": "1.1.6",
+      "Deployments": [
+        {
+          "Version": "1.1.6",
+          "Date": "2/11/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tRight-click on a shot to copy filename prefix for shot replay\r\n\t\t\tIn the future if GST scans for matching replays to a shot, this will help find them!\r\n\t\tAdded Open Folder icons to Session/Video directory menu labels\r\n\tTuning:\r\n\t\tRelease notes and external dependencies data model refactoring",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/ag88jhxez1o5uf1g8eygy/Golf-Simulator-Toolkit_1.1.6.40161_BETA.exe?rlkey=mfoomh90odyzpuzhz4u6jso4s&st=zehr6rsa&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.5",
           "Date": "2/10/2025",
