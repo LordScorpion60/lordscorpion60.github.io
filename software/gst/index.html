@@ -86,7 +86,7 @@
                         <li><a href="#DOWNLOAD_GST">How do I download GST?</a></li>
                         <li><a href="#GST_DOCUMENTATION">How do I use GST?</a></li>
                         <li><a href="#GST_ROADMAP">What's next for the Golf Simulator Toolkit?</a></li>
-                        <li><a href="#NOTES">Notes</a></li>
+                        <li><a href="#NOTES">Notes & Samples</a></li>
                     </ul>
 
                     <hr />
@@ -98,7 +98,8 @@
                     </p>
                     <h3>What GST Allows You to Do</h3>
                     <ul>
-                        <li>Merge all swing videos into a single video with shot data information overlayed on the bottom
+                        <li>
+                            Merge all swing videos into a single video with shot data information overlayed on the bottom
                             <ul>
                                 <li>Optional inclusion of a captured shot replay into the merged video</li>
                             </ul>
@@ -165,40 +166,47 @@
                     <h2 id="GST_DOCUMENTATION">How do I use the Golf Simulator Toolkit?:</h2>
                     <hr />
 
-                    <p><h3>Load a session</h3></p>
-                    <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                    <p>
+                        The following examples use the Demo Data that can be downloaded within GST should you not already have simulator session data to load.
+                    </p>
+                    <p>
+                        You can download the Demo Data first and follow along.
+                    </p>
 
-            </ul>
-        </li>
-    </ul>-->
-                    <p><h3>Select a shot</h3></p>
+                    <h3>Download Demo Data (Optional)</h3>
+                    <p>
+                        <div id="divDownloadDemoData">
+                            <button class="btn btn-info" id="btnDownloadDemoData_Show" onclick='showImage("DownloadDemoData", "download_demo_data.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnDownloadDemoData_Close" onclick='hideImage("DownloadDemoData")'>Close Video</button>
+                        </div>
+                    </p>
 
-                    <p><h3>Sync swing video(s)</h3></p>
+                    <h3>Configure Session/Video Folders (Optional)</h3>
+                    <p>
+                        <div id="divLoadSession">
+                            <button class="btn btn-info" id="btnLoadSession_Show" onclick='showImage("LoadSession", "load_demo_session.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnLoadSession_Close" onclick='hideImage("LoadSession")'>Close Video</button>
+                        </div>
+                    </p>
 
-                    <p><h3>Add a shot replay (Optional)</h3></p>
-                    <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
+                    <h3>Load A Session, Select a shot, Export Merged Video</h3>
+                    <p>
+                        <ul>
+                            <li>If needed, adjust video offset values to sync swing video(s)</li>
+                        </ul>
+                        <div id="divSelectShot">
+                            <button class="btn btn-info" id="btnSelectShot_Show" onclick='showImage("SelectShot", "2_camera_export.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnSelectShot_Close" onclick='hideImage("SelectShot")'>Close Video</button>
+                        </div>
+                    </p>
 
-            </ul>
-        </li>
-    </ul>-->
-                    <p><h3>Export merged video</h3></p>
-                    <!--<ul>
-        <li>
-            <h4>TBD</h4>
-            <ul>
-                <li>...</li>
-
-            </ul>
-        </li>
-    </ul>-->
+                    <h3>Add a shot replay (Optional)</h3>
+                    <p>
+                        <div id="divAddReplay">
+                            <button class="btn btn-info" id="btnAddReplay_Show" onclick='showImage("AddReplay", "2_camera_add_replay.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnAddReplay_Close" onclick='hideImage("AddReplay")'>Close Video</button>
+                        </div>
+                    </p>
 
                     <hr />
                     <h2 id="GST_ROADMAP">What's next for the Golf Simulator Toolkit?:</h2>
@@ -209,22 +217,87 @@
                     </p>
 
                     <hr />
-                    <h2 id="NOTES">Notes:</h2>
+                    <h2 id="NOTES">Notes & Samples:</h2>
                     <hr />
 
                     <ul>
                         <li>
-                            Coming soon:
+                            Session & Swing Video directories are set to the default locations per the simulation software selected
                             <ul>
-                                <li>Full details on how to use</li>
-                                <li>Screenshots</li>
-                                <li>Sample exported video</li>
+                                <li>You can set these directories to whatever you want (especially to use the available Demo Data)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            User Settings:
+                            <ul>
+                                <li>
+                                    Session Date Range
+                                    <ul>
+                                        <li>Last 7 Days (DEFAULT)</li>
+                                        <li>Last 30 Days</li>
+                                        <li>All Dates</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Unit of Measurement
+                                    <ul>
+                                        <li>You can select between Imperial & Metric</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Check for Updates on Start
+                                    <ul>
+                                        <li>This can be turned off if desired</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
 
+                    <h3>Sample Video Exports</h3>
+
+                    <h4>One Swing Video w/ Swing Data</h4>
+                    <p>
+                        <div id="divOneSwing">
+                            <button class="btn btn-info" id="btnOneSwing_Show" onclick='showImage("OneSwing", "1_camera_solo.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnOneSwing_Close" onclick='hideImage("OneSwing")'>Close Video</button>
+                        </div>
+                    </p>
+
+                    <h4>One Swing Video w/ Swing Data & Shot Replay</h4>
+                    <p>
+                        <div id="divOneSwingReplay">
+                            <button class="btn btn-info" id="btnOneSwingReplay_Show" onclick='showImage("OneSwingReplay", "1_camera_replay.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnOneSwingReplay_Close" onclick='hideImage("OneSwingReplay")'>Close Video</button>
+                        </div>
+                    </p>
+
+                    <h4>Two Swing Videos w/ Swing Data</h4>
+                    <p>
+                        <div id="divTwoSwing">
+                            <button class="btn btn-info" id="btnTwoSwing_Show" onclick='showImage("TwoSwing", "2_camera_solo.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnTwoSwing_Close" onclick='hideImage("TwoSwing")'>Close Video</button>
+                        </div>
+                    </p>
+
+                    <h4>Two Swing Videos w/ Swing Data & Shot Replay</h4>
+                    <p>
+                        <div id="divTwoSwingReplay">
+                            <button class="btn btn-info" id="btnTwoSwingReplay_Show" onclick='showImage("TwoSwingReplay", "2_camera_replay.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnTwoSwingReplay_Close" onclick='hideImage("TwoSwingReplay")'>Close Video</button>
+                        </div>
+                    </p>
+
+                    <h4>No Swing Videos w/ Swing Data & Shot Replay</h4>
+                    <p>
+                        <div id="divNoSwingReplay">
+                            <button class="btn btn-info" id="btnNoSwingReplay_Show" onclick='showImage("NoSwingReplay", "no_camera_replay.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnNoSwingReplay_Close" onclick='hideImage("NoSwingReplay")'>Close Video</button>
+                        </div>
+                    </p>
+
                     <hr />
-                    <em>Last Updated: 2/10/25 @ 11:00PM MST</em>
+                    <em>Last Updated: 2/12/25 @ 6:00PM MST</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -321,6 +394,46 @@
                 alert("There was an error loading the release notes. Please try re-loading the page...");
                 console.warn("Quill could not be loaded: " + e);
             }
+        }
+
+        function hideImage(divName) {
+            let showButton = document.getElementById("btn" + divName + "_Show");
+            showButton.setAttribute('style', 'display: block;');
+
+            let closeButton = document.getElementById("btn" + divName + "_Close");
+            closeButton.setAttribute('style', 'display: none;');
+
+            let imageContainer = document.getElementById("img" + divName);
+            imageContainer.setAttribute('style', 'display: none;');
+        }
+
+        function showImage(divName, imageName) {
+            let existingImageContainer = document.getElementById("img" + divName);
+
+            if (existingImageContainer === null) {
+
+                let imageContainer = document.createElement("div");
+                imageContainer.id = "img" + divName;
+
+                let image = document.createElement("img");
+                image.src = "/software/gst/images/" + imageName;
+                image.setAttribute("style", "margin-top:10px");
+
+                useDiv = document.getElementById("div" + divName);
+                
+                imageContainer.appendChild(image);
+
+                useDiv.appendChild(imageContainer);
+            }
+            else {
+                existingImageContainer.setAttribute('style', 'display: block;');
+            }
+
+            let showButton = document.getElementById("btn" + divName + "_Show");
+            showButton.setAttribute('style', 'display: none;');
+
+            let closeButton = document.getElementById("btn" + divName + "_Close");
+            closeButton.setAttribute('style', 'display: block;');
         }
     </script>
 </body>
