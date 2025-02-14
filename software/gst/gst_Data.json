@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.6_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/ag88jhxez1o5uf1g8eygy/Golf-Simulator-Toolkit_1.1.6.40161_BETA.exe?rlkey=mfoomh90odyzpuzhz4u6jso4s&st=zehr6rsa&dl=1"
+    "Version": "1.1.7_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/unaic6wakjpr0hwku6dz8/Golf-Simulator-Toolkit_1.1.7.35154_BETA.exe?rlkey=klnb6c86lm09gbdxq9h2yih58&st=dy8fnnvo&dl=1"
   },
 
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.7_BETA",
+      "Date": "2/13/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSet the offset to trim the end of a shot replay\r\n\t\t\tEnd trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\t\tSave a screenshot of any video\r\n\t\t\tFrom the right-click context menu\r\n\tPerformance/QoL Improvements:\r\n\t\tSupport setting shot replay start offset past 1 minute\r\n\t\t\tStart trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\tTuning:\r\n\t\tGST Output directory now available from the File Menu"
+    },
     {
       "Version": "1.1.6_BETA",
       "Date": "2/11/2025",
@@ -50,11 +55,11 @@
   "Pipelines": [
     {
       "Build": "DEBUG",
-      "LatestVersion": "1.1.6",
+      "LatestVersion": "1.1.7",
       "Deployments": [
         {
-          "Version": "1.1.6",
-          "Date": "2/10/2025",
+          "Version": "1.1.7",
+          "Date": "2/13/2025",
           "ReleaseNotes": "Debug Test",
           "URLs": {
             "GST": "",
@@ -66,8 +71,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.1.6",
+      "LatestVersion": "1.1.7",
       "Deployments": [
+        {
+          "Version": "1.1.7",
+          "Date": "2/13/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSet the offset to trim the end of a shot replay\r\n\t\t\tEnd trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\t\tSave a screenshot of any video\r\n\t\t\tFrom the right-click context menu\r\n\tPerformance/QoL Improvements:\r\n\t\tSupport setting shot replay start offset past 1 minute\r\n\t\t\tStart trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\tTuning:\r\n\t\tGST Output directory now available from the File Menu",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/unaic6wakjpr0hwku6dz8/Golf-Simulator-Toolkit_1.1.7.35154_BETA.exe?rlkey=klnb6c86lm09gbdxq9h2yih58&st=dy8fnnvo&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.6",
           "Date": "2/11/2025",
