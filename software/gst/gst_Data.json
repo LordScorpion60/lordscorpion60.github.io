@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.7_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/unaic6wakjpr0hwku6dz8/Golf-Simulator-Toolkit_1.1.7.35154_BETA.exe?rlkey=klnb6c86lm09gbdxq9h2yih58&st=dy8fnnvo&dl=1"
+    "Version": "1.1.8_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/s2yh4n5wgxslrde51rfm8/Golf-Simulator-Toolkit_1.1.8.36277_BETA.exe?rlkey=7omftqsk4v14elx9bnw33qr18&st=n02f4yk3&dl=1"
   },
 
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.8_BETA",
+      "Date": "2/14/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tAdd Session Monitor to automatically reload active session and select newest shot\r\n\tPerformance/QoL Improvements:\r\n\t\tShow release notes for new found version on server\r\n\tTuning:\r\n\t\tCleaned up all modal windows\r\n\t\tCleaned up several error and message prompts"
+    },
     {
       "Version": "1.1.7_BETA",
       "Date": "2/13/2025",
@@ -55,24 +60,44 @@
   "Pipelines": [
     {
       "Build": "DEBUG",
-      "LatestVersion": "1.1.7",
+      "LatestVersion": "1.1.8",
       "Deployments": [
         {
-          "Version": "1.1.7",
-          "Date": "2/13/2025",
-          "ReleaseNotes": "Debug Test",
+          "Version": "1.1.9",
+          "Date": "2/14/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSet the offset to trim the end of a shot replay\r\n\t\t\tEnd trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\t\tSave a screenshot of any video\r\n\t\t\tFrom the right-click context menu\r\n\tPerformance/QoL Improvements:\r\n\t\tSupport setting shot replay start offset past 1 minute\r\n\t\t\tStart trim buttons now have right-click menu to jump forwards or backwards 10 seconds for longer replays\r\n\tTuning:\r\n\t\tGST Output directory now available from the File Menu",
           "URLs": {
-            "GST": "",
-            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
-            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+            "GST": "http://localhost:53150/software/gst/software/deployments/debug/Golf-Simulator-Toolkit_1.1.9_BETA.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg.exe",
+            "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
+          }
+        },
+        {
+          "Version": "1.1.8",
+          "Date": "2/13/2025",
+          "ReleaseNotes": "Debug Test 2",
+          "URLs": {
+            "GST": "http://localhost:53150/software/gst/software/deployments/debug/Golf-Simulator-Toolkit_1.1.8_BETA.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg.exe",
+            "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
           }
         }
       ]
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.1.7",
+      "LatestVersion": "1.1.8",
       "Deployments": [
+        {
+          "Version": "1.1.8",
+          "Date": "2/14/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tAdd Session Monitor to automatically reload active session and select newest shot\r\n\tPerformance/QoL Improvements:\r\n\t\tShow release notes for new found version on server\r\n\tTuning:\r\n\t\tCleaned up all modal windows\r\n\t\tCleaned up several error and message prompts",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/s2yh4n5wgxslrde51rfm8/Golf-Simulator-Toolkit_1.1.8.36277_BETA.exe?rlkey=7omftqsk4v14elx9bnw33qr18&st=n02f4yk3&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.7",
           "Date": "2/13/2025",
