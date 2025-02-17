@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.8_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/s2yh4n5wgxslrde51rfm8/Golf-Simulator-Toolkit_1.1.8.36277_BETA.exe?rlkey=7omftqsk4v14elx9bnw33qr18&st=n02f4yk3&dl=1"
+    "Version": "1.1.9_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/lh1j10a12kxctm3fmgm6r/Golf-Simulator-Toolkit_1.1.9.27902_BETA.exe?rlkey=5ylh96w8dkqayk7wt7zixvigs&st=vomb0veb&dl=1"
   },
 
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.9_BETA",
+      "Date": "2/16/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tButton available to copy swing videos to GST folder\r\n\t\t\tUnder File -> Swing Video Directory, if you are pointing to the default FSX 2020 video location, you will see the option to \"Copy Videos From Today to GST Folder\"\r\n\tPerformance/QoL Improvements:\r\n\t\tAdded GST watermark to exported videos\r\n\tTuning:\r\n\t\tCleaned up some warning message prompts\r\n\t\tSession monitoring will automatically move to new session that is loaded\r\n\t\t\tNo need to stop/start monitoring anymore"
+    },
     {
       "Version": "1.1.8_BETA",
       "Date": "2/14/2025",
@@ -86,8 +91,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.1.8",
+      "LatestVersion": "1.1.9",
       "Deployments": [
+        {
+          "Version": "1.1.9",
+          "Date": "2/16/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tButton available to copy swing videos to GST folder\r\n\t\t\tUnder File -> Swing Video Directory, if you are pointing to the default FSX 2020 video location, you will see the option to \"Copy Videos From Today to GST Folder\"\r\n\tPerformance/QoL Improvements:\r\n\t\tAdded GST watermark to exported videos\r\n\tTuning:\r\n\t\tCleaned up some warning message prompts\r\n\t\tSession monitoring will automatically move to new session that is loaded\r\n\t\t\tNo need to stop/start monitoring anymore",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/lh1j10a12kxctm3fmgm6r/Golf-Simulator-Toolkit_1.1.9.27902_BETA.exe?rlkey=5ylh96w8dkqayk7wt7zixvigs&st=vomb0veb&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.8",
           "Date": "2/14/2025",
