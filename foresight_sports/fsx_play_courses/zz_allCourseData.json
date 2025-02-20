@@ -3264,6 +3264,23 @@
     "MinRating": 68.19999694824219
   },
   {
+    "Name": "Pinehurst No 3",
+    "Version": "1.5.0.3",
+    "Par": 68.0,
+    "Altitude": 528.0,
+    "City": "Pinehurst",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "North Carolina,NC",
+    "Type": "Links",
+    "MaxYardage": 5155,
+    "MinYardage": 3642,
+    "MaxSlope": 123.0,
+    "MinSlope": 105.0,
+    "MaxRating": 66.1,
+    "MinRating": 60.4
+  },
+  {
     "Name": "Pinehurst No 4",
     "Version": "1.5.0.6",
     "Par": 72.0,
