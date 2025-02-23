@@ -105,7 +105,7 @@
       "Deployments": [
         {
           "Version": "1.1.11",
-          "Date": "2/12/2025",
+          "Date": "2/22/2025",
           "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tAdd status indicator for GST folder disk space consumed\r\n\t\t\tClick on the Prerequisite Status Indicator in the bottom right status location and now see \"Disk space used\"\r\n\t\tAllow UI to resize and scale controls/videos\r\n\t\t\tYou can now re-size the GST window as needed and have access to all the controls",
           "URLs": {
             "GST": "https://www.dropbox.com/scl/fi/51jfqvhtwdijkccf3dv7s/Golf-Simulator-Toolkit_1.1.11.30302_BETA.exe?rlkey=rqx3kc5j4or3cw47p7veldu31&st=mlx01jqf&dl=1",
