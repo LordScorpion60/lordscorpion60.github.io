@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.11_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/51jfqvhtwdijkccf3dv7s/Golf-Simulator-Toolkit_1.1.11.30302_BETA.exe?rlkey=rqx3kc5j4or3cw47p7veldu31&st=mlx01jqf&dl=1"
+    "Version": "1.1.12_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/m0k3vz0i8wyv8qpfg69s1/Golf-Simulator-Toolkit_1.1.12.35431_BETA.exe?rlkey=arokzy6zb3zdefv1yezgb9773&st=99tk53qs&dl=1"
   },
 
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.12_BETA",
+      "Date": "2/24/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tOverride swing video with custom video\r\n\t\t\tUseful if you capture swing videos outside of the golf simulator\r\n\tTuning:\r\n\t\tClub Name added to the name of the exported video"
+    },
     {
       "Version": "1.1.11_BETA",
       "Date": "2/22/2025",
@@ -101,8 +106,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.1.11",
+      "LatestVersion": "1.1.12",
       "Deployments": [
+        {
+          "Version": "1.1.12",
+          "Date": "2/24/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tOverride swing video with custom video\r\n\t\t\tUseful if you capture swing videos outside of the golf simulator\r\n\tTuning:\r\n\t\tClub Name added to the name of the exported video",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/m0k3vz0i8wyv8qpfg69s1/Golf-Simulator-Toolkit_1.1.12.35431_BETA.exe?rlkey=arokzy6zb3zdefv1yezgb9773&st=99tk53qs&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.11",
           "Date": "2/22/2025",
