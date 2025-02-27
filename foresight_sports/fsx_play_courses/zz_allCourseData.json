@@ -289,6 +289,23 @@
     "MinRating": 100
   },
   {
+    "Name": "Bartlett Country Club",
+    "Version": "1.5.0.11",
+    "Par": 70.0,
+    "Altitude": 1837.0,
+    "City": "Olean",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "New York,NY",
+    "Type": "Parkland",
+    "MaxYardage": 6372,
+    "MinYardage": 4366,
+    "MaxSlope": 135.0,
+    "MinSlope": 115.0,
+    "MaxRating": 72.0999984741211,
+    "MinRating": 66.80000305175781
+  },
+  {
     "Name": "Bear Claw Golf Club",
     "Version": "1.2.0.3",
     "Par": 70.0,
@@ -3653,6 +3670,23 @@
     "MinSlope": 113.0,
     "MaxRating": 73.8,
     "MinRating": 67.1
+  },
+  {
+    "Name": "Royal Liverpool Golf Club",
+    "Version": "1.5.0.4",
+    "Par": 72.0,
+    "Altitude": 12.0,
+    "City": "Wirral",
+    "Country": "United Kingdom",
+    "Continent": "Europe",
+    "State": "N/A",
+    "Type": "Links",
+    "MaxYardage": 7340,
+    "MinYardage": 5847,
+    "MaxSlope": 152.0,
+    "MinSlope": 127.0,
+    "MaxRating": 77.0999984741211,
+    "MinRating": 69.4000015258789
   },
   {
     "Name": "Royal Lytham & St Annes Golf Club",

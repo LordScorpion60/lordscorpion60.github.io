@@ -119,6 +119,13 @@
     "Flyover": "https://www.youtube.com/watch?v=KqaPSMbsvKY"
   },
   {
+    "Name": "Bartlett Country Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/bartlett-country-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Bear Claw Golf Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/bear-claw-golf-club",
@@ -1502,6 +1509,13 @@
     "FSX_2020": "0",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/royal-greens-golf-and-country-club",
     "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "Royal Liverpool Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/royal-liverpool-golf-club",
+    "Price": 250,
     "Flyover": ""
   },
   {

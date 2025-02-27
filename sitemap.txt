@@ -19,6 +19,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Azalea%20Nati
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Bala%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Ballyowen%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Barren%20Boulders%20Executive.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Bartlett%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Bear%20Claw%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Beaver%20Hills%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Big%20Sur.html
@@ -217,6 +218,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Rivercrest%20
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Rivermont%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Rolling%20Road%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Royal%20Greens%20Golf%20%26%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Royal%20Liverpool%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Royal%20Lytham%20%26%20St%20Annes%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Royal%20Troon%20-%20Old%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Rush%20Creek%20Golf%20Club.html
