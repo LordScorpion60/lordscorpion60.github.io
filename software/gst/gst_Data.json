@@ -1,10 +1,15 @@
 {
   "LatestVersion_BETA": {
-    "Version": "1.1.13_BETA",
-    "URL": "https://www.dropbox.com/scl/fi/mnf0zspiiv11v9rinfuat/Golf-Simulator-Toolkit_1.1.13.36259_BETA.exe?rlkey=q2hotd0kr5x1958gxrp2vq9c8&st=xy1jer4i&dl=1"
+    "Version": "1.1.14_BETA",
+    "URL": "https://www.dropbox.com/scl/fi/v5wuz4rsj97diiwk72isu/Golf-Simulator-Toolkit_1.1.14.34887_BETA.exe?rlkey=l46dg0lmcyiwh12nakjzxw6ds&st=6frtbfc6&dl=1"
   },
 
   "ReleaseNotes_BETA": [
+    {
+      "Version": "1.1.14_BETA",
+      "Date": "2/27/2025",
+      "Notes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tUnselect \"Append Shot Replay\" after shot change\r\n\t\t\tHelps when changing to a different shot and doing an export and forgetting to unselect the replay\r\n\t\tAdd auto repeat to swing video playback\r\n\t\t\tKeep that perfect swing on a constant loop!\r\n\tTuning:\r\n\t\tVideos no longer continue to play while export is running\r\n\t\t\"Append Shot Replay\" cannot be selected without a shot replayed loaded\r\n\t\tShot Replay video can now be removed from the UI\r\n\t\tData grids not shown if data isn't captured (Example: Ball mode w/ no club data)"
+    },
     {
       "Version": "1.1.13_BETA",
       "Date": "2/26/2025",
@@ -111,8 +116,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.1.13",
+      "LatestVersion": "1.1.14",
       "Deployments": [
+        {
+          "Version": "1.1.14",
+          "Date": "2/27/2025",
+          "ReleaseNotes": "Feature progression and things not currently supported will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tUnselect \"Append Shot Replay\" after shot change\r\n\t\t\tHelps when changing to a different shot and doing an export and forgetting to unselect the replay\r\n\t\tAdd auto repeat to swing video playback\r\n\t\t\tKeep that perfect swing on a constant loop!\r\n\tTuning:\r\n\t\tVideos no longer continue to play while export is running\r\n\t\t\"Append Shot Replay\" cannot be selected without a shot replayed loaded\r\n\t\tShot Replay video can now be removed from the UI\r\n\t\tData grids not shown if data isn't captured (Example: Ball mode w/ no club data)",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/v5wuz4rsj97diiwk72isu/Golf-Simulator-Toolkit_1.1.14.34887_BETA.exe?rlkey=l46dg0lmcyiwh12nakjzxw6ds&st=6frtbfc6&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.1.13",
           "Date": "2/26/2025",
