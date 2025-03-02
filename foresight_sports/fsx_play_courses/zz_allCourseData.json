@@ -68,6 +68,23 @@
     "MinRating": 63.9
   },
   {
+    "Name": "Anderson Country Club",
+    "Version": "1.5.0.3",
+    "Par": 72.0,
+    "Altitude": 879.0,
+    "City": "Anderson",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Indiana,IN",
+    "Type": "Parkland",
+    "MaxYardage": 6605,
+    "MinYardage": 4890,
+    "MaxSlope": 129.0,
+    "MinSlope": 108.0,
+    "MaxRating": 71.9000015258789,
+    "MinRating": 63.5
+  },
+  {
     "Name": "Apple Valley Golf Course",
     "Version": "1.4.0.2",
     "Par": 72.0,
