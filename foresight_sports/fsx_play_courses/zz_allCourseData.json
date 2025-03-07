@@ -3213,6 +3213,23 @@
     "MinRating": 64.8
   },
   {
+    "Name": "Pennard Golf Club",
+    "Version": "1.5.0.5",
+    "Par": 71.0,
+    "Altitude": 200.0,
+    "City": "Southgate",
+    "Country": "United Kingdom",
+    "Continent": "Europe",
+    "State": "N/A",
+    "Type": "Links",
+    "MaxYardage": 6255,
+    "MinYardage": 5234,
+    "MaxSlope": 127.0,
+    "MinSlope": 117.0,
+    "MaxRating": 72.2,
+    "MinRating": 67.4
+  },
+  {
     "Name": "Pestovo Golf & Yacht Club",
     "Version": "1.5.0.2",
     "Par": 72.0,
