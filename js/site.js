@@ -113,7 +113,7 @@ function SessionStorage(action, key, value) {
 function SendMessage(msg) {
 
     const request = new XMLHttpRequest();
-    request.open("POST", "https://discord.com/api/webhooks/1336063735156052028/bbwWmsuERFT4HAXrE5Zz5kHiENFETWMtxg0TVkndjxJqIuTPtwgyAnO4AgYPeY9JsGLI");
+    request.open("POST", "https://discord.com/api/webhooks/1349802165924925440/SLrme92uLrQ7jSO-YwFw8A_LmOL3TcM45zBty_QNRBw6_rnSnZTvFmK_Z1i_WmXujmgr");
 
     request.setRequestHeader('Content-type', 'application/json');
 
