@@ -4641,6 +4641,23 @@
     "MinRating": 65.5
   },
   {
+    "Name": "The Olympic Club - Lake Course",
+    "Version": "1.5.0.4",
+    "Par": 71.0,
+    "Altitude": 83.0,
+    "City": "San Francisco",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "California,CA",
+    "Type": "Premium - 18 Holes",
+    "MaxYardage": 7246,
+    "MinYardage": 5511,
+    "MaxSlope": 141.0,
+    "MinSlope": 121.0,
+    "MaxRating": 75.2,
+    "MinRating": 67.4
+  },
+  {
     "Name": "The Patriot Golf Club",
     "Version": "1.5.0.4",
     "Par": 72.0,
