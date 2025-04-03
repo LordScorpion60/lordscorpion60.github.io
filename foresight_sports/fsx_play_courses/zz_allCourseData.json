@@ -2993,8 +2993,8 @@
   },
   {
     "Name": "Oakmont Country Club",
-    "Version": "1.4.0.1",
-    "Par": 75.0,
+    "Version": "1.5.1.0",
+    "Par": 71.0,
     "Altitude": 1006.0,
     "City": "Oakmont",
     "Country": "United States",
@@ -3005,8 +3005,8 @@
     "MinYardage": 5709,
     "MaxSlope": 140.0,
     "MinSlope": 119.0,
-    "MaxRating": 76.4,
-    "MinRating": 63.8
+    "MaxRating": 76.4000015258789,
+    "MinRating": 63.79999923706055
   },
   {
     "Name": "Oaks Country Club",
