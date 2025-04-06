@@ -167,16 +167,11 @@
                     <hr />
 
                     <p>
-                        Currently, the following golf simulation software is supported:
+                        Currently, the supported golf simulation software list is:
                     </p>
+
                     <ul>
                         <li>FSX 2020</li>
-                    </ul>
-
-                    <p>
-                        The following is being investigated for integration:
-                    </p>
-                    <ul>
                         <li>FSX Play</li>
                     </ul>
 
@@ -216,14 +211,6 @@
                         <div id="divDownloadDemoData">
                             <button class="btn btn-info" id="btnDownloadDemoData_Show" onclick='showImage("DownloadDemoData", "download_demo_data.gif")'>Show Video</button>
                             <button class="btn btn-warning" style="display:none" id="btnDownloadDemoData_Close" onclick='hideImage("DownloadDemoData")'>Close Video</button>
-                        </div>
-                    </p>
-
-                    <h3>Configure Session/Video Folders (Optional)</h3>
-                    <p>
-                        <div id="divLoadSession">
-                            <button class="btn btn-info" id="btnLoadSession_Show" onclick='showImage("LoadSession", "load_demo_session.gif")'>Show Video</button>
-                            <button class="btn btn-warning" style="display:none" id="btnLoadSession_Close" onclick='hideImage("LoadSession")'>Close Video</button>
                         </div>
                     </p>
 
@@ -337,14 +324,28 @@
 
                     <ul>
                         <li>
-                            Session & Swing Video directories are set to the default locations per the simulation software selected
+                            File:
                             <ul>
-                                <li>You can set these directories to whatever you want (especially to use the available Demo Data)</li>
+                                <li>
+                                    Session & Swing Video directories are set to the default locations per the simulation software selected
+                                </li>
+                                <li>
+                                    Reload Session in Date Range
+                                    <ul>
+                                        <li>This will force GST to re-pull Simulation Software data locally based on the currently selected Date Range</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li>
-                            User Settings:
+                            Settings:
                             <ul>
+                                <li>
+                                    Simulation Software
+                                    <ul>
+                                        <li>GST Demo is selected by default on first run. Download the demo data to explore GST or change to your Simulation Software of choice and swing away</li>
+                                    </ul>
+                                </li>
                                 <li>
                                     Session Date Range
                                     <ul>
@@ -379,9 +380,15 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    Check for Updates on Start
+                                    Check For Updates On Start
                                     <ul>
                                         <li>This can be turned off if desired</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Monitor For Live Session On Start
+                                    <ul>
+                                        <li>This can be turned off if desired, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -435,7 +442,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 2/19/2025</em>
+                    <em>Last Updated: 4/5/2025</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
