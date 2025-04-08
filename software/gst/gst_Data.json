@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.2.0",
+      "LatestVersion": "1.2.1",
       "Deployments": [
+        {
+          "Version": "1.2.1",
+          "Date": "4/7/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tBug Fixes:\r\n\t\tHitting a second FSX Play Practice shot while the Practice Hole Order warning dialog is still up shows harmless error\r\n\tPerformance/QoL Improvements:\r\n\t\tPressing Enter on the License Request form will complete submission\r\n\t\tShot processed sound played when making a change in FSX Play session (Club Change [Bag], Player Change, Hole Change, etc.)\r\n\t\t\tIf you start a FSX Play session (make at least 1 shot) and then start GST with Session Monitoring, any changes will cause GST to load the session and play the shot processed sound",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/3uscqzong17aewiplhjq9/Golf-Simulator-Toolkit_1.2.1.31720_BETA.exe?rlkey=lu44l11ixgrl0qlqh9hypg9td&st=wfry59ff&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.2.0",
           "Date": "4/5/2025",
