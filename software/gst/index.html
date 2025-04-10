@@ -371,9 +371,9 @@
                     <h2 id="NOTES">Notes & Samples:</h2>
                     <hr />
 
-                    <p>
-                        GST Menu Option Details
-                    </p>
+                    <h3>
+                        GST Top Menu Option Details
+                    </h3>
                     <ul>
                         <li>
                             File:
@@ -395,15 +395,23 @@
                                 <li>
                                     Simulation Software
                                     <ul>
-                                        <li>GST Demo is selected by default on first run. Download the demo data to explore GST or change to your Simulation Software of choice and swing away</li>
+                                        <li>GST Demo is selected by default on first run
+                                        <ul>
+                                            <li>Download the demo data to explore GST or change to your Simulation Software of choice and swing away</li>
+                                        </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
                                     Session Date Range
                                     <ul>
-                                        <li>Last 7 Days (DEFAULT)</li>
+                                        <li>Last 7 Days <i>(DEFAULT)</i></li>
                                         <li>Last 30 Days</li>
-                                        <li>All Dates</li>
+                                        <li>All Dates
+                                        <ul>
+                                            <li><i>Warning: If your simulation software has stored years worth of session/swing videos on your system, loading everything could take a little while...</i></li>
+                                        </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -441,6 +449,70 @@
                                     Monitor For Live Session On Start
                                     <ul>
                                         <li>This can be turned off if desired, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Configure DirectShow Cameras
+                                    <ul>
+                                        <li>
+                                            This will load a popup with the detected web camera(s) on the system being managed by DirectShow (it will also show each supported resolution and frame rate [if available] reported to DirectShow)
+                                            <ul>
+                                                <li>Any changes made in the settings are system wide and will affect other applications that do not have their own settings or ability to change camera settings (you can use this for them as well!)</li>
+                                                <li>
+                                                    If any changes are made in the camera settings, they will be saved to GST for future use as other apps make their own camera changes and leave them
+                                                    <ul>
+                                                        <li>
+                                                            In follow up GST sessions, just select each camera, click "Load GST Settings Into DirectShow" and you are ready to start your session!
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Launch Simulation Software (Far Right)
+                            <ul>
+                                <li>You can start your sim software directly from GST to help main a good workflow of making sure GST is load and monitoring for sessions to ensure the best data/swing capture opportunities</li>
+                                <li>CTRL-S will also start your selected sim software!</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>
+                        GST Bottom Menu Option Details
+                    </h3>
+                    <ul>
+                        <li>
+                            GST Prerequisite Status Icon/Menu:
+                            <ul>
+                                <li>
+                                    A green checkmark is the ideal state that GST has everything it needs to fullfill all features
+                                    <ul>
+                                        <li>You can click on the icon and click "Check/Download Prerequisites" to force a prerequisite check</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Click on the status icon to see how much disk space GST is consuming
+                                    <ul>
+                                        <li>As sessions and swing videos are copied to GST, along with all GST video exports, keep an eye on this if overall disk space is getting low...</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            GST Version/Web Status Icon/Menu:
+                            <ul>
+                                <li>
+                                    A blue world icon is the ideal state that GST can talk to it's website and can download prerequisites, updates, demo content, etc.
+                                </li>
+                                <li>
+                                    Click on the status icon to see if the current version is up to date
+                                    <ul>
+                                        <li>You can click on the icon and click "Check For Updates" to force a check for the newest version</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -494,7 +566,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 4/6/2025</em>
+                    <em>Last Updated: 4/9/2025</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
