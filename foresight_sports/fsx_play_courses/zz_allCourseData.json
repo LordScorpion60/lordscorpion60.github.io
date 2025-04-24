@@ -4659,7 +4659,7 @@
   },
   {
     "Name": "The Olympic Club - Lake Course",
-    "Version": "1.5.0.4",
+    "Version": "1.5.1.1",
     "Par": 71.0,
     "Altitude": 83.0,
     "City": "San Francisco",
@@ -4671,8 +4671,8 @@
     "MinYardage": 5511,
     "MaxSlope": 141.0,
     "MinSlope": 121.0,
-    "MaxRating": 75.2,
-    "MinRating": 67.4
+    "MaxRating": 75.19999694824219,
+    "MinRating": 67.4000015258789
   },
   {
     "Name": "The Patriot Golf Club",
