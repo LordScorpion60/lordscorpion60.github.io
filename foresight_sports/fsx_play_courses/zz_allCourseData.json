@@ -3272,7 +3272,7 @@
     "Country": "United States",
     "Continent": "North America",
     "State": "Virginia,VA",
-    "Type": "Inland Links",
+    "Type": "Links",
     "MaxYardage": 7665,
     "MinYardage": 5142,
     "MaxSlope": 145.0,
@@ -3398,6 +3398,23 @@
     "MinSlope": 117.0,
     "MaxRating": 73.9,
     "MinRating": 66.0
+  },
+  {
+    "Name": "Pinehurst No 9",
+    "Version": "1.5.0.9",
+    "Par": 72.0,
+    "Altitude": 436.6,
+    "City": "North Carolina",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "North Carolina,NC",
+    "Type": "Parkland",
+    "MaxYardage": 7106,
+    "MinYardage": 3767,
+    "MaxSlope": 143.0,
+    "MinSlope": 106.0,
+    "MaxRating": 74.8,
+    "MinRating": 60.4
   },
   {
     "Name": "Pinehurst No. 2",
