@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.2.2",
+      "LatestVersion": "1.2.3",
       "Deployments": [
+        {
+          "Version": "1.2.3",
+          "Date": "5/12/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tKeyboard shortcuts to control swing video playback\r\n\t\t\tPressing spacebar with videos loaded will Play/Pause them\r\n\t\t\tPressing Left/Right arrow keys will step video forward/back one frame\r\n\t\tAbility to disable swing videos from export",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/ekyjjj8mmagw0sfxflrdw/Golf-Simulator-Toolkit_1.2.3.28657_BETA.exe?rlkey=p3ivu3xa4wabaasoadg3niroh&st=a0dm92l7&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.2.2",
           "Date": "4/9/2025",
