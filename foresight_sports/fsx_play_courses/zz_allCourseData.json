@@ -3554,7 +3554,7 @@
   },
   {
     "Name": "Quail Hollow Country Club",
-    "Version": "1.5.1.2",
+    "Version": "1.5.2.2",
     "Par": 71.0,
     "Altitude": 770.0,
     "City": "Charlotte",
@@ -3562,12 +3562,12 @@
     "Continent": "North America",
     "State": "North Carolina,NC",
     "Type": "Parkland",
-    "MaxYardage": 7554,
-    "MinYardage": 5063,
+    "MaxYardage": 7618,
+    "MinYardage": 5085,
     "MaxSlope": 148.0,
     "MinSlope": 117.0,
-    "MaxRating": 77.19999694824219,
-    "MinRating": 65.19999694824219
+    "MaxRating": 77.2,
+    "MinRating": 65.2
   },
   {
     "Name": "Quarry at Giants Ridge",
