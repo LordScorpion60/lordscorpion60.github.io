@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.2.3",
+      "LatestVersion": "1.3.0",
       "Deployments": [
+        {
+          "Version": "1.3.0",
+          "Date": "7/3/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tView & Export Session Stats\r\n\t\t\tNew window can be opened for each Session with filtering (by club/ball, show/hide disabled), sorting (by column - ascending/descending) of shot data (will be updated as new shots are made in a monitored live session)\r\n\t\t\t\tShots can be enabled/disabled (can also use spacebar on highlighted row) to provide adjusted stats\r\n\t\t\t\t\tDouble-click any AVG enabled checkbox cell to batch DISABLE or ENABLE the entire combo set\r\n\t\t\t\tData columns can be moved to the desired order (this order will be lost if you close the stats window)\r\n\t\t\tExport formats supported: PNG, CSV\r\n\t\t\t\tOptional note can be added to the export filename\r\n\tTuning:\r\n\t\tUI Cleanup After Simulation Software Change\r\n\t\t\tSession/Shot labels no longer stay visible (with no data showing) after changing Simulation Software\r\n\t\tShot Data Precision\r\n\t\t\tPutts usually don't get a proper Peak Height value in Play\r\n\t\t\tWith no club markers, Play reports incorrect default Club Head Speeds\r\n\t\tFSX Play timestamp warning will now only be shown once per GST runtime",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/veles0f67q5o2iy0kexbs/Golf-Simulator-Toolkit_1.3.0.20654_BETA.exe?rlkey=r177b1v6059rc4btrtrgtddg7&st=gzbb1r6n&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.2.3",
           "Date": "5/12/2025",
