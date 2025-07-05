@@ -799,6 +799,23 @@
     "MinRating": 32.9
   },
   {
+    "Name": "Cedarbrook Country Club",
+    "Version": "1.5.0.7",
+    "Par": 72.0,
+    "Altitude": 245.9,
+    "City": "Blue Bell",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Pennsylvania,PA",
+    "Type": "Parkland",
+    "MaxYardage": 7026,
+    "MinYardage": 4043,
+    "MaxSlope": 135.0,
+    "MinSlope": 104.0,
+    "MaxRating": 74.0,
+    "MinRating": 61.4
+  },
+  {
     "Name": "Celtic Manor Resort - Twenty Ten",
     "Version": "1.4.1.0",
     "Par": 71.0,
