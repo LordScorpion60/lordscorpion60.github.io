@@ -120,6 +120,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hidden%20Shoa
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hidden%20Valley%20Country%20Club%20%28UT%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hinsdale%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Holdrege%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Homestead%20-%20Old%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Honeybrook%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hornell%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Horseshoe%20Bend%20Country%20Club.html
@@ -203,6 +204,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20%
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%2010.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%203.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%204.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%205.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%206.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%208.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pinehurst%20No%209.html
@@ -277,6 +279,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Golf%20
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Grove%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Grove%20Golf%20Club%20%28UK%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Heretic%20Golf%20Course.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Hills%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Links%20at%20Spanish%20Bay.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Loxahatchee%20Club%20%28Nine%20Lakes%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/The%20Mission%20Club.html

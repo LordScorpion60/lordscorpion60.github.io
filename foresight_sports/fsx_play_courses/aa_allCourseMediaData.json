@@ -826,6 +826,13 @@
     "Flyover": ""
   },
   {
+    "Name": "Homestead - Old Course",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/homestead-old-course-at-the-omni-homestead-resort",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Honeybrook Golf Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/honeybrook-golf-club",
@@ -1407,6 +1414,13 @@
     "Flyover": "https://youtu.be/9aOSK3cfrz4"
   },
   {
+    "Name": "Pinehurst No 5",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pinehurst-no-5",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Pinehurst No 6",
     "FSX_2020": "0",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pinehurst-no-6",
@@ -1921,6 +1935,13 @@
     "Name": "The Heretic Golf Course",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/the-heretic",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "The Hills Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/the-hills-golf-club",
     "Price": 150,
     "Flyover": ""
   },
