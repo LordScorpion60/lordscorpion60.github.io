@@ -1004,8 +1004,8 @@
   },
   {
     "Name": "Congressional Country Club - Blue",
-    "Version": "1.4.0.6",
-    "Par": 74.0,
+    "Version": "1.5.0.1",
+    "Par": 72.0,
     "Altitude": 261.0,
     "City": "Bethesda",
     "Country": "United States",
@@ -4404,7 +4404,7 @@
   },
   {
     "Name": "Sunset Ridge Country Club",
-    "Version": "1.1.0.7",
+    "Version": "1.5.0.1",
     "Par": 71.0,
     "Altitude": 656.0,
     "City": "Northfiled",
