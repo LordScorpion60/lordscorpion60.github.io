@@ -2448,6 +2448,23 @@
     "MinRating": 68.1
   },
   {
+    "Name": "La Costa - South",
+    "Version": "1.5.0.5",
+    "Par": 72.0,
+    "Altitude": 33.7,
+    "City": "Carlsbad",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "California,CA",
+    "Type": "Links",
+    "MaxYardage": 7047,
+    "MinYardage": 5158,
+    "MaxSlope": 138.0,
+    "MinSlope": 119.0,
+    "MaxRating": 74.8,
+    "MinRating": 67.4
+  },
+  {
     "Name": "La Cumbre Country Club",
     "Version": "1.4.0.4",
     "Par": 71.0,
