@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.4.0",
+      "LatestVersion": "1.4.1",
       "Deployments": [
+        {
+          "Version": "1.4.1",
+          "Date": "8/5/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tBug Fixes:\r\n\t\tSession Stats - Shots Table\r\n\t\t\tSorting by column loses the current selected shot\r\n\t\t\tReset Sort loses the default shot order\r\n\t\t\tShow/Hide Disabled Shots button loses selected shot\r\n\t\t\tChanging Club/Ball label loses the current selected shot\r\n\t\t\tSorting by Club puts the Overall rows at the top when sorting DESC\r\n\tPerformance/QoL Improvements:\r\n\t\tSession Stats\r\n\t\t\tWhen opening the Stats window for the first time, the initial stat shot selected will be set to shot already selected\r\n\t\t\tSubtitle under the Session Date has been adjusted to show the correct \"Filtered\" count when hiding disabled shots\r\n\t\tSession Stats - Shots Table\r\n\t\t\tMinimum column width set for when re-sizing columns. Enabled and ID are locked down, Club and Ball columns are now frozen\r\n\t\t\tEnable/Disable all shots bulk edit prompt now has a \"Cancel\" option\r\n\t\t\tStats rows have been adjusted to have matching colors, cleaner labels and proper Standard Deviation indicators\r\n\t\t\tColumn sorting glyphs now use an image to indicate sort direction and default to Descending on first sort\r\n\t\tSession Stats - Export\r\n\t\t\tExport PNG Subtitle updated to show the current total of filtered \"Shots\" (not the entire Session) and the \"Enabled\" count of the filtered shots\r\n\t\t\tThe stats table will now be centered and not stretched when the stats window is resized before Exporting a PNG image\r\n\t\t\tExport popup has been simplified to include the export option action since the second context menu now removed\r\n\t\t\tExport PNG image has been cleaned up to include column sorting images and a new border color\r\n\t\t\tAn export filename that includes all shot data will have \"full\" appended to the end\r\n\tTuning:\r\n\t\tGST Session Data\r\n\t\t\tHole outs in FSX Play will now show as 0 for Distance to Pin and Offline since the actual values recorded are a little below the ground and maybe a little left or right down in the cup...",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/mdrrkak1bhx7bxg3o1yc0/Golf-Simulator-Toolkit_1.4.1.36150_BETA.exe?rlkey=id4962z2ibebmyfniajp6dwxh&st=39qlow11&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/7auive0csww60cwyqs2r0/ffmpeg.exe?rlkey=y7ipoosttl6x457oyxrc2gpni&st=8x44ia7q&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.4.0",
           "Date": "7/25/2025",
