@@ -357,6 +357,23 @@
     "MinRating": 71.2
   },
   {
+    "Name": "Bethpage - Black",
+    "Version": "1.5.0.7",
+    "Par": 71.0,
+    "Altitude": 132.0,
+    "City": "Farmingdale",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "New York,NY",
+    "Type": "Championship",
+    "MaxYardage": 7477,
+    "MinYardage": 6182,
+    "MaxSlope": 155.0,
+    "MinSlope": 144.0,
+    "MaxRating": 77.5,
+    "MinRating": 71.4
+  },
+  {
     "Name": "Big Sur",
     "Version": "1.1.0.2",
     "Par": 71.0,
@@ -3364,6 +3381,23 @@
     "MinSlope": 118.0,
     "MaxRating": 77.5,
     "MinRating": 65.9000015258789
+  },
+  {
+    "Name": "PGA Frisco - Fields Ranch West",
+    "Version": "1.5.0.4",
+    "Par": 72.0,
+    "Altitude": 588.0,
+    "City": "Frisco",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Texas,TX",
+    "Type": "Links",
+    "MaxYardage": 7257,
+    "MinYardage": 5091,
+    "MaxSlope": 140.0,
+    "MinSlope": 111.0,
+    "MaxRating": 76.3,
+    "MinRating": 62.6
   },
   {
     "Name": "Phillips Park Golf Course",

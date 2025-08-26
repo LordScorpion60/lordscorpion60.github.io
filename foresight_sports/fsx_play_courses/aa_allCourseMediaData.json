@@ -147,6 +147,13 @@
     "Flyover": "https://www.youtube.com/watch?v=yf0rq33ls7o"
   },
   {
+    "Name": "Bethpage - Black",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/bethpage-black",
+    "Price": 500,
+    "Flyover": "https://www.youtube.com/watch?v=1yy6SpXwCcE"
+  },
+  {
     "Name": "Big Sur",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/big-sur-golf-club",
@@ -1384,6 +1391,13 @@
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pete-dye-river-course",
     "Price": 150,
     "Flyover": "https://www.youtube.com/watch?v=OSqufl0egj0"
+  },
+  {
+    "Name": "PGA Frisco - Fields Ranch West",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pga-frisco-fields-ranch-west",
+    "Price": 150,
+    "Flyover": ""
   },
   {
     "Name": "Phillips Park Golf Course",
