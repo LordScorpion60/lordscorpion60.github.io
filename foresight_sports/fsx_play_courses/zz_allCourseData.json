@@ -2023,6 +2023,23 @@
     "MinRating": 69.5
   },
   {
+    "Name": "Homestead - Cascades",
+    "Version": "1.5.0.9",
+    "Par": 71.0,
+    "Altitude": 2130.0,
+    "City": "Hot Springs",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Virginia,VA",
+    "Type": "Parkland",
+    "MaxYardage": 6908,
+    "MinYardage": 4968,
+    "MaxSlope": 135.0,
+    "MinSlope": 122.0,
+    "MaxRating": 72.8,
+    "MinRating": 68.2
+  },
+  {
     "Name": "Homestead - Old Course",
     "Version": "1.5.0.6",
     "Par": 72.0,
@@ -2548,6 +2565,23 @@
     "MinSlope": 122.0,
     "MaxRating": 74.9,
     "MinRating": 69.8
+  },
+  {
+    "Name": "Lake Arrowhead Country Club",
+    "Version": "1.5.1.0",
+    "Par": 71.0,
+    "Altitude": 5219.7998046875,
+    "City": "Lake Arrowhead",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "California,CA",
+    "Type": "Parkland",
+    "MaxYardage": 6229,
+    "MinYardage": 4633,
+    "MaxSlope": 130.0,
+    "MinSlope": 111.0,
+    "MaxRating": 70.5999984741211,
+    "MinRating": 62.79999923706055
   },
   {
     "Name": "Lakeside Country Club",

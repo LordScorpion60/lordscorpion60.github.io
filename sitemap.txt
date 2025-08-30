@@ -121,6 +121,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hidden%20Shoa
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hidden%20Valley%20Country%20Club%20%28UT%29.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hinsdale%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Holdrege%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Homestead%20-%20Cascades.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Homestead%20-%20Old%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Honeybrook%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Hornell%20Golf%20Club.html
@@ -152,6 +153,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/La%20Cumbre%2
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/La%20Jolla%20Pines.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/La%20Purisma%20Golf%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/La%20Tempete%20Golf%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Lake%20Arrowhead%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Lakeside%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Laurel%20Valley.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/LedgeRock%20Golf%20Club.html
