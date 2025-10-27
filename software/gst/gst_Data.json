@@ -2,15 +2,15 @@
   "Pipelines": [
     {
       "Build": "DEBUG",
-      "LatestVersion": "1.2.0",
+      "LatestVersion": "1.5.999",
       "Deployments": [
         {
-          "Version": "1.2.0",
-          "Date": "4/5/2025",
+          "Version": "1.5.999",
+          "Date": "10/14/2025",
           "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSupport for FSX Play\r\n\t\t\tSession/Video files must be captured with Play running as they are deleted after the session is completed\r\n\t\tSession Monitoring To Copy Content to Local GST Folder\r\n\t\t\tEach simulation software has different behaviors, but long term plan for analytics can be spread across sessions from multiple softwares when the data is local to GST\r\n\t\t\t\tFSX 2020 Session Files will be available after uninstall/re-install\r\n\t\t\t\tFSX 2020 Swing Video files will be available after ending session (known bug - v8.8.0.15)\r\n\t\t\t\tFSX Play Session Files will be available after ending each session\r\n\t\t\t\tFSX Play Swing Video files will be avilable after exiting Play\r\n\tPerformance/QoL Improvements:\r\n\t\tAutomatic Session Monitoring Enabled\r\n\t\t\tCan be turned off in Settings, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares\r\n\t\tCatalog File Structure Changed to Year -> Month -> Day\r\n\t\t\tAll Exported and Copied content is now stored in a date cataloged directory layout for future reference\r\n\t\tGST Demo now Simulation Software selection\r\n\t\t\tAlso Default Simulation Software selection when first running GST\r\n\t\tPlay sound for last shot loaded from session monitoring\r\n\tTuning:\r\n\t\tProcessing a new shot with Session Monitoring and a Video Export running will now process the entire swing video(s)\r\n\t\t\tDoing this is not recommended, but if your system has enough horsepower, yrmv",
           "URLs": {
-            "GST": "http://localhost:53150/software/gst/software/deployments/debug/Golf-Simulator-Toolkit_1.1.9_BETA.exe",
-            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg.exe",
+            "GST": "http://localhost:53150/software/gst/deployments/debug/Golf Simulator Toolkit_1.5.0.18878_DEBUG.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg/ffmpeg_7.1.zip",
             "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
           }
         },
@@ -19,7 +19,7 @@
           "Date": "2/13/2025",
           "ReleaseNotes": "Debug Test 2",
           "URLs": {
-            "GST": "http://localhost:53150/software/gst/software/deployments/debug/Golf-Simulator-Toolkit_1.1.8_BETA.exe",
+            "GST": "http://localhost:53150/software/gst/deployments/debug/Golf-Simulator-Toolkit_1.1.8_BETA.exe",
             "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg.exe",
             "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
           }
@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.4.2",
+      "LatestVersion": "1.5.0",
       "Deployments": [
+        {
+          "Version": "1.5.0",
+          "Date": "10/27/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\t3rd Video Support\r\n\t\t\tYou can now add a 3rd video to your video export. It will be placed in a slot below your top two videos and above the shot data in the exported video.\r\n\t\t\tEnabled from the Settings menu -> Include 3rd Video (disabled by default)\r\n\tBug Fixes:\r\n\t\tVideo playback rate under 100% with 2x fps than monitor refresh rate\r\n\t\t\tYou can now play any loaded video at any speed rate\r\n\tPerformance/QoL Improvements:\r\n\t\tSupport all video types\r\n\t\t\tYou can now load any video type into GST\r\n\t\t\tAVI swing videos from FSX Play are now supported for frame by frame stepping as well as restricted video sync stepping (see warning popup)\r\n\t\tSynchronize frame by frame stepping of mixed frame rate videos\r\n\t\t\tYou can now step mixed frame rate videos frame by frame and they will be in sync\r\n\tTuning:\r\n\t\tGlobal Changes\r\n\t\t\tOnly one instance of GST is allowed to run at a time\r\n\t\t\tLoading splash screen added when starting GST\r\n\t\t\tAll screens and popups adjusted for large resolution screens\r\n\t\t\tAdded session date ranges: 90 days, 180 days\r\n\t\t\tYou can now close Important News, About, Release Notes, License Request and Bug Report popups with ESC key\r\n\t\t\tClub Override button width adjusted after changing club/ball values\r\n\t\tSession Loading\r\n\t\t\tWarning popup shown to warn for the initial FSX 2020 catalog build\r\n\t\t\tSession loading performance increased dramatically\r\n\t\tVideo Playback\r\n\t\t\tReplay \"Load Video\" and \"Remove Video\" buttons converged into one \"Load Replay\" button\r\n\t\tVideo Export\r\n\t\t\tNew video export file naming convention: {shot_date}_{#_of_videos}[_REPLAY]\r\n\t\t\tRemoved \"Don't Ask Again\" prompt when output folder opened after video export",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/uygb0al43jydh3klm9j73/Golf-Simulator-Toolkit_1.5.0.40413_BETA.exe?rlkey=n76od6mb2ekxooupex9g1qufl&st=q3fwjs9v&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.4.2",
           "Date": "8/9/2025",
