@@ -3553,6 +3553,23 @@
     "MinRating": 68.9
   },
   {
+    "Name": "Pinehurst No 7",
+    "Version": "1.5.0.7",
+    "Par": 72.0,
+    "Altitude": 488.8,
+    "City": "Pinehurst",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "North Carolina,NC",
+    "Type": "Parkland",
+    "MaxYardage": 7216,
+    "MinYardage": 3833,
+    "MaxSlope": 143.0,
+    "MinSlope": 101.0,
+    "MaxRating": 75.5,
+    "MinRating": 60.6
+  },
+  {
     "Name": "Pinehurst No 8",
     "Version": "1.5.0.7",
     "Par": 72.0,
