@@ -140,88 +140,110 @@
 
                     <h3>What GST Can Do:</h3>
 
-<ul>
-  <li><b>Current list of specific functionality (in no particular order):</b>
-    <ul>
-      <li>Configure Golf Bag
-        <ul>
-          <li>Build and manage a custom collection of club/ball labels</li>
-          <li>Apply custom club/ball labels to existing shot(s) in a session</li>
-          <li>Set override club/ball labels to be applied to incoming shots while using Session Monitoring</li>
-        </ul>
-      </li>
-      <li>Session Monitoring
-        <ul>
-          <li>Automatically monitor and copy session and video files</li>
-          <li>Catalog sessions by date (Year → Month → Day)</li>
-          <li>Handle duplicate/empty files</li>
-        </ul>
-      </li>
-      <li>View & Export Session Stats
-        <ul>
-          <li>Open stats window for any session</li>
-          <li>Filter/sort shot data by club/ball, enable/disable shots</li>
-          <li>Move/reorder data columns</li>
-          <li>Export stats to PNG/CSV (with options for summary rows, custom notes)</li>
-        </ul>
-      </li>
-      <li>Visualize/Compare Session Stats
-        <ul>
-          <li>Interactive, physics-based charts (flight, dispersion)</li>
-          <li>Label apex/offline points</li>
-          <li>Filter and compare club/ball combos</li>
-          <li>Resize chart/legend areas</li>
-          <li>Live updates as shots are enabled/disabled</li>
-        </ul>
-      </li>
-      <li>Video Integration
-        <ul>
-          <li>Sync swing videos and shot replays</li>
-          <li>Set custom video offsets</li>
-          <li>Play, pause, step, slow-motion, auto-repeat</li>
-          <li>Export merged videos (with/without replays, club name in filename)</li>
-          <li>Override swing video with custom video</li>
-        </ul>
-      </li>
-      <li>Camera Settings Management
-        <ul>
-          <li>Adjust/save/load DirectShow camera settings</li>
-        </ul>
-      </li>
-      <li>Quick Launch & Workflow
-        <ul>
-          <li>Launch simulation software from GST (menu/CTRL-S)</li>
-          <li>Play sound when export is done</li>
-        </ul>
-      </li>
-      <li>Demo Content
-        <ul>
-          <li>Download and explore demo sessions, videos, and replays</li>
-        </ul>
-      </li>
-      <li>User Preferences & Settings
-        <ul>
-          <li>Choose units (Imperial/Metric)</li>
-          <li>Set session date ranges</li>
-          <li>Configure directories for sessions/videos</li>
-        </ul>
-      </li>
-      <li>Error Handling & Logging
-        <ul>
-          <li>Enable/disable logging</li>
-          <li>Status indicators (disk space, prerequisites)</li>
-          <li>Improved error dialogs and prompts</li>
-        </ul>
-      </li>
-      <li>Licensing & Feedback
-        <ul>
-          <li>Request license upgrades</li>
-          <li>Submit feedback, bug reports, enhancement requests</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+                    <ul>
+                        <li>
+                            <b>Current list of specific functionality (in no particular order):</b>
+                            <ul>
+                                <li>
+                                    Configure Golf Bag
+                                    <ul>
+                                        <li>Build and manage a custom collection of club/ball labels</li>
+                                        <li>(PRO) Apply custom club/ball labels to existing shot(s) in a session</li>
+                                        <li>(PRO) Set override club/ball labels to be applied to incoming shots while using Session Monitoring</li>
+                                        <li>(PRO) Bulk edit/restore club &amp; ball labels from Session Stats</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Session Monitoring &amp; Cataloging
+                                    <ul>
+                                        <li>Automatically monitor and copy session and video files to local GST catalog (Year → Month → Day)</li>
+                                        <li>Catalog sessions by date and support session date range settings (7 / 30 / 90 / 180 / All days)</li>
+                                        <li>Auto-reload active session and select newest shot</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    View &amp; Export Session Stats
+                                    <ul>
+                                        <li>Open stats window per session; filter/sort shots; enable/disable shots</li>
+                                        <li>Move/reorder data columns as needed</li>
+                                        <li>Export stats to PNG/CSV (summary only, full, add optional note); filename includes altitude/club when available</li>
+                                        <li>PNG export header includes altitude</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Visualize / Compare Session Stats
+                                    <ul>
+                                        <li>Interactive, physics-based charts (flight, dispersion) with apex/offline labels</li>
+                                        <li>Filter/compare multiple club/ball combos; interactive legend and color groups</li>
+                                        <li>Live updates as shots change</li>
+                                        <li>Resize chart/legend areas</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Video Integration &amp; Export
+                                    <ul>
+                                        <li>Sync swing videos and shot replays; set per-video offsets</li>
+                                        <li>Play, pause, step, slow-motion, auto-repeat; keyboard shortcuts (Space, ← / →)</li>
+                                        <li>Support all video types (including FSX Play AVI); mixed frame-rate stepping kept in sync</li>
+                                        <li>(PRO) Export merged videos with 2 or 3 (optional setting) video slots, optional appended replay; club/replay flags in filename</li>
+                                        <li>(PRO) Override swing video with custom video for export</li>
+                                        <li>Option to exclude swing videos from export</li>
+                                        <li>Save video frame/screenshot via video right-click context menu</li>
+                                        <li>Copy filename prefix for replay matching via video right-click context menu</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Shot Replay Controls
+                                    <ul>
+                                        <li>Load/trim shot replays (start/end offsets)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Camera Settings Management
+                                    <ul>
+                                        <li>Adjust/save/load DirectShow webcam settings</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Quick Launch &amp; Workflow
+                                    <ul>
+                                        <li>Launch simulation software from GST (menu / Ctrl‑S)</li>
+                                        <li>Play sound when export is done</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Altitude &amp; Units
+                                    <ul>
+                                        <li>Altitude captured shown in session details and Stats</li>
+                                        <li>Altitude included in PNG header and export filenames</li>
+                                        <li>Set/adjust session altitude from Stats and recalc shot data</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    User Preferences &amp; Workflow
+                                    <ul>
+                                        <li>Configure session date ranges</li>
+                                        <li>Toggle automatic session monitoring and update-check behavior</li>
+                                        <li>Download demo session data, videos and replays</li>
+                                        <li>Menu quick links (Open GST folder, Copy today's swing videos to GST, Send Tip, Patreon)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Error Handling &amp; Diagnostics
+                                    <ul>
+                                        <li>Status indicators (disk space, prerequisites)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Licensing &amp; Feedback
+                                    <ul>
+                                        <li>Request license upgrades</li>
+                                        <li>Submit feedback, bug reports and enhancement requests</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <hr />
 
@@ -399,11 +421,10 @@
                     <p><i>In no particular order</i></p>
 
                     <ul>
-                        <li>Support for additional simulator platforms</li>
-                        <li>Enhanced video processing engine for smoother playback of high-resolution swing footage</li>
-                        <li>Performance optimizations for slower hardware configurations</li>
+                        <li>Support for additional golf simulator software platforms</li>
+                        <li>Support for direct launch monitor data aquisition</li>
+                        <li>Native swing camera recording to support custom camera settings and video formats</li>
                         <li>Improved data visualization with customizable overlay templates</li>
-                        <li>Batch video processing for multiple sessions</li>
                         <li>Expanded export options including direct social media sharing</li>
                         <li>Coach analysis tools with annotation capabilities</li>
                         <li>Golf bag additions of adjustable data points such as avg distances, altitude/temperature adjustments, etc.</li>
@@ -453,8 +474,8 @@
                     <hr />
 
                     <h4><b>Want to influence our development priorities?</b></h4>
-                    <h4>Consider using Patreon to sign up for a membership to have exclusive voting power! <a href="https://www.patreon.com/LordScorpion60" target="_blank">Become a Member <i class="fa fa-external-link"></i></a></h4>
-                    <h4>You can also donate to help the cause or grease the skids... <a href="https://www.patreon.com/LordScorpion60/shop/donation-957194?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=productshare_creator&utm_content=join_link" target="_blank">Donate <i class="fa fa-external-link"></i></a></h4>
+                    <h4>Consider using Patreon to sign up for a membership to have exclusive voting power! <a href="https://patreon.com/GolfSimulatorToolkit" target="_blank">Become a Member <i class="fa fa-external-link"></i></a></h4>
+                    <h4>You can also donate to help the cause or grease the skids... <a href="https://tiptopjar.com/gst" target="_blank">Send a Tip! <i class="fa fa-external-link"></i></a></h4>
 
                     <hr />
                     <h2 id="NOTES">Notes & Samples:</h2>
@@ -496,6 +517,8 @@
                                     <ul>
                                         <li>Last 7 Days <i>(DEFAULT)</i></li>
                                         <li>Last 30 Days</li>
+                                        <li>Last 90 Days</li>
+                                        <li>Last 180 Days</li>
                                         <li>All Dates
                                         <ul>
                                             <li><i>Warning: If your simulation software has stored years worth of session/swing videos on your system, loading everything could take a little while...</i></li>
@@ -663,7 +686,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 7/27/2025</em>
+                    <em>Last Updated: 11/7/2025</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
