@@ -28,8 +28,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.5.1",
+      "LatestVersion": "1.5.2",
       "Deployments": [
+        {
+          "Version": "1.5.2",
+          "Date": "11/7/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tAltitude Adjustment\r\n\t\t\tAltitude can be set from the Stats window if not recorded (such as FSX 2020) and saved to the GST session file\r\n\t\t\tAltitude for a Session can be adjusted in the Stats window to have all shot data and charts be recalculated for training, competitions, or exporting a specific altitude shot matrix\r\n\t\t\t\tAltitude calculations currently using +10% per 5000ft\r\n\t\t\t\tAdjusting the altitude will not save over the original (or once set) GST session file value\r\n\tPerformance/QoL Improvements:\r\n\t\tAltitude Support\r\n\t\t\tAltitude captured during a Session (such as FSX Play) will now be shown in both the main Session details and the Stats Panel Session details\r\n\t\t\t\tThe altitude value will be included in the header of the PNG Stat image export\r\n\t\t\t\tThe altitude value will be included in the PNG and CSV Stat export filenames\r\n\tTuning:\r\n\t\tGST Main screen\r\n\t\t\tLicense checks now always performed on startup regardless of \"Check For Updates on Startup\" setting\r\n\t\t\t\"Check for update\" error messages cleaned up\r\n\t\tGST Upgrades\r\n\t\t\tOld versions of GST will be cleaned up during an upgrade\r\n\t\tGST Menu\r\n\t\t\tDedicated \"Send Tip\" URL added if you just want to send a tip and help the cause!\r\n\t\t\tPatreon URL updated to a dedicated GST Patreon membership page\r\n\t\tGST License Request\r\n\t\t\tYou can now supply contact information to get an EVAL license through Discord, golfsimulatorforum.com, email or other",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/68bjoojbnnoqpbic887na/Golf-Simulator-Toolkit_1.5.2.32254_BETA.exe?rlkey=g3nec7jgfw3ejw00y6j79esyw&st=c14jvz4s&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.5.1",
           "Date": "11/3/2025",
