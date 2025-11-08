@@ -61,6 +61,16 @@
 
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-21WN9LTDVM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-21WN9LTDVM');
+</script>
+
 <body>
     <div id="wrapper">
         <!-- Navigation -->
@@ -74,8 +84,8 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Golf Simulator Toolkit (GST)</h1>
                     <!--<p>
-        Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!
-    </p>-->
+                        Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!
+                    </p>-->
                     <p>
                         Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video synchronization, shot analysis, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.
                     </p>
@@ -115,7 +125,7 @@
                         <li>Precise Playback Control - Perform detailed analysis with synchronized video navigation, slow-motion review down to 10% speed, and frame-by-frame examination.</li>
 
                         <li>Visualize and Compare Session Stats - Use interactive, physics-based charts by club and ball, including live-updating flight and dispersion views, filtering, and export options.</li>
-                        
+
                         <li>Enhanced Coaching Potential - Share polished, data-rich videos with coaches or fellow players that provide all the context needed for meaningful feedback and improvement.</li>
 
                         <li>Customized Shot Focus - Export individual shots with custom timing and integrated replay footage, perfect for focusing on specific aspects of your game.</li>
@@ -505,10 +515,11 @@
                                 <li>
                                     Simulation Software
                                     <ul>
-                                        <li>GST Demo is selected by default on first run
-                                        <ul>
-                                            <li>Download the demo data to explore GST or change to your Simulation Software of choice and swing away</li>
-                                        </ul>
+                                        <li>
+                                            GST Demo is selected by default on first run
+                                            <ul>
+                                                <li>Download the demo data to explore GST or change to your Simulation Software of choice and swing away</li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </li>
@@ -519,10 +530,11 @@
                                         <li>Last 30 Days</li>
                                         <li>Last 90 Days</li>
                                         <li>Last 180 Days</li>
-                                        <li>All Dates
-                                        <ul>
-                                            <li><i>Warning: If your simulation software has stored years worth of session/swing videos on your system, loading everything could take a little while...</i></li>
-                                        </ul>
+                                        <li>
+                                            All Dates
+                                            <ul>
+                                                <li><i>Warning: If your simulation software has stored years worth of session/swing videos on your system, loading everything could take a little while...</i></li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </li>
@@ -723,7 +735,7 @@
 
             SetDebugMode();
             var debugType = "OnLoad";
-            
+
             // Read in json course data
             $.getJSON("/software/gst/gst_Data.json").done(function (gstData) {
                 window.courseArr = gstData;
@@ -809,7 +821,7 @@
                 image.setAttribute("style", "margin-top:10px");
 
                 useDiv = document.getElementById("div" + divName);
-                
+
                 imageContainer.appendChild(image);
 
                 useDiv.appendChild(imageContainer);
