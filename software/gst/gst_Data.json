@@ -7,6 +7,36 @@
         {
           "Version": "1.5.999",
           "Date": "10/14/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNada",
+          "URLs": {
+            "GST": "http://localhost:53150/software/gst/deployments/debug/Golf Simulator Toolkit_1.5.0.18878_DEBUG.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg/ffmpeg_7.1.zip",
+            "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
+          }
+        },
+        {
+          "Version": "1.5.998",
+          "Date": "10/13/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSupport for FSX Play\r\n\t\t\tSession/Video files must be captured with Play running as they are deleted after the session is completed\r\n\t\tSession Monitoring To Copy Content to Local GST Folder\r\n\t\t\tEach simulation software has different behaviors, but long term plan for analytics can be spread across sessions from multiple softwares when the data is local to GST\r\n\t\t\t\tFSX 2020 Session Files will be available after uninstall/re-install\r\n\t\t\t\tFSX 2020 Swing Video files will be available after ending session (known bug - v8.8.0.15)\r\n\t\t\t\tFSX Play Session Files will be available after ending each session\r\n\t\t\t\tFSX Play Swing Video files will be avilable after exiting Play\r\n\tPerformance/QoL Improvements:\r\n\t\tAutomatic Session Monitoring Enabled\r\n\t\t\tCan be turned off in Settings, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares\r\n\t\tCatalog File Structure Changed to Year -> Month -> Day\r\n\t\t\tAll Exported and Copied content is now stored in a date cataloged directory layout for future reference\r\n\t\tGST Demo now Simulation Software selection\r\n\t\t\tAlso Default Simulation Software selection when first running GST\r\n\t\tPlay sound for last shot loaded from session monitoring\r\n\tTuning:\r\n\t\tProcessing a new shot with Session Monitoring and a Video Export running will now process the entire swing video(s)\r\n\t\t\tDoing this is not recommended, but if your system has enough horsepower, yrmv",
+          "URLs": {
+            "GST": "http://localhost:53150/software/gst/deployments/debug/Golf Simulator Toolkit_1.5.0.18878_DEBUG.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg/ffmpeg_7.1.zip",
+            "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
+          }
+        },
+        {
+          "Version": "1.5.997",
+          "Date": "10/12/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSupport for FSX Play\r\n\t\t\tSession/Video files must be captured with Play running as they are deleted after the session is completed\r\n\t\tSession Monitoring To Copy Content to Local GST Folder\r\n\t\t\tEach simulation software has different behaviors, but long term plan for analytics can be spread across sessions from multiple softwares when the data is local to GST\r\n\t\t\t\tFSX 2020 Session Files will be available after uninstall/re-install\r\n\t\t\t\tFSX 2020 Swing Video files will be available after ending session (known bug - v8.8.0.15)\r\n\t\t\t\tFSX Play Session Files will be available after ending each session\r\n\t\t\t\tFSX Play Swing Video files will be avilable after exiting Play\r\n\tPerformance/QoL Improvements:\r\n\t\tAutomatic Session Monitoring Enabled\r\n\t\t\tCan be turned off in Settings, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares\r\n\t\tCatalog File Structure Changed to Year -> Month -> Day\r\n\t\t\tAll Exported and Copied content is now stored in a date cataloged directory layout for future reference\r\n\t\tGST Demo now Simulation Software selection\r\n\t\t\tAlso Default Simulation Software selection when first running GST\r\n\t\tPlay sound for last shot loaded from session monitoring\r\n\tTuning:\r\n\t\tProcessing a new shot with Session Monitoring and a Video Export running will now process the entire swing video(s)\r\n\t\t\tDoing this is not recommended, but if your system has enough horsepower, yrmv",
+          "URLs": {
+            "GST": "http://localhost:53150/software/gst/deployments/debug/Golf Simulator Toolkit_1.5.0.18878_DEBUG.exe",
+            "FFMPEG": "http://localhost:53150/software/gst/dependencies/ffmpeg/ffmpeg_7.1.zip",
+            "DEMO": "http://localhost:53150/software/gst/dependencies/demo_data.zip"
+          }
+        },
+        {
+          "Version": "1.5.3",
+          "Date": "10/12/2025",
           "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSupport for FSX Play\r\n\t\t\tSession/Video files must be captured with Play running as they are deleted after the session is completed\r\n\t\tSession Monitoring To Copy Content to Local GST Folder\r\n\t\t\tEach simulation software has different behaviors, but long term plan for analytics can be spread across sessions from multiple softwares when the data is local to GST\r\n\t\t\t\tFSX 2020 Session Files will be available after uninstall/re-install\r\n\t\t\t\tFSX 2020 Swing Video files will be available after ending session (known bug - v8.8.0.15)\r\n\t\t\t\tFSX Play Session Files will be available after ending each session\r\n\t\t\t\tFSX Play Swing Video files will be avilable after exiting Play\r\n\tPerformance/QoL Improvements:\r\n\t\tAutomatic Session Monitoring Enabled\r\n\t\t\tCan be turned off in Settings, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares\r\n\t\tCatalog File Structure Changed to Year -> Month -> Day\r\n\t\t\tAll Exported and Copied content is now stored in a date cataloged directory layout for future reference\r\n\t\tGST Demo now Simulation Software selection\r\n\t\t\tAlso Default Simulation Software selection when first running GST\r\n\t\tPlay sound for last shot loaded from session monitoring\r\n\tTuning:\r\n\t\tProcessing a new shot with Session Monitoring and a Video Export running will now process the entire swing video(s)\r\n\t\t\tDoing this is not recommended, but if your system has enough horsepower, yrmv",
           "URLs": {
             "GST": "http://localhost:53150/software/gst/deployments/debug/Golf Simulator Toolkit_1.5.0.18878_DEBUG.exe",
@@ -28,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.5.2",
+      "LatestVersion": "1.5.3",
       "Deployments": [
+        {
+          "Version": "1.5.3",
+          "Date": "11/11/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tVideo Sync\r\n\t\t\tVideo sync offset settings for all original videos are now saved per shot\r\n\tPerformance/QoL Improvements:\r\n\t\tGST Upgrades\r\n\t\t\tCumulative release notes are now shown if several versions behind the latest\r\n\t\tGST Menu\r\n\t\t\tAdded custom altitude % adjustment to use for Stats Altitude Adjustment\r\n\t\t\t\tUse to override the default 10% at 5000ft if needed\r\n\tTuning:\r\n\t\tGST Main\r\n\t\t\tUnreleased build warning will now auto-close after 5 seconds on startup\r\n\t\t\tSeveral notification popups will now auto-close after 3 seconds\r\n\t\tGST Upgrades\r\n\t\t\tDownload GST message updated to notify of background process that will complete when done\r\n\t\tGST Menu\r\n\t\t\tAbout details updated\r\n\t\t\tUpdate Feedback form to include contact info if the user wants a response\r\n\t\t\tAll forms now have an icon to match that of their menu icon\r\n\t\t3rd Video Support\r\n\t\t\tWith 3 640x360 videos, the bottom (3rd) video is no longer stretched horizontally",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/9gh88ptjfugpmfnkznnib/Golf-Simulator-Toolkit_1.5.3.32519_BETA.exe?rlkey=gw6pogqzgk31jqbsyhs4hdn93&st=xeyxrx0h&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.5.2",
           "Date": "11/7/2025",
