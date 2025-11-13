@@ -1071,6 +1071,13 @@
     "Flyover": ""
   },
   {
+    "Name": "Las Vegas Country Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/las-vegas-country-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Laurel Valley",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/laurel-valley-golf-club",
@@ -1363,6 +1370,13 @@
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pebble-beach-links-course",
     "Price": 500,
     "Flyover": "https://www.youtube.com/watch?v=Bap3NOm3Jio"
+  },
+  {
+    "Name": "Pelican Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pelican-golf-club",
+    "Price": 150,
+    "Flyover": ""
   },
   {
     "Name": "Pelican Hill Golf Club - South Course",

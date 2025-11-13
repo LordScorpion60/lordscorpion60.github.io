@@ -2601,6 +2601,23 @@
     "MinRating": 64.3
   },
   {
+    "Name": "Las Vegas Country Club",
+    "Version": "1.5.0.8",
+    "Par": 72.0,
+    "Altitude": 2026.0,
+    "City": "Las Vegas",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Nevada,NV",
+    "Type": "Parkland",
+    "MaxYardage": 7137,
+    "MinYardage": 5533,
+    "MaxSlope": 136.0,
+    "MinSlope": 121.0,
+    "MaxRating": 74.9000015258789,
+    "MinRating": 66.0999984741211
+  },
+  {
     "Name": "Laurel Valley",
     "Version": "1.4.0.7",
     "Par": 72.0,
@@ -3313,6 +3330,23 @@
     "MinSlope": 124.0,
     "MaxRating": 76.1,
     "MinRating": 67.3
+  },
+  {
+    "Name": "Pelican Golf Club",
+    "Version": "1.5.0.7",
+    "Par": 70.0,
+    "Altitude": 15.0,
+    "City": "Belleair",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "Florida,FL",
+    "Type": "Parkland",
+    "MaxYardage": 6848,
+    "MinYardage": 4702,
+    "MaxSlope": 129.0,
+    "MinSlope": 106.0,
+    "MaxRating": 72.69999694824219,
+    "MinRating": 62.70000076293945
   },
   {
     "Name": "Pelican Hill Golf Club - South Course",
