@@ -23,13 +23,10 @@
 </script>
 
 <body>
+    <div id="msg">GST Loaded</div>
     <script>
         function hasFromGSTParam() {
             return new URLSearchParams(window.location.search).get('fromgst') === '1';
-        }
-        function isBot() {
-            var ua = navigator.userAgent.toLowerCase();
-            return /bot|crawl|slurp|spider|mediapartners|facebookexternalhit|google|bing|yandex|baidu|duckduckbot|embedly|quora|pinterest|reddit|twitterbot|whatsapp|linkedin|telegram|slackbot|vkshare|facebot|outbrain|w3c_validator/i.test(ua);
         }
         function isGSTUserAgent() {
             return navigator.userAgent.startsWith("GolfSimulatorToolkit");
@@ -43,10 +40,14 @@
             return "";
         }
 
-        if (hasFromGSTParam() && isGSTUserAgent() && !isBot()) {
+        if (hasFromGSTParam() && isGSTUserAgent()) {
+            var gstVersion = getGSTVersion();
             gtag('event', 'gst_load', {
-                'gst_version': getGSTVersion()
+                'gst_version': gstVersion
             });
+
+            // Set the GST version into the "msg" div
+            document.getElementById("msg").textContent = gstVersion;
         }
     </script>
 </body>
