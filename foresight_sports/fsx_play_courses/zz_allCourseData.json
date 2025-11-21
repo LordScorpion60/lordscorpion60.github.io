@@ -3333,7 +3333,7 @@
   },
   {
     "Name": "Pelican Golf Club",
-    "Version": "1.5.0.7",
+    "Version": "1.5.1.1",
     "Par": 70.0,
     "Altitude": 15.0,
     "City": "Belleair",
@@ -3345,8 +3345,8 @@
     "MinYardage": 4702,
     "MaxSlope": 129.0,
     "MinSlope": 106.0,
-    "MaxRating": 72.69999694824219,
-    "MinRating": 62.70000076293945
+    "MaxRating": 72.7,
+    "MinRating": 62.7
   },
   {
     "Name": "Pelican Hill Golf Club - South Course",
