@@ -9,8 +9,8 @@
 
     <!-- HTML Meta Tags -->
     <title>LordScorpion60's Domain - Golf Simulator Toolkit</title>
-    <meta name="description" content="Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video synchronization, shot analysis, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.">
-    <meta name="keywords" content="gst, gs toolkit, gs tools, golf sim toolkit, toolkit, tools, gst software, software">
+    <meta name="description" content="Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.">
+    <meta name="keywords" content="gst, gs toolkit, gs tools, golf sim toolkit, toolkit, tools, gst software, software, golf simulator">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://lordscorpion60.github.io/software/gst">
@@ -84,10 +84,10 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Golf Simulator Toolkit (GST)</h1>
                     <!--<p>
-                        Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!
-                    </p>-->
+        Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!
+    </p>-->
                     <p>
-                        Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video synchronization, shot analysis, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.
+                        Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, custom data exports, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.
                     </p>
 
                     <hr />
@@ -107,11 +107,11 @@
                     <h2 id="WHY_GST">Why use the Golf Simulator Toolkit and what does it do?:</h2>
                     <hr />
 
-                    <h4>GST is the premium tool designed specifically for simulation golfers who want to elevate their sessions and gain deeper insights through advanced data and video analysis.</h4>
+                    <h4>GST is the premium tool designed specifically for simulation golfers who want to elevate their sessions and gain deeper insights through advanced shot data, stats, video recording, and analysis.</h4>
 
                     <p><i>Simulation golfers may be locked to a system that lacks desired features and they cannot simply leverage capabilities from other systems...</i></p>
 
-                    <p><b>GST bridges the gap of golf simulation software offerings and professional training analysis by providing detailed shot tracking combined with powerful video tools for any shot data or video provided.</b></p>
+                    <p><b>GST bridges the gap of golf simulation software offerings and professional training analysis by providing detailed historical shot tracking combined with powerful video tools and customizable stats.</b></p>
 
                     <hr />
 
@@ -129,6 +129,10 @@
                         <li>Enhanced Coaching Potential - Share polished, data-rich videos with coaches or fellow players that provide all the context needed for meaningful feedback and improvement.</li>
 
                         <li>Customized Shot Focus - Export individual shots with custom timing and integrated replay footage, perfect for focusing on specific aspects of your game.</li>
+
+                        <li>Record Up To 3 Swing Videos - Leverage any resolution and frame rate your swing camera(s) support (in DirectShow).</li>
+
+                        <li>Maintain all historical data captured by GST for any simulation software used - View data at any time from your session/shot catalog!</li>
                     </ul>
 
                     <hr />
@@ -139,9 +143,9 @@
 
                     <ul>
                         <li>Load and analyze any session data with individual shot metrics</li>
-                        <li>See your stats and visualizations update in real time as you enable, disable, or filter shots</li>
+                        <li>See your stats and visualizations update in real time as you enable, disable, filter shots, or open them up at any time for review</li>
                         <li>Synchronize multiple video sources with precise timing controls</li>
-                        <li>Apply custom timing offsets for perfect video alignment</li>
+                        <li>Apply custom timing offsets to starting position for video alignment, and set end trim values to end videos where you want</li>
                         <li>Set custom labels for any club or ball to catalog your data however you like, making it easy to group, filter, and analyze your sessions based on your own naming preferences</li>
                         <li>Export different combinations of videos, replays, shot data and visualization charts, optimized for sharing and analysis</li>
                     </ul>
@@ -176,8 +180,10 @@
                                     <ul>
                                         <li>Open stats window per session; filter/sort shots; enable/disable shots</li>
                                         <li>Move/reorder data columns as needed</li>
+                                        <li>Group all shots by shot id (default) or Carry</li>
                                         <li>Export stats to PNG/CSV (summary only, full, add optional note); filename includes altitude/club when available</li>
                                         <li>PNG export header includes altitude</li>
+                                        <li>Choose which columns to export, exclude the ALL row, include only the AVG row (also includes Std. Dev)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -192,8 +198,10 @@
                                 <li>
                                     Video Integration &amp; Export
                                     <ul>
-                                        <li>Sync swing videos and shot replays; set per-video offsets</li>
-                                        <li>Play, pause, step, slow-motion, auto-repeat; keyboard shortcuts (Space, ← / →)</li>
+                                        <li>Sync swing videos and shot replays; set per-video offsets (beginning offset, and tail end frame) - Offsets saved for each shot if you open later</li>
+                                        <li>Play, pause, step, auto-repeat; keyboard shortcuts (Space, ← / →)</li>
+                                        <li>Set video playback speed from 10% to 100%</li>
+                                        <li>Enable Auto Video Playback to automatically start playing any swing videos after a shot is selected or loaded through session monitoring</li>
                                         <li>Support all video types (including FSX Play AVI); mixed frame-rate stepping kept in sync</li>
                                         <li>(PRO) Export merged videos with 2 or 3 (optional setting) video slots, optional appended replay; club/replay flags in filename</li>
                                         <li>(PRO) Override swing video with custom video for export</li>
@@ -211,7 +219,12 @@
                                 <li>
                                     Camera Settings Management
                                     <ul>
-                                        <li>Adjust/save/load DirectShow webcam settings</li>
+                                        <li>Open DirectShow webcam settings to adjust camera parameters - Settings auto-saved for future load</li>
+                                        <li>Load DirectShow webcam settings (if saved)</li>
+                                        <li>Open camera preview - Use in conjunction with open settings</li>
+                                        <li>(PRO) Select camera for recording - Select supported resolution and frame rate to add to and save the recording configuration</li>
+                                        <li>(PRO) Select camera recording method - Different methods available based on system performance</li>
+                                        <li>Detect cameras to refresh camera list - If reconnecting a camera with GST running</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -224,6 +237,7 @@
                                 <li>
                                     Altitude &amp; Units
                                     <ul>
+                                        <li>Adjust the Altitude Adjustment percentage as you like - Default is 10% per 5000ft</li>
                                         <li>Altitude captured shown in session details and Stats</li>
                                         <li>Altitude included in PNG header and export filenames</li>
                                         <li>Set/adjust session altitude from Stats and recalc shot data</li>
@@ -286,7 +300,7 @@
                     <hr />
 
                     <p>
-                        Currently, the supported golf simulation software list is:
+                        The golf simulation software currently supported by GST:
                     </p>
 
                     <ul>
@@ -408,7 +422,7 @@
                     <h2 id="GST_ROADMAP">What's next for the Golf Simulator Toolkit?:</h2>
                     <hr />
 
-                    <h4>GST is currently in the BETA phase with focus on feature functionality and data integrations</h4>
+                    <h3>GST is currently in the BETA phase with focus on feature functionality and data integrations</h3>
 
                     <p>
                         The development team is actively working on expanding GST capabilities while refining existing features based on user feedback.
@@ -432,9 +446,9 @@
 
                     <ul>
                         <li>Support for additional golf simulator software platforms</li>
-                        <li>Support for direct launch monitor data aquisition</li>
-                        <li>Native swing camera recording to support custom camera settings and video formats</li>
+                        <li>Support for direct launch monitor data acquisition</li>
                         <li>Improved data visualization with customizable overlay templates</li>
+                        <li>Down range shot visualization</li>
                         <li>Expanded export options including direct social media sharing</li>
                         <li>Coach analysis tools with annotation capabilities</li>
                         <li>Golf bag additions of adjustable data points such as avg distances, altitude/temperature adjustments, etc.</li>
@@ -477,15 +491,39 @@
 
                     <hr />
 
-                    <h4><b>Want to help our development progression?</b></h4>
+                    <h3><b>Want to help our development progression?</b></h3>
 
-                    <h4>Join our beta tester community and share your feedback through our in-app feedback system.</h4>
+                    <ul>
+                        <li>
+                            <h4>Join our beta tester community and share your feedback through our in-app feedback system.</h4>
+                        </li>
+                        <li>
+                            <h4>Request an EVAL license in GST to access all PRO features!</h4>
+                        </li>
+                    </ul>
 
                     <hr />
 
-                    <h4><b>Want to influence our development priorities?</b></h4>
-                    <h4>Consider using Patreon to sign up for a membership to have exclusive voting power! <a href="https://patreon.com/GolfSimulatorToolkit" target="_blank">Become a Member <i class="fa fa-external-link"></i></a></h4>
-                    <h4>You can also donate to help the cause or grease the skids... <a href="https://tiptopjar.com/gst" target="_blank">Send a Tip! <i class="fa fa-external-link"></i></a></h4>
+                    <h3><b>Want to influence our development priorities?</b></h3>
+
+                    <ul>
+                        <li>
+                            <h4>Consider using Patreon to sign up for a membership to have exclusive voting power!</h4>
+                            <ul>
+                                <li>
+                                    <h4><a href="https://patreon.com/GolfSimulatorToolkit" target="_blank">Become a Patreon Member <i class="fa fa-external-link"></i></a></h4>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>You can also donate to help the cause or grease the skids...</h4>
+                            <ul>
+                                <li>
+                                    <h4><a href="https://tiptopjar.com/gst" target="_blank">Send a Tip! <i class="fa fa-external-link"></i></a></h4>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <hr />
                     <h2 id="NOTES">Notes & Samples:</h2>
@@ -576,21 +614,48 @@
                                     </ul>
                                 </li>
                                 <li>
+                                    Include 3rd Video
+                                    <ul>
+                                        <li>This can be enabled to see the 3rd video slot (if needed) - The shot replay slot will be moved over to the right</li>
+                                    </ul>
+                                </li>
+                                <li>
                                     Configure DirectShow Cameras
                                     <ul>
                                         <li>
-                                            This will load a popup with the detected web camera(s) on the system being managed by DirectShow (it will also show each supported resolution and frame rate [if available] reported to DirectShow)
+                                            This will load a popup with the detected web camera(s) on the system being managed by DirectShow
                                             <ul>
-                                                <li>Any changes made in the settings are system wide and will affect other applications that do not have their own settings or ability to change camera settings (you can use this for them as well!)</li>
                                                 <li>
-                                                    If any changes are made in the camera settings, they will be saved to GST for future use as other apps make their own camera changes and leave them
+                                                    Any changes made in the settings are system wide and will affect other applications that do not have their own settings or ability to change camera settings (you can use this for them as well!)
                                                     <ul>
                                                         <li>
-                                                            In follow up GST sessions, just select each camera, click "Load GST Settings Into DirectShow" and you are ready to start your session!
+                                                            If any changes are made in the camera settings, they will be saved to GST for future use as other apps make their own camera changes and leave them
+                                                            <ul>
+                                                                <li>
+                                                                    In follow up GST sessions, just select each camera, click "Load GST Settings" and you are ready to start your session!
+                                                                </li>
+                                                            </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-
+                                                <li>Select Preview to check each camera - use in conjunction with the Open Settings to fine tune your settings</li>
+                                                <li>
+                                                    Set Camera Recording settings - Each selected camera will show supported resolution and frame rate reported to DirectShow - Choose one to Add Camera for Recording
+                                                </li>
+                                                <li>
+                                                    Select Recording Method to use based on system performance
+                                                    <ul>
+                                                        <li>
+                                                            MP4 Video (Memory) - Caches all video in memory to achieve the best video output, but longer video processing times and consumes a lot of system memory
+                                                        </li>
+                                                        <li>
+                                                            MP4 Video (Hybrid) - [DEFAULT] - Records video clips to file, then processes using memory for a blend of low memory use while recording and faster video processing
+                                                        </li>
+                                                        <li>
+                                                            MP4 Video (File) - Records everything to file, for the fastest video processing and least memory use, but video frame rate might not meet setting
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -600,6 +665,14 @@
                                     <ul>
                                         <li>
                                             This will load a popup with the customizable golf clubs and golf balls to be used for Session Data customization and Session Monitoring data override (when available)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Configure Altitude Adjustment
+                                    <ul>
+                                        <li>
+                                            This will load a popup with a customizable percentage (5% - 15%) to use for the carry altitude adjustment - suit to your likings - default is 10% per 5000ft.
                                         </li>
                                     </ul>
                                 </li>
@@ -622,7 +695,7 @@
                             GST Prerequisite Status Icon/Menu:
                             <ul>
                                 <li>
-                                    A green checkmark is the ideal state that GST has everything it needs to fullfill all features
+                                    A green checkmark is the ideal state that GST has everything it needs to fulfill all features
                                     <ul>
                                         <li>You can click on the icon and click "Check/Download Prerequisites" to force a prerequisite check</li>
                                     </ul>
@@ -698,7 +771,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 11/7/2025</em>
+                    <em>Last Updated: 12/11/2025</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
