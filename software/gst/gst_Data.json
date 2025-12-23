@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.6.1",
+      "LatestVersion": "1.6.2",
       "Deployments": [
+        {
+          "Version": "1.6.2",
+          "Date": "12/22/2025",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tVideo Export\r\n\t\t\tA new \"Export Options\" button is available to select which shot data fields to include (or exclude) from video export. Choice will be remembered for the duration of the GST session\r\n\tTuning:\r\n\t\tSession Stats\r\n\t\t\tExport Options window gets an Icon",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/ryhakut4ii10frqqzttuj/Golf-Simulator-Toolkit_1.6.2.26756_BETA.exe?rlkey=h6tf5otcwgvrsjn545yr9ltjp&st=m2cn6q7o&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.6.1",
           "Date": "12/10/2025",
