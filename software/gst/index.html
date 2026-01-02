@@ -124,6 +124,8 @@
 
                         <li>Precise Playback Control - Perform detailed analysis with synchronized video navigation, slow-motion review down to 10% speed, and frame-by-frame examination.</li>
 
+                        <li>Explore Shot Visualization - View or replay the flight of any shot from any angle in 3D.</li>
+
                         <li>Visualize and Compare Session Stats - Use interactive, physics-based charts by club and ball, including live-updating flight and dispersion views, filtering, and export options.</li>
 
                         <li>Enhanced Coaching Potential - Share polished, data-rich videos with coaches or fellow players that provide all the context needed for meaningful feedback and improvement.</li>
@@ -148,6 +150,7 @@
                         <li>Apply custom timing offsets to starting position for video alignment, and set end trim values to end videos where you want</li>
                         <li>Set custom labels for any club or ball to catalog your data however you like, making it easy to group, filter, and analyze your sessions based on your own naming preferences</li>
                         <li>Export different combinations of videos, replays, shot data and visualization charts, optimized for sharing and analysis</li>
+                        <li>View the flight of a shot from any session at any time after the session has been completed</li>
                     </ul>
 
                     <hr />
@@ -158,6 +161,13 @@
                         <li>
                             <b>Current list of specific functionality (in no particular order):</b>
                             <ul>
+                                <li>
+                                    Shot Visualization
+                                    <ul>
+                                        <li>(PRO) View the flight of any recorded shot in 3D</li>
+                                        <li>(PRO) Replay the entire ball flight of any recorded shot from any angle from start to finish</li>
+                                    </ul>
+                                </li>
                                 <li>
                                     Configure Golf Bag
                                     <ul>
@@ -336,7 +346,7 @@
                     <hr />
 
                     <p>
-                        The following examples use the Demo Data that can be downloaded within GST should you not have session data available to load.
+                        Some of the following examples use the Demo Data that can be downloaded within GST should you not have session data available to load.
                     </p>
                     <p>
                         <i>You can download the Demo Data first and follow along...</i>
@@ -358,6 +368,14 @@
                         <div id="divSelectShot">
                             <button class="btn btn-info" id="btnSelectShot_Show" onclick='showImage("SelectShot", "2_camera_export.gif")'>Show Video</button>
                             <button class="btn btn-warning" style="display:none" id="btnSelectShot_Close" onclick='hideImage("SelectShot")'>Close Video</button>
+                        </div>
+                    </p>
+
+                    <h3>Open Shot Visualizer (Optional)</h3>
+                    <p>
+                        <div id="divShotVisualizer">
+                            <button class="btn btn-info" id="btnShotVisualizer_Show" onclick='showImage("ShotVisualizer", "GST_Shot_Visualizer_Demo_1_7_0.gif")'>Show Video</button>
+                            <button class="btn btn-warning" style="display:none" id="btnShotVisualizer_Close" onclick='hideImage("ShotVisualizer")'>Close Video</button>
                         </div>
                     </p>
 
@@ -447,10 +465,11 @@
                     <ul>
                         <li>Support for additional golf simulator software platforms</li>
                         <li>Support for direct launch monitor data acquisition</li>
+                        <li>Automatic shot replay video capture</li>
+                        <li>Shot Visualization data tiles and configurable presets</li>
                         <li>Improved data visualization with customizable overlay templates</li>
-                        <li>Down range shot visualization</li>
                         <li>Expanded export options including direct social media sharing</li>
-                        <li>Coach analysis tools with annotation capabilities</li>
+                        <li>Coach video analysis tools with annotation capabilities</li>
                         <li>Golf bag additions of adjustable data points such as avg distances, altitude/temperature adjustments, etc.</li>
                         <li>Add customizable data/notes to your shot data that was not captured by the simulation software</li>
                         <li>
@@ -771,7 +790,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 12/11/2025</em>
+                    <em>Last Updated: 1/1/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
