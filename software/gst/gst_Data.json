@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.7.0",
+      "LatestVersion": "1.8.0",
       "Deployments": [
+        {
+          "Version": "1.8.0",
+          "Date": "1/6/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tAutomatic Shot Replay Capture\r\n\t\t\tNew Record Replay button will automatically record and capture the next shot to a video file\r\n\t\t\t\tYou can select the file via Load Replay to add to your shot export (Append To Export)\r\n\t\t\t\t\tCheck: golf_simulator_toolkit\\simulation_software\\{SIM}\\SHOT_REPLAY\\{YYYY}\\{MM}\\{DD}\\{DateOfShot}_shot_replay.mkv\r\n\t\t\tRight click on the Record Replay to select a different screen to record (if not using Main screen)\r\n\tTuning:\r\n\t\tShot Visualization\r\n\t\t\tUpdated view preset starting zoom levels\r\n\t\t\tStats are now a lot bigger and easier to read\r\n\t\t\tStats will now stay visible at any zoom level\r\n\t\tLicense Request for Windows 11 Users\r\n\t\t\tReplaced deprecated mechanism with one to support recently patched Windows 11 systems\r\n\t\tCustom FSX 2020 install location support\r\n\t\t\tNew menu item under Settings -> Simulation Software -> FSX 2020 to set custom installation path and executable",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/wftqkfci4faddp5iuk6xk/Golf-Simulator-Toolkit_1.8.0.34555_BETA.exe?rlkey=tp8bwx8r25dvxysikwdrnih9c&st=02fboigz&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.7.0",
           "Date": "1/1/2026",
