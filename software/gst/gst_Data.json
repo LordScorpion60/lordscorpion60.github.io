@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.0",
+      "LatestVersion": "1.8.1",
       "Deployments": [
+        {
+          "Version": "1.8.1",
+          "Date": "1/7/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tFeedback form now supports attaching a GST log file\r\n\tTuning:\r\n\t\tRecord Replay\r\n\t\t\tLoading Video Players message no longer shown after downloading video dependencies for the first time\r\n\t\tVideo Export\r\n\t\t\tShot replay exported by itself (no swing videos marked for export) will now use replay start/end trim values (if set)\r\n\t\tSelect Shot Replay\r\n\t\t\tDirectory will default to the shot_replay folder of the current sim software for today (if exists) - Else it will move up the directory structure to the next folder available\r\n\t\tSet Video 1-3\r\n\t\t\tDirectory will default to the swing_video folder of the current sim software for today (if exists) - Else it will move up the directory structure to the next folder available\r\n\t\tGST Log Files\r\n\t\t\tNew setting added (Setting -> Log Level) to change the GST logging level to Warning (Temporary) for issue troubleshooting",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/dba8vugjdc1clx5cyoohr/Golf-Simulator-Toolkit_1.8.1.36515_BETA.exe?rlkey=k9nb96ukz3kunhyc6uwoaroj8&st=cgl5xkgc&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.0",
           "Date": "1/6/2026",
