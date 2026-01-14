@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.3",
+      "LatestVersion": "1.8.4",
       "Deployments": [
+        {
+          "Version": "1.8.4",
+          "Date": "1/13/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSet Custom Session Player Name\r\n\t\t\tNew UI option to set and override player name as shots come in\r\n\t\t\tYou can also right-click on the Session Player Name (under Session Data) and change the name to any in your player list, or open the Configure Player Names window to add, rename, and/or select a player name\r\n\t\t\t\tYou can also restore the original recorded player name if needed\r\n\r\n\tNew Features - PRO:\r\n\t\tRecord Shot Visualization as a Shot Replay On Demand\r\n\t\t\tThe GST Shot Visualizer now has a record button that will play and record the shot currently loaded, and it will be automatically added as a shot replay\r\n\t\t\t\tMissed the simulator replay? Now you can capture the flight whenever you want, at any angle you want!\r\n\t\t\t\t\tIf you already have a shot replay captured for that shot, you will see a warning to overwrite before proceeding\r\n\r\n\tTuning:\r\n\t\tConfigure Golf Bag\r\n\t\t\tMinimize and Maximize buttons have been removed\r\n\t\tShot Replay\r\n\t\t\tThe shot replay video playback will no longer be stopped short when no End At value is set\r\n\t\tVideo Playback\r\n\t\t\tThe right-click context menu of any video will now take you to where they are if you click the path value (new icon added)",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/ownmp9278xuy8k6xnaro3/Golf-Simulator-Toolkit_1.8.4.41373_BETA.exe?rlkey=d4ym3hpduw3l1ja8hbpnda2oj&st=eoxgxn2o&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.3",
           "Date": "1/11/2026",
