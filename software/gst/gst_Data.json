@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.4",
+      "LatestVersion": "1.8.5",
       "Deployments": [
+        {
+          "Version": "1.8.5",
+          "Date": "1/20/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tVideo Export Playback Speed\r\n\t\t\tIn the Export Options you can now set the playback speed to be used for video export\r\n\t\t\t\tThis setting will persist until you restart GST\r\n\t\t\tYou can also set the export speed of each video you have configured individually\r\n\t\t\t\tFor example, you can slow one video down over the rest\r\n\tTuning:\r\n\t\tSettings Menu\r\n\t\t\tLicense check now required when clicking on Configure Golf Bag\r\n\t\t\tAdded link to Configure Player Names\r\n\t\tSession Monitoring\r\n\t\t\tCamera and Recording Replay will be disarmed if Session Monitoring is turned off\r\n\t\t\tRecording Replay cannot be started if Session Monitoring is turned off\r\n\t\tExport Options\r\n\t\t\tMenu can now be closed with Escape key\r\n\t\t\tSettings now persist until you restart GST\r\n\t\t\tYou can now de-select all data fields to export videos without data\r\n\t\tVideo Export\r\n\t\t\tData tiles are now correctly scaled when not exporting all fields",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/fv084fj5grefg3oh8adku/Golf-Simulator-Toolkit_1.8.5.34625_BETA.exe?rlkey=tnl1r694p94a2fx9rvx9r51v9&st=ujltn8m4&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.4",
           "Date": "1/13/2026",
@@ -477,7 +487,7 @@
   "Licenses": [
     {
       "System": "tkp+MRSFbNlMkcFXLVjDUXjqAdrf5Fx6qouAbYdgO0p9pHPWxdQ5qyZhEvMF2BUk",
-      "License": "EVAL_IT"
+      "License": "EVAL_SV"
     },
     {
       "System": "XOKF9yLQZw6NaPjkuaBLfyhj0IUAvN8tb8REDQakroVCb97QgzvXGZxJTCwG6klf",
