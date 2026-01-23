@@ -9,7 +9,7 @@
 
     <!-- HTML Meta Tags -->
     <title>LordScorpion60's Domain - Golf Simulator Toolkit</title>
-    <meta name="description" content="Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.">
+    <meta name="description" content="Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, shot replay recording, custom data exports, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.">
     <meta name="keywords" content="gst, gs toolkit, gs tools, golf sim toolkit, toolkit, tools, gst software, software, golf simulator">
 
     <!-- Facebook Meta Tags -->
@@ -87,7 +87,7 @@
         Welcome to the GST homepage containing the latest documentation, release notes, download links, and FAQ's!
     </p>-->
                     <p>
-                        Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, custom data exports, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.
+                        Welcome to the GST homepage - the advanced tool for simulation golfers offering comprehensive data tracking, video recording, video synchronization, shot analysis, shot replay recording, custom data exports, and more! Find the latest documentation, release notes, downloads, videos, and FAQs.
                     </p>
 
                     <hr />
@@ -107,7 +107,7 @@
                     <h2 id="WHY_GST">Why use the Golf Simulator Toolkit and what does it do?:</h2>
                     <hr />
 
-                    <h4>GST is the premium tool designed specifically for simulation golfers who want to elevate their sessions and gain deeper insights through advanced shot data, stats, video recording, and analysis.</h4>
+                    <h4>GST is the premium tool designed specifically for simulation golfers who want to elevate their sessions and gain deeper insights through advanced shot data, stats, video &amp; replay recording, and analysis.</h4>
 
                     <p><i>Simulation golfers may be locked to a system that lacks desired features and they cannot simply leverage capabilities from other systems...</i></p>
 
@@ -124,7 +124,7 @@
 
                         <li>Precise Playback Control - Perform detailed analysis with synchronized video navigation, slow-motion review down to 10% speed, and frame-by-frame examination.</li>
 
-                        <li>Explore Shot Visualization - View or replay the flight of any shot from any angle in 3D.</li>
+                        <li>Explore Shot Visualization - View or replay the flight of any shot from any angle in 3D. Record it as your shot replay to include in your total shot video export.</li>
 
                         <li>Visualize and Compare Session Stats - Use interactive, physics-based charts by club and ball, including live-updating flight and dispersion views, filtering, and export options.</li>
 
@@ -133,6 +133,8 @@
                         <li>Customized Shot Focus - Export individual shots with custom timing and integrated replay footage, perfect for focusing on specific aspects of your game.</li>
 
                         <li>Record Up To 3 Swing Videos - Leverage any resolution and frame rate your swing camera(s) support (in DirectShow).</li>
+                        
+                        <li>Automatic Replay Record - Capture the simulator screen during a shot to include as the actual shot replay.</li>
 
                         <li>Maintain all historical data captured by GST for any simulation software used - View data at any time from your session/shot catalog!</li>
                     </ul>
@@ -166,6 +168,14 @@
                                     <ul>
                                         <li>(PRO) View the flight of any recorded shot in 3D</li>
                                         <li>(PRO) Replay the entire ball flight of any recorded shot from any angle from start to finish</li>
+                                        <li>(PRO) Record the flight as the shot replay (if you weren't able to capture the simulator result) to export along with swing videos to tell the entire story</li>
+                                        <li>(PRO) Select and display specific data tiles, save them as a preset, or load/rename/delete an existing preset</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Record Replay
+                                    <ul>
+                                        <li>(PRO) Select a screen to automatically record the simulator software "result" to capture as the shot replay</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -213,11 +223,13 @@
                                         <li>Set video playback speed from 10% to 100%</li>
                                         <li>Enable Auto Video Playback to automatically start playing any swing videos after a shot is selected or loaded through session monitoring</li>
                                         <li>Support all video types (including FSX Play AVI); mixed frame-rate stepping kept in sync</li>
-                                        <li>(PRO) Export merged videos with 2 or 3 (optional setting) video slots, optional appended replay; club/replay flags in filename</li>
-                                        <li>(PRO) Override swing video with custom video for export</li>
-                                        <li>Option to exclude swing videos from export</li>
                                         <li>Save video frame/screenshot via video right-click context menu</li>
                                         <li>Copy filename prefix for replay matching via video right-click context menu</li>
+                                        <li>(PRO) Export merged videos with 2 or 3 (optional setting) video slots, optional appended replay; club/replay flags in filename</li>
+                                        <li>(PRO) Override swing video with custom video for export</li>
+                                        <li>(PRO) Option to exclude swing videos from export</li>
+                                        <li>(PRO) Export specific shot data fields if a targeted data set is needed</li>
+                                        <li>(PRO) Set the export video playback speed (1-100%) if you want the final shot output to be slowed down for analysis</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -338,7 +350,7 @@
                     <p>Notes:</p>
                     <ul>
                         <li>Your browser may block the .exe since it is not digitally signed at the moment. Windows Defender might also block it. If so, please reach out.</li>
-                        <li>It's best to place the first download of GST into it's own folder (i.e. \GST) to keep all of its output/contents in the same place going forward.</li>
+                        <li>Its best to place the first download of GST into it's own folder (i.e. \GST) to keep all of its output/contents in the same place going forward.</li>
                     </ul>
 
                     <hr />
@@ -465,8 +477,6 @@
                     <ul>
                         <li>Support for additional golf simulator software platforms</li>
                         <li>Support for direct launch monitor data acquisition</li>
-                        <li>Automatic shot replay video capture</li>
-                        <li>Shot Visualization data tiles and configurable presets</li>
                         <li>Improved data visualization with customizable overlay templates</li>
                         <li>Expanded export options including direct social media sharing</li>
                         <li>Coach video analysis tools with annotation capabilities</li>
@@ -633,9 +643,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    Include 3rd Video
+                                    Configure Swing Video(s)
                                     <ul>
-                                        <li>This can be enabled to see the 3rd video slot (if needed) - The shot replay slot will be moved over to the right</li>
+                                        <li>Set the number of videos you plan on using in GST to adjust the UI panels. Usually the number of swing cameras you are using</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -680,18 +690,26 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    Configure Golf Bag
+                                    Configure Altitude Adjustment
                                     <ul>
                                         <li>
-                                            This will load a popup with the customizable golf clubs and golf balls to be used for Session Data customization and Session Monitoring data override (when available)
+                                            This will load a popup with a customizable percentage (5% - 15%) to use for the carry altitude adjustment - suit to your liking - default is 10% per 5000ft.
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    Configure Altitude Adjustment
+                                    Configure Player Names
                                     <ul>
                                         <li>
-                                            This will load a popup with a customizable percentage (5% - 15%) to use for the carry altitude adjustment - suit to your likings - default is 10% per 5000ft.
+                                            This will load a popup with the customizable player names to be used for Session Data customization and Session Monitoring data override (when available)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Configure Golf Bag
+                                    <ul>
+                                        <li>
+                                            This will load a popup with the customizable golf clubs and golf balls to be used for Session Data customization and Session Monitoring data override (when available)
                                         </li>
                                     </ul>
                                 </li>
@@ -700,7 +718,7 @@
                         <li>
                             Launch Simulation Software (Far Right)
                             <ul>
-                                <li>You can start your sim software directly from GST to help main a good workflow of making sure GST is load and monitoring for sessions to ensure the best data/swing capture opportunities</li>
+                                <li>You can start your sim software directly from GST to help maintain a good workflow of making sure GST is load and monitoring for sessions to ensure the best data/swing capture opportunities</li>
                                 <li>CTRL-S will also start your selected sim software!</li>
                             </ul>
                         </li>
@@ -790,7 +808,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 1/1/2026</em>
+                    <em>Last Updated: 1/22/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
