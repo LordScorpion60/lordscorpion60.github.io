@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.5",
+      "LatestVersion": "1.8.6",
       "Deployments": [
+        {
+          "Version": "1.8.6",
+          "Date": "1/22/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tShot Visualization - Data Tiles\r\n\t\t\tThe GST Shot Visualizer now has a Data Tiles menu where you can add any data tile you want, save them as a preset, or open saved presets!\r\n\t\t\t\tYou can also delete and rename presets as needed\t\t\t\t\t\r\n\tTuning:\r\n\t\tVideo Export - Shot Replay\r\n\t\t\tShot replay videos recorded in the GST Shot Visualizer will now export with swing videos when recorded at full screen (maximized)",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/922397weo1cgzf0l0ooe8/Golf-Simulator-Toolkit_1.8.6.32810_BETA.exe?rlkey=l47z7pebsgrlv5zf1v6p7cgl5&st=c3o4moco&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.5",
           "Date": "1/20/2026",
@@ -491,7 +501,7 @@
     },
     {
       "System": "XOKF9yLQZw6NaPjkuaBLfyhj0IUAvN8tb8REDQakroVCb97QgzvXGZxJTCwG6klf",
-      "License": "EVAL_IT"
+      "License": "EVAL_SV"
     },
     {
       "System": "EnHSaf7CUSzOrfrnOE5b7y3itKxLO7xj5wbvJVxDFBDy03j5SVRBCnalITvtXgN/fiP2WmS0CW6lvaQbtutsxw==",
