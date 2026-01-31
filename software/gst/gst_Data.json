@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.7",
+      "LatestVersion": "1.8.8",
       "Deployments": [
+        {
+          "Version": "1.8.8",
+          "Date": "1/30/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tPerformance/QoL Improvements:\r\n\t\tGST Session Loading\r\n\t\t\tAdd Replay Indicator to Session List and Shot Data\r\n\t\t\t\tUpdated session entry now includes \"REPLAY\" if a shot replay exists for any shot in the session\r\n\t\t\t\tUpdated the Shots table to include a \"Replay\" column to indicate if the shot has an associated replay file\r\n\t\tRecord Swing Videos\r\n\t\t\tCamera Recording Quality and Performance \r\n\t\t\t\tQuality and performance increases with changes to encoding and video settings that reduce video processing times, file size, and system performance impact\r\n\t\tSwing Video End Offset\r\n\t\t\tEnhanced Controls\r\n\t\t\t\tBigger font for video offset settings\r\n\t\t\t\tVideo end offset right-click context menu now includes: +/- 10, +/- 100 (frames)\r\n\t\t\t\tVideo end offset will now always be 1 higher than start offset\r\n\t\t\t\tVideo end offset values cannot be changed while paused during playback\r\n\t\t\t\tVideo end offset settings are now saved to the session/shot permanently\r\n\tTuning:\r\n\t\tVideo Sync Offset Controls\r\n\t\t\tStepping/jumping forward no longer pushes the end frame offset value. You cannot step/jump past the end offset\r\n\t\tVideo Playback\r\n\t\t\tWhen a small end offset is applied, looped playback now restarts the video from the beginning",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/fosv6cy2g4s5hongy54p1/Golf-Simulator-Toolkit_1.8.8.27814_BETA.exe?rlkey=zb4auca9imf3jrgjwwn0psp37&st=ry0lmu66&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.7",
           "Date": "1/27/2026",
