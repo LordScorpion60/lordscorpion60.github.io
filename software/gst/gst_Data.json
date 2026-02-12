@@ -58,8 +58,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.8.8",
+      "LatestVersion": "1.8.9",
       "Deployments": [
+        {
+          "Version": "1.8.9",
+          "Date": "2/11/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - BASIC:\r\n\t\tSession Notes\r\n\t\t\tYou can now open a dedicated window to capture rich formatted text (supports CTRL+B,I,U formatting shortcuts) & paste images to log notes for the current session (CTRL+S to save)\r\n\tTuning:\r\n\t\tGST Main\r\n\t\t\tGST will now scale the UI correctly when starting at 4k resolution on Windows 11\r\n\t\tClub Data\r\n\t\t\tMoved a few Quad extended club data components around to the correct position\r\n\t\tSession Stats\r\n\t\t\tClub colors will now reset after a bulk club/ball rename to give each group a unique color\r\n\t\t\tColor hues adjusted for different ball combos per club to be easier to see in the charts\r\n\t\t\tRemoved the 4 row limit from the chart legend for each club/ball combo",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/42va98654qdtrddn08rkr/Golf-Simulator-Toolkit_1.8.9.25440_BETA.exe?rlkey=65ncib4bohvkco2w97toik0dq&st=80luyze9&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.8.8",
           "Date": "1/30/2026",
