@@ -1880,6 +1880,14 @@
             ShowActiveModal("courseNotesAll");
         }
 
+        function htmlUnescape(str) {
+            return str.replace(/&amp;/g, '&')
+                .replace(/&quot;/g, '"')
+                .replace(/&#39;/g, "'")
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>');
+        }
+
         function saveCourseNotes() {
             var course = GetSelectedCourseName();
 
@@ -1921,16 +1929,18 @@
             }
 
             if (courseCompareList != null) {
-                Debug("Removing course from compare: " + course);
+                var unescapedCourse = htmlUnescape(course);
+
+                Debug("Removing course from compare: " + unescapedCourse);
 
                 courseCompareList = courseCompareList.filter(function (item) {
-                    return item !== course
+                    return item !== unescapedCourse
                 })
 
                 SessionStorage('set', "courseCompareList", JSON.stringify(courseCompareList));
 
                 // Update button if selected course
-                if (selectedCourse == course) {
+                if (selectedCourse == unescapedCourse) {
                     SetCourseCompareIcon(false);
                 }
 
@@ -2113,6 +2123,14 @@
             }
         }
 
+        function htmlEscape(str) {
+            return str.replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
         function compareCoursesSort() {
             Debug("setTimeout triggered...");
 
@@ -2121,7 +2139,8 @@
 
             courseCompareList.forEach((course) => {
                 try {
-                    var $matchedCourseFind = $('[id="compare_' + course + '"]').clone();
+                    var escapedCourse = htmlEscape(course);
+                    var $matchedCourseFind = $('[id="compare_' + escapedCourse + '"]').clone();
 
                     Debug(course + " - matched to - " + $matchedCourseFind[0].id, "compareCoursesSort");
 
