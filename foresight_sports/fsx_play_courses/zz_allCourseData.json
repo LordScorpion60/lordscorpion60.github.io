@@ -4233,6 +4233,23 @@
     "MinRating": 65.5
   },
   {
+    "Name": "Solina Golf Club",
+    "Version": "1.5.0.9",
+    "Par": 71.0,
+    "Altitude": 213.8000030517578,
+    "City": "West Columbia",
+    "Country": "United States",
+    "Continent": "North America",
+    "State": "South Carolina,SC",
+    "Type": "Parkland",
+    "MaxYardage": 6898,
+    "MinYardage": 4529,
+    "MaxSlope": 142.0,
+    "MinSlope": 98.0,
+    "MaxRating": 74.19999694824219,
+    "MinRating": 62.099998474121094
+  },
+  {
     "Name": "South Hills Golf Course",
     "Version": "1.4.0.2",
     "Par": 72.0,
