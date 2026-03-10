@@ -135,6 +135,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Indian%20Hill
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Indian%20Springs%20Ranch.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Innisbrook%20Resort%20-%20Island%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Interlachen%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Irondequoit%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Ivanhoe%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/James%20River%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Jimmie%20Austin%20Golf%20Club.html
@@ -161,6 +162,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/LedgeRock%20G
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Lehigh%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Linfield%20National%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Loch%20Lloyd%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/London%20Hunt%20%26%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Lone%20Wolf%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Long%20Beach%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Longleaf%20Golf%20%26%20Family%20Club.html
@@ -193,6 +195,8 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Oaks%20Countr
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Ocean%20Pines%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Omaha%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Orchard%20Park.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Pacific%20Pines%20Golf%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Palo%20Verde%20Par%203%20%26%20Practice.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Panther%20Creek%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Paris.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Parkersburg%20Country%20Club.html
@@ -244,6 +248,7 @@ https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Saxe%20Gotha.
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Schaumburg.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Schuylkill%20Country%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Scioto%20Reserve%20Country%20Club.html
+https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Scorpion%27s%20Tail%20Golf%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/SentryWorld%20Golf%20Course.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Serengeti%20Golf%20Club.html
 https://lordscorpion60.github.io/foresight_sports/fsx_play_courses/Sewickley%20Heights.html

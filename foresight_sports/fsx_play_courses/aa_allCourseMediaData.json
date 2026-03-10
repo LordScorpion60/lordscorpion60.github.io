@@ -931,6 +931,13 @@
     "Flyover": ""
   },
   {
+    "Name": "Irondequoit Country Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/irondequoit-country-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
     "Name": "Ivanhoe Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/ivanhoe-club",
@@ -1109,6 +1116,13 @@
     "Name": "Loch Lloyd Country Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/loch-lloyd-country-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "London Hunt & Country Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/london-hunt-country-club",
     "Price": 150,
     "Flyover": ""
   },
@@ -1333,6 +1347,20 @@
     "Name": "Orchard Park",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/orchardpark",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "Pacific Pines Golf Club",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/pacific-pines-golf-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "Palo Verde Par 3 & Practice",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/palo-verde-par-3-practice",
     "Price": 150,
     "Flyover": ""
   },
@@ -1690,6 +1718,13 @@
     "Name": "Scioto Reserve Country Club",
     "FSX_2020": "1",
     "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/scioto-reserve-country-club",
+    "Price": 150,
+    "Flyover": ""
+  },
+  {
+    "Name": "Scorpion's Tail Golf Course",
+    "FSX_2020": "0",
+    "Buy": "https://www.foresightsports.com/collections/fsx-courses/products/scorpions-tail-golf-course",
     "Price": 150,
     "Flyover": ""
   },
