@@ -146,7 +146,7 @@
                     <p>Unlike basic simulator software that only show immediate results or make it difficult to analyze and export data after the session ends, GST allows you to:</p>
 
                     <ul>
-                        <li>Load and analyze any session data with individual shot metrics</li>
+                        <li>Load and analyze session data with individual shot metrics and visualization of any shot ever captured</li>
                         <li>See your stats and visualizations update in real time as you enable, disable, filter shots, or open them up at any time for review</li>
                         <li>Synchronize multiple video sources with precise timing controls</li>
                         <li>Apply custom timing offsets to starting position for video alignment, and set end trim values to end videos where you want</li>
@@ -185,6 +185,7 @@
                                         <li>(PRO) Apply custom club/ball labels to existing shot(s) in a session</li>
                                         <li>(PRO) Set override club/ball labels to be applied to incoming shots while using Session Monitoring</li>
                                         <li>(PRO) Bulk edit/restore club &amp; ball labels from Session Stats</li>
+                                        <li>(PRO) Bulk edit/restore club &amp; ball labels of all shots in the current Session (right-click on Shots table column headers)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -224,18 +225,32 @@
                                         <li>Enable Auto Video Playback to automatically start playing any swing videos after a shot is selected or loaded through session monitoring</li>
                                         <li>Support all video types (including FSX Play AVI); mixed frame-rate stepping kept in sync</li>
                                         <li>Save video frame/screenshot via video right-click context menu</li>
-                                        <li>Copy filename prefix for replay matching via video right-click context menu</li>
+                                        <li>Copy video filename prefix for manual replay matching via video right-click context menu</li>
                                         <li>(PRO) Export merged videos with 2 or 3 (optional setting) video slots, optional appended replay; club/replay flags in filename</li>
                                         <li>(PRO) Override swing video with custom video for export</li>
                                         <li>(PRO) Option to exclude swing videos from export</li>
                                         <li>(PRO) Export specific shot data fields if a targeted data set is needed</li>
                                         <li>(PRO) Set the export video playback speed (1-100%) if you want the final shot output to be slowed down for analysis</li>
+                                        <li>
+                                            (PRO) Video drawing tools that can be applied to all 3 swing videos independently, in any color: Line, Circle/Oval, Square/Rectangle, Angle Measurement (with degrees)
+                                            <ul>
+                                                <li>Ctrl-Z to undo last item drawn</li>
+                                                <li>Erase tool will prompt to delete all drawings from each video that has them</li>
+                                                <li>Right-click while a drawing tool is active to deactivate it. Clicking anywhere outside the video will auto deactivate the drawing tool</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
                                     Shot Replay Controls
                                     <ul>
                                         <li>Load/trim shot replays (start/end offsets)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Session Notes
+                                    <ul>
+                                        <li>Capture rich formatted text (supports CTRL+B,I,U formatting shortcuts) & paste images to log notes for the current session (CTRL+S to save)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -345,6 +360,7 @@
                     <p>System Requirements:</p>
                     <ul>
                         <li>Win 10 or newer</li>
+                        <li>Nvidia graphics card (Driver: 570.xx or newer) is preferred for the best video capture and export performance</li>
                     </ul>
 
                     <p>Notes:</p>
@@ -808,7 +824,7 @@
                     </p>
 
                     <hr />
-                    <em>Last Updated: 1/22/2026</em>
+                    <em>Last Updated: 3/20/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
