@@ -2,8 +2,8 @@
   "Pipelines": [
     {
       "Build": "BETA_THE_RANGE",
-      "LatestVersion": "260426-1030",
-      "URL": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+      "LatestVersion": "260501-1502",
+      "URL": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
     },
     {
       "Build": "DEBUG",
@@ -84,7 +84,7 @@
             "GST": "https://www.dropbox.com/scl/fi/ljrugrn9xgve5f7wbuhep/Golf-Simulator-Toolkit_1.9.4.4878_BETA.exe?rlkey=a2xdrrgexur9rccph8sfni1yl&st=gq5pt2x1&dl=1",
             "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
             "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1",
-            "THE_RANGE": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+            "THE_RANGE": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
           }
         },
         {
@@ -95,7 +95,7 @@
             "GST": "https://www.dropbox.com/scl/fi/k98psbleq6e42imqh3bsg/Golf-Simulator-Toolkit_1.9.3.37390_BETA.exe?rlkey=spqht4z6uyz7uif3jfu71hvzh&st=78rtxtqf&dl=1",
             "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
             "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1",
-            "THE_RANGE": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+            "THE_RANGE": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
           }
         },
         {
@@ -106,7 +106,7 @@
             "GST": "https://www.dropbox.com/scl/fi/iuj8ubit0axychxdop0lj/Golf-Simulator-Toolkit_1.9.2.32034_BETA.exe?rlkey=zmih09vebneiuj39eenkcrrz6&st=vr1co9iy&dl=1",
             "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
             "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1",
-            "THE_RANGE": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+            "THE_RANGE": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
           }
         },
         {
@@ -117,7 +117,7 @@
             "GST": "https://www.dropbox.com/scl/fi/ghn9tv5pyeex0bdx1bsph/Golf-Simulator-Toolkit_1.9.1.25158_BETA.exe?rlkey=9svw79qpet927tguyyp588ggq&st=w0c3cotv&dl=1",
             "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
             "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1",
-            "THE_RANGE": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+            "THE_RANGE": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
           }
         },
         {
