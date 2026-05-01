@@ -1,6 +1,11 @@
 {
   "Pipelines": [
     {
+      "Build": "BETA_THE_RANGE",
+      "LatestVersion": "260426-1030",
+      "URL": "https://www.dropbox.com/scl/fi/wm3dj9w2oiw717c4gftd3/gst_the_range_1.0.0_BETA.zip?rlkey=5muuuzlpi3neucd37ld1nh3qy&dl=1"
+    },
+    {
       "Build": "DEBUG",
       "LatestVersion": "1.9.2",
       "Deployments": [
@@ -59,8 +64,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.9.4",
+      "LatestVersion": "1.9.5",
       "Deployments": [
+        {
+          "Version": "1.9.5",
+          "Date": "5/1/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tNew Version Alerts\r\n\t\t\tA popup will now be shown during Check Updates if a new version of The Range is available to download\r\n\t\tAd-hoc Shot Replay\r\n\t\t\tThe Record Shot button has been moved to the top of the Replay area and now has a label\r\n\tPerformance/QoL Improvements:\r\n\t\tCreate New Session\r\n\t\t\tEach Simulation Software that accepts shots from GST can now create a new session without having to restart GST",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/xaapq51vf7qljzb3mqrbb/Golf-Simulator-Toolkit_1.9.5.17495_BETA.exe?rlkey=mjupop969x00nvl0wl43b92pv&st=o4e5s0bb&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.9.4",
           "Date": "4/25/2026",
