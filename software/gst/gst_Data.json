@@ -2,7 +2,7 @@
   "Pipelines": [
     {
       "Build": "BETA_THE_RANGE",
-      "LatestVersion": "260501-1502",
+      "LatestVersion": "260513-1012",
       "URL": "https://www.dropbox.com/scl/fi/9lcszcyygjubuvrtw7fom/gst_the_range_BETA.zip?rlkey=0q9p8udn1v779mmsyvzkhprfk&dl=1"
     },
     {
