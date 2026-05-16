@@ -64,8 +64,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.9.5",
+      "LatestVersion": "1.9.6",
       "Deployments": [
+        {
+          "Version": "1.9.6",
+          "Date": "5/16/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tSession CSV Import Support\r\n\t\t\tFile -> Import Session is now available when The Range simulator is selected to bring in any shot CSV export you might have from your LM device, native app, or even other simulators to build your pre-existing shot history in GST\r\n\t\t\t\tYou can map each CSV column to what is needed for GST to add them - Ignore flight columns if you want GST to simulate the flight (carry, total distance, offline, apex, descent angle, etc.)\r\n\tTuning:\r\n\t\tSession List\r\n\t\t\tContext menu is now a link to open directory where session file lives\r\n\t\tTCP Simulators\r\n\t\t\tConnectors that send club data on a second call after ball launch is now supported for instant shot result",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/19owrn19x8478fpgdlf8y/Golf-Simulator-Toolkit_1.9.6.26992_BETA.exe?rlkey=nkojcrm5ehuetjql7o4ke3euk&st=n4ibes6e&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.9.5",
           "Date": "5/1/2026",
