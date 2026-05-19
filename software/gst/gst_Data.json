@@ -64,8 +64,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.9.6",
+      "LatestVersion": "1.9.7",
       "Deployments": [
+        {
+          "Version": "1.9.7",
+          "Date": "5/19/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tPlayer Info Update\r\n\t\t\tThe following data is now sent to TR when changed: Player Name, Current Club, Current Ball, Handedness\r\n\t\tSession Import\r\n\t\t\tThe UI has been compacted\r\n\t\t\tA warning will now be shown if the required spin data for accurate ball flight is missing\r\n\t\t\tCarry Distance is now ignored by default to allow GST to calculate all ball flight parameters (Carry, Total Distance, Offline, Peak Height, Descent Angle, etc.)\r\n\t\t\tCalculations will now be performed if import data only has certain spin data combinations to get the spin data needed for ball flight parameters\r\n\tPerformance/QoL Improvements:\r\n\t\tGST Session\r\n\t\t\tA new RH/LH indicator will show the player handedness value reported from the selected simulator\r\n\t\t\t\tThis can be changed/restored for the following simulator(s): The Range\r\n\tTuning:\r\n\t\tTCP Simulators\r\n\t\t\tManual Shot Entry\r\n\t\t\t\tThe UI has been compacted\r\n\t\t\t\tTotal Spin and Spin Axis fields are now available (to be used in lieu of Back Spin and Side Spin)",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/d47cw9i5n8dm4hmoiagvk/Golf-Simulator-Toolkit_1.9.7.31001_BETA.exe?rlkey=kzdya9as3na1pysr63yzh70s2&st=3u2xzbwr&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.9.6",
           "Date": "5/16/2026",
