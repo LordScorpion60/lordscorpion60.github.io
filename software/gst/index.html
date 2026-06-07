@@ -190,11 +190,50 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    Session Monitoring &amp; Cataloging
+                                    Session Management
                                     <ul>
-                                        <li>Automatically monitor and copy session and video files to local GST catalog (Year → Month → Day)</li>
-                                        <li>Catalog sessions by date and support session date range settings (7 / 30 / 90 / 180 / All days)</li>
-                                        <li>Auto-reload active session and select newest shot</li>
+                                        <li>
+                                            Session Monitoring &amp; Cataloging
+                                            <ul>
+                                                <li>Automatically monitor and copy session and video files to local GST catalog (Year → Month → Day)</li>
+                                                <li>Catalog sessions by date and support session date range settings (7 / 30 / 90 / 180 / All days)</li>
+                                                <li>Auto-reload active session and select newest shot</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Session Notes
+                                            <ul>
+                                                <li>Capture rich formatted text (supports CTRL+B,I,U formatting shortcuts) & paste images to log notes for the current session (CTRL+S to save)</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Session Search
+                                            <ul>
+                                                <li>Query and filter historical shot data (e.g., "Find all 7-iron shots over 200 yards") across all recorded simulation software</li>
+                                                <li>Search for any session parameter: Sim Software, Date, Time, # of Shots/Clubs/Balls, Player Name, Handedness, Session Type, Altitude, Has Video, Has Replay, etc.</li>
+                                                <li>Search for any shot parameter: Club Name, Ball Name, Ball Data, Flight Data, Club Data, etc.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Session Combine
+                                            <ul>
+                                                <li>(PRO) Combine sessions across any recorded simulation software to create a complete gap test grouping or custom session as needed</li>
+                                                <li>(PRO) Create a session copy, excluding certain shots to create a clean, custom session (preserving the original shot data)</li>
+                                                <li>(PRO) Combine a session to reset any session parameter: Simulation Software, Date, Time, Altitude, Player, Session Type</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Session Import<a href="#FOOTNOTES">**</a>
+                                            <ul>
+                                                <li>
+                                                    (PRO) Import any shot CSV export you might have from your LM device, native app, or even other simulators to build your pre-existing shot history in GST
+                                                    <ul>
+                                                        <li>Map each CSV column to what is needed for GST</li>
+                                                        <li>Ignore flight columns if you want GST to simulate the flight (carry, total distance, offline, apex, descent angle, etc.)</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -246,12 +285,6 @@
                                     Shot Replay Controls
                                     <ul>
                                         <li>Load/trim shot replays (start/end offsets)</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Session Notes
-                                    <ul>
-                                        <li>Capture rich formatted text (supports CTRL+B,I,U formatting shortcuts) & paste images to log notes for the current session (CTRL+S to save)</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -344,6 +377,7 @@
                     <ul>
                         <li>FSX 2020</li>
                         <li>FSX Play</li>
+                        <li><a href="#THE_RANGE">The Range</a></li>
                     </ul>
 
                     <hr />
@@ -598,7 +632,6 @@
                             <ul>
                                 <li>Historical trend tracking across multiple sessions, including performance over time.</li>
                                 <li>Gap testing reports to identify and address club distance overlaps or gaps.</li>
-                                <li>Query and filter historical shot data (e.g., "Find all 7-iron shots over 200 yards").</li>
                                 <li>Visualize progress and identify areas for improvement with interactive charts.</li>
                             </ul>
                         </li>
@@ -631,6 +664,7 @@
                     <h3>
                         GST Top Menu Option Details
                     </h3>
+
                     <ul>
                         <li>
                             File:
@@ -639,11 +673,19 @@
                                     Session & Swing Video directories are set to the default locations per the simulation software selected
                                 </li>
                                 <li>
+                                    New Session<a href="#FOOTNOTES">**</a>
+                                    <ul>
+                                        <li>This will create a new session file without having to restart GST</li>
+                                    </ul>
+                                </li>
+                                <li>Import Session<a href="#FOOTNOTES">**</a></li>
+                                <li>
                                     Reload Session in Date Range
                                     <ul>
                                         <li>This will force GST to re-pull Simulation Software data locally based on the currently selected Date Range</li>
                                     </ul>
                                 </li>
+                                <li>Session Search/Combine</li>
                             </ul>
                         </li>
                         <li>
@@ -704,12 +746,6 @@
                                     Check For Updates On Start
                                     <ul>
                                         <li>This can be turned off if desired</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Monitor For Live Session On Start
-                                    <ul>
-                                        <li>This can be turned off if desired, but recommended to automatically capture data local for future reference/analytics and also required for some sim softwares</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1167,12 +1203,14 @@
 
                     <h4><b>The Range - Closed Beta Roadmap:</b></h4>
                     <ul>
-                        <li>Flag alignment left/right - hit a draw to the flag instead of forcing an uncomfortable push draw or needing to "change aim"
-                        <ul>
-                            <li>DONE - 1.1</li>
-                        </ul>
+                        <li>
+                            Flag alignment left/right - hit a draw to the flag instead of forcing an uncomfortable push draw or needing to "change aim"
+                            <ul>
+                                <li>DONE - 1.1</li>
+                            </ul>
                         </li>
-                        <li>Dynamic range - forced carries (over rough, sand, water)
+                        <li>
+                            Dynamic range - forced carries (over rough, sand, water)
                             <ul>
                                 <li>DONE - 1.1</li>
                             </ul>
@@ -1202,8 +1240,10 @@
                     </ul>
 
                     <hr />
+                    
+                    <p id="FOOTNOTES"><i>** - Certain Simulation Software(s) Only</i></p>
 
-                    <em>Last Updated: 5/1/2026</em>
+                    <em>Last Updated: 6/7/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
