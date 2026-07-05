@@ -936,8 +936,10 @@
                     <hr />
 
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/O8NaPrrbma0?si=zxrVJa91_6-P18NZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+                    <br />
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/JA4ejxfKlr0?si=Dd6yUtqLIdxZTHly" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br />
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/t42z2yHxuGk?si=VYkAL5R6WP9dzik4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                     <h3><b>The Range is currently in the CLOSED BETA phase - Sign Up Below!</b></h3>
 
@@ -981,7 +983,6 @@
 
                     <ul>
                         <li><b>Windows 10 or newer</b></li>
-                        <li><b>Nvidia graphics card with RTX compatibility</b></li>
                         <li>
                             <b>Golf launch monitor with a third-party connector to send shot data to GST over any TCP port</b>
                             <ul>
@@ -1198,30 +1199,284 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul>
+                        <li>
+                            <b>1.2_BETA</b>
+                            <ul>
+                                <li>
+                                    Features:
+                                    <ul>
+                                        <li>
+                                            Target Distance to Pin
+                                            <ul>
+                                                <li>Create a target circle that will track percentage stat</li>
+                                                <li>Will be shown when Flag is on</li>
+                                                <li>Use Pickup Range (P) command to reset the stat</li>
+                                                <li>Changing the target distance will automatically reset the stat</li>
+                                                <li>Set distance to 0 to remove the circle/stat</li>
+                                                <li>Stat measured at Rest (On) vs. Impact (Off)</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Dynamic Range - Trouble Left/Right
+                                            <ul>
+                                                <li>Button to toggle each independently</li>
+                                                <li>Training settings to adjust each trouble side from the center</li>
+                                                <li>Each has option to add trees to that side, lined on the edge so the tree overhang should be close to the trouble distance</li>
+                                                <li>Choose for each side: Rough, Sand</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Updates:
+                                    <ul>
+                                        <li>
+                                            Player Information - Updated from GST
+                                            <ul>
+                                                <li>Name - Handedness</li>
+                                                <li>Club Name</li>
+                                                <li>Ball Name</li>
+                                            </ul>
+                                        </li>
+                                        <li>DirectX 12 now supported (used by default)</li>
+                                        <li>Integrated graphics now supported with automatic step down to a scaled resolution to allow TR to remain stable and functional</li>
+                                        <li>Sun horizontal location random on start</li>
+                                        <li>
+                                            Tracers
+                                            <ul>
+                                                <li>Static tracers now dynamically adjust to any camera distance to help be seen from far away</li>
+                                                <li>DTL Follow - Once the camera catches up to the ball, the tracer will shorten to a faded smaller tracer to allow more visibility on the ball</li>                                                
+                                                <li>Left/Right Follow - The tracer will remain full until impact</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Fixes:
+                                    <ul>
+                                        <li>Configuration setting sliders now set to starting values</li>
+                                        <li>Everyone can change terrain now - Was only allowed for admins...</li>
+                                        <li>Sand terrain now reports correct firmness: 0</li>
+                                        <li>Left/Right Camera - Toggling follow off, then back on now resumes following the ball</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Settings:
+                                    <ul>
+                                        <li>Toggle Full Screen Button - Dedicated for first time use to move TR to a different monitor</li>
+                                        <li>Slider values adjusted to 0.1 precision (when not whole numbers - you can manually enter any number of decimal you want to get it just right...)</li>
+                                        <li>UI sliders accept CTRL (.1), ALT (.01), or SHIFT (1) click (not drag) to increment with that precision</li>
+                                        <li>
+                                            New - Will not be saved
+                                            <ul>
+                                                <li>
+                                                    Fog Level [0-4]
+
+                                                </li>
+                                                <li>
+                                                    Cloud Level [0-4]
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            New - Will be saved
+                                            <ul>
+                                                <li>Tracer Color</li>
+                                                <li>Ball Glow Color</li>
+                                                <li>
+                                                    Visual Graphics Settings
+                                                    <ul>
+                                                        <li>
+                                                            SSAO
+                                                            <ul>
+                                                                <li>Small effect on FPS, decent reduction in GPU utilization</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Global Illumination
+                                                            <ul>
+                                                                <li>Small effect on FPS, decent reduction in GPU utilization</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Fog
+                                                            <ul>
+                                                                <li>Small effect on FPS, decent reduction in GPU utilization</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Contact Shadows
+                                                            <ul>
+                                                                <li>Minimal effect on FPS</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Cloud Shadows
+                                                            <ul>
+                                                                <li>Minimal effect on FPS, but lightens up the ground for better replays...</li>
+                                                                <li>This will prevent clouds from blocking light to the ground</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Close Clouds
+                                                            <ul>
+                                                                <li>Decent effect on FPS, slight reduction in GPU utilization</li>
+                                                                <li>This will prevent clouds from blocking light from the sun</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Anti Aliasing
+                                                            <ul>
+                                                                <li>Minimal effect on FPS</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Anti Aliasing Level
+                                                            <ul>
+                                                                <li>Minimal effect on FPS</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Draw Distance
+                                                            <ul>
+                                                                <li>Minimal effect on FPS, but can set to remove the environment background (350)</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Shadow Distance
+                                                            <ul>
+                                                                <li>Minimal effect on FPS</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Dymamic Resolution Scale
+                                                            <ul>
+                                                                <li>Large effect on FPS and GPU utilization, largest reduction in quality</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            These settings will now be saved and loaded on TR startup - No need to reconfigure each time
+                                            <ul>
+                                                <li>Reset Camera After Shot (On/Off)</li>
+                                                <li>Create Divots (On/Off)</li>
+                                                <li>Create Pitch Marks (On/Off)</li>
+                                                <li>Show Club Stats (On/Off)</li>
+                                                <li>Show Club HMT Stats (On/Off)</li>
+                                                <li>Dynamic Time (On/Off)</li>
+                                                <li>Range Ball Impact (On/Off)</li>
+                                                <li>Camera Settings</li>
+                                                <li>Camera Offset (Value)</li>
+                                                <li>Periscope Height (Value)</li>
+                                                <li>TV Camera Follow FOV (Value)</li>
+                                                <li>Range Ball Color (Value)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Console Commands:
+                                    <ul>
+                                        <li>
+                                            _SetTargetCircle(Distance)
+                                            <ul>
+                                                <li>Set the Target Distance to Pin 0-999 (use if you want to go more than the UI max: 30)</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            _DeleteAllUserSettings
+                                            <ul>
+                                                <li>Resets all saved settings to their default values</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            _SetBallColor [0.0-1.0]
+                                            <ul>
+                                                <li>Will change the actual color of live/fresh balls</li>
+                                                <li>This change won't be saved</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            _SetVFX_ALL(on/off) [0-1]
+                                            <ul>
+                                                <li>Turn on/off ALL visual effects</li>
+                                                <li>Highest effect on FPS, however creates a clean visual environment (no fog, haze, shadows, etc.)</li>
+                                                <li>These VFX changes won't be saved</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <hr />
 
                     <h4><b>The Range - Closed Beta Roadmap:</b></h4>
                     <ul>
                         <li>
-                            Flag alignment left/right - hit a draw to the flag instead of forcing an uncomfortable push draw or needing to "change aim"
+                            Flag alignment left/right
                             <ul>
-                                <li>DONE - 1.1</li>
+                                <li>
+                                    Hit a draw to the flag instead of forcing an uncomfortable push draw or needing to "change aim"
+                                    <ul>
+                                        <li>DONE - 1.1</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li>
-                            Dynamic range - forced carries (over rough, sand, water)
+                            Dynamic range
                             <ul>
-                                <li>DONE - 1.1</li>
+                                <li>
+                                    Forced carries (over rough, sand, water)
+                                    <ul>
+                                        <li>DONE - 1.1</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Left/right trouble
+                                    <ul>
+                                        <li>DONE - 1.2</li>
+                                    </ul>
+                                </li>
+                                <li>Doglegs</li>
+                                <li>Minimum/maximum heights</li>
+                                <li>Slope up/down</li>
                             </ul>
                         </li>
-                        <li>Dynamic range - doglegs</li>
-                        <li>Dynamic range - minimum/maximum heights</li>
-                        <li>Dynamic range - gaps</li>
-                        <li>Dynamic range - slope up/down</li>
-                        <li>Dynamic par 4/5 config. Play from first shot until holeout, keep score count, etc.</li>
+                        <li>
+                            Dynamic par 4/5 config
+                            <ul>
+                                <li>Play from first shot until holeout, keep score count, etc.</li>
+                            </ul>
+                        </li>
                         <li>User placeable objects to create custom practice scenarios</li>
-                        <li>All the settings</li>
+                        <li>
+                            All the settings
+                            <ul>
+                                <li>DONE - 1.2</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Settings
+                            <ul>
+                                <li>Set width of the tracer</li>
+                                <li>Set opacity of the tracer</li>
+                                <li>Camera Follow - Adjust tracer catch up delay</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Camera
+                            <ul>
+                                <li>DTL - No Follow - Add a down range preview popup to see the end of the shot</li>
+                                <li>Add Ball Camera (follow close wherever the ball is going)</li>
+                            </ul>
+                        </li>
                         <li>Online Multiplayer - 1st phase - Onlooker/coach join mode to watch current player, see data, shots, change view to get better angles &amp; provide feedback</li>
                         <li>=============================== [CUT LINE] ===============================</li>
                         <li>Online Multiplayer - 2nd phase - Several other players join the host's Range to hit shots based on host's range settings. Host can create on the spot challenge scenarios (CTP, Long Drive, etc.) for all players to compete in</li>
@@ -1240,10 +1495,10 @@
                     </ul>
 
                     <hr />
-                    
+
                     <p id="FOOTNOTES"><i>** - Specific Simulation Software Only</i></p>
 
-                    <em>Last Updated: 6/7/2026</em>
+                    <em>Last Updated: 7/4/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
