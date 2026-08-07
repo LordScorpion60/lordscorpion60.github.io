@@ -100,8 +100,10 @@
                         <li><a href="#DOWNLOAD_GST">How do I download GST?</a></li>
                         <li><a href="#GST_DOCUMENTATION">How do I use GST?</a></li>
                         <li><a href="#GST_ROADMAP">What's next for GST?</a></li>
+                        <li><a href="#GST_HELP">How can I help grow Golf Simulator Toolkit?</a></li>
                         <li><a href="#NOTES">Notes & Samples</a></li>
                         <li><a href="#THE_RANGE">Golf Simulator Toolkit Presents: The Range</a></li>
+                        <li><a href="#CONTACT">How to contact the GST team?</a></li>
                     </ul>
 
                     <hr />
@@ -394,20 +396,47 @@
 
                     <p>System Requirements:</p>
                     <ul>
-                        <li>Win 10 or newer</li>
-                        <li>Nvidia graphics card (Driver: 570.xx or newer) is preferred for the best video capture and export performance</li>
+                        <li>Windows 10 or newer</li>
+                        <li>
+                            Nvidia graphics card (Driver: 570.xx or newer) is recommended for the best video capture and export performance
+                            <ul>
+                                <li>Integrated graphics are supported for video capture and video export</li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <p>Notes:</p>
                     <ul>
-                        <li>Your browser may block the .exe since it is not digitally signed at the moment. Windows Defender might also block it. If so, please reach out.</li>
-                        <li>Its best to place the first download of GST into it's own folder (i.e. \GST) to keep all of its output/contents in the same place going forward.</li>
                         <li>
-                            If you see desktop scaling/resolution issues (icons/text small - out of place), try the following:
+                            <b>Security Issues:</b>
                             <ul>
-                                <li>Right-click on the GST executable, find properties. Compatibility -> Change high DPI settings</li>
-                                <li>Check box for "Override high DPI scaling behavior." -> Select "System (Enhanced)" in the now enabled drop down box</li>
-                                <li><i>You might have to apply these changes each time GST updates as it gets a new .exe file each time - We're working on this...</i></li>
+                                <li>
+                                    Your browser may block the .exe since it is not digitally signed at the moment
+                                    <ul>
+                                        <li>You can tell your browser to download anyway</li>
+                                        <li>Please <a href="#CONTACT">contact us</a> if you have concerns</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Windows Defender likes to report false positives for trojan threats...
+                                    <ul>
+                                        <li>Any "trojan" flags with <code>!ml</code> at the end are what our file storage provider and/or Windows 11 likes to randomly flag with its <code>"machine learning"</code> file scans...</li>
+                                        <li>This can be fine the next day if you download the file again, but since the .exe is not signed and contains the embedded .NET desktop framework (so you don't have to download and install on your own), GST currently checks 2 of the 3 boxes for causing these virus scan failures...</li>
+                                        <li>Please <a href="#CONTACT">contact us</a> if you have any concerns or need help with this!</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>Installation Recommendations:</b>
+                            <ul>
+                                <li>
+                                    Its best to place the first download of GST into it's own folder (i.e. <code>Desktop\Golf Simulator Toolkit</code>) to keep all of its output/contents in the same place going forward.
+                                    <ul>
+                                        <li>We do not recommend starting and running from the <code>Downloads</code> folder since that get's really messy over time...</li>
+                                    </ul>
+                                </li>
+                                <li>GST will ask you to self update with future releases and keep everything in this same folder, so no need to download from the website each time...</li>
                             </ul>
                         </li>
                     </ul>
@@ -543,41 +572,6 @@
                         Feature release timelines may adjust as we gather more user insights during the BETA phase.
                     </p>
 
-                    <h3><b>Want to help development progression? Try it while it's free!</b></h3>
-
-                    <ul>
-                        <li>
-                            <h4>Become an evaluation user during the BETA phase and share your feedback through our in-app feedback system.</h4>
-                        </li>
-                        <li>
-                            <h4>All you have to do is select "Request EVAL License" from the GST Licensing menu and once activated, you can try out all of the PRO features!</h4>
-                        </li>
-                    </ul>
-
-                    <h4>To join our community, head over to our <a href="https://discord.gg/U2ydf7SgDC">Discord server</a> and sign up in the GST Lobby channel!</h4>
-
-
-                    <h3><b>Want to get your feature into the pipeline? Consider donating for executive powers!</b></h3>
-
-                    <ul>
-                        <li>
-                            <h4>You can use Patreon to sign up for a membership to have different levels of exclusive options!</h4>
-                            <ul>
-                                <li>
-                                    <h4><a href="https://patreon.com/GolfSimulatorToolkit" target="_blank">Become a Patreon Member <i class="fa fa-external-link"></i></a></h4>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4>You can also donate to help the cause or grease the skids...</h4>
-                            <ul>
-                                <li>
-                                    <h4><a href="https://tiptopjar.com/gst" target="_blank">Send a Tip! <i class="fa fa-external-link"></i></a></h4>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
                     <hr />
 
                     <h4><b>The current long term goals after the official release milestone is met are currently looking like:</b></h4>
@@ -656,6 +650,31 @@
                     </ul>
 
                     <p><i>Note: Some of these could get pulled into the BETA release if required</i></p>
+
+                    <hr />
+                    <h2 id="GST_HELP">How can I help grow Golf Simulator Toolkit?:</h2>
+                    <hr />
+
+                    <h3><b>Want to help development progression? Try it while it's free!</b></h3>
+
+                    <ul>
+                        <li>
+                            <h4>Become an evaluation user during the BETA phase and share your feedback through our in-app feedback system.</h4>
+                        </li>
+                        <li>
+                            <h4>All you have to do is select "Request EVAL License" from the GST Licensing menu and once activated, you can try out all of the PRO features!</h4>
+                        </li>
+                    </ul>
+
+                    <h4>To join our community, head over to our <a href="https://discord.gg/U2ydf7SgDC">Discord server</a> and sign up in the GST Lobby channel!</h4>
+
+                    <h3><b>Consider donating to help move things along faster!</b></h3>
+
+                    <ul>
+                        <li>
+                            <h4><a href="https://buymeacoffee.com/lordscorpion60" target="_blank">Buy us coffee! <i class="fa fa-external-link"></i></a></h4>
+                        </li>
+                    </ul>
 
                     <hr />
                     <h2 id="NOTES">Notes & Samples:</h2>
@@ -1246,7 +1265,7 @@
                                             Tracers
                                             <ul>
                                                 <li>Static tracers now dynamically adjust to any camera distance to help be seen from far away</li>
-                                                <li>DTL Follow - Once the camera catches up to the ball, the tracer will shorten to a faded smaller tracer to allow more visibility on the ball</li>                                                
+                                                <li>DTL Follow - Once the camera catches up to the ball, the tracer will shorten to a faded smaller tracer to allow more visibility on the ball</li>
                                                 <li>Left/Right Follow - The tracer will remain full until impact</li>
                                             </ul>
                                         </li>
@@ -1491,14 +1510,22 @@
                     <h4>Head on over to our <a href="https://discord.gg/qW7QPjyvsE">Discord server</a> and sign up to help build the final product!</h4>
                     <ul>
                         <li>Apply in the "Lobby - The Range [CLOSED BETA]" channel</li>
-                        <li><i>Don't have Discord? Send an <a href="mailto:411gst@gmail.com?subject=Join The Range Closed Beta">email</a>!</i></li>
+                        <li><i>Don't have Discord? Send an <a href="mailto:411gst@gmail.com?subject=I would like to join The Range Closed Beta">email</a> to the GST team to sign up!</i></li>
                     </ul>
+
+                    <hr />
+                    <h2 id="CONTACT">How to contact the GST team?</h2>
+                    <hr />
+
+                    <p>
+                        Send us an email at <a href="mailto:411gst@gmail.com"><b>411gst@gmail.com</b></a>!
+                    </p>
 
                     <hr />
 
                     <p id="FOOTNOTES"><i>** - Specific Simulation Software Only</i></p>
 
-                    <em>Last Updated: 7/5/2026</em>
+                    <em>Last Updated: 8/7/2026</em>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
