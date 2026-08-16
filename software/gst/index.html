@@ -1434,87 +1434,226 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul>
+                        <li>
+                            <b>1.3_BETA</b><ul>
+                                <li>
+                                    Features:<ul>
+                                        <li>
+                                            Instant Shot<ul>
+                                                <li>
+                                                    Don&#39;t want to wait for the ball flight and just want the raw carry and see the final trajectory? Just enable this and start hitting shots!<ul>
+                                                        <li>Can also be combined with Distance Tests if you want a quick raw carry target test (similar to Firmness 0 &quot;dart mode&quot; if you waited for the ball flight)</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Replay can still be used to see the full shot</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Speed Tests<ul>
+                                                <li>
+                                                    A new menu has been added to start a dedicated speed test<ul>
+                                                        <li>
+                                                            Currently measuring:<ul>
+                                                                <li>Ball Speed</li>
+                                                                <li>
+                                                                    Club Speed<ul>
+                                                                        <li>If reported from LM</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>An optional number of shots can be set and enabled to capture the max values over X number of shots</li>
+                                                <li>
+                                                    Automatically enables Instant Shot so you will see all shot stats and flight instantly for quick shots with a Speed Test active<ul>
+                                                        <li>You can still enable the Shot Replay function to see the full ball flight if desired, an active Speed Test will resume automatically afterwards</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Distance Tests<ul>
+                                                <li>A new menu has been added to set the start distance, end distance, distance increment and number of shots per applicable test</li>
+                                                <li>Each test has color codes for which settings will be used and which will yield results</li>
+                                                <li>
+                                                    New Distance Tests:<ul>
+                                                        <li>
+                                                            Distance Accuracy Test<ul>
+                                                                <li>Will use the start distance and number of shots to measure your accuracy to that distance</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Distance Ladder Test<ul>
+                                                                <li>Will increase the target distance every increment after the number of shots until all distances are complete</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Closest to the Pin Test<ul>
+                                                                <li>There will not be a target circle for CTP and the lowest CTP distance will be tracked in the Target Circle Stats area</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Longest Drive Test<ul>
+                                                                <li>The longest distance will be tracked in the Target Circle Stats area</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Set Random Target Distance<ul>
+                                                                <li>Used to jump around start/end distance on each shot until turned off</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Local Multiplayer<ul>
+                                                <li>
+                                                    Is now available through both Speed and Distance Tests<ul>
+                                                        <li>
+                                                            As you change player in GST, TR will track each separately<ul>
+                                                                <li>Use console command &quot;_GetDistanceTestsForAll&quot; to see all player distance test results at once until GST report is available...</li>
+                                                                <li>
+                                                                    Can setup your own target accuracy challenges!<ul>
+                                                                        <li>Add force carry or trouble to spice it up!</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Updates:<ul>
+                                        <li>Status Message is bigger and now has a background to be easier to see</li>
+                                        <li>Force Carry Distance lowest value reduced to 1</li>
+                                        <li>Flag and Force Carry Distance maximum values adjusted to the actual end of the range</li>
+                                        <li>Mouse cursor now moved to the bottom left corner of the screen when a shot is shown and TR has focus</li>
+                                        <li>Player Information display now scales correctly to the contents within</li>
+                                        <li>TR now processes GST player info on start (name, handedness, club, ball, altitude) that might have been set in GST before starting (or restarting) TR</li>
+                                        <li>
+                                            Ground Physics Updates:<ul>
+                                                <li>Ball bounces after the first now have a little more bounce to the ounce</li>
+                                                <li>Lower firmness more bounce, higher firmness less bounce</li>
+                                                <li>Lower firmness more spin loss (less grip), higher firmness less spin loss (more grip)</li>
+                                                <li>Backspin now factored into ball bounce angle (higher/lower) on top of current stimp/firmness factoring</li>
+                                                <li>Low firmness values (usually 3 and under) now sauces correctly after the first bounce if there leftover spin (just stopped before after the first bounce)</li>
+                                                <li>Bounces after the 2nd on the green will now skrrt or sauce if there is enough spin left over</li>
+                                                <li>Spin Axis will be factored into the L/R bounce angle if there is any skrrt or sauce applied</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Fixes:<ul>
+                                        <li>Player Club/Ball correctly updated when only 1 is de-selected in GST</li>
+                                        <li>Periscope camera view now uses shortened faded tracer after camera follow headstart delay setting</li>
+                                        <li>The camera will no longer shift after ball impact with another ball or hole out</li>
+                                        <li>DTL camera will now catch up to the ball after the ball has landed and follow mode is turned on</li>
+                                        <li>DTL camera will now catch up to the ball if the ball is downrange after a shot (Reset Camera After Shot: Off) and the camera is still in the starting position</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Settings:<ul>
+                                        <li>
+                                            Global Settings:<ul>
+                                                <li>Ball Color</li>
+                                                <li>Range Ball Glow Color</li>
+                                                <li>
+                                                    Tracer Opacity<ul>
+                                                        <li>Take some of the glow off, make barely visible, or turn off (0)</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Shot Settings:<ul>
+                                                <li>
+                                                    Show Tracer After Shot<ul>
+                                                        <li>Shots loaded from GST will still show the tracer (so you know its loaded, but will not show after playing the shot)        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Environment Settings:<ul>
+                                                <li>Sun Angle</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Camera Settings:<ul>
+                                                <li>
+                                                    No Follow Settings:<ul>
+                                                        <li>
+                                                            Landing Preview<ul>
+                                                                <li>DTL/Periscope - A down range landing preview popup will show the end of the shot</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Follow Settings:<ul>
+                                                        <li>
+                                                            Follow Short Tracer<ul>
+                                                                <li>Turning this off will show the full tracer during flight and after impact</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Follow Headstart Delay<ul>
+                                                                <li>
+                                                                    If you want the ball to get out further before the camera catches up, increase this<ul>
+                                                                        <li>The camera will catch up regardless of delay setting if the ball starts to descend</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            Follow Distance<ul>
+                                                                <li>You can get the camera closer or further away from the ball while it&#39;s in the air</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Console Commands:<ul>
+                                        <li>
+                                            _GetTestResultsForAll<ul>
+                                                <li>
+                                                    Prints the list of test results for all players<ul>
+                                                        <li>Automatically copies results to clipboard</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <hr />
 
                     <h4><b>The Range - Closed Beta Roadmap:</b></h4>
+                    <p><code>Current Closed Beta Roadmap - Remaining Features (in no particular order):</code></p>
                     <ul>
-                        <li>
-                            Flag alignment left/right
-                            <ul>
-                                <li>
-                                    Hit a draw to the flag instead of forcing an uncomfortable push draw or needing to "change aim"
-                                    <ul>
-                                        <li>DONE - 1.1</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            Dynamic range
-                            <ul>
-                                <li>
-                                    Forced carries (over rough, sand, water)
-                                    <ul>
-                                        <li>DONE - 1.1</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Left/right trouble
-                                    <ul>
-                                        <li>DONE - 1.2</li>
-                                    </ul>
-                                </li>
-                                <li>Doglegs</li>
-                                <li>Minimum/maximum heights</li>
-                                <li>Slope up/down</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Dynamic par 4/5 config
-                            <ul>
-                                <li>Play from first shot until holeout, keep score count, etc.</li>
-                            </ul>
-                        </li>
-                        <li>User placeable objects to create custom practice scenarios</li>
-                        <li>
-                            All the settings
-                            <ul>
-                                <li>DONE - 1.2</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Settings
-                            <ul>
-                                <li>
-                                    Set opacity of the tracer
-                                    <ul>
-                                        <li>DONE - 1.3</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Camera Follow - Adjust tracer catch up delay
-                                    <ul>
-                                        <li>DONE - 1.3</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            Camera
-                            <ul>
-                                <li>
-                                    DTL - No Follow - Add a down range preview popup to see the end of the shot
-                                    <ul>
-                                        <li>DONE - 1.3</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        <li>Dynamic range  - slope up/down, minimum/maximum heights, doglegs</li>
+                        <li>Dynamic par 4/5 config. Play from first shot until hole out, keep score count, etc.</li>
+                        <li>User placed objects to create custom practice scenarios</li>
+                        <li>Skills Test</li>
                         <li>Online Multiplayer - 1st phase - Onlooker/coach join mode to watch current player, see data, shots, change view to get better angles &amp; provide feedback</li>
                         <li>=============================== [CUT LINE] ===============================</li>
-                        <li>Online Multiplayer - 2nd phase - Several other players join the host's Range to hit shots based on host's range settings. Host can create on the spot challenge scenarios (CTP, Long Drive, etc.) for all players to compete in</li>
+                        <li>Online Multiplayer - 2nd phase - Several other players join the host&#39;s Range to hit shots based on host&#39;s range settings. Host can create on the spot challenge scenarios (CTP, Long Drive, etc.) for all players to compete in</li>
                     </ul>
+
 
                     <hr />
 
