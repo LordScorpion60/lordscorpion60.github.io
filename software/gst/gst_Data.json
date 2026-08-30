@@ -64,8 +64,18 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.10.3",
+      "LatestVersion": "1.10.4",
       "Deployments": [
+        {
+          "Version": "1.10.4",
+          "Date": "8/30/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tAutomatically Start The Range\r\n\t\t\tTo enable: Settings -> Configure The Range -> The Range - Start Automatically\r\n\t\t\t\tOff by default\r\n\t\t\tIf you start GST with The Range selected, The Range will start at the same time to be ready to hit shots with less clicks/waiting...\r\n\t\tNew Per Shot Options - Load/Optimize\r\n\t\t\tNew right-click menu items added to the ID cells in the Shots table:\r\n\t\t\t\tLoad Shot in The Range\r\n\t\t\t\t\tReload the current selected shot in The Range\r\n\t\t\t\t\t\tUse in case The Range opens after a shot is selected (especially if you only have 1 shot in the session), etc.\r\n\t\t\t\tOptimize Shot in The Range\r\n\t\t\t\t\tAllows to either See or Play an Optimized Shot in The Range\r\n\t\t\t\t\t\tLock Ball Speed (Default), Launch Angle, Back Spin, or Peak Height\r\n\t\t\t\t\t\t\tAt least 1 required, can't select them all...\r\n\tPerformance/QoL Improvements:\r\n\t\tStats Export Upgrades\r\n\t\t\tWhen exporting to CSV with \"Include only AVG rows\" enabled, the STD DEV values will get their own CSV column\r\n\t\t\tWhen you right-click on any selected row's ID cell, a CSV export for that row (plus column headers [including Session Date & Time], plus STD DEV columns if an AVG row) will be copied to the clipboard\r\n\t\tPlay Ball Detection Sounds\r\n\t\t\tA sound will be played when a ball is detected, a different sound when undetected\r\n\t\t\t\tTo enable: Settings -> Play Ball Detection Sounds\r\n\t\t\t\t\tOff by default\r\n\t\t\t\tUse if ball events are supported by sim software or TCP connector\r\n\t\t\t\tUseful for an audible tone that the ball might have moved and is not detected before taking a shot, or the LM loses connection and you don't hear the detection before taking a shot\r\n\tTuning:\r\n\t\tNew Session Message\r\n\t\t\tOn GST start, a new message in the Session Data area now shows \"New Session - Ready\" to indicate a new session is open and ready to record any incoming shots\r\n\t\t\t\tWill also be shown when selecting \"New Session\" (when New Session option is available)\r\n\t\t\tGST automatically starts a new session and is ready to detect shots on every startup...",
+          "URLs": {
+            "GST": "https://www.dropbox.com/scl/fi/776oz044tujsjac73uqb7/Golf-Simulator-Toolkit_1.10.4.22151_BETA.exe?rlkey=wep91jaltdm5te6od16xa3x38&st=yqs36h0y&dl=1",
+            "FFMPEG": "https://www.dropbox.com/scl/fi/m56uw2bmhza2swsb1i7kw/ffmpeg_7.1.zip?rlkey=d3uuriwoc5bui2uvp9ztn4kvj&st=568zmsb4&dl=1",
+            "DEMO": "https://www.dropbox.com/scl/fi/ef5mq685896ni8ajq1gxx/demo_data.zip?rlkey=2tcjr4vx56ngj0yun77l81hsj&st=octpnpea&dl=1"
+          }
+        },
         {
           "Version": "1.10.3",
           "Date": "8/17/2026",
