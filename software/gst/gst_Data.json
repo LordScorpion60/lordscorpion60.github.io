@@ -2,7 +2,7 @@
   "Pipelines": [
     {
       "Build": "BETA_THE_RANGE",
-      "LatestVersion": "260917-1451",
+      "LatestVersion": "260926-1038",
       "URL": "https://downloads.golfsimulatortoolkit.com/the_range/gst_the_range_BETA.zip"
     },
     {
