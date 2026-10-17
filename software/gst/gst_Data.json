@@ -73,8 +73,21 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.11.0",
+      "LatestVersion": "1.11.1",
       "Deployments": [
+        {
+          "Version": "1.11.1",
+          "Date": "10/17/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tDefault Player Name\r\n\t\t\tYou can now select a player name to be used by default when starting GST and loading The Range\r\n\t\t\t\tGood for solo sim users, especially when The Range is auto started\r\n\t\tView Test Results\r\n\t\t\tA new dedicated window will allow the search and filtering of all tests (distance, speed, etc.) conducted in The Range\r\n\t\t\t\tSettings -> Configure The Range -> The Range - View Test Results\r\n\t\t\tA link is also available to the raw CSV test file\r\n\t\tTcp Connector Tuning\r\n\t\t\tCleaned up some Tcp chatter so a new shot processed in TR won't be reloaded from GST after the shot is done\r\n\tPerformance/QoL Improvements:\r\n\t\tPre-built Golf Bag\r\n\t\t\tWhen first using GST a full 14 club bag and ball categories will be pre-populated to get going faster\r\n\t\tConfigure Shot Optimization\r\n\t\t\tA dedicated window will allow the fine tuning of Shot Optimization parameters (Min/Max Offset and Step Size) for Ball Speed, Launch Angle and Back Spin for dialing in specific optimization patterns\r\n\t\t\t\tIncreasing the min/max window and decreasing the step size will increase the time needed to optimize the shot data, but will yield very specific results\r\n\t\t\t\tSettings -> Configure Shot Optimization",
+          "URLs": {
+            "GST": "https://downloads.golfsimulatortoolkit.com/beta/Golf Simulator Toolkit_1.11.1.28574_BETA.exe",
+            "GST_HASH": "ef58f41997567d4cfc17fd8d4a26effbcfc244eb323a1cdb4faf91f91eb94842",
+            "FFMPEG": "https://downloads.golfsimulatortoolkit.com/beta/ffmpeg_7.1.zip",
+            "FFMPEG_HASH": "8afb953045e1383f5f22d2559b9141087e550b03e4640f294c7cace34ba2a214",
+            "DEMO": "https://downloads.golfsimulatortoolkit.com/beta/demo_data.zip",
+            "DEMO_HASH": "13ba68e0ffce48d915538645d3dfb2ec623f839e872392d4b3584f8c606de7ea"
+          }
+        },
         {
           "Version": "1.11.0",
           "Date": "9/11/2026",
