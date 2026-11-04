@@ -73,8 +73,21 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.11.1",
+      "LatestVersion": "1.11.2",
       "Deployments": [
+        {
+          "Version": "1.11.2",
+          "Date": "11/4/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tNew Features - PRO:\r\n\t\tGolf Bag Per Player\r\n\t\t\tEach custom player now has their own golf bag to customize\r\n\t\t\t\tYou can copy from other players' club/ball lists\r\n\t\t\tThe last selected club/ball will be remembered if you change players and back\r\n\tBug Fixes:\r\n\t\tIncoming TCP shot data via split packets not sending club data to simulator when recording is active\r\n\tPerformance/QoL Improvements:\r\n\t\tNew Video Keyboard Shortcuts - Full video control with one hand\r\n\t\t\tUp Arrow - Play/Pause\r\n\t\t\tDown Arrow - Stop\r\n\t\t\tLeft Arrow - Step backwards\r\n\t\t\tRight Arrow - Step forwards\r\n\t\t\tCTRL + Up Arrow - Increase playback speed\r\n\t\t\tCTRL + Down Arrow - Decrease playback speed\r\n\t\tSession Combine\r\n\t\t\tNew Shot Filter\r\n\t\t\t\tYou can now filter on any metric available in the shots available to help refine which shots to combine\r\n\t\t\t\t\tSelect All/None will apply to the current filtered result\r\n\t\t\t\tYou can now hide the selected shots, or hide the unselected shots \r\n\t\t\tShot include checkboxes now larger buttons\r\n\tTuning:\r\n\t\tSession Search\r\n\t\t\tSession combine select checkboxes now larger buttons\r\n\t\t\tSession search filter precision updated to 1 decimal place, RPMs to whole numbers\r\n\t\t\tNew label shows number of selected sessions (and shots) to combine\r\n\t\tVideo Export\r\n\t\t\tGST logo now transparent to show just the new circular logo",
+          "URLs": {
+            "GST": "https://downloads.golfsimulatortoolkit.com/beta/Golf Simulator Toolkit_1.11.2.25360_BETA.exe",
+            "GST_HASH": "fc4cca84982fe3e568228339019b779270567dc8b91b697b47e14e19e3c81541",
+            "FFMPEG": "https://downloads.golfsimulatortoolkit.com/beta/ffmpeg_7.1.zip",
+            "FFMPEG_HASH": "8afb953045e1383f5f22d2559b9141087e550b03e4640f294c7cace34ba2a214",
+            "DEMO": "https://downloads.golfsimulatortoolkit.com/beta/demo_data.zip",
+            "DEMO_HASH": "13ba68e0ffce48d915538645d3dfb2ec623f839e872392d4b3584f8c606de7ea"
+          }
+        },
         {
           "Version": "1.11.1",
           "Date": "10/17/2026",
