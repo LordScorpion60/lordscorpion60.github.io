@@ -73,8 +73,21 @@
     },
     {
       "Build": "BETA",
-      "LatestVersion": "1.11.2",
+      "LatestVersion": "1.11.3",
       "Deployments": [
+          {
+          "Version": "1.11.3",
+          "Date": "11/14/2026",
+          "ReleaseNotes": "Feature progression, things not currently supported, or known issues for this version will be shown in the \"Important News\" popup if applicable.\r\n\r\nThe following has been addressed in this version:\r\n\tThe Range:\r\n\t\tImproved Shot Selection UI Performance\r\n\t\t\tClicking from shot to shot (especially when TR is not running) is now a little faster\r\n\tPerformance/QoL Improvements:\r\n\t\tVideo Pause/Stepping\r\n\t\t\tVideos now pause at the point where pause is selected (no more video shift to a keyframe that could be several frames back - mixed framerate videos will still shift a little to stay in sync)\r\n\t\t\tYou can now step backwards smoothly frame by frame without an explicit delay (like when holding the key) and no more stepping to large gapped keyframes\r\n\t\t\t\tHold step keys for the best experience (Left Arrow - Right Arrow)\r\n\t\tVideo Drawing Tools\r\n\t\t\tDrawings on each video are now saved for each shot and will be automatically loaded when a shot is selected\r\n\t\t\tNew tool tiles are available (and key shortcut if available): Undo (CTRL-Z), Redo (CTRL-Y), Hide/Show Drawings\r\n\t\t\tNew tool options are available (click tile twice to change tool - click a third time [or anywhere else] to turn tool off): Line -> Thick Line, Circle -> Solid Circle, Box -> Solid Box\r\n\t\tExport Options\r\n\t\t\tExport Drawing Overlays\r\n\t\t\t\tYou can choose any video to include the drawings in the video export\r\n\t\t\t\t\tThis will be remembered for the GST runtime\r\n\tTuning:\r\n\t\tDialog timeouts added\r\n\t\t\tYes/No prompts will now timeout and automatically select \"No\" for the following: Video Export -> Open Output Folder, Stats Export -> Open Output Folder",
+          "URLs": {
+            "GST": "https://downloads.golfsimulatortoolkit.com/beta/Golf Simulator Toolkit_1.11.3.33846_BETA.exe",
+            "GST_HASH": "bb6cbe86e5b6e5ab212d1a006b5a21975f6a5d2d8c20c594086ce2630e12f247",
+            "FFMPEG": "https://downloads.golfsimulatortoolkit.com/beta/ffmpeg_7.1.zip",
+            "FFMPEG_HASH": "8afb953045e1383f5f22d2559b9141087e550b03e4640f294c7cace34ba2a214",
+            "DEMO": "https://downloads.golfsimulatortoolkit.com/beta/demo_data.zip",
+            "DEMO_HASH": "13ba68e0ffce48d915538645d3dfb2ec623f839e872392d4b3584f8c606de7ea"
+          }
+        },
         {
           "Version": "1.11.2",
           "Date": "11/4/2026",
